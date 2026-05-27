@@ -1,0 +1,359 @@
+[
+  {
+    "id": "pm",
+    "name": "Product Manager",
+    "description": "The Product Manager owns the product vision and strategy, acting as the voice of the customer while balancing business objectives and technical feasibility. They define what to build and why, ensuring the product creates measurable value for users and the organization.",
+    "typicalResponsibilities": [
+      "Define and maintain the product vision, strategy, and roadmap",
+      "Conduct customer discovery and user research to identify unmet needs",
+      "Prioritize the product backlog based on business value, user impact, and technical effort",
+      "Collaborate with engineering, design, and data teams to deliver features",
+      "Define success metrics (OKRs, KPIs) and measure product outcomes",
+      "Align stakeholders across leadership, sales, marketing, and customer success",
+      "Analyze competitive landscape and market trends to inform strategy",
+      "Lead go-to-market coordination for major feature releases"
+    ],
+    "keyArtifacts": [
+      "Product vision and strategy document",
+      "Product roadmap (now/next/later or quarterly)",
+      "User personas and jobs-to-be-done frameworks",
+      "Feature briefs and opportunity assessments",
+      "Prioritized product backlog",
+      "OKRs and success metrics dashboards",
+      "Release notes and launch plans",
+      "Competitive analysis and market landscape"
+    ],
+    "commonSkills": [
+      "Product strategy and vision setting",
+      "Customer discovery and user research",
+      "Roadmap planning and prioritization",
+      "Data analysis and metrics-driven decision making",
+      "Stakeholder alignment and executive communication",
+      "Agile product development practices",
+      "Outcome-based thinking and OKR management",
+      "AI-assisted product discovery and synthesis"
+    ],
+    "defaultPromptPerspective": "A Product Manager approaches problems by asking 'what user outcome are we trying to achieve, and how does this move our key metrics?' They think in terms of customer value, business impact, and opportunity cost, always seeking the highest-leverage next action."
+  },
+  {
+    "id": "po",
+    "name": "Product Owner",
+    "description": "The Product Owner is the Scrum team's primary decision-maker for the product backlog, ensuring the team always works on the highest-value items. They serve as the bridge between stakeholder needs and the development team, translating strategy into actionable user stories.",
+    "typicalResponsibilities": [
+      "Own, prioritize, and refine the product backlog",
+      "Write clear, testable user stories with well-defined acceptance criteria",
+      "Participate in sprint planning and ensure the team has a ready backlog",
+      "Review and accept completed work against acceptance criteria",
+      "Act as the primary point of contact for the development team on product questions",
+      "Communicate backlog priorities and trade-offs to stakeholders",
+      "Track sprint velocity and backlog health metrics",
+      "Collaborate with the Product Manager to ensure backlog reflects strategic priorities"
+    ],
+    "keyArtifacts": [
+      "Prioritized and refined product backlog",
+      "User stories with acceptance criteria",
+      "Sprint goals and sprint backlog",
+      "Definition of Ready and Definition of Done",
+      "Backlog health and velocity reports",
+      "Story maps and release plans",
+      "Stakeholder communication updates"
+    ],
+    "commonSkills": [
+      "Backlog ownership and grooming",
+      "Story prioritization using frameworks (MoSCoW, WSJF, etc.)",
+      "Writing acceptance criteria and BDD scenarios",
+      "Sprint readiness and planning facilitation",
+      "Stakeholder alignment and expectation setting",
+      "Agile/Scrum practices and ceremonies",
+      "User story mapping and release planning"
+    ],
+    "defaultPromptPerspective": "A Product Owner approaches problems by asking 'what does the team need to know to build the right thing right now, and is this story clear enough to be built and tested?' They focus on backlog clarity, sprint readiness, and ensuring no time is wasted on ambiguous or low-value work."
+  },
+  {
+    "id": "projm",
+    "name": "Project Manager",
+    "description": "The Project Manager is responsible for delivering a defined scope of work on time, within budget, and to the agreed quality standard. They plan, coordinate, track, and communicate across all workstreams, ensuring risks and issues are managed proactively throughout the project lifecycle.",
+    "typicalResponsibilities": [
+      "Define project scope, schedule, budget, and resource plan",
+      "Develop and maintain the project plan, milestones, and critical path",
+      "Identify, assess, and manage risks, issues, and dependencies",
+      "Facilitate project governance including steering committee meetings",
+      "Produce and distribute regular status reports to stakeholders",
+      "Manage project budget, forecasting, and variance reporting",
+      "Coordinate cross-functional workstreams and resolve blockers",
+      "Manage change control and scope change requests"
+    ],
+    "keyArtifacts": [
+      "Project charter and scope statement",
+      "Project plan and Gantt chart / milestone tracker",
+      "RAID log (Risks, Assumptions, Issues, Dependencies)",
+      "Weekly status reports and dashboards",
+      "Budget and resource plan with actuals tracking",
+      "Change request log",
+      "Lessons learned register",
+      "Project closure report"
+    ],
+    "commonSkills": [
+      "Project planning and schedule management",
+      "Risk management and RAID log maintenance",
+      "Stakeholder communication and reporting",
+      "Budget and resource management",
+      "Change control and scope management",
+      "Dependency and critical path analysis",
+      "Governance facilitation and escalation management",
+      "Status reporting and executive communication"
+    ],
+    "defaultPromptPerspective": "A Project Manager approaches problems by asking 'what is the impact on our timeline, budget, and scope, and what do we need to do to keep the project on track?' They think in terms of dependencies, critical paths, risk exposure, and stakeholder expectations."
+  },
+  {
+    "id": "dm",
+    "name": "Delivery Manager",
+    "description": "The Delivery Manager is accountable for the end-to-end delivery flow of one or more agile teams, ensuring teams execute reliably, impediments are removed quickly, and delivery commitments are met. They operate at the intersection of team-level agile execution and organizational governance.",
+    "typicalResponsibilities": [
+      "Ensure teams have what they need to deliver at a sustainable pace",
+      "Manage delivery commitments, release planning, and team capacity",
+      "Identify and remove systemic impediments affecting team flow",
+      "Track and report delivery health metrics (velocity, cycle time, throughput)",
+      "Coordinate across teams to manage dependencies and release schedules",
+      "Maintain client and stakeholder confidence through regular communication",
+      "Facilitate risk and issue resolution at the delivery level",
+      "Champion continuous improvement of delivery practices"
+    ],
+    "keyArtifacts": [
+      "Delivery health dashboard (velocity, cycle time, burndown)",
+      "Release and sprint plans",
+      "Impediment and escalation log",
+      "Capacity and resource plan",
+      "Client communication and status updates",
+      "Dependency map across teams",
+      "Delivery retrospective outputs",
+      "Risk and issue tracker"
+    ],
+    "commonSkills": [
+      "Delivery governance and flow management",
+      "Resource planning and capacity management",
+      "Client communication and relationship management",
+      "Risk and issue escalation management",
+      "Release coordination and planning",
+      "Agile metrics and delivery health monitoring",
+      "Team coaching and continuous improvement facilitation"
+    ],
+    "defaultPromptPerspective": "A Delivery Manager approaches problems by asking 'is our team able to deliver reliably, and what systemic blockers need to be removed to restore or improve flow?' They focus on team execution, delivery predictability, and maintaining stakeholder trust through transparency."
+  },
+  {
+    "id": "sm",
+    "name": "Scrum Master",
+    "description": "The Scrum Master serves the team as a coach and facilitator, ensuring Scrum practices are understood and enacted while helping the team continuously improve. They protect the team's focus, remove impediments, and help foster a culture of empiricism, collaboration, and self-organization.",
+    "typicalResponsibilities": [
+      "Facilitate all Scrum ceremonies (sprint planning, daily standup, review, retrospective)",
+      "Coach the team on Scrum values, principles, and practices",
+      "Identify and remove impediments that block team progress",
+      "Shield the team from external interruptions and scope creep during sprints",
+      "Track sprint metrics including velocity, burndown, and capacity",
+      "Support the Product Owner in backlog refinement and sprint readiness",
+      "Foster a culture of psychological safety and continuous improvement",
+      "Coach the broader organization on agile ways of working"
+    ],
+    "keyArtifacts": [
+      "Sprint burndown charts and velocity tracking",
+      "Retrospective action items and improvement backlog",
+      "Impediment log",
+      "Team working agreements and norms",
+      "Definition of Ready and Definition of Done",
+      "Sprint review summaries",
+      "Team health metrics and happiness surveys",
+      "Agile maturity assessment"
+    ],
+    "commonSkills": [
+      "Agile facilitation and ceremony design",
+      "Sprint planning and execution",
+      "Backlog readiness coaching",
+      "Impediment identification and removal",
+      "Retrospective facilitation and improvement tracking",
+      "Team flow and delivery metrics",
+      "Coaching and servant leadership",
+      "Conflict resolution and team dynamics"
+    ],
+    "defaultPromptPerspective": "A Scrum Master approaches problems by asking 'what is preventing the team from working at their best, and how can we improve our process to deliver more value sustainably?' They think in terms of team health, process adherence, empirical feedback loops, and continuous improvement."
+  },
+  {
+    "id": "em",
+    "name": "Engineering Manager",
+    "description": "The Engineering Manager leads an engineering team, balancing technical delivery with people development, process improvement, and organizational collaboration. They are accountable for team productivity, engineering quality, and developing the technical capabilities of their engineers.",
+    "typicalResponsibilities": [
+      "Lead, recruit, and develop engineers through coaching, mentoring, and performance management",
+      "Own the team's engineering quality standards, technical practices, and code review culture",
+      "Partner with Product Management on roadmap feasibility and technical trade-offs",
+      "Drive team execution, delivery predictability, and sprint health",
+      "Manage technical debt strategy and engineering health metrics",
+      "Build team capability through training, hiring, and career development",
+      "Represent engineering perspective in cross-functional planning and governance",
+      "Foster an engineering culture of innovation, ownership, and craftsmanship"
+    ],
+    "keyArtifacts": [
+      "Engineering roadmap and technical debt backlog",
+      "Team performance and capability matrix",
+      "Engineering quality metrics (defect rate, code coverage, DORA metrics)",
+      "Career development plans and growth frameworks",
+      "Technical design and architecture review records",
+      "Hiring plans and role definitions",
+      "Engineering operating model documentation",
+      "Team OKRs and delivery commitments"
+    ],
+    "commonSkills": [
+      "Engineering team leadership and people management",
+      "Technical governance and quality ownership",
+      "Delivery planning and execution management",
+      "Coaching and career development",
+      "Cross-functional collaboration and product partnership",
+      "Engineering metrics and DORA metrics tracking",
+      "Technical debt management and prioritization",
+      "Hiring and team capability building"
+    ],
+    "defaultPromptPerspective": "An Engineering Manager approaches problems by asking 'how do we build this sustainably, who needs to grow to do it, and what technical decisions will we need to live with for years?' They balance team wellbeing, delivery commitments, engineering excellence, and long-term technical health."
+  },
+  {
+    "id": "pgm",
+    "name": "Program Manager",
+    "description": "The Program Manager coordinates multiple related projects or product workstreams to deliver a cohesive program outcome, typically at scale across multiple teams or organizational units. They are responsible for program-level governance, dependency management, and executive reporting.",
+    "typicalResponsibilities": [
+      "Define program scope, objectives, and success criteria across all constituent projects",
+      "Coordinate delivery across multiple teams, managing cross-team dependencies",
+      "Establish and run program governance including steering committees and working groups",
+      "Produce executive-level program status reports and dashboards",
+      "Manage program-level risks, issues, and escalations",
+      "Align resources, budgets, and timelines across workstreams",
+      "Resolve conflicts between teams and prioritize program-level trade-offs",
+      "Drive program retrospectives and benefits realization tracking"
+    ],
+    "keyArtifacts": [
+      "Program charter and roadmap",
+      "Cross-team dependency map and tracker",
+      "Program-level RAID log",
+      "Executive status dashboard and reporting pack",
+      "Resource and budget allocation plan",
+      "Program governance model and RACI",
+      "Benefits realization plan",
+      "Program retrospective and lessons learned"
+    ],
+    "commonSkills": [
+      "Program governance and multi-team coordination",
+      "Dependency management and critical path tracking",
+      "Executive stakeholder reporting and communication",
+      "Portfolio-level risk management",
+      "Cross-functional alignment and conflict resolution",
+      "Budget and resource management at scale",
+      "Benefits realization and outcome tracking",
+      "Organizational change management"
+    ],
+    "defaultPromptPerspective": "A Program Manager approaches problems by asking 'how does this affect the broader program, which teams are impacted, and what governance decision do we need to make?' They think in terms of interdependencies, program-level risk, executive visibility, and coordinated delivery across multiple moving parts."
+  },
+  {
+    "id": "ba",
+    "name": "Business Analyst",
+    "description": "The Business Analyst elicits, analyzes, documents, and validates business requirements, bridging the gap between business stakeholders and technical delivery teams. They ensure that solutions are aligned with business needs and that requirements are complete, unambiguous, and testable.",
+    "typicalResponsibilities": [
+      "Facilitate discovery workshops and elicitation sessions with stakeholders",
+      "Document business requirements, functional specifications, and process flows",
+      "Create user stories, use cases, and acceptance criteria for development teams",
+      "Model current and future-state business processes using BPMN or similar notation",
+      "Analyze data requirements and work with data teams on reporting and analytics",
+      "Validate solutions against requirements and support UAT planning",
+      "Maintain requirements traceability matrix",
+      "Support change management by analyzing impact of proposed changes"
+    ],
+    "keyArtifacts": [
+      "Business requirements document (BRD) or product brief",
+      "Functional specification and process flow diagrams",
+      "User stories and acceptance criteria",
+      "Requirements traceability matrix",
+      "Current-state and future-state process maps",
+      "Data dictionary and entity-relationship diagrams",
+      "UAT test scenarios and test plan",
+      "Impact assessment and gap analysis"
+    ],
+    "commonSkills": [
+      "Requirements discovery and elicitation",
+      "Process modeling and documentation (BPMN, UML)",
+      "User story writing and acceptance criteria definition",
+      "Stakeholder facilitation and workshop design",
+      "Data analysis and domain analysis",
+      "Requirements traceability and change management",
+      "UAT planning and test scenario creation",
+      "Gap and impact analysis"
+    ],
+    "defaultPromptPerspective": "A Business Analyst approaches problems by asking 'what does the business actually need, what are the edge cases and exceptions, and how will we know when the solution is correct?' They think in terms of completeness, clarity, testability, and traceability from business need to delivered solution."
+  },
+  {
+    "id": "tl",
+    "name": "Technology Leader",
+    "description": "The Technology Leader (CTO, VP Engineering, or similar) sets the technical vision and strategy for the organization, making foundational technology decisions that shape how products are built, scaled, and secured. They bridge business strategy and technology investment, and champion engineering culture and talent.",
+    "typicalResponsibilities": [
+      "Define and communicate the technology vision and multi-year technical roadmap",
+      "Make foundational architectural and platform decisions",
+      "Lead technology due diligence for partnerships, acquisitions, and vendor selection",
+      "Govern engineering standards, security posture, and compliance requirements",
+      "Build and develop the engineering leadership team",
+      "Drive adoption of AI, platform thinking, and modern engineering practices",
+      "Represent technology in executive forums, board meetings, and investor conversations",
+      "Align technology investment with business strategy and growth priorities"
+    ],
+    "keyArtifacts": [
+      "Technology strategy and multi-year roadmap",
+      "Architecture decision records (ADRs)",
+      "Technology radar and build/buy/partner framework",
+      "Engineering operating model and team topology",
+      "Technical risk and security governance framework",
+      "AI adoption and innovation roadmap",
+      "Engineering leadership development plan",
+      "Technology investment and budget plan"
+    ],
+    "commonSkills": [
+      "Technology strategy and vision setting",
+      "Architecture awareness and platform thinking",
+      "Engineering operating model design",
+      "AI adoption and innovation leadership",
+      "Risk governance and security oversight",
+      "Executive communication and board-level reporting",
+      "Talent strategy and engineering culture development",
+      "Build/buy/partner decision frameworks"
+    ],
+    "defaultPromptPerspective": "A Technology Leader approaches problems by asking 'what technology bets should we make for the next 3-5 years, and how do we build the organizational capability to execute them?' They think in terms of strategic technology choices, engineering operating models, and long-term scalability and resilience."
+  },
+  {
+    "id": "cp",
+    "name": "Consultant / Client Partner",
+    "description": "The Consultant or Client Partner serves as the senior relationship owner and trusted advisor for a client engagement, combining deep domain expertise with commercial acumen to grow the relationship and ensure client value. They lead discovery, shape solutions, and maintain executive-level client confidence throughout the engagement.",
+    "typicalResponsibilities": [
+      "Own the client relationship at the executive and senior stakeholder level",
+      "Lead discovery and diagnostic workshops to understand client needs and challenges",
+      "Shape and position solutions that address client pain points and strategic goals",
+      "Oversee delivery quality and client satisfaction across the engagement",
+      "Identify and develop opportunities to expand the engagement scope",
+      "Produce executive presentations, proposals, and client-facing deliverables",
+      "Manage commercial terms, change requests, and contract governance",
+      "Act as the primary escalation point for delivery issues and client concerns"
+    ],
+    "keyArtifacts": [
+      "Client discovery and diagnostic report",
+      "Solution brief and proposal document",
+      "Client roadmap and engagement plan",
+      "Executive presentation and status deck",
+      "Statement of work (SOW) and change requests",
+      "Account development plan and expansion pipeline",
+      "Client satisfaction and feedback log",
+      "Value realization and ROI report"
+    ],
+    "commonSkills": [
+      "Client advisory and trusted advisor relationship building",
+      "Discovery facilitation and diagnostic framing",
+      "Value framing and solution positioning",
+      "Executive communication and C-suite engagement",
+      "Commercial management and account development",
+      "Delivery confidence and quality oversight",
+      "Consulting engagement design and scoping",
+      "Storytelling and persuasive presentation skills"
+    ],
+    "defaultPromptPerspective": "A Consultant or Client Partner approaches problems by asking 'how do we frame this as a client-value story, and what does the client executive sponsor need to believe for this to move forward?' They think in terms of client outcomes, relationship trust, commercial value, and how every communication builds or erodes client confidence."
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {"id": "process", "label": "Process", "description": "Lessons about delivery process, ceremonies, and workflows"},
+  {"id": "people", "label": "People & Teams", "description": "Lessons about team dynamics, communication, and leadership"},
+  {"id": "technical", "label": "Technical", "description": "Lessons about technical decisions, architecture, and implementation"},
+  {"id": "stakeholder", "label": "Stakeholder Management", "description": "Lessons about managing stakeholder expectations and relationships"},
+  {"id": "risk", "label": "Risk & Issues", "description": "Lessons about risk identification, mitigation, and issue resolution"},
+  {"id": "planning", "label": "Planning & Estimation", "description": "Lessons about planning, estimation, and scope management"},
+  {"id": "quality", "label": "Quality", "description": "Lessons about testing, quality gates, and defect management"},
+  {"id": "delivery", "label": "Delivery & Release", "description": "Lessons about deployment, release management, and go-live"},
+  {"id": "ai-usage", "label": "AI Usage", "description": "Lessons about using AI tools effectively in project work"},
+  {"id": "client", "label": "Client & Customer", "description": "Lessons about client relationships, feedback, and satisfaction"}
+]

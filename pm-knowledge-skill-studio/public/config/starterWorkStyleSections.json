@@ -1,0 +1,52 @@
+[
+  {
+    "id": "leadership-principles",
+    "title": "Leadership Principles",
+    "placeholder": "Describe your core leadership principles and how they guide your decisions..."
+  },
+  {
+    "id": "communication-style",
+    "title": "Communication Style",
+    "placeholder": "How do you prefer to communicate? What formats, cadences, and channels work best for you?"
+  },
+  {
+    "id": "decision-making-style",
+    "title": "Decision-Making Style",
+    "placeholder": "How do you approach decisions? What frameworks or mental models do you use?"
+  },
+  {
+    "id": "meeting-style",
+    "title": "Meeting Style",
+    "placeholder": "How do you run meetings? What makes a meeting effective in your experience?"
+  },
+  {
+    "id": "risk-management-style",
+    "title": "Risk Management Style",
+    "placeholder": "How do you identify, assess, and manage risks? What's your risk tolerance?"
+  },
+  {
+    "id": "stakeholder-management-style",
+    "title": "Stakeholder Management Style",
+    "placeholder": "How do you manage stakeholders? What's your approach to alignment and buy-in?"
+  },
+  {
+    "id": "delivery-governance-style",
+    "title": "Delivery Governance Style",
+    "placeholder": "How do you govern delivery? What metrics and rituals do you rely on?"
+  },
+  {
+    "id": "coaching-style",
+    "title": "Coaching Style",
+    "placeholder": "How do you develop and coach your team? What's your mentoring approach?"
+  },
+  {
+    "id": "reporting-style",
+    "title": "Reporting Style",
+    "placeholder": "How do you report status and progress? What does a good status update look like to you?"
+  },
+  {
+    "id": "ai-usage-style",
+    "title": "AI Usage Style",
+    "placeholder": "How do you use AI tools in your work? What are your principles for AI-assisted work?"
+  }
+]

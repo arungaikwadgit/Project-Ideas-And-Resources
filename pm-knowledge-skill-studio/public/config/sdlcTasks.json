@@ -1,0 +1,2931 @@
+[
+  {
+    "id": "task-1-1",
+    "phaseId": "phase-1",
+    "roleIds": ["pm", "projm", "dm", "cp"],
+    "title": "Define Business Problem",
+    "description": "Clearly articulate the business problem or opportunity being addressed by this initiative. Ensure the problem statement is grounded in evidence, stakeholder input, and measurable pain points rather than pre-assumed solutions.",
+    "inputsNeeded": [
+      "Stakeholder interviews and discovery conversations",
+      "Business context and strategy documents",
+      "Current state pain points and friction data",
+      "Executive sponsor mandate or brief",
+      "Customer feedback or market signals"
+    ],
+    "expectedOutputs": [
+      "Validated problem statement document",
+      "Opportunity brief with evidence and impact estimate"
+    ],
+    "relatedSkills": [
+      "Requirements Discovery",
+      "Stakeholder Management",
+      "Business Analysis",
+      "Executive Communication"
+    ],
+    "relatedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "Stakeholder Alignment Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-2",
+    "phaseId": "phase-1",
+    "roleIds": ["pm", "projm", "pgm"],
+    "title": "Define Project Goals",
+    "description": "Establish clear, measurable project goals aligned with organizational strategy and executive expectations. Goals should be outcome-focused and serve as the north star for all subsequent planning and delivery decisions.",
+    "inputsNeeded": [
+      "Business problem statement",
+      "Organizational OKRs and strategic priorities",
+      "Executive sponsor direction",
+      "Budget and resource constraints"
+    ],
+    "expectedOutputs": [
+      "Project goals and objectives statement",
+      "Success criteria framework with measurable outcomes"
+    ],
+    "relatedSkills": [
+      "OKR and Goal Setting",
+      "Strategic Alignment",
+      "Stakeholder Management"
+    ],
+    "relatedPlaybooks": [
+      "Project Charter Development",
+      "Governance Setup Playbook"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-3",
+    "phaseId": "phase-1",
+    "roleIds": ["projm", "dm", "ba", "cp"],
+    "title": "Identify Stakeholders",
+    "description": "Identify all individuals, groups, and organizations who have an interest in or influence over the initiative. Map stakeholder roles, influence levels, communication needs, and potential risks from disengagement or misalignment.",
+    "inputsNeeded": [
+      "Project goals and scope statement",
+      "Organizational chart and leadership contacts",
+      "Prior project stakeholder lists if available",
+      "Executive sponsor input on key parties"
+    ],
+    "expectedOutputs": [
+      "Stakeholder register with roles and influence ratings",
+      "Initial engagement and communication approach per stakeholder group"
+    ],
+    "relatedSkills": [
+      "Stakeholder Mapping",
+      "Relationship Management",
+      "Communication Planning",
+      "Political Awareness"
+    ],
+    "relatedPlaybooks": [
+      "Stakeholder Alignment Playbook",
+      "Kickoff Meeting Facilitation"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-4",
+    "phaseId": "phase-1",
+    "roleIds": ["projm", "pgm", "dm"],
+    "title": "Create Project Charter",
+    "description": "Draft and obtain approval for the project charter, which formally authorizes the project and documents the scope, objectives, key milestones, budget, risks, and governance structure. The charter is the foundational contract between the project team and sponsoring organization.",
+    "inputsNeeded": [
+      "Approved project goals and business problem statement",
+      "Stakeholder register",
+      "High-level budget and resource envelope",
+      "Executive sponsor sign-off"
+    ],
+    "expectedOutputs": [
+      "Signed project charter document",
+      "Summary one-pager for stakeholder distribution"
+    ],
+    "relatedSkills": [
+      "Project Charter Development",
+      "Governance Setup",
+      "Stakeholder Communication",
+      "Scope Management"
+    ],
+    "relatedPlaybooks": [
+      "Project Charter Development",
+      "Governance Setup Playbook"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-5",
+    "phaseId": "phase-1",
+    "roleIds": ["projm", "dm", "pgm"],
+    "title": "Define Governance Cadence",
+    "description": "Establish the recurring governance and reporting cadence for the initiative, including steering committee meetings, status reports, escalation paths, and decision-making protocols. A clear cadence ensures accountability and timely decision-making throughout the project lifecycle.",
+    "inputsNeeded": [
+      "Project charter and stakeholder register",
+      "Organizational governance standards",
+      "Executive and steering committee availability",
+      "Delivery team operating rhythm"
+    ],
+    "expectedOutputs": [
+      "Governance calendar with recurring meeting schedule",
+      "Escalation matrix and decision-making framework"
+    ],
+    "relatedSkills": [
+      "Governance Facilitation",
+      "Stakeholder Management",
+      "Meeting Design",
+      "Reporting and Communication"
+    ],
+    "relatedPlaybooks": [
+      "Governance Setup Playbook",
+      "Kickoff Meeting Facilitation"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-6",
+    "phaseId": "phase-1",
+    "roleIds": ["projm", "dm", "cp"],
+    "title": "Create Communication Plan",
+    "description": "Develop a structured communication plan that details what information is communicated, to whom, by whom, how frequently, and through which channels. A robust communication plan reduces misalignment, manages expectations, and builds stakeholder confidence.",
+    "inputsNeeded": [
+      "Stakeholder register with communication preferences",
+      "Governance cadence and meeting schedule",
+      "Project goals and reporting requirements",
+      "Available communication tools and channels"
+    ],
+    "expectedOutputs": [
+      "Communication plan document with matrix of audience, message, channel, and frequency",
+      "Communication templates for key recurring updates"
+    ],
+    "relatedSkills": [
+      "Communication Planning",
+      "Stakeholder Management",
+      "Status Reporting",
+      "Executive Communication"
+    ],
+    "relatedPlaybooks": [
+      "Stakeholder Alignment Playbook",
+      "Governance Setup Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-7",
+    "phaseId": "phase-1",
+    "roleIds": ["projm", "dm", "pgm"],
+    "title": "Create Initial RAID Log",
+    "description": "Establish the initial RAID log (Risks, Assumptions, Issues, Dependencies) to capture and track known uncertainties and constraints from project inception. Proactive RAID management reduces surprises and enables early mitigation of threats to delivery.",
+    "inputsNeeded": [
+      "Project charter and scope statement",
+      "Stakeholder interviews and discovery input",
+      "Technical and organizational constraints",
+      "Prior project lessons learned if available"
+    ],
+    "expectedOutputs": [
+      "Populated RAID log with initial entries and owners",
+      "Risk rating summary with top 5 risks and mitigation actions"
+    ],
+    "relatedSkills": [
+      "Risk Management",
+      "RAID Log Maintenance",
+      "Dependency Management",
+      "Issue Tracking"
+    ],
+    "relatedPlaybooks": [
+      "Governance Setup Playbook",
+      "Project Charter Development"
+    ],
+    "suggestedPromptPackType": "risk",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-8",
+    "phaseId": "phase-1",
+    "roleIds": ["pm", "projm", "tl"],
+    "title": "Define Success Metrics",
+    "description": "Define the specific, measurable metrics that will determine whether the project or product has delivered its intended value. Success metrics should be agreed with stakeholders upfront and linked directly to business outcomes, not just delivery outputs.",
+    "inputsNeeded": [
+      "Project goals and business problem statement",
+      "Stakeholder expectations and executive priorities",
+      "Baseline measurements of current state",
+      "Organizational OKR framework"
+    ],
+    "expectedOutputs": [
+      "Success metrics framework with baseline, target, and measurement method",
+      "KPI dashboard specification for ongoing tracking"
+    ],
+    "relatedSkills": [
+      "OKR and Metrics Design",
+      "Data Analysis",
+      "Business Analysis",
+      "Outcome-Based Thinking"
+    ],
+    "relatedPlaybooks": [
+      "Governance Setup Playbook",
+      "Project Charter Development"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-9",
+    "phaseId": "phase-1",
+    "roleIds": ["pm", "tl", "projm"],
+    "title": "Define AI Usage Guardrails",
+    "description": "Establish clear policies and guardrails for how AI tools may be used by the team throughout the initiative. This includes defining approved use cases, prohibited data types, review requirements, and quality assurance expectations for AI-generated content.",
+    "inputsNeeded": [
+      "Organizational AI policy and acceptable use standards",
+      "Data classification and sensitivity guidelines",
+      "Client or regulatory requirements regarding AI",
+      "Team AI tooling and access inventory"
+    ],
+    "expectedOutputs": [
+      "AI usage policy document for the initiative",
+      "Approved AI tool register with use case guidance"
+    ],
+    "relatedSkills": [
+      "AI Governance",
+      "Risk Management",
+      "Policy Development",
+      "Technology Strategy"
+    ],
+    "relatedPlaybooks": [
+      "Governance Setup Playbook",
+      "Stakeholder Alignment Playbook"
+    ],
+    "suggestedPromptPackType": "governance",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-1-10",
+    "phaseId": "phase-1",
+    "roleIds": ["dm", "pgm", "projm"],
+    "title": "Define Delivery Operating Model",
+    "description": "Define how the delivery team will operate day-to-day, including team structure, roles and responsibilities, delivery methodology, tooling, meeting rhythms, and handoff protocols. A clear operating model ensures every team member understands expectations and how work flows from idea to delivery.",
+    "inputsNeeded": [
+      "Project charter and governance model",
+      "Team roster with roles and availability",
+      "Organizational delivery standards and methodology preferences",
+      "Tooling and environment access inventory"
+    ],
+    "expectedOutputs": [
+      "Delivery operating model document",
+      "Team working agreement and RACI matrix"
+    ],
+    "relatedSkills": [
+      "Delivery Governance",
+      "Team Topology Design",
+      "Operating Model Design",
+      "Agile Practices"
+    ],
+    "relatedPlaybooks": [
+      "Governance Setup Playbook",
+      "Kickoff Meeting Facilitation"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-1",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "projm", "cp"],
+    "title": "Capture Stakeholder Notes",
+    "description": "Systematically record and synthesize notes from all stakeholder interviews and discovery conversations, ensuring key insights, pain points, requirements signals, and open questions are captured in a structured and searchable format.",
+    "inputsNeeded": [
+      "Completed stakeholder interview sessions",
+      "Interview agenda and question guide",
+      "Recording or notes from discovery sessions",
+      "Stakeholder register with contact details"
+    ],
+    "expectedOutputs": [
+      "Structured stakeholder interview notes document",
+      "Key themes and insights synthesis summary"
+    ],
+    "relatedSkills": [
+      "Requirements Discovery",
+      "Active Listening",
+      "Note-Taking and Synthesis",
+      "Stakeholder Facilitation"
+    ],
+    "relatedPlaybooks": [
+      "Stakeholder Interview Guide",
+      "Discovery Workshop Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-2",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "pm", "cp"],
+    "title": "Build Domain Knowledge File",
+    "description": "Create a consolidated domain knowledge reference file that captures the core concepts, terminology, business context, key entities, and domain rules relevant to the initiative. This file serves as the shared knowledge foundation for the delivery team and reduces onboarding time for new members.",
+    "inputsNeeded": [
+      "Stakeholder interview notes",
+      "Existing business documentation and glossaries",
+      "Current system documentation",
+      "Domain expert input sessions"
+    ],
+    "expectedOutputs": [
+      "Domain knowledge file with glossary and key concepts",
+      "Business entity and relationship summary"
+    ],
+    "relatedSkills": [
+      "Domain Analysis",
+      "Business Analysis",
+      "Knowledge Management",
+      "Documentation"
+    ],
+    "relatedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "Requirements Discovery Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-3",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "pm", "cp"],
+    "title": "Map Business Workflows",
+    "description": "Document the current business workflows and processes that the initiative will impact or improve. Use structured process notation to capture the steps, decision points, roles, and systems involved, enabling the team to identify inefficiencies and design better future-state processes.",
+    "inputsNeeded": [
+      "Stakeholder interview notes and domain knowledge file",
+      "Access to existing process documentation if available",
+      "Subject matter expert walkthroughs",
+      "System access to observe current workflows"
+    ],
+    "expectedOutputs": [
+      "Current-state business workflow diagrams",
+      "Process narrative with pain points annotated"
+    ],
+    "relatedSkills": [
+      "Process Modeling",
+      "Business Analysis",
+      "BPMN Documentation",
+      "Workflow Analysis"
+    ],
+    "relatedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "User Journey Mapping Facilitation"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-4",
+    "phaseId": "phase-2",
+    "roleIds": ["pm", "ba", "cp"],
+    "title": "Identify User Personas",
+    "description": "Develop data-informed user personas that represent the distinct groups of people who will interact with the product or system. Personas capture goals, behaviors, frustrations, and context to guide product decisions and ensure the team builds for real users, not abstract ones.",
+    "inputsNeeded": [
+      "Stakeholder interview notes",
+      "User research data or customer feedback",
+      "Analytics data on current system usage if available",
+      "Business workflows and current-state process maps"
+    ],
+    "expectedOutputs": [
+      "User persona profiles (3-6 key personas)",
+      "Persona-to-workflow mapping showing interaction points"
+    ],
+    "relatedSkills": [
+      "User Research",
+      "Persona Development",
+      "Customer Discovery",
+      "Empathy Mapping"
+    ],
+    "relatedPlaybooks": [
+      "User Journey Mapping Facilitation",
+      "Discovery Workshop Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-5",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "projm", "cp"],
+    "title": "Define Current-State Process",
+    "description": "Create a comprehensive, validated documentation of the current-state processes, including all steps, exceptions, roles, systems, handoffs, and pain points. This artifact establishes the baseline from which future-state improvements will be measured.",
+    "inputsNeeded": [
+      "Business workflow maps",
+      "Stakeholder interview notes",
+      "Existing SOP or policy documents",
+      "Subject matter expert review sessions"
+    ],
+    "expectedOutputs": [
+      "Current-state process documentation with exception flows",
+      "Pain point and inefficiency register"
+    ],
+    "relatedSkills": [
+      "Process Documentation",
+      "Business Analysis",
+      "Gap Analysis",
+      "Stakeholder Facilitation"
+    ],
+    "relatedPlaybooks": [
+      "Requirements Discovery Playbook",
+      "Discovery Workshop Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-6",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "pm", "projm"],
+    "title": "Define Future-State Process",
+    "description": "Design and document the desired future-state processes that the initiative will enable, showing how the business will operate once the solution is in place. Future-state maps should address identified pain points and align to agreed success metrics.",
+    "inputsNeeded": [
+      "Current-state process documentation",
+      "Pain point and inefficiency register",
+      "User personas and journey maps",
+      "Solution direction or design principles"
+    ],
+    "expectedOutputs": [
+      "Future-state process diagrams with role assignments",
+      "Gap analysis between current and future state"
+    ],
+    "relatedSkills": [
+      "Process Design",
+      "Business Analysis",
+      "Solution Framing",
+      "Change Management"
+    ],
+    "relatedPlaybooks": [
+      "Requirements Discovery Playbook",
+      "User Journey Mapping Facilitation"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-7",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "pm"],
+    "title": "Capture Business Rules",
+    "description": "Elicit, document, and validate the business rules, policies, and constraints that the solution must enforce. Business rules govern how data is processed, decisions are made, and exceptions are handled within the system.",
+    "inputsNeeded": [
+      "Stakeholder interview notes",
+      "Existing policy and compliance documentation",
+      "Domain knowledge file",
+      "Legal and regulatory constraints inventory"
+    ],
+    "expectedOutputs": [
+      "Business rules register with source and validation status",
+      "Decision table for complex conditional logic"
+    ],
+    "relatedSkills": [
+      "Business Rules Analysis",
+      "Requirements Documentation",
+      "Domain Analysis",
+      "Compliance Awareness"
+    ],
+    "relatedPlaybooks": [
+      "Requirements Discovery Playbook",
+      "Discovery Workshop Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-8",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "projm", "pm"],
+    "title": "Identify Open Questions",
+    "description": "Systematically capture and track all open questions, assumptions requiring validation, and areas of ambiguity surfaced during discovery. Maintaining a visible open questions log prevents teams from making risky assumptions and drives structured follow-up with stakeholders.",
+    "inputsNeeded": [
+      "Discovery session notes and interview outputs",
+      "Draft requirements and process documents",
+      "RAID log assumptions section",
+      "Team working sessions and standups"
+    ],
+    "expectedOutputs": [
+      "Open questions log with owner and target resolution date",
+      "Prioritized list of questions blocking planning or design"
+    ],
+    "relatedSkills": [
+      "Requirements Discovery",
+      "Critical Thinking",
+      "Stakeholder Facilitation",
+      "Risk Identification"
+    ],
+    "relatedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "Stakeholder Interview Guide"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-9",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "projm"],
+    "title": "Create Requirements Clarification Log",
+    "description": "Maintain a structured log of all requirements clarifications, changes, and decisions made during discovery and analysis. This log provides an auditable trail that helps prevent scope disputes and ensures all team members work from the same validated understanding.",
+    "inputsNeeded": [
+      "Open questions log",
+      "Stakeholder responses and meeting notes",
+      "Draft requirements documentation",
+      "Change requests or scope adjustments"
+    ],
+    "expectedOutputs": [
+      "Requirements clarification log with decision rationale",
+      "Updated requirements document reflecting clarifications"
+    ],
+    "relatedSkills": [
+      "Requirements Management",
+      "Documentation",
+      "Change Control",
+      "Traceability"
+    ],
+    "relatedPlaybooks": [
+      "Requirements Discovery Playbook",
+      "Discovery Workshop Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-2-10",
+    "phaseId": "phase-2",
+    "roleIds": ["ba", "pm", "cp"],
+    "title": "Create Discovery Summary",
+    "description": "Produce a consolidated discovery summary report that synthesizes all findings from the discovery phase into a coherent narrative. The summary should communicate the validated problem, key insights, user needs, business rules, and recommended direction to stakeholders in a clear and actionable format.",
+    "inputsNeeded": [
+      "All discovery phase outputs (interviews, workflows, personas, business rules)",
+      "Open questions log with resolution status",
+      "Stakeholder feedback on draft findings",
+      "Success metrics framework"
+    ],
+    "expectedOutputs": [
+      "Discovery summary report with executive summary",
+      "Recommended solution direction and next steps"
+    ],
+    "relatedSkills": [
+      "Synthesis and Storytelling",
+      "Business Analysis",
+      "Executive Communication",
+      "Requirements Documentation"
+    ],
+    "relatedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "Stakeholder Alignment Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-1",
+    "phaseId": "phase-3",
+    "roleIds": ["pm", "po"],
+    "title": "Create Product Roadmap",
+    "description": "Develop a strategic product roadmap that translates the product vision and discovery insights into a sequenced, outcome-based plan for delivery. The roadmap communicates what will be built and when, serving as the primary alignment tool between strategy and execution.",
+    "inputsNeeded": [
+      "Discovery summary and validated requirements",
+      "Organizational OKRs and strategic priorities",
+      "Approved budget and resource capacity",
+      "Technical constraints and dependencies"
+    ],
+    "expectedOutputs": [
+      "Product roadmap (now/next/later or quarterly format)",
+      "Roadmap narrative explaining prioritization rationale"
+    ],
+    "relatedSkills": [
+      "Roadmap Planning",
+      "Prioritization",
+      "Strategic Alignment",
+      "Stakeholder Communication"
+    ],
+    "relatedPlaybooks": [
+      "Release Planning Workshop",
+      "Backlog Refinement Facilitation"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-2",
+    "phaseId": "phase-3",
+    "roleIds": ["projm", "pgm", "dm"],
+    "title": "Create Project Plan",
+    "description": "Develop a detailed project plan including milestones, workstreams, task dependencies, resource assignments, and critical path. The project plan serves as the operational blueprint for delivering against the approved scope and timeline commitments.",
+    "inputsNeeded": [
+      "Project charter and approved scope",
+      "Product roadmap and release plan",
+      "Team capacity and availability data",
+      "Dependency map and external constraints"
+    ],
+    "expectedOutputs": [
+      "Detailed project plan with milestone schedule",
+      "Critical path analysis and resource allocation matrix"
+    ],
+    "relatedSkills": [
+      "Project Planning",
+      "Schedule Management",
+      "Dependency Management",
+      "Resource Planning"
+    ],
+    "relatedPlaybooks": [
+      "Release Planning Workshop",
+      "Dependency Mapping Session"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-3",
+    "phaseId": "phase-3",
+    "roleIds": ["sm", "po", "projm"],
+    "title": "Create Sprint Plan",
+    "description": "Facilitate sprint planning to select backlog items for the upcoming sprint, establish the sprint goal, confirm team capacity, identify dependencies, and ensure all selected stories meet the definition of ready before development begins.",
+    "inputsNeeded": [
+      "Prioritized and refined product backlog",
+      "Team velocity data from prior sprints",
+      "Team capacity and leave schedule for the sprint",
+      "Definition of Ready criteria"
+    ],
+    "expectedOutputs": [
+      "Sprint backlog with committed stories and sprint goal",
+      "Sprint planning record with capacity confirmation"
+    ],
+    "relatedSkills": [
+      "Sprint Planning",
+      "Backlog Refinement",
+      "Agile Facilitation",
+      "Capacity Planning"
+    ],
+    "relatedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Backlog Refinement Facilitation"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-4",
+    "phaseId": "phase-3",
+    "roleIds": ["projm", "dm", "pm"],
+    "title": "Create Release Plan",
+    "description": "Develop a release plan that maps features and capabilities to specific release dates or sprints, establishing a predictable delivery cadence. The release plan communicates what customers and stakeholders can expect and when, enabling proactive go-to-market and training preparation.",
+    "inputsNeeded": [
+      "Product roadmap and prioritized backlog",
+      "Team velocity and capacity projections",
+      "Stakeholder and customer commitments",
+      "Dependency map across teams and systems"
+    ],
+    "expectedOutputs": [
+      "Release plan with features, dates, and milestones",
+      "Release communication schedule for stakeholders"
+    ],
+    "relatedSkills": [
+      "Release Planning",
+      "Dependency Management",
+      "Stakeholder Communication",
+      "Delivery Governance"
+    ],
+    "relatedPlaybooks": [
+      "Release Planning Workshop",
+      "Dependency Mapping Session"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-5",
+    "phaseId": "phase-3",
+    "roleIds": ["po", "pm", "ba"],
+    "title": "Create Backlog Structure",
+    "description": "Design and implement the backlog hierarchy and organization structure, establishing epics, features, and story groupings that reflect the product architecture and delivery strategy. A well-structured backlog enables efficient refinement, prioritization, and reporting.",
+    "inputsNeeded": [
+      "Product roadmap and release plan",
+      "Discovery summary and requirements baseline",
+      "User personas and journey maps",
+      "Technical architecture overview"
+    ],
+    "expectedOutputs": [
+      "Backlog structure with epic and feature hierarchy",
+      "Backlog organization conventions and tagging guide"
+    ],
+    "relatedSkills": [
+      "Backlog Management",
+      "Story Mapping",
+      "Information Architecture",
+      "Agile Practices"
+    ],
+    "relatedPlaybooks": [
+      "Backlog Refinement Facilitation",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-6",
+    "phaseId": "phase-3",
+    "roleIds": ["pm", "po", "ba"],
+    "title": "Write Epics",
+    "description": "Draft high-level epics that describe major bodies of work, capturing the business value, target persona, and scope boundaries for each theme. Well-written epics provide context that helps the team understand how individual stories contribute to larger outcomes.",
+    "inputsNeeded": [
+      "Product roadmap and backlog structure",
+      "Discovery summary and user personas",
+      "Business rules and requirements baseline",
+      "Success metrics framework"
+    ],
+    "expectedOutputs": [
+      "Epic definitions with value statements and acceptance criteria",
+      "Epic-to-roadmap traceability mapping"
+    ],
+    "relatedSkills": [
+      "Epic Writing",
+      "Requirements Management",
+      "Product Vision Communication",
+      "Outcome-Based Thinking"
+    ],
+    "relatedPlaybooks": [
+      "Backlog Refinement Facilitation",
+      "Release Planning Workshop"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-7",
+    "phaseId": "phase-3",
+    "roleIds": ["po", "ba", "pm"],
+    "title": "Write User Stories",
+    "description": "Decompose epics into well-formed user stories that describe specific user needs from the perspective of identified personas. User stories should be independently deliverable, negotiable, valuable, estimable, small, and testable (INVEST criteria).",
+    "inputsNeeded": [
+      "Epics and backlog structure",
+      "User personas and journey maps",
+      "Business rules and requirements",
+      "Future-state process maps"
+    ],
+    "expectedOutputs": [
+      "User story library with persona, need, and value statement",
+      "Story readiness assessment against INVEST criteria"
+    ],
+    "relatedSkills": [
+      "User Story Writing",
+      "Requirements Decomposition",
+      "INVEST Criteria",
+      "Persona-Driven Development"
+    ],
+    "relatedPlaybooks": [
+      "Backlog Refinement Facilitation",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-8",
+    "phaseId": "phase-3",
+    "roleIds": ["po", "ba", "sm"],
+    "title": "Write Acceptance Criteria",
+    "description": "Define clear, testable acceptance criteria for each user story that specify the conditions the solution must meet to be accepted by the product owner. Acceptance criteria eliminate ambiguity, enable test case creation, and ensure shared understanding between product and engineering.",
+    "inputsNeeded": [
+      "User stories with persona and need defined",
+      "Business rules register",
+      "Edge cases and exception flows from discovery",
+      "Definition of Done"
+    ],
+    "expectedOutputs": [
+      "Acceptance criteria written in Given/When/Then or checklist format",
+      "Edge case and negative scenario coverage per story"
+    ],
+    "relatedSkills": [
+      "Acceptance Criteria Writing",
+      "BDD and Test-Driven Thinking",
+      "Requirements Clarity",
+      "Quality Mindset"
+    ],
+    "relatedPlaybooks": [
+      "Backlog Refinement Facilitation",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-9",
+    "phaseId": "phase-3",
+    "roleIds": ["pm", "po", "sm"],
+    "title": "Prioritize Backlog",
+    "description": "Apply a structured prioritization framework to rank the product backlog by value, risk, and dependency, ensuring the team always works on the highest-impact items next. Prioritization decisions should be transparent, documented, and aligned with stakeholder expectations.",
+    "inputsNeeded": [
+      "User stories and epics with effort estimates",
+      "Business value and impact assessments",
+      "Technical risk and dependency data",
+      "Stakeholder priority input"
+    ],
+    "expectedOutputs": [
+      "Prioritized backlog with WSJF, MoSCoW, or equivalent scoring",
+      "Prioritization rationale document for stakeholder communication"
+    ],
+    "relatedSkills": [
+      "Backlog Prioritization",
+      "WSJF and MoSCoW Frameworks",
+      "Value-Risk Balancing",
+      "Stakeholder Alignment"
+    ],
+    "relatedPlaybooks": [
+      "Backlog Refinement Facilitation",
+      "Release Planning Workshop"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-10",
+    "phaseId": "phase-3",
+    "roleIds": ["projm", "pgm", "dm"],
+    "title": "Create Dependency Plan",
+    "description": "Map and document all inbound and outbound dependencies between teams, systems, and third parties. A dependency plan enables proactive coordination, prevents delivery blockage, and ensures cross-team commitments are tracked and honored.",
+    "inputsNeeded": [
+      "Project plan and release schedule",
+      "Backlog with technical stories and integration items",
+      "Team roster across workstreams",
+      "Third-party and vendor delivery commitments"
+    ],
+    "expectedOutputs": [
+      "Dependency map with owners and resolution timelines",
+      "Dependency risk register with mitigation actions"
+    ],
+    "relatedSkills": [
+      "Dependency Management",
+      "Critical Path Analysis",
+      "Cross-Team Coordination",
+      "Risk Management"
+    ],
+    "relatedPlaybooks": [
+      "Dependency Mapping Session",
+      "Release Planning Workshop"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-3-11",
+    "phaseId": "phase-3",
+    "roleIds": ["projm", "sm", "em"],
+    "title": "Create Capacity Plan",
+    "description": "Develop a team capacity plan that maps available engineering and delivery capacity to planned sprint and release commitments, accounting for leave, part-time allocations, and ramp-up time. Capacity planning prevents overcommitment and enables realistic forecasting.",
+    "inputsNeeded": [
+      "Team roster with allocation percentages",
+      "Sprint calendar and leave schedule",
+      "Historical velocity data",
+      "Upcoming milestone commitments"
+    ],
+    "expectedOutputs": [
+      "Team capacity plan by sprint with available story points",
+      "Capacity risk flags for sprints with reduced availability"
+    ],
+    "relatedSkills": [
+      "Capacity Planning",
+      "Resource Management",
+      "Agile Metrics",
+      "Forecasting"
+    ],
+    "relatedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Release Planning Workshop"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-1",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "em", "ba"],
+    "title": "Create Solution Overview",
+    "description": "Produce a high-level solution overview document that describes the overall technical approach, key components, integration points, and architectural style chosen for the initiative. The solution overview provides a shared technical context for the delivery team and non-technical stakeholders.",
+    "inputsNeeded": [
+      "Requirements baseline and backlog",
+      "Non-functional requirements",
+      "Existing architecture and technology constraints",
+      "Technology standards and approved platforms"
+    ],
+    "expectedOutputs": [
+      "Solution overview document with component diagram",
+      "Technology selection rationale summary"
+    ],
+    "relatedSkills": [
+      "Solution Architecture",
+      "Technical Communication",
+      "Architecture Design",
+      "Technology Strategy"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Architecture Decision Record (ADR) Template"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-2",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "em"],
+    "title": "Create Architecture Decision Record",
+    "description": "Document key architectural decisions as Architecture Decision Records (ADRs), capturing the context, options considered, decision made, and consequences. ADRs create an auditable rationale for technical choices that future team members can reference when requirements evolve.",
+    "inputsNeeded": [
+      "Solution overview and technical approach",
+      "Non-functional requirements",
+      "Spike results and proof-of-concept findings",
+      "Technology standards and constraints"
+    ],
+    "expectedOutputs": [
+      "ADR documents for each significant architectural decision",
+      "ADR index and status tracker"
+    ],
+    "relatedSkills": [
+      "Architecture Decision Making",
+      "Technical Documentation",
+      "Systems Thinking",
+      "Technology Evaluation"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Decision Record (ADR) Template",
+      "Architecture Review Board (ARB) Playbook"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-3",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "em", "projm"],
+    "title": "Review Technical Constraints",
+    "description": "Systematically review and document technical constraints that will affect design and development choices, including infrastructure limitations, legacy system dependencies, compliance requirements, budget constraints on tooling, and organizational technology standards.",
+    "inputsNeeded": [
+      "Existing architecture documentation",
+      "Organizational technology standards",
+      "Security and compliance requirements",
+      "Infrastructure and platform inventory"
+    ],
+    "expectedOutputs": [
+      "Technical constraints register",
+      "Constraint impact analysis on proposed design approach"
+    ],
+    "relatedSkills": [
+      "Technical Assessment",
+      "Architecture Awareness",
+      "Risk Identification",
+      "Constraint Analysis"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Technical Spike Planning"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-4",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "ba", "em"],
+    "title": "Define Integration Touchpoints",
+    "description": "Identify and document all system integration points, APIs, data exchanges, and third-party service dependencies. Integration touchpoints represent significant technical risk and must be well-defined before development begins to prevent costly late-stage integration failures.",
+    "inputsNeeded": [
+      "Solution overview and component diagram",
+      "Business workflow maps",
+      "Existing API and system documentation",
+      "Third-party vendor documentation"
+    ],
+    "expectedOutputs": [
+      "Integration touchpoint register with contract definitions",
+      "Integration sequence diagrams for key flows"
+    ],
+    "relatedSkills": [
+      "Integration Architecture",
+      "API Design",
+      "Systems Thinking",
+      "Technical Analysis"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Architecture Decision Record (ADR) Template"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-5",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "ba", "em"],
+    "title": "Define Data Model Summary",
+    "description": "Define the key data entities, attributes, relationships, and data flows for the solution. The data model summary guides database design, API contracts, and reporting requirements, ensuring all team members share a consistent understanding of the data domain.",
+    "inputsNeeded": [
+      "Domain knowledge file and business rules",
+      "Integration touchpoint register",
+      "Non-functional requirements for data volume and retention",
+      "Existing data model documentation if available"
+    ],
+    "expectedOutputs": [
+      "Logical data model with entity relationship diagram",
+      "Data dictionary with key attributes and constraints"
+    ],
+    "relatedSkills": [
+      "Data Modeling",
+      "Database Design",
+      "Domain Analysis",
+      "Technical Documentation"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Decision Record (ADR) Template",
+      "Architecture Review Board (ARB) Playbook"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-6",
+    "phaseId": "phase-4",
+    "roleIds": ["pm", "ba", "tl"],
+    "title": "Create UX Flow",
+    "description": "Design and document the user experience flows for key user journeys, showing the screens, interactions, and decision points that users will encounter. UX flows ensure the solution design centers on user goals and validates that all user stories are addressable within the proposed interaction model.",
+    "inputsNeeded": [
+      "User personas and journey maps",
+      "User stories and acceptance criteria",
+      "Wireframes or design prototypes if available",
+      "Business workflows and future-state process maps"
+    ],
+    "expectedOutputs": [
+      "UX flow diagrams for key user journeys",
+      "Interaction specification for complex screens"
+    ],
+    "relatedSkills": [
+      "UX Design",
+      "User Journey Mapping",
+      "Wireframing",
+      "Human-Centered Design"
+    ],
+    "relatedPlaybooks": [
+      "Design Sprint Facilitation",
+      "User Journey Mapping Facilitation"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-7",
+    "phaseId": "phase-4",
+    "roleIds": ["ba", "pm", "projm"],
+    "title": "Create Process Flow",
+    "description": "Develop detailed process flow diagrams for the solution's operational workflows, showing the step-by-step sequence of activities, decision branches, roles, and system interactions. Process flows bridge business requirements and technical implementation by making behavior explicit.",
+    "inputsNeeded": [
+      "Future-state process maps from discovery",
+      "Business rules register",
+      "UX flows and user journey maps",
+      "Integration touchpoints and system interactions"
+    ],
+    "expectedOutputs": [
+      "Detailed process flow diagrams per business workflow",
+      "Exception and error handling flows"
+    ],
+    "relatedSkills": [
+      "Process Modeling",
+      "BPMN Documentation",
+      "Requirements Analysis",
+      "Systems Thinking"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Decision Record (ADR) Template",
+      "Design Sprint Facilitation"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-8",
+    "phaseId": "phase-4",
+    "roleIds": ["ba", "tl", "pm"],
+    "title": "Define Non-Functional Requirements",
+    "description": "Elicit, document, and validate non-functional requirements (NFRs) covering performance, scalability, availability, security, maintainability, and compliance. NFRs are often overlooked until late in delivery but have major architectural implications that must be addressed in design.",
+    "inputsNeeded": [
+      "Business requirements and user stories",
+      "Regulatory and compliance constraints",
+      "Expected user load and data volume projections",
+      "SLA and uptime commitments"
+    ],
+    "expectedOutputs": [
+      "NFR specification with measurable acceptance thresholds",
+      "NFR-to-architecture traceability matrix"
+    ],
+    "relatedSkills": [
+      "Non-Functional Requirements Analysis",
+      "Performance Engineering",
+      "Security Requirements",
+      "Compliance Awareness"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Technical Spike Planning"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-9",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "em", "projm"],
+    "title": "Review Security Considerations",
+    "description": "Conduct a structured review of security considerations relevant to the solution design, including authentication, authorization, data protection, API security, and threat modeling. Security reviews at the design phase are far cheaper than remediating vulnerabilities discovered post-deployment.",
+    "inputsNeeded": [
+      "Solution architecture and integration touchpoints",
+      "Data model and data classification",
+      "Non-functional requirements for security",
+      "Organizational security standards and policies"
+    ],
+    "expectedOutputs": [
+      "Security review findings document with risk ratings",
+      "Security requirements backlog items for development"
+    ],
+    "relatedSkills": [
+      "Security Architecture",
+      "Threat Modeling",
+      "Risk Assessment",
+      "Compliance and Governance"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Architecture Decision Record (ADR) Template"
+    ],
+    "suggestedPromptPackType": "design",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-4-10",
+    "phaseId": "phase-4",
+    "roleIds": ["tl", "em", "ba"],
+    "title": "Create Design Review Checklist",
+    "description": "Compile a comprehensive design review checklist that validates all design deliverables meet required standards before development begins. The checklist should cover architectural completeness, NFR coverage, security review, integration definitions, and team understanding.",
+    "inputsNeeded": [
+      "All design phase deliverables",
+      "Organizational architecture review standards",
+      "Security review findings",
+      "NFR specification"
+    ],
+    "expectedOutputs": [
+      "Design review checklist with completion status",
+      "Design phase sign-off record with outstanding items"
+    ],
+    "relatedSkills": [
+      "Quality Assurance",
+      "Architecture Review",
+      "Technical Documentation",
+      "Gate Review Facilitation"
+    ],
+    "relatedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Technical Spike Planning"
+    ],
+    "suggestedPromptPackType": "governance",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-1",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl", "projm"],
+    "title": "Create Implementation Plan",
+    "description": "Develop a detailed engineering implementation plan that sequences technical work, assigns ownership, identifies integration milestones, and establishes checkpoints for quality validation. The implementation plan translates architecture and design into an actionable engineering execution roadmap.",
+    "inputsNeeded": [
+      "Architecture and design documentation",
+      "Prioritized sprint backlog",
+      "Team capacity and skill matrix",
+      "Dependency plan and integration touchpoints"
+    ],
+    "expectedOutputs": [
+      "Engineering implementation plan with sequenced workstreams",
+      "Team assignment matrix and sprint allocation"
+    ],
+    "relatedSkills": [
+      "Engineering Planning",
+      "Technical Leadership",
+      "Delivery Management",
+      "Resource Planning"
+    ],
+    "relatedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Engineering Code Review Guidelines"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-2",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "sm", "po"],
+    "title": "Break Stories into Technical Tasks",
+    "description": "Decompose user stories into concrete technical tasks that individual engineers can complete within a day or two, enabling accurate tracking, parallel development, and early detection of implementation blockers. Technical task breakdown is a key enabler of sprint predictability.",
+    "inputsNeeded": [
+      "Sprint backlog with ready user stories",
+      "Architecture documentation and technical design",
+      "Definition of Done",
+      "Engineering team skills and familiarity with the domain"
+    ],
+    "expectedOutputs": [
+      "Technical task breakdown per story in the sprint backlog",
+      "Story-to-task dependency map for parallel development"
+    ],
+    "relatedSkills": [
+      "Technical Estimation",
+      "Story Decomposition",
+      "Engineering Planning",
+      "Agile Practices"
+    ],
+    "relatedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Engineering Code Review Guidelines"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-3",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl"],
+    "title": "Define Coding Standards",
+    "description": "Establish and document the coding standards, style guides, and engineering conventions the team will follow during development. Consistent coding standards reduce code review friction, improve maintainability, and enable engineers to work confidently in each other's code.",
+    "inputsNeeded": [
+      "Technology stack and language selections",
+      "Organizational engineering standards if available",
+      "Team experience and background",
+      "Linting, formatting, and static analysis tooling"
+    ],
+    "expectedOutputs": [
+      "Coding standards document per language or framework",
+      "Linter and formatter configuration committed to repository"
+    ],
+    "relatedSkills": [
+      "Engineering Standards",
+      "Code Quality",
+      "Technical Leadership",
+      "Documentation"
+    ],
+    "relatedPlaybooks": [
+      "Engineering Code Review Guidelines",
+      "Technical Debt Management Playbook"
+    ],
+    "suggestedPromptPackType": "engineering",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-4",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl"],
+    "title": "Create Code Review Checklist",
+    "description": "Define a code review checklist that guides reviewers to assess submissions consistently against quality, security, performance, and maintainability criteria. A structured checklist elevates the quality of code reviews from subjective style debates to objective engineering standards.",
+    "inputsNeeded": [
+      "Coding standards document",
+      "Non-functional requirements for performance and security",
+      "Definition of Done",
+      "Security review findings from design phase"
+    ],
+    "expectedOutputs": [
+      "Code review checklist published to team wiki or repository",
+      "Code review process and SLA document"
+    ],
+    "relatedSkills": [
+      "Code Review",
+      "Engineering Quality",
+      "Security Awareness",
+      "Technical Leadership"
+    ],
+    "relatedPlaybooks": [
+      "Engineering Code Review Guidelines",
+      "Technical Debt Management Playbook"
+    ],
+    "suggestedPromptPackType": "engineering",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-5",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "projm", "dm"],
+    "title": "Track Technical Risks",
+    "description": "Continuously identify, assess, and track technical risks that emerge during development, including integration uncertainties, performance concerns, technical debt accumulation, and dependency delays. Active technical risk management prevents late-stage surprises and enables proactive mitigation.",
+    "inputsNeeded": [
+      "RAID log from initiation phase",
+      "Sprint retrospective outputs",
+      "Engineering team input and standup blockers",
+      "Architecture review findings"
+    ],
+    "expectedOutputs": [
+      "Updated technical risk register with mitigation actions",
+      "Risk status summary for inclusion in project status report"
+    ],
+    "relatedSkills": [
+      "Technical Risk Management",
+      "RAID Log Maintenance",
+      "Escalation Management",
+      "Engineering Judgment"
+    ],
+    "relatedPlaybooks": [
+      "Impediment Escalation Process",
+      "Technical Debt Management Playbook"
+    ],
+    "suggestedPromptPackType": "risk",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-6",
+    "phaseId": "phase-5",
+    "roleIds": ["sm", "projm", "dm"],
+    "title": "Track Blockers",
+    "description": "Maintain a visible blocker log and ensure every impediment affecting team progress is owned, escalated appropriately, and resolved as quickly as possible. Unresolved blockers are the most common cause of sprint failure and must be treated with urgency and transparency.",
+    "inputsNeeded": [
+      "Daily standup outputs",
+      "Sprint backlog with status indicators",
+      "RAID log issues section",
+      "Team communication channels and flagged items"
+    ],
+    "expectedOutputs": [
+      "Active blocker log with owner and resolution status",
+      "Escalation record for blockers requiring leadership intervention"
+    ],
+    "relatedSkills": [
+      "Impediment Management",
+      "Escalation Management",
+      "Agile Facilitation",
+      "Servant Leadership"
+    ],
+    "relatedPlaybooks": [
+      "Impediment Escalation Process",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-7",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl", "ba"],
+    "title": "Prepare Developer Handoff",
+    "description": "Create structured developer handoff documentation that provides engineers with the context, design specifications, acceptance criteria, and technical guidance needed to implement a story correctly without constant interruption to the BA or architect. Good handoffs reduce clarification loops and improve development quality.",
+    "inputsNeeded": [
+      "User stories with acceptance criteria",
+      "Architecture and design documentation",
+      "UX flows and wireframes",
+      "Business rules and integration specifications"
+    ],
+    "expectedOutputs": [
+      "Developer handoff notes per story or epic",
+      "Technical implementation guidance with examples"
+    ],
+    "relatedSkills": [
+      "Technical Documentation",
+      "Requirements Communication",
+      "Engineering Planning",
+      "Cross-Functional Collaboration"
+    ],
+    "relatedPlaybooks": [
+      "Engineering Code Review Guidelines",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "engineering",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-8",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl"],
+    "title": "Create Branch/Release Strategy",
+    "description": "Define the version control branching strategy and release tagging conventions the team will follow, ensuring consistent, conflict-free collaboration across engineers and predictable release packaging. A clear branching strategy is foundational to a safe CI/CD pipeline.",
+    "inputsNeeded": [
+      "Release plan and deployment cadence",
+      "Team size and parallel workstream count",
+      "CI/CD tooling and pipeline configuration",
+      "Organizational source control standards"
+    ],
+    "expectedOutputs": [
+      "Branching strategy document with naming conventions",
+      "Release tagging and versioning guide"
+    ],
+    "relatedSkills": [
+      "Source Control Management",
+      "CI/CD Practices",
+      "Engineering Standards",
+      "Release Engineering"
+    ],
+    "relatedPlaybooks": [
+      "Engineering Code Review Guidelines",
+      "CI/CD Pipeline Setup Playbook"
+    ],
+    "suggestedPromptPackType": "engineering",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-9",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "tl"],
+    "title": "Create Local Development Notes",
+    "description": "Document the steps required to set up and run the solution in a local development environment, including dependencies, configuration, tooling, and common troubleshooting tips. Good local development documentation dramatically reduces onboarding time and resolves environment issues faster.",
+    "inputsNeeded": [
+      "Technology stack and architecture documentation",
+      "Development environment and toolchain inventory",
+      "Team onboarding feedback",
+      "Known environment issues and workarounds"
+    ],
+    "expectedOutputs": [
+      "Local development setup guide published to repository README",
+      "Troubleshooting guide for common local environment issues"
+    ],
+    "relatedSkills": [
+      "Technical Documentation",
+      "Developer Experience",
+      "DevOps Awareness",
+      "Knowledge Management"
+    ],
+    "relatedPlaybooks": [
+      "Engineering Code Review Guidelines",
+      "CI/CD Pipeline Setup Playbook"
+    ],
+    "suggestedPromptPackType": "engineering",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-5-10",
+    "phaseId": "phase-5",
+    "roleIds": ["em", "projm", "dm"],
+    "title": "Create Engineering Execution Summary",
+    "description": "Produce a regular engineering execution summary that reports on development progress, technical health, key decisions made, blockers resolved, and risks on the horizon. This summary keeps leadership and delivery management informed without requiring constant interruption of the engineering team.",
+    "inputsNeeded": [
+      "Sprint burndown and velocity data",
+      "Technical risk register",
+      "Blocker log with resolution history",
+      "Code quality and test coverage metrics"
+    ],
+    "expectedOutputs": [
+      "Engineering execution summary report",
+      "Technical health dashboard update"
+    ],
+    "relatedSkills": [
+      "Engineering Reporting",
+      "Stakeholder Communication",
+      "Delivery Metrics",
+      "Technical Leadership"
+    ],
+    "relatedPlaybooks": [
+      "Impediment Escalation Process",
+      "Sprint Planning Playbook"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-1",
+    "phaseId": "phase-6",
+    "roleIds": ["projm", "em", "ba"],
+    "title": "Create Test Strategy",
+    "description": "Define the overall testing strategy for the initiative, covering the types of testing to be performed, testing levels, entry and exit criteria, test environment requirements, roles and responsibilities, and the tools to be used. A solid test strategy aligns the team on quality expectations before testing begins.",
+    "inputsNeeded": [
+      "Non-functional requirements and acceptance criteria",
+      "Architecture and integration documentation",
+      "Release plan and milestone schedule",
+      "Regulatory and compliance requirements"
+    ],
+    "expectedOutputs": [
+      "Test strategy document approved by key stakeholders",
+      "Testing scope and out-of-scope boundaries"
+    ],
+    "relatedSkills": [
+      "Test Strategy",
+      "Quality Assurance",
+      "Risk-Based Testing",
+      "Stakeholder Communication"
+    ],
+    "relatedPlaybooks": [
+      "Test Strategy Development Playbook",
+      "Release Readiness Review Checklist"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-2",
+    "phaseId": "phase-6",
+    "roleIds": ["projm", "ba", "em"],
+    "title": "Create Test Plan",
+    "description": "Develop a detailed test plan that operationalizes the test strategy, specifying test phases, test cycle schedules, resource assignments, environment requirements, and defect management processes. The test plan is the tactical execution guide for the testing phase.",
+    "inputsNeeded": [
+      "Test strategy document",
+      "User stories and acceptance criteria",
+      "Release schedule and milestone dates",
+      "Team capacity and tester availability"
+    ],
+    "expectedOutputs": [
+      "Detailed test plan with test cycle schedule",
+      "Resource and environment allocation plan for testing"
+    ],
+    "relatedSkills": [
+      "Test Planning",
+      "Quality Assurance",
+      "Test Management",
+      "Scheduling"
+    ],
+    "relatedPlaybooks": [
+      "UAT Planning and Execution Playbook",
+      "Test Strategy Development Playbook"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-3",
+    "phaseId": "phase-6",
+    "roleIds": ["ba", "po", "projm"],
+    "title": "Create Test Scenarios",
+    "description": "Develop high-level test scenarios that describe the conditions and workflows to be tested, covering happy paths, edge cases, exception flows, and integration scenarios. Test scenarios serve as the bridge between business requirements and detailed test cases.",
+    "inputsNeeded": [
+      "User stories and acceptance criteria",
+      "Business rules register",
+      "Process flow diagrams",
+      "UAT user groups and personas"
+    ],
+    "expectedOutputs": [
+      "Test scenario library mapped to user stories and epics",
+      "Coverage map showing requirements-to-scenario traceability"
+    ],
+    "relatedSkills": [
+      "Test Scenario Design",
+      "Requirements Analysis",
+      "Business Analysis",
+      "Quality Thinking"
+    ],
+    "relatedPlaybooks": [
+      "UAT Planning and Execution Playbook",
+      "Test Strategy Development Playbook"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-4",
+    "phaseId": "phase-6",
+    "roleIds": ["ba", "projm"],
+    "title": "Create Test Cases",
+    "description": "Write detailed, step-by-step test cases from test scenarios, specifying preconditions, test data, execution steps, and expected results. Detailed test cases enable consistent test execution across testers and provide an audit trail of quality validation.",
+    "inputsNeeded": [
+      "Test scenarios and acceptance criteria",
+      "Business rules and edge case documentation",
+      "Test data requirements and data sets",
+      "Environment access and configuration details"
+    ],
+    "expectedOutputs": [
+      "Detailed test case library in test management tool",
+      "Test data specification and setup instructions"
+    ],
+    "relatedSkills": [
+      "Test Case Writing",
+      "Quality Assurance",
+      "Test Data Management",
+      "Requirements Traceability"
+    ],
+    "relatedPlaybooks": [
+      "UAT Planning and Execution Playbook",
+      "Defect Management Process"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-5",
+    "phaseId": "phase-6",
+    "roleIds": ["pm", "ba", "projm"],
+    "title": "Define UAT Readiness Checklist",
+    "description": "Define the criteria and checklist that must be satisfied before User Acceptance Testing begins, ensuring the solution is stable, environments are ready, test data is in place, and business users are prepared to participate. UAT readiness gates prevent wasted business stakeholder time on unstable builds.",
+    "inputsNeeded": [
+      "Test plan and environment requirements",
+      "Definition of Done for development stories",
+      "UAT participant availability and schedule",
+      "Test data preparation status"
+    ],
+    "expectedOutputs": [
+      "UAT readiness checklist with go/no-go criteria",
+      "UAT kick-off agenda and participant briefing pack"
+    ],
+    "relatedSkills": [
+      "UAT Management",
+      "Quality Gates",
+      "Stakeholder Communication",
+      "Change Management"
+    ],
+    "relatedPlaybooks": [
+      "UAT Planning and Execution Playbook",
+      "Release Readiness Review Checklist"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-6",
+    "phaseId": "phase-6",
+    "roleIds": ["ba", "em", "projm"],
+    "title": "Define Regression Scope",
+    "description": "Define the scope of regression testing for each release, identifying which existing features and functionality must be re-validated to ensure new changes have not introduced unintended breakage. Regression scope definition balances thoroughness with testing time constraints.",
+    "inputsNeeded": [
+      "Feature inventory and change impact analysis",
+      "Prior defect history and high-risk areas",
+      "Integration touchpoints affected by changes",
+      "Release timeline and testing window"
+    ],
+    "expectedOutputs": [
+      "Regression test scope document with prioritized test suites",
+      "Risk-based regression coverage rationale"
+    ],
+    "relatedSkills": [
+      "Regression Testing",
+      "Risk-Based Testing",
+      "Change Impact Analysis",
+      "Test Planning"
+    ],
+    "relatedPlaybooks": [
+      "Test Strategy Development Playbook",
+      "Release Readiness Review Checklist"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-7",
+    "phaseId": "phase-6",
+    "roleIds": ["em", "tl", "projm"],
+    "title": "Define Automation Scope",
+    "description": "Define which test scenarios and test cases are candidates for test automation, considering return on investment, test frequency, stability, and technical feasibility. A pragmatic automation scope accelerates regression coverage while avoiding over-engineering on tests that change frequently.",
+    "inputsNeeded": [
+      "Test case library with execution frequency",
+      "Regression scope document",
+      "CI/CD pipeline and automation tooling",
+      "Team automation capability assessment"
+    ],
+    "expectedOutputs": [
+      "Test automation scope and prioritized automation backlog",
+      "Automation ROI assessment and tooling decision"
+    ],
+    "relatedSkills": [
+      "Test Automation",
+      "CI/CD Integration",
+      "Engineering Quality",
+      "ROI Analysis"
+    ],
+    "relatedPlaybooks": [
+      "Test Strategy Development Playbook",
+      "CI/CD Pipeline Setup Playbook"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-8",
+    "phaseId": "phase-6",
+    "roleIds": ["projm", "dm", "em"],
+    "title": "Track Defect Leakage",
+    "description": "Monitor and report on defect leakage metrics, tracking how many defects are discovered in testing versus in production, and by which testing phase defects are caught. Defect leakage data informs improvements to test coverage and quality gates.",
+    "inputsNeeded": [
+      "Defect log from testing tools",
+      "Production incident data",
+      "Test phase completion records",
+      "Defect severity and priority classifications"
+    ],
+    "expectedOutputs": [
+      "Defect leakage report by phase and severity",
+      "Root cause analysis for critical defect escapes"
+    ],
+    "relatedSkills": [
+      "Quality Metrics",
+      "Defect Management",
+      "Root Cause Analysis",
+      "Reporting"
+    ],
+    "relatedPlaybooks": [
+      "Defect Management Process",
+      "Release Readiness Review Checklist"
+    ],
+    "suggestedPromptPackType": "testing",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-9",
+    "phaseId": "phase-6",
+    "roleIds": ["ba", "projm", "em"],
+    "title": "Create Test Summary",
+    "description": "Produce a test summary report at the end of each testing phase that documents what was tested, the results achieved, open defects, test coverage metrics, and a recommendation on release readiness. The test summary provides stakeholders with the quality evidence needed to make go/no-go decisions.",
+    "inputsNeeded": [
+      "Test execution results from test management tool",
+      "Defect log with current status",
+      "Test coverage metrics",
+      "UAT sign-off documents"
+    ],
+    "expectedOutputs": [
+      "Test summary report with release readiness recommendation",
+      "Outstanding defect risk assessment for release decision"
+    ],
+    "relatedSkills": [
+      "Test Reporting",
+      "Quality Assurance",
+      "Release Readiness",
+      "Stakeholder Communication"
+    ],
+    "relatedPlaybooks": [
+      "Release Readiness Review Checklist",
+      "UAT Planning and Execution Playbook"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-6-10",
+    "phaseId": "phase-6",
+    "roleIds": ["projm", "em", "dm"],
+    "title": "Create Quality Risk Assessment",
+    "description": "Assess the quality risks associated with releasing the current build, considering open defects, test coverage gaps, untested integration points, and environmental differences from production. The quality risk assessment provides decision-makers with a clear view of release risk exposure.",
+    "inputsNeeded": [
+      "Test summary report",
+      "Defect log with severity ratings",
+      "Test coverage gaps report",
+      "Production environment differences"
+    ],
+    "expectedOutputs": [
+      "Quality risk assessment with risk-rated go/no-go recommendation",
+      "Risk acceptance sign-off from stakeholders for known gaps"
+    ],
+    "relatedSkills": [
+      "Risk Assessment",
+      "Quality Governance",
+      "Decision Facilitation",
+      "Reporting"
+    ],
+    "relatedPlaybooks": [
+      "Release Readiness Review Checklist",
+      "Defect Management Process"
+    ],
+    "suggestedPromptPackType": "risk",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-1",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "tl", "projm"],
+    "title": "Define Deployment Plan",
+    "description": "Create a detailed deployment plan that specifies the sequence of deployment steps, environment order, configuration changes, data migrations, downtime requirements, and validation checkpoints. A well-documented deployment plan reduces execution risk and enables confident, repeatable releases.",
+    "inputsNeeded": [
+      "Release-ready software build",
+      "Environment inventory and configuration specs",
+      "Data migration requirements",
+      "Change management approval requirements"
+    ],
+    "expectedOutputs": [
+      "Step-by-step deployment plan with timing and owners",
+      "Pre-deployment and post-deployment validation checklist"
+    ],
+    "relatedSkills": [
+      "Release Engineering",
+      "Deployment Planning",
+      "CI/CD Practices",
+      "Change Management"
+    ],
+    "relatedPlaybooks": [
+      "Release Deployment Runbook",
+      "CI/CD Pipeline Setup Playbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-2",
+    "phaseId": "phase-7",
+    "roleIds": ["dm", "projm", "em"],
+    "title": "Create Release Checklist",
+    "description": "Compile a comprehensive release checklist covering all activities and gates that must be completed before a release is authorized to proceed to production. The checklist spans technical, business, communication, and operational readiness dimensions.",
+    "inputsNeeded": [
+      "Deployment plan",
+      "UAT sign-off and test summary",
+      "Change advisory board requirements",
+      "Communication plan for the release"
+    ],
+    "expectedOutputs": [
+      "Release checklist with completion status and owner per item",
+      "Release go/no-go decision record"
+    ],
+    "relatedSkills": [
+      "Release Management",
+      "Governance",
+      "Change Control",
+      "Stakeholder Communication"
+    ],
+    "relatedPlaybooks": [
+      "Release Deployment Runbook",
+      "Environment Management Guidelines"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-3",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "tl", "dm"],
+    "title": "Define Rollback Plan",
+    "description": "Design and document the rollback procedure to revert the production system to a known-good state in the event of a failed or problematic deployment. A tested rollback plan is essential insurance for any production release and must be validated before go-live.",
+    "inputsNeeded": [
+      "Deployment plan and infrastructure configuration",
+      "Database migration scripts and reversal procedures",
+      "Previous production configuration baseline",
+      "Rollback trigger criteria and decision authority"
+    ],
+    "expectedOutputs": [
+      "Rollback procedure document with step-by-step instructions",
+      "Rollback trigger criteria and decision matrix"
+    ],
+    "relatedSkills": [
+      "Incident Management",
+      "Release Engineering",
+      "Risk Mitigation",
+      "Business Continuity"
+    ],
+    "relatedPlaybooks": [
+      "Rollback and Recovery Procedure",
+      "Release Deployment Runbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-4",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "projm"],
+    "title": "Create Environment Readiness Checklist",
+    "description": "Validate that all target deployment environments are ready to receive the release, including infrastructure provisioning, configuration validation, access credentials, monitoring setup, and dependency service availability. Environment issues at deployment time are among the most common causes of release failures.",
+    "inputsNeeded": [
+      "Environment inventory and configuration specifications",
+      "Infrastructure as code and environment scripts",
+      "Deployment plan and configuration requirements",
+      "Monitoring and alerting setup requirements"
+    ],
+    "expectedOutputs": [
+      "Environment readiness checklist with pass/fail status",
+      "Open environment issues with resolution owner and deadline"
+    ],
+    "relatedSkills": [
+      "Environment Management",
+      "DevOps Practices",
+      "Infrastructure Validation",
+      "Deployment Readiness"
+    ],
+    "relatedPlaybooks": [
+      "Environment Management Guidelines",
+      "CI/CD Pipeline Setup Playbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-5",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "tl"],
+    "title": "Define Pipeline Readiness",
+    "description": "Validate that the CI/CD pipeline is configured, tested, and ready to support the production deployment, including all build stages, automated test gates, deployment scripts, and artifact management. Pipeline readiness ensures the deployment process is automated, auditable, and repeatable.",
+    "inputsNeeded": [
+      "CI/CD pipeline configuration",
+      "Build and deployment scripts",
+      "Pipeline test results from staging deployments",
+      "Artifact repository and version management setup"
+    ],
+    "expectedOutputs": [
+      "Pipeline readiness assessment with validated stages",
+      "Pipeline test execution evidence from pre-production runs"
+    ],
+    "relatedSkills": [
+      "CI/CD Engineering",
+      "DevOps Practices",
+      "Automation",
+      "Quality Gates"
+    ],
+    "relatedPlaybooks": [
+      "CI/CD Pipeline Setup Playbook",
+      "Release Deployment Runbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-6",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "tl", "projm"],
+    "title": "Define Monitoring Requirements",
+    "description": "Define the monitoring, alerting, and observability requirements for the production system, ensuring the team has sufficient visibility into system health, performance, errors, and business metrics post-deployment. Effective monitoring enables rapid incident detection and response.",
+    "inputsNeeded": [
+      "Non-functional requirements for performance and availability",
+      "SLA and SLO definitions",
+      "System architecture and integration touchpoints",
+      "Monitoring tooling and platform inventory"
+    ],
+    "expectedOutputs": [
+      "Monitoring requirements document with alert thresholds",
+      "Observability implementation backlog items"
+    ],
+    "relatedSkills": [
+      "Observability",
+      "Monitoring Design",
+      "SLA Management",
+      "DevOps Practices"
+    ],
+    "relatedPlaybooks": [
+      "Release Deployment Runbook",
+      "Rollback and Recovery Procedure"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-7",
+    "phaseId": "phase-7",
+    "roleIds": ["dm", "projm", "cp"],
+    "title": "Create Deployment Communication",
+    "description": "Prepare and coordinate deployment communications to inform all affected stakeholders about the upcoming release, including timing, expected impact, maintenance windows, and what to do if issues are encountered. Proactive communication reduces user confusion and support ticket volume during releases.",
+    "inputsNeeded": [
+      "Release checklist and deployment plan",
+      "Communication plan from initiation phase",
+      "Stakeholder register with communication preferences",
+      "Release notes and change summary"
+    ],
+    "expectedOutputs": [
+      "Deployment communication drafts for all audiences",
+      "Communication send schedule tied to deployment timeline"
+    ],
+    "relatedSkills": [
+      "Stakeholder Communication",
+      "Change Management",
+      "Release Management",
+      "Written Communication"
+    ],
+    "relatedPlaybooks": [
+      "Customer Communication Plan",
+      "Go-to-Market Release Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-8",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "ba", "projm"],
+    "title": "Create Smoke Test Checklist",
+    "description": "Define a rapid smoke test checklist to be executed immediately after deployment to verify that the system's core functions are operational. Smoke tests provide fast confidence that the deployment was successful before undertaking full regression or opening to users.",
+    "inputsNeeded": [
+      "Critical user journey documentation",
+      "Acceptance criteria for highest-priority stories",
+      "Integration touchpoints and system health indicators",
+      "Previous deployment smoke test templates"
+    ],
+    "expectedOutputs": [
+      "Smoke test checklist with expected results per step",
+      "Smoke test execution record template"
+    ],
+    "relatedSkills": [
+      "Smoke Testing",
+      "Release Validation",
+      "Critical Path Analysis",
+      "Quality Assurance"
+    ],
+    "relatedPlaybooks": [
+      "Release Deployment Runbook",
+      "Release Readiness Review Checklist"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-9",
+    "phaseId": "phase-7",
+    "roleIds": ["em", "projm", "dm"],
+    "title": "Create Post-Deployment Validation",
+    "description": "Execute and document post-deployment validation activities to confirm the production environment is performing as expected after the release, including health checks, monitoring review, user acceptance spot checks, and business metric validation.",
+    "inputsNeeded": [
+      "Smoke test results",
+      "Monitoring dashboards and alerting status",
+      "Deployment plan with validation steps",
+      "Business metrics baseline from pre-deployment"
+    ],
+    "expectedOutputs": [
+      "Post-deployment validation report",
+      "Go-live confirmation sign-off record"
+    ],
+    "relatedSkills": [
+      "Release Validation",
+      "Monitoring and Observability",
+      "Incident Readiness",
+      "Quality Assurance"
+    ],
+    "relatedPlaybooks": [
+      "Rollback and Recovery Procedure",
+      "Release Deployment Runbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-7-10",
+    "phaseId": "phase-7",
+    "roleIds": ["projm", "dm", "pgm"],
+    "title": "Create Change Approval Summary",
+    "description": "Prepare the change approval documentation required by the Change Advisory Board (CAB) or governance body, summarizing the scope of change, testing evidence, deployment approach, rollback plan, and risk assessment. Complete change approval documentation enables timely release authorization.",
+    "inputsNeeded": [
+      "Release checklist and deployment plan",
+      "Test summary and quality risk assessment",
+      "Rollback plan",
+      "Change management policy requirements"
+    ],
+    "expectedOutputs": [
+      "Change approval request document for CAB submission",
+      "CAB decision record with approval or conditions"
+    ],
+    "relatedSkills": [
+      "Change Management",
+      "Governance Documentation",
+      "Risk Communication",
+      "Stakeholder Management"
+    ],
+    "relatedPlaybooks": [
+      "Release Deployment Runbook",
+      "Environment Management Guidelines"
+    ],
+    "suggestedPromptPackType": "governance",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-1",
+    "phaseId": "phase-8",
+    "roleIds": ["sm", "po", "pm"],
+    "title": "Prepare Sprint Demo",
+    "description": "Plan and facilitate the sprint review demonstration to showcase completed sprint work to stakeholders, gather feedback, and validate that delivered functionality meets business expectations. An effective sprint demo drives stakeholder engagement and creates momentum for the product.",
+    "inputsNeeded": [
+      "Completed sprint backlog with accepted stories",
+      "Stakeholder and product owner availability",
+      "Demo environment with representative data",
+      "Sprint goal and success criteria"
+    ],
+    "expectedOutputs": [
+      "Sprint demo agenda and script",
+      "Sprint review feedback log and action items"
+    ],
+    "relatedSkills": [
+      "Agile Facilitation",
+      "Product Demonstration",
+      "Stakeholder Engagement",
+      "Sprint Review"
+    ],
+    "relatedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Post-Release Monitoring and Feedback Playbook"
+    ],
+    "suggestedPromptPackType": "agile",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-2",
+    "phaseId": "phase-8",
+    "roleIds": ["pm", "dm", "projm"],
+    "title": "Prepare Release Notes",
+    "description": "Author clear, user-friendly release notes that communicate what has changed, what is new, what has been fixed, and any known limitations in the release. Good release notes reduce support volume, set accurate expectations, and build customer confidence in the delivery team.",
+    "inputsNeeded": [
+      "Completed user stories and acceptance criteria",
+      "Defect fix log",
+      "Known issues and limitations",
+      "Customer-facing feature descriptions"
+    ],
+    "expectedOutputs": [
+      "Customer-facing release notes document",
+      "Internal technical change log"
+    ],
+    "relatedSkills": [
+      "Technical Writing",
+      "Customer Communication",
+      "Release Management",
+      "Product Marketing"
+    ],
+    "relatedPlaybooks": [
+      "Release Notes Generator Playbook",
+      "Customer Communication Plan"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-3",
+    "phaseId": "phase-8",
+    "roleIds": ["dm", "projm", "cp"],
+    "title": "Create Customer Status Report",
+    "description": "Produce a clear and professional customer-facing status report summarizing delivery progress, milestones achieved, upcoming deliverables, risks, and issues. Customer status reports maintain trust, manage expectations, and demonstrate delivery accountability to client stakeholders.",
+    "inputsNeeded": [
+      "Project plan and milestone tracker",
+      "RAID log with current status",
+      "Sprint review outputs and velocity data",
+      "Customer communication plan"
+    ],
+    "expectedOutputs": [
+      "Customer status report in agreed format",
+      "Status report distribution record"
+    ],
+    "relatedSkills": [
+      "Client Communication",
+      "Status Reporting",
+      "Stakeholder Management",
+      "Written Communication"
+    ],
+    "relatedPlaybooks": [
+      "Customer Communication Plan",
+      "Go-to-Market Release Playbook"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-4",
+    "phaseId": "phase-8",
+    "roleIds": ["pgm", "dm", "pm", "cp"],
+    "title": "Create Executive Summary",
+    "description": "Produce a concise executive summary that communicates program or project status to senior leadership in a format optimized for quick consumption. Executive summaries must distill complex delivery realities into clear headlines, key decisions needed, and risk indicators.",
+    "inputsNeeded": [
+      "Project status reports and milestone data",
+      "RAID log priority items",
+      "Budget and resource actuals",
+      "Customer and stakeholder sentiment"
+    ],
+    "expectedOutputs": [
+      "Executive summary deck or document (one page preferred)",
+      "Key decision points and escalation items highlighted"
+    ],
+    "relatedSkills": [
+      "Executive Communication",
+      "Storytelling",
+      "Data Synthesis",
+      "Leadership Reporting"
+    ],
+    "relatedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Customer Communication Plan"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-5",
+    "phaseId": "phase-8",
+    "roleIds": ["projm", "dm", "pgm"],
+    "title": "Create Stakeholder Update",
+    "description": "Prepare and distribute a regular stakeholder update that keeps all relevant parties informed of progress, decisions, changes, and upcoming activities. Consistent stakeholder updates prevent information vacuums that breed anxiety and rumor.",
+    "inputsNeeded": [
+      "Sprint review outputs and velocity metrics",
+      "Milestone progress against plan",
+      "Open risks and issues from RAID log",
+      "Upcoming key events and decisions"
+    ],
+    "expectedOutputs": [
+      "Stakeholder update communication in agreed format",
+      "Distribution confirmation and engagement tracking"
+    ],
+    "relatedSkills": [
+      "Stakeholder Communication",
+      "Status Reporting",
+      "Relationship Management",
+      "Written Communication"
+    ],
+    "relatedPlaybooks": [
+      "Customer Communication Plan",
+      "Governance Setup Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-6",
+    "phaseId": "phase-8",
+    "roleIds": ["projm", "dm", "cp"],
+    "title": "Track Customer Decisions",
+    "description": "Maintain a structured log of all decisions made by the customer, including design choices, scope trade-offs, and risk acceptances. A decision log protects the delivery team from scope disputes and ensures customer-owned decisions are documented with appropriate sign-off.",
+    "inputsNeeded": [
+      "Meeting notes and governance records",
+      "Customer approval emails and correspondence",
+      "Change request log",
+      "Scope agreement documentation"
+    ],
+    "expectedOutputs": [
+      "Customer decision log with decision, owner, and date",
+      "Decision impact summary per affected workstream"
+    ],
+    "relatedSkills": [
+      "Decision Management",
+      "Client Communication",
+      "Governance Documentation",
+      "Scope Management"
+    ],
+    "relatedPlaybooks": [
+      "Customer Communication Plan",
+      "Stakeholder Alignment Playbook"
+    ],
+    "suggestedPromptPackType": "governance",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-7",
+    "phaseId": "phase-8",
+    "roleIds": ["ba", "pm", "cp"],
+    "title": "Prepare Training Notes",
+    "description": "Develop training materials and user guidance that enable end users and support staff to effectively use the new system or feature. Training notes should be tailored to each audience, covering key workflows, tips, and common questions.",
+    "inputsNeeded": [
+      "Completed user stories and final UX flows",
+      "User personas and their common workflows",
+      "Release notes and feature documentation",
+      "Known limitations and workarounds"
+    ],
+    "expectedOutputs": [
+      "User training guide per key persona or role",
+      "Quick reference card for high-frequency workflows"
+    ],
+    "relatedSkills": [
+      "Training Design",
+      "Technical Writing",
+      "Change Management",
+      "User Enablement"
+    ],
+    "relatedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Post-Release Monitoring and Feedback Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-8",
+    "phaseId": "phase-8",
+    "roleIds": ["dm", "projm", "em"],
+    "title": "Prepare Go-Live Checklist",
+    "description": "Compile and execute the go-live checklist that confirms all technical, business, operational, and communication readiness requirements have been met before opening the system to production users. The go-live checklist is the final gate before customer impact.",
+    "inputsNeeded": [
+      "Deployment plan and environment readiness",
+      "Training delivery confirmation",
+      "Support team readiness assessment",
+      "Communication plan execution status"
+    ],
+    "expectedOutputs": [
+      "Completed go-live checklist with sign-offs",
+      "Go-live authorization record"
+    ],
+    "relatedSkills": [
+      "Release Management",
+      "Change Management",
+      "Operational Readiness",
+      "Governance"
+    ],
+    "relatedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Release Deployment Runbook"
+    ],
+    "suggestedPromptPackType": "deployment",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-9",
+    "phaseId": "phase-8",
+    "roleIds": ["pm", "dm", "cp"],
+    "title": "Create Adoption Plan",
+    "description": "Develop a plan to drive user adoption of the new system or feature, including communication campaigns, training schedules, champion networks, and adoption measurement mechanisms. High adoption is the difference between a technically successful release and a business outcome.",
+    "inputsNeeded": [
+      "User personas and adoption barriers from discovery",
+      "Training materials and user guides",
+      "Change management assessment",
+      "Adoption success metrics"
+    ],
+    "expectedOutputs": [
+      "User adoption plan with activities and timeline",
+      "Adoption metrics dashboard specification"
+    ],
+    "relatedSkills": [
+      "Change Management",
+      "User Adoption",
+      "Communication Planning",
+      "Product Marketing"
+    ],
+    "relatedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Post-Release Monitoring and Feedback Playbook"
+    ],
+    "suggestedPromptPackType": "communication",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-8-10",
+    "phaseId": "phase-8",
+    "roleIds": ["pm", "ba", "cp"],
+    "title": "Capture Feedback",
+    "description": "Systematically collect and synthesize feedback from customers, end users, and stakeholders following release, identifying satisfaction levels, usability issues, unmet needs, and opportunities for improvement. Structured feedback collection closes the loop between delivery and value realization.",
+    "inputsNeeded": [
+      "User feedback survey or interview schedule",
+      "Support ticket data from post-release period",
+      "Adoption metrics and usage analytics",
+      "Stakeholder sentiment from review meetings"
+    ],
+    "expectedOutputs": [
+      "Feedback synthesis report with key themes",
+      "Improvement backlog items from user feedback"
+    ],
+    "relatedSkills": [
+      "User Research",
+      "Feedback Analysis",
+      "Customer Discovery",
+      "Data Synthesis"
+    ],
+    "relatedPlaybooks": [
+      "Post-Release Monitoring and Feedback Playbook",
+      "Go-to-Market Release Playbook"
+    ],
+    "suggestedPromptPackType": "discovery",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-1",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "tl", "projm"],
+    "title": "Create Runbook",
+    "description": "Document operational runbooks that provide step-by-step instructions for common operational tasks, routine maintenance procedures, and known failure scenarios. Well-maintained runbooks reduce mean time to recovery (MTTR) and enable on-call engineers to resolve issues consistently.",
+    "inputsNeeded": [
+      "System architecture and component documentation",
+      "Monitoring and alerting configuration",
+      "Common failure modes identified during development",
+      "Prior incident records and resolution steps"
+    ],
+    "expectedOutputs": [
+      "Operational runbook library per system component",
+      "On-call quick reference guide"
+    ],
+    "relatedSkills": [
+      "Operations Documentation",
+      "Incident Management",
+      "Technical Writing",
+      "Systems Reliability"
+    ],
+    "relatedPlaybooks": [
+      "On-Call Runbook Template",
+      "Incident Management Playbook"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-2",
+    "phaseId": "phase-9",
+    "roleIds": ["dm", "projm", "em"],
+    "title": "Create Support Model",
+    "description": "Define the operational support model for the production system, including support tiers, escalation paths, SLA commitments per tier, support team responsibilities, and tooling. A documented support model ensures customers receive consistent, timely assistance and internal teams understand their obligations.",
+    "inputsNeeded": [
+      "SLA and SLO definitions from the initiative",
+      "Support team roster and availability",
+      "Customer expectations and contractual commitments",
+      "Incident categorization and priority framework"
+    ],
+    "expectedOutputs": [
+      "Support model document with tier definitions and SLAs",
+      "Support team responsibility matrix and escalation tree"
+    ],
+    "relatedSkills": [
+      "Support Model Design",
+      "SLA Management",
+      "Operational Governance",
+      "Client Management"
+    ],
+    "relatedPlaybooks": [
+      "SLA and SLO Review Process",
+      "Incident Management Playbook"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-3",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "tl", "dm"],
+    "title": "Create Incident Response Plan",
+    "description": "Develop a documented incident response plan that defines how the team detects, triages, responds to, communicates about, and learns from production incidents. An effective incident response plan reduces customer impact and drives continuous improvement in system reliability.",
+    "inputsNeeded": [
+      "Monitoring and alerting configuration",
+      "Support model and escalation tree",
+      "On-call schedule and contact list",
+      "SLA breach thresholds and customer notification requirements"
+    ],
+    "expectedOutputs": [
+      "Incident response plan with roles and response steps",
+      "Incident communication templates for customer and internal use"
+    ],
+    "relatedSkills": [
+      "Incident Management",
+      "Crisis Communication",
+      "Systems Reliability",
+      "Escalation Management"
+    ],
+    "relatedPlaybooks": [
+      "Incident Management Playbook",
+      "On-Call Runbook Template"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-4",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "dm", "projm"],
+    "title": "Track Production Issues",
+    "description": "Maintain a structured register of production issues, tracking their status, impact, priority, root cause, and resolution. Active production issue tracking ensures nothing falls through the cracks and provides data for trend analysis and preventive improvement.",
+    "inputsNeeded": [
+      "Incident response records",
+      "Support ticket data",
+      "Monitoring alerts and system health logs",
+      "Customer-reported issues"
+    ],
+    "expectedOutputs": [
+      "Production issue register with current status",
+      "Weekly production health summary"
+    ],
+    "relatedSkills": [
+      "Incident Tracking",
+      "Problem Management",
+      "Root Cause Analysis",
+      "Operational Reporting"
+    ],
+    "relatedPlaybooks": [
+      "Incident Management Playbook",
+      "SLA and SLO Review Process"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-5",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "dm", "projm"],
+    "title": "Track Operational Metrics",
+    "description": "Monitor, collect, and report on operational performance metrics including system availability, response time, error rates, throughput, and support volume trends. Operational metrics provide the data foundation for SLA compliance reporting, capacity planning, and continuous improvement prioritization.",
+    "inputsNeeded": [
+      "Monitoring and observability tooling configuration",
+      "SLA and SLO definitions",
+      "Operational metrics baseline from launch",
+      "Business KPIs tied to system performance"
+    ],
+    "expectedOutputs": [
+      "Operational metrics dashboard with trend analysis",
+      "Monthly SLA compliance report"
+    ],
+    "relatedSkills": [
+      "Operational Metrics",
+      "SLA Monitoring",
+      "Data Analysis",
+      "Systems Reliability"
+    ],
+    "relatedPlaybooks": [
+      "SLA and SLO Review Process",
+      "On-Call Runbook Template"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-6",
+    "phaseId": "phase-9",
+    "roleIds": ["dm", "projm", "tl"],
+    "title": "Create SLA/SLO Summary",
+    "description": "Produce a regular SLA and SLO summary report that documents performance against contractual and internal service level commitments, highlighting breaches, near-misses, trends, and improvement actions. The SLA summary is critical for client trust and internal quality governance.",
+    "inputsNeeded": [
+      "Operational metrics data",
+      "SLA and SLO definitions and thresholds",
+      "Incident records and resolution times",
+      "Customer satisfaction data"
+    ],
+    "expectedOutputs": [
+      "SLA/SLO summary report with compliance percentages",
+      "Breach analysis and root cause summary"
+    ],
+    "relatedSkills": [
+      "SLA Management",
+      "Operational Reporting",
+      "Client Communication",
+      "Data Analysis"
+    ],
+    "relatedPlaybooks": [
+      "SLA and SLO Review Process",
+      "Incident Management Playbook"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-7",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "tl", "ba"],
+    "title": "Create Monitoring Dashboard Requirements",
+    "description": "Define the requirements for operational monitoring dashboards that give the team real-time visibility into system health, user experience, and business metrics. Dashboard requirements should balance technical detail for engineers with business-readable indicators for operational stakeholders.",
+    "inputsNeeded": [
+      "Operational metrics and SLA definitions",
+      "Stakeholder reporting needs assessment",
+      "Monitoring tooling capabilities",
+      "Business KPIs linked to the system"
+    ],
+    "expectedOutputs": [
+      "Monitoring dashboard requirements specification",
+      "Dashboard design prototype or wireframe"
+    ],
+    "relatedSkills": [
+      "Observability",
+      "Dashboard Design",
+      "Requirements Analysis",
+      "Operational Metrics"
+    ],
+    "relatedPlaybooks": [
+      "On-Call Runbook Template",
+      "SLA and SLO Review Process"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-8",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "tl"],
+    "title": "Create Backup/Restore Notes",
+    "description": "Document the backup and restore procedures for all production data stores and configuration, including backup schedules, retention policies, restore procedures, and testing cadence. Tested and documented backup procedures are foundational to business continuity.",
+    "inputsNeeded": [
+      "Data model and database architecture",
+      "Recovery time objective (RTO) and recovery point objective (RPO) requirements",
+      "Infrastructure and storage configuration",
+      "Compliance requirements for data retention"
+    ],
+    "expectedOutputs": [
+      "Backup and restore procedure documentation",
+      "Backup test schedule and results record"
+    ],
+    "relatedSkills": [
+      "Business Continuity",
+      "Database Administration",
+      "Operational Documentation",
+      "Compliance Awareness"
+    ],
+    "relatedPlaybooks": [
+      "On-Call Runbook Template",
+      "Rollback and Recovery Procedure"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-9",
+    "phaseId": "phase-9",
+    "roleIds": ["em", "tl", "ba"],
+    "title": "Create Troubleshooting Guide",
+    "description": "Develop a troubleshooting guide that helps engineers and support staff diagnose and resolve common issues efficiently. The guide should cover known failure patterns, diagnostic steps, system dependencies to check, and escalation criteria.",
+    "inputsNeeded": [
+      "Production issue register and incident history",
+      "Operational runbooks",
+      "System architecture and integration documentation",
+      "Monitoring alert definitions and triggers"
+    ],
+    "expectedOutputs": [
+      "Troubleshooting guide organized by symptom or component",
+      "Diagnostic decision tree for complex issues"
+    ],
+    "relatedSkills": [
+      "Technical Documentation",
+      "Root Cause Analysis",
+      "Systems Thinking",
+      "Knowledge Management"
+    ],
+    "relatedPlaybooks": [
+      "On-Call Runbook Template",
+      "Incident Management Playbook"
+    ],
+    "suggestedPromptPackType": "operations",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-9-10",
+    "phaseId": "phase-9",
+    "roleIds": ["pm", "dm", "projm"],
+    "title": "Create Continuous Improvement Backlog",
+    "description": "Establish and maintain a continuous improvement backlog capturing operational enhancement opportunities, technical debt items, process improvements, and lessons from incidents and feedback. A curated improvement backlog ensures operational excellence compounds over time rather than stagnating.",
+    "inputsNeeded": [
+      "Production issue trends and root cause analysis",
+      "Operational metrics and SLA breach history",
+      "Customer feedback and satisfaction data",
+      "Team retrospective improvement actions"
+    ],
+    "expectedOutputs": [
+      "Prioritized continuous improvement backlog",
+      "Quarterly improvement roadmap with business case"
+    ],
+    "relatedSkills": [
+      "Continuous Improvement",
+      "Product Management",
+      "Operational Excellence",
+      "Prioritization"
+    ],
+    "relatedPlaybooks": [
+      "SLA and SLO Review Process",
+      "Project Retrospective Playbook"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-1",
+    "phaseId": "phase-10",
+    "roleIds": ["projm", "dm", "pgm"],
+    "title": "Create Project Closeout Report",
+    "description": "Produce a comprehensive project closeout report that formally documents the project's outcomes, scope delivered versus planned, financial actuals versus budget, key decisions made, risks encountered, and satisfaction levels. The closeout report serves as the definitive project record and organizational learning artifact.",
+    "inputsNeeded": [
+      "Project plan and milestone records",
+      "Budget actuals and variance data",
+      "Quality metrics and defect history",
+      "Stakeholder satisfaction survey results"
+    ],
+    "expectedOutputs": [
+      "Project closeout report with executive summary",
+      "Final project dashboard and KPI summary"
+    ],
+    "relatedSkills": [
+      "Project Closure",
+      "Reporting and Documentation",
+      "Benefits Realization",
+      "Stakeholder Communication"
+    ],
+    "relatedPlaybooks": [
+      "Project Closure Checklist",
+      "Benefits Realization Review"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-2",
+    "phaseId": "phase-10",
+    "roleIds": ["projm", "dm", "sm", "pm"],
+    "title": "Capture Lessons Learned",
+    "description": "Facilitate a structured lessons learned session and document key insights from the initiative, covering what went well, what did not go well, and what the team would do differently. Lessons learned must be captured in a searchable, reusable format to create genuine organizational learning.",
+    "inputsNeeded": [
+      "Team retrospective outputs from all phases",
+      "RAID log history and closed items",
+      "Incident and defect history",
+      "Stakeholder feedback and satisfaction data"
+    ],
+    "expectedOutputs": [
+      "Lessons learned register with categorized insights",
+      "Recommended process or practice changes for future initiatives"
+    ],
+    "relatedSkills": [
+      "Retrospective Facilitation",
+      "Organizational Learning",
+      "Process Improvement",
+      "Documentation"
+    ],
+    "relatedPlaybooks": [
+      "Lessons Learned Capture and Action Playbook",
+      "Project Retrospective Playbook"
+    ],
+    "suggestedPromptPackType": "retrospective",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-3",
+    "phaseId": "phase-10",
+    "roleIds": ["sm", "projm", "em"],
+    "title": "Create Retrospective Summary",
+    "description": "Facilitate and document the final team retrospective, capturing honest reflections on the team's process, collaboration, and delivery practices across the full engagement. The retrospective summary should translate discussion into concrete, owned improvement actions.",
+    "inputsNeeded": [
+      "Sprint retrospective records from all sprints",
+      "Lessons learned register",
+      "Team health metrics and happiness data",
+      "Velocity and delivery metrics history"
+    ],
+    "expectedOutputs": [
+      "Final retrospective summary with themes and insights",
+      "Improvement action register with owners and timelines"
+    ],
+    "relatedSkills": [
+      "Retrospective Facilitation",
+      "Team Coaching",
+      "Agile Practices",
+      "Continuous Improvement"
+    ],
+    "relatedPlaybooks": [
+      "Project Retrospective Playbook",
+      "Lessons Learned Capture and Action Playbook"
+    ],
+    "suggestedPromptPackType": "retrospective",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-4",
+    "phaseId": "phase-10",
+    "roleIds": ["pm", "projm", "dm"],
+    "title": "Evaluate Success Metrics",
+    "description": "Assess actual outcomes against the success metrics defined at project initiation, measuring whether the initiative delivered its intended business value. Success metric evaluation closes the outcome accountability loop and provides evidence for benefits realization reporting.",
+    "inputsNeeded": [
+      "Success metrics framework from phase 1",
+      "Business analytics and KPI data post-delivery",
+      "Customer satisfaction and adoption metrics",
+      "Financial impact data"
+    ],
+    "expectedOutputs": [
+      "Success metrics evaluation report with actual versus target",
+      "Benefits realization assessment and outstanding opportunity"
+    ],
+    "relatedSkills": [
+      "Data Analysis",
+      "Benefits Realization",
+      "Outcome Measurement",
+      "Reporting"
+    ],
+    "relatedPlaybooks": [
+      "Benefits Realization Review",
+      "Project Closure Checklist"
+    ],
+    "suggestedPromptPackType": "reporting",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-5",
+    "phaseId": "phase-10",
+    "roleIds": ["projm", "dm", "pm"],
+    "title": "Capture Reusable Playbooks",
+    "description": "Identify, document, and package process playbooks, templates, and delivery patterns from the initiative that have sufficient quality and generalizability to be reused on future projects. Reusable playbooks are among the highest-value knowledge assets an organization can build.",
+    "inputsNeeded": [
+      "All delivery phase artifacts and templates",
+      "Lessons learned register",
+      "Team feedback on what tools and processes worked best",
+      "Existing organizational playbook library"
+    ],
+    "expectedOutputs": [
+      "Set of refined, reusable playbook documents",
+      "Playbook library update with new additions and amendments"
+    ],
+    "relatedSkills": [
+      "Knowledge Management",
+      "Documentation",
+      "Process Design",
+      "Organizational Learning"
+    ],
+    "relatedPlaybooks": [
+      "Lessons Learned Capture and Action Playbook",
+      "Project Closure Checklist"
+    ],
+    "suggestedPromptPackType": "knowledge",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-6",
+    "phaseId": "phase-10",
+    "roleIds": ["pm", "projm", "em", "sm"],
+    "title": "Update Skill Evidence",
+    "description": "Document and capture concrete evidence of skills demonstrated during the initiative by team members, linking delivery artifacts to skill categories. Skill evidence records support career development, performance reviews, and capability building conversations.",
+    "inputsNeeded": [
+      "Team performance observations throughout the initiative",
+      "Key artifacts authored by each team member",
+      "Peer and manager feedback",
+      "Skill framework or competency model"
+    ],
+    "expectedOutputs": [
+      "Skill evidence records per team member",
+      "Capability development recommendations per person"
+    ],
+    "relatedSkills": [
+      "People Development",
+      "Capability Assessment",
+      "Career Coaching",
+      "Knowledge Management"
+    ],
+    "relatedPlaybooks": [
+      "Project Closure Checklist",
+      "Benefits Realization Review"
+    ],
+    "suggestedPromptPackType": "knowledge",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-7",
+    "phaseId": "phase-10",
+    "roleIds": ["projm", "dm"],
+    "title": "Archive Project Notes",
+    "description": "Ensure all project documentation, decision records, correspondence, and artifacts are organized, labeled, and stored in a retrievable archive. Proper archival protects the organization's investment in project knowledge and ensures compliance with record retention requirements.",
+    "inputsNeeded": [
+      "All project phase deliverables and documents",
+      "Decision log and change request history",
+      "Governance meeting records",
+      "Archive location and naming conventions"
+    ],
+    "expectedOutputs": [
+      "Completed project archive with organized folder structure",
+      "Archive index document for easy navigation"
+    ],
+    "relatedSkills": [
+      "Knowledge Management",
+      "Documentation",
+      "Compliance Awareness",
+      "Organizational Skills"
+    ],
+    "relatedPlaybooks": [
+      "Project Closure Checklist",
+      "Lessons Learned Capture and Action Playbook"
+    ],
+    "suggestedPromptPackType": "knowledge",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-8",
+    "phaseId": "phase-10",
+    "roleIds": ["pm", "projm", "tl"],
+    "title": "Create Improvement Roadmap",
+    "description": "Synthesize lessons learned, continuous improvement backlog items, and success metric gaps into a forward-looking improvement roadmap that prioritizes the most impactful changes for the team or product in the next cycle. The improvement roadmap turns retrospective insight into actionable future commitment.",
+    "inputsNeeded": [
+      "Lessons learned register",
+      "Continuous improvement backlog",
+      "Success metrics evaluation report",
+      "Team capability assessment and development needs"
+    ],
+    "expectedOutputs": [
+      "Improvement roadmap with prioritized initiatives",
+      "Improvement initiative ownership and accountability plan"
+    ],
+    "relatedSkills": [
+      "Continuous Improvement",
+      "Roadmap Planning",
+      "Strategic Thinking",
+      "Change Leadership"
+    ],
+    "relatedPlaybooks": [
+      "Project Retrospective Playbook",
+      "Benefits Realization Review"
+    ],
+    "suggestedPromptPackType": "planning",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-9",
+    "phaseId": "phase-10",
+    "roleIds": ["pm", "projm", "dm"],
+    "title": "Create Reusable Prompt Packs",
+    "description": "Document and package the most valuable AI prompts used during the initiative into structured, reusable prompt packs that can be shared with the broader organization. Prompt packs institutionalize AI-assisted delivery practices and accelerate knowledge transfer to future teams.",
+    "inputsNeeded": [
+      "AI prompts used throughout the initiative",
+      "Prompt quality feedback from team members",
+      "Lessons learned on AI usage",
+      "AI usage guardrails and governance policy"
+    ],
+    "expectedOutputs": [
+      "Curated prompt pack library organized by phase and role",
+      "Prompt pack usage guide and governance notes"
+    ],
+    "relatedSkills": [
+      "AI Literacy",
+      "Knowledge Management",
+      "Documentation",
+      "Prompt Engineering"
+    ],
+    "relatedPlaybooks": [
+      "Lessons Learned Capture and Action Playbook",
+      "Project Closure Checklist"
+    ],
+    "suggestedPromptPackType": "knowledge",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  },
+  {
+    "id": "task-10-10",
+    "phaseId": "phase-10",
+    "roleIds": ["pm", "projm"],
+    "title": "Export Knowledge Bundle",
+    "description": "Compile and export a complete knowledge bundle from the initiative, packaging all reusable artifacts, playbooks, prompt packs, lessons learned, and domain knowledge files into a transferable format. The knowledge bundle preserves institutional memory and accelerates future initiatives in the same domain.",
+    "inputsNeeded": [
+      "Project archive and artifact library",
+      "Reusable playbooks and prompt packs",
+      "Domain knowledge file",
+      "Lessons learned and improvement roadmap"
+    ],
+    "expectedOutputs": [
+      "Complete knowledge bundle in a structured, portable format",
+      "Knowledge bundle handover and onboarding guide"
+    ],
+    "relatedSkills": [
+      "Knowledge Management",
+      "Documentation",
+      "Organizational Learning",
+      "AI Literacy"
+    ],
+    "relatedPlaybooks": [
+      "Project Closure Checklist",
+      "Lessons Learned Capture and Action Playbook"
+    ],
+    "suggestedPromptPackType": "knowledge",
+    "defaultMarkdownTemplateId": "sdlc-task-template.md"
+  }
+]

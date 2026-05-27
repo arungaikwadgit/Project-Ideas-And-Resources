@@ -1,0 +1,340 @@
+[
+  {
+    "id": "prompt-pack-domain-knowledge",
+    "title": "Domain Knowledge Builder",
+    "description": "A structured prompt pack for rapidly building deep domain knowledge in a new industry, product area, or technology space, helping PMs, BAs, and consultants get up to speed quickly and identify the right questions to ask.",
+    "category": "Discovery",
+    "targetRoleIds": ["pm", "ba", "cp", "pgm"],
+    "phaseId": "phase-2",
+    "systemRole": "You are an expert domain consultant with 15+ years of experience across technology, business strategy, and product management. You help professionals rapidly build working knowledge of new domains by synthesizing key concepts, structures, terminology, and mental models.",
+    "goalStatement": "Build a comprehensive working knowledge of a specific domain so I can ask better questions, identify risks earlier, and contribute meaningfully to domain-specific discussions and decisions.",
+    "instructionSteps": [
+      "Start by stating the domain, industry, or product area you need to learn about and your current level of familiarity.",
+      "Ask the AI to provide a structured overview covering: key stakeholders and their roles, primary business processes, common pain points, regulatory or compliance considerations, and market dynamics.",
+      "Request a glossary of the 20 most important domain-specific terms with plain-language explanations.",
+      "Ask for the top 10 questions you should be asking stakeholders in discovery interviews for this domain.",
+      "Request a summary of the most common technical systems, platforms, or tools used in this domain and what they do.",
+      "Ask for a list of red flags or common pitfalls when working in this domain for the first time.",
+      "Request recommended reading, frameworks, or reference materials for going deeper on this domain."
+    ],
+    "desiredOutputFormat": "Structured sections with clear headers, bullet point lists for glossary and questions, and a summary table where appropriate. Keep each section concise but comprehensive enough to be actionable.",
+    "qualityChecklist": [
+      "Does the domain overview cover business context, key players, and primary workflows?",
+      "Is the glossary written in plain language that a non-expert can understand?",
+      "Are the discovery questions open-ended and designed to surface insights rather than confirm assumptions?",
+      "Are common pitfalls specific and actionable rather than generic?",
+      "Has the output been validated against what you already know to check for obvious errors?"
+    ],
+    "governanceChecklist": [
+      "Do not include confidential client or project data in prompts to external AI models.",
+      "Validate AI-generated domain knowledge against authoritative sources before presenting to stakeholders.",
+      "Flag any regulatory or compliance information for verification by a qualified legal or compliance professional.",
+      "Disclose that AI was used in research preparation where required by your engagement standards."
+    ],
+    "tags": ["domain-knowledge", "discovery", "research", "onboarding", "learning"]
+  },
+  {
+    "id": "prompt-pack-risk-identification",
+    "title": "Risk Identification Assistant",
+    "description": "A prompt pack for systematically identifying risks across all dimensions of a project or product using AI as a thinking partner to surface risks that teams might overlook, categorize them, and propose mitigation strategies.",
+    "category": "Delivery",
+    "targetRoleIds": ["projm", "dm", "pm", "pgm", "cp"],
+    "phaseId": "phase-1",
+    "systemRole": "You are an experienced project risk consultant and delivery expert who has managed complex technology programs across multiple industries. You specialize in proactive risk identification, RAID log management, and building risk-aware delivery cultures.",
+    "goalStatement": "Systematically identify and categorize all material risks across a project or initiative so that mitigation plans can be developed before risks become issues.",
+    "instructionSteps": [
+      "Describe the project in 3-5 sentences: what is being built, for whom, the team size, timeline, technology stack, and key stakeholders.",
+      "Ask the AI to identify risks across these categories: technical risks, resource and team risks, stakeholder and political risks, schedule and dependency risks, budget and commercial risks, compliance and regulatory risks, and external/environmental risks.",
+      "For each identified risk, ask for: a clear risk statement, probability (Low/Medium/High), impact (Low/Medium/High), an initial severity score, and 2-3 specific mitigation actions.",
+      "Ask the AI to identify any risks specific to your project context that are often overlooked in similar projects.",
+      "Request a prioritized top 5 risks list with rationale for why these deserve the most attention.",
+      "Ask for early warning indicators for each top risk—what would you see that tells you the risk is materializing?"
+    ],
+    "desiredOutputFormat": "A structured RAID log table with columns for Risk Category, Risk Statement, Probability, Impact, Severity, and Mitigation Actions. Follow with a narrative section on the top 5 priority risks and their early warning indicators.",
+    "qualityChecklist": [
+      "Does the risk list cover all major dimensions (technical, resource, stakeholder, schedule, budget, compliance)?",
+      "Are risk statements specific and unambiguous—can someone who wasn't in the room understand each risk?",
+      "Are mitigation actions concrete and actionable, not generic advice?",
+      "Have risks unique to this project context been identified, beyond generic project risks?",
+      "Are early warning indicators measurable or observable?"
+    ],
+    "governanceChecklist": [
+      "Do not include sensitive financial data, personnel information, or confidential client specifics in AI prompts.",
+      "Review all AI-identified risks with the project team before adding them to the official RAID log.",
+      "Ensure legal, regulatory, and compliance risks are reviewed by appropriate professionals.",
+      "Track the RAID log in an approved project management tool, not just in AI chat outputs."
+    ],
+    "tags": ["risk", "RAID", "mitigation", "delivery", "governance", "project-management"]
+  },
+  {
+    "id": "prompt-pack-sprint-planning",
+    "title": "Sprint Planning Preparation Pack",
+    "description": "A prompt pack that helps Product Owners and Scrum Masters prepare for sprint planning by using AI to refine stories, identify missing acceptance criteria, surface dependencies, and generate a sprint goal draft.",
+    "category": "Delivery",
+    "targetRoleIds": ["po", "sm", "dm"],
+    "phaseId": "phase-3",
+    "systemRole": "You are an experienced agile coach and Scrum Master who has facilitated hundreds of sprint planning sessions. You help Product Owners write high-quality user stories, craft compelling sprint goals, and identify gaps in backlog readiness.",
+    "goalStatement": "Prepare a well-defined sprint backlog with clear acceptance criteria, a compelling sprint goal, and identified dependencies so that sprint planning is efficient and the team can commit with confidence.",
+    "instructionSteps": [
+      "Paste in your draft sprint backlog items (user story titles and any existing descriptions or notes).",
+      "Ask the AI to review each story and flag any that are unclear, too large, or missing key acceptance criteria.",
+      "For each story the AI flags, ask it to suggest improved acceptance criteria in Given/When/Then or checklist format.",
+      "Ask the AI to identify any potential technical or cross-team dependencies for the stories in the backlog.",
+      "Provide the strategic context (sprint theme, product goal, quarterly OKR) and ask the AI to draft 3 options for the sprint goal.",
+      "Ask the AI to identify any stories that seem misaligned with the sprint goal and should be deferred.",
+      "Request a Definition of Ready checklist review for the top stories to confirm they are ready for planning."
+    ],
+    "desiredOutputFormat": "A structured sprint readiness report with sections for: Stories Needing Refinement, Suggested Acceptance Criteria Improvements, Dependency Flags, Sprint Goal Options (3 drafts with rationale), and Stories Recommended for Deferral.",
+    "qualityChecklist": [
+      "Are all acceptance criteria testable and unambiguous?",
+      "Has each story been reviewed for the Definition of Ready criteria?",
+      "Are dependencies identified and flagged to the relevant owners?",
+      "Does at least one sprint goal option connect clearly to a customer or business outcome?",
+      "Have stories been reviewed for appropriate size (completable within a single sprint)?"
+    ],
+    "governanceChecklist": [
+      "Do not include customer PII or confidential product roadmap information in prompts to external AI tools.",
+      "AI-suggested acceptance criteria must be reviewed and approved by the Product Owner before being finalized.",
+      "Sprint goals require team commitment in the ceremony—AI-generated drafts are starting points, not decisions.",
+      "Keep the final sprint backlog in the team's official backlog management tool."
+    ],
+    "tags": ["sprint-planning", "agile", "backlog", "acceptance-criteria", "product-owner"]
+  },
+  {
+    "id": "prompt-pack-stakeholder-update",
+    "title": "Stakeholder Status Update Generator",
+    "description": "A prompt pack for producing clear, tailored stakeholder status updates and executive communications that convey the right level of detail for each audience, lead with the 'so what', and maintain stakeholder confidence in delivery.",
+    "category": "Stakeholder",
+    "targetRoleIds": ["projm", "dm", "pm", "pgm", "cp"],
+    "phaseId": "phase-5",
+    "systemRole": "You are an expert project communicator and executive advisor who specializes in crafting stakeholder communications that are clear, honest, and confidence-building. You help delivery leaders communicate status, risks, and decisions in ways that build trust with senior stakeholders.",
+    "goalStatement": "Produce a tailored stakeholder status update that gives the right audience the right level of information in the right tone, leading with impact and enabling informed decision-making.",
+    "instructionSteps": [
+      "Describe the audience for this update: their role, level of technical understanding, primary concerns, and what decisions or information they need.",
+      "Provide the raw status information: what was accomplished this period, what is in progress, what is coming up, any risks or issues, and the current RAG status.",
+      "Ask the AI to rewrite this information as a structured status update tailored to the specified audience.",
+      "Request both a short-form version (3-5 bullet points for an email or Slack message) and a long-form version (1-page for a formal report).",
+      "Ask the AI to suggest the most important 'ask' or action item to include in the communication.",
+      "Request a review of the tone—is it appropriately confident without being misleading about issues or risks?"
+    ],
+    "desiredOutputFormat": "Two formats: (1) Short-form: 3-5 bullet points with a clear opening headline and one call-to-action. (2) Long-form: structured sections covering Summary, Progress, Risks & Issues, Next Steps, and Decisions Needed.",
+    "qualityChecklist": [
+      "Does the opening sentence tell the reader the most important thing they need to know?",
+      "Is the language appropriate for the audience's technical level?",
+      "Are risks and issues communicated honestly without causing unnecessary alarm?",
+      "Is there a clear call-to-action or decision request where needed?",
+      "Is the update concise enough to be read in under 3 minutes?"
+    ],
+    "governanceChecklist": [
+      "Ensure all status information is accurate and has been verified before sending.",
+      "Do not share financially sensitive, legally privileged, or personnel data via AI tools.",
+      "Have a senior colleague review communications to executives or clients before sending.",
+      "Any commitments made in communications must be confirmed with the delivery team first."
+    ],
+    "tags": ["stakeholder", "communication", "status-update", "executive", "reporting"]
+  },
+  {
+    "id": "prompt-pack-lessons-learned",
+    "title": "Lessons Learned Synthesizer",
+    "description": "A prompt pack for synthesizing lessons learned from retrospectives, incident reports, and team feedback into structured, actionable improvement recommendations that go beyond symptom-level observations to systemic insights.",
+    "category": "Retrospective",
+    "targetRoleIds": ["projm", "dm", "pm", "sm", "pgm"],
+    "phaseId": "phase-10",
+    "systemRole": "You are an experienced delivery excellence consultant and organizational learning specialist. You help teams move beyond surface-level retrospective observations to identify systemic patterns, root causes, and high-impact improvements that create lasting change.",
+    "goalStatement": "Transform raw retrospective notes and lessons learned data into a structured, actionable improvement report that the team can act on and that builds organizational knowledge for future projects.",
+    "instructionSteps": [
+      "Paste in the raw retrospective notes, lessons learned survey responses, or project feedback collected from the team.",
+      "Ask the AI to identify recurring themes and patterns across all the data, grouping related observations together.",
+      "For each theme, ask the AI to propose the likely root cause using a structured root cause analysis approach (e.g., 5 Whys or fishbone).",
+      "Ask the AI to rank themes by potential impact on future project outcomes and team health.",
+      "Request 3-5 specific, actionable improvement recommendations with implementation steps for each.",
+      "Ask the AI to identify any quick wins (implementable within the next sprint) vs. longer-term systemic improvements.",
+      "Request a summary narrative suitable for sharing with leadership that frames the improvements as a path forward."
+    ],
+    "desiredOutputFormat": "Structured report with: (1) Themes and Patterns Summary, (2) Root Cause Analysis for top 3 themes, (3) Prioritized Improvement Recommendations with implementation steps, (4) Quick Wins vs. Systemic Improvements matrix, (5) Executive Summary narrative.",
+    "qualityChecklist": [
+      "Do the identified themes go beyond symptoms to underlying root causes?",
+      "Are improvement recommendations specific and actionable, not generic advice?",
+      "Is there a realistic owner and timeline for each improvement?",
+      "Does the output balance celebrating successes with identifying improvements?",
+      "Has the AI been challenged to identify root causes rather than just restating the observations?"
+    ],
+    "governanceChecklist": [
+      "Ensure team feedback is anonymized before pasting into AI tools if individuals can be identified.",
+      "Do not include sensitive personnel feedback or performance data in AI prompts.",
+      "Have the team review and validate AI-synthesized themes before publishing the lessons learned report.",
+      "Store the final lessons learned report in the approved project knowledge management system."
+    ],
+    "tags": ["lessons-learned", "retrospective", "improvement", "synthesis", "organizational-learning"]
+  },
+  {
+    "id": "prompt-pack-requirements-discovery",
+    "title": "Requirements Discovery & Story Generator",
+    "description": "A prompt pack for Business Analysts and Product Owners to use AI as a discovery accelerator—generating comprehensive requirements questions, identifying edge cases, and drafting user stories from rough business requirements.",
+    "category": "Discovery",
+    "targetRoleIds": ["ba", "po", "pm"],
+    "phaseId": "phase-2",
+    "systemRole": "You are a senior Business Analyst with 15+ years of experience eliciting and documenting requirements for complex technology systems. You specialize in asking the questions that reveal hidden requirements, edge cases, and non-functional considerations that stakeholders don't think to mention.",
+    "goalStatement": "Produce a comprehensive set of discovery questions, identify hidden requirements and edge cases, and generate well-structured user stories from rough business requirements.",
+    "instructionSteps": [
+      "Describe the business requirement or feature request in as much detail as you have currently.",
+      "Ask the AI to generate 20+ clarifying questions you should ask stakeholders to fully understand the requirement, organized by category (business rules, user types, edge cases, integrations, non-functional requirements).",
+      "Provide any answers you already know to the most important questions and ask the AI to identify remaining gaps.",
+      "Ask the AI to draft a set of user stories from the requirement, covering the main happy path and the most important edge cases.",
+      "For each user story, ask the AI to draft acceptance criteria in Given/When/Then format.",
+      "Ask the AI to identify any non-functional requirements (performance, security, accessibility, scalability) implied by the feature.",
+      "Ask the AI to flag any business rules or constraints that are likely to exist but have not yet been stated."
+    ],
+    "desiredOutputFormat": "Structured output with: (1) Organized discovery questions by category, (2) Identified requirement gaps, (3) Draft user stories in standard format, (4) Acceptance criteria for each story, (5) Non-functional requirements list, (6) Potential hidden business rules.",
+    "qualityChecklist": [
+      "Do the discovery questions cover functional, non-functional, integration, security, and data requirements?",
+      "Are edge cases and error paths represented in the user stories?",
+      "Are acceptance criteria testable and unambiguous?",
+      "Have non-functional requirements been explicitly surfaced?",
+      "Have potential business rule conflicts or gaps been identified?"
+    ],
+    "governanceChecklist": [
+      "Do not include customer PII or confidential business data in AI prompts.",
+      "All AI-generated requirements must be reviewed and validated with subject matter experts before being baselined.",
+      "Ensure AI-generated acceptance criteria are reviewed by the testing team for testability.",
+      "Requirements traceability must be maintained in the approved project management tool."
+    ],
+    "tags": ["requirements", "discovery", "business-analysis", "user-stories", "acceptance-criteria"]
+  },
+  {
+    "id": "prompt-pack-test-strategy",
+    "title": "Test Strategy Developer",
+    "description": "A prompt pack for developing a comprehensive test strategy for a feature or release, covering test types, coverage targets, tooling, environment needs, and risk-based testing prioritization.",
+    "category": "Delivery",
+    "targetRoleIds": ["ba", "po", "dm", "em"],
+    "phaseId": "phase-6",
+    "systemRole": "You are an experienced QA architect and test strategy consultant who helps delivery teams design pragmatic, risk-based test strategies that ensure quality without over-engineering the testing approach.",
+    "goalStatement": "Develop a practical test strategy for a feature or release that ensures appropriate coverage, prioritizes testing effort based on risk, and is executable within the team's capacity.",
+    "instructionSteps": [
+      "Describe the feature or release being tested: what it does, who uses it, what systems it integrates with, and what the key risks are.",
+      "Ask the AI to recommend a test pyramid for this feature—what proportion of unit, integration, and end-to-end tests are appropriate and why.",
+      "Request a list of the highest-risk scenarios that must be covered in testing and why each is high risk.",
+      "Ask for a recommendation on test tooling appropriate for the technology stack and team capability.",
+      "Request a UAT scenario outline covering the primary user journeys that business stakeholders should validate.",
+      "Ask for non-functional testing recommendations: performance, security, accessibility, and data integrity tests.",
+      "Request a test environment specification—what environments are needed and what data is required."
+    ],
+    "desiredOutputFormat": "Structured test strategy document with: (1) Test approach and pyramid recommendation, (2) High-risk scenario list, (3) Test types and tooling recommendations, (4) UAT scenario outline, (5) Non-functional testing plan, (6) Environment and data requirements.",
+    "qualityChecklist": [
+      "Does the test strategy reflect the actual risk profile of the feature being tested?",
+      "Are UAT scenarios written in business language that non-technical stakeholders can validate?",
+      "Have non-functional requirements been explicitly included in the test plan?",
+      "Is the testing scope realistic given team capacity and timeline?",
+      "Are there explicit entry and exit criteria for each test phase?"
+    ],
+    "governanceChecklist": [
+      "Ensure test data requirements do not specify use of real customer PII in test environments.",
+      "Test strategy should be reviewed and approved by engineering and product leads before execution.",
+      "Security testing requirements should be reviewed by a security professional.",
+      "Ensure compliance and regulatory testing requirements are included if applicable to the domain."
+    ],
+    "tags": ["testing", "QA", "test-strategy", "quality", "UAT", "delivery"]
+  },
+  {
+    "id": "prompt-pack-release-notes",
+    "title": "Release Notes Generator",
+    "description": "A prompt pack for generating clear, audience-appropriate release notes from raw development artifacts such as commit messages, JIRA tickets, and sprint review summaries, producing communications that inform and engage rather than overwhelm.",
+    "category": "Release",
+    "targetRoleIds": ["pm", "po", "dm"],
+    "phaseId": "phase-8",
+    "systemRole": "You are an expert technical writer and product communicator who specializes in writing clear, engaging release notes that communicate the value of software changes to both technical and non-technical audiences.",
+    "goalStatement": "Transform raw development artifacts into polished, audience-appropriate release notes that communicate the value of changes clearly and build user confidence in the new release.",
+    "instructionSteps": [
+      "Paste in the raw material: sprint review notes, JIRA ticket summaries, commit message logs, or any other record of what was built and fixed.",
+      "Specify the target audience for the release notes: technical engineers, business users, executive stakeholders, or external customers.",
+      "Ask the AI to group changes into meaningful categories: New Features, Improvements, Bug Fixes, and Known Issues.",
+      "For each change, ask the AI to rewrite the description in benefit-led language ('Now you can...' rather than 'Fixed bug in...').",
+      "Ask for a one-paragraph executive summary of the release for inclusion in stakeholder communications.",
+      "Request a list of any deprecated features or breaking changes that need prominent disclosure.",
+      "Ask the AI to suggest any changelog formatting best practices that improve readability for the specified audience."
+    ],
+    "desiredOutputFormat": "Formatted release notes document with: (1) Release headline and version number, (2) Executive summary paragraph, (3) Sections for New Features, Improvements, Bug Fixes, and Known Issues, (4) Deprecations and Breaking Changes (if applicable), with each item written in user-friendly, benefit-led language.",
+    "qualityChecklist": [
+      "Is each change described in terms of user benefit, not technical implementation?",
+      "Are breaking changes or deprecations prominently highlighted?",
+      "Is the executive summary appropriate for a non-technical audience?",
+      "Are release notes free of jargon that external customers would not understand?",
+      "Is the version number and release date clearly indicated?"
+    ],
+    "governanceChecklist": [
+      "Release notes must be reviewed and approved by the Product Owner before publication.",
+      "Do not include internal ticket IDs or system names in customer-facing release notes.",
+      "Ensure any security-related fixes are described without revealing exploitable details.",
+      "Release notes should align with the release communication plan and go-to-market timeline."
+    ],
+    "tags": ["release-notes", "communication", "changelog", "release", "product-communication"]
+  },
+  {
+    "id": "prompt-pack-adr",
+    "title": "Architecture Decision Record (ADR) Writer",
+    "description": "A prompt pack for drafting comprehensive Architecture Decision Records that document the context, options considered, decision made, and consequences in a format suitable for ARB review and long-term organizational knowledge.",
+    "category": "Governance",
+    "targetRoleIds": ["tl", "em", "pm"],
+    "phaseId": "phase-4",
+    "systemRole": "You are an experienced solutions architect and technical documentation expert. You help engineering teams produce well-structured Architecture Decision Records that clearly communicate technical decisions, their rationale, and their implications to diverse audiences.",
+    "goalStatement": "Produce a complete, review-ready Architecture Decision Record that clearly documents a technical decision with sufficient context, evidence, and trade-off analysis for an Architecture Review Board evaluation.",
+    "instructionSteps": [
+      "Describe the technical decision that needs to be documented: what problem it solves, what system or component it affects, and who is proposing it.",
+      "Ask the AI to draft the Context section: what forces, constraints, and requirements are driving this decision.",
+      "Provide the options that were considered (at minimum 2-3) and ask the AI to help structure the Options Considered section with pros and cons for each.",
+      "State the preferred option and ask the AI to help articulate the Decision and Rationale section clearly, connecting it to the stated decision drivers.",
+      "Ask the AI to draft the Consequences section: what becomes easier, what becomes harder, and what new risks or constraints are introduced by this decision.",
+      "Ask for a review of the ADR against common ADR quality criteria: is it clear, is it complete, is it unambiguous, does it capture the 'why' not just the 'what'?",
+      "Request a summary of the key points for the ARB presentation (2-3 minutes of talking points)."
+    ],
+    "desiredOutputFormat": "Complete ADR document with standard sections: Title, Status, Context, Decision Drivers, Options Considered (with pros/cons table), Decision, Rationale, Consequences (positive, negative, neutral), and Related Decisions. Followed by ARB presentation talking points.",
+    "qualityChecklist": [
+      "Does the context section clearly explain why a decision was needed?",
+      "Are at least 2-3 alternatives genuinely considered rather than a 'straw man' for the preferred option?",
+      "Does the rationale explain the decision in terms of decision drivers, not just preference?",
+      "Are both positive and negative consequences documented honestly?",
+      "Is the ADR understandable by an engineer who was not part of the original discussion?"
+    ],
+    "governanceChecklist": [
+      "ADR must be reviewed by at least one senior engineer not on the proposing team before ARB submission.",
+      "Security and compliance implications must be explicitly assessed in the Consequences section.",
+      "ADRs should be stored in the version-controlled architecture repository.",
+      "Related ADRs and dependencies on other decisions must be cross-referenced."
+    ],
+    "tags": ["architecture", "ADR", "technical-decision", "governance", "documentation"]
+  },
+  {
+    "id": "prompt-pack-executive-summary",
+    "title": "Executive Summary Generator",
+    "description": "A prompt pack for transforming detailed project reports, discovery findings, or business cases into concise, structured executive summaries that communicate the most important information to senior leaders in a format they can act on.",
+    "category": "Stakeholder",
+    "targetRoleIds": ["pm", "cp", "pgm", "projm", "dm"],
+    "phaseId": "phase-5",
+    "systemRole": "You are an executive communications specialist and senior advisor who helps leaders communicate complex topics to C-suite and board-level audiences. You are expert at distilling dense information into clear narratives that enable confident decision-making.",
+    "goalStatement": "Transform a detailed document or complex body of information into a crisp executive summary that gives senior leaders everything they need to know and nothing they don't, enabling fast, confident decisions.",
+    "instructionSteps": [
+      "Paste in or describe the document or situation you need to summarize: a project status report, discovery findings, business case, or risk assessment.",
+      "Specify the executive audience: their role, what they care about most, what decisions they need to make, and any sensitivities to be aware of.",
+      "Ask the AI to extract the 3-5 most important points from the source material—what a busy executive must know.",
+      "Ask the AI to draft an opening paragraph that leads with the key message and 'so what' for the audience.",
+      "Request a 'Situation, Complication, Resolution' structure for the summary narrative.",
+      "Ask the AI to identify the single most important action or decision required from the executive audience.",
+      "Request a review for executive readability: is it free of jargon, is it under 1 page, does it start with the most important information?"
+    ],
+    "desiredOutputFormat": "Executive Summary document (maximum 1 page) with: (1) Opening headline (1 sentence), (2) Key Message paragraph (3-5 sentences), (3) Supporting points (3-5 bullet points), (4) Situation/Complication/Resolution narrative (3 short paragraphs), (5) Decision Required or Recommended Action (clearly stated), (6) Key metrics or evidence (2-3 data points).",
+    "qualityChecklist": [
+      "Can the summary be read and understood in under 3 minutes?",
+      "Does the opening sentence tell the reader the most important thing they need to know?",
+      "Is technical jargon eliminated or explained for a non-technical executive audience?",
+      "Is there a single, clear call to action or decision request?",
+      "Is the summary free of unnecessary background that the executive already knows?"
+    ],
+    "governanceChecklist": [
+      "All facts, metrics, and claims in the summary must be verified against source documents before sending.",
+      "Executive summaries containing financial projections must be reviewed by finance before distribution.",
+      "Ensure sensitive personnel, legal, or commercial information is handled appropriately for the distribution list.",
+      "Have the document reviewed by a senior colleague before sending to C-suite or board recipients."
+    ],
+    "tags": ["executive-summary", "communication", "stakeholder", "reporting", "leadership"]
+  }
+]

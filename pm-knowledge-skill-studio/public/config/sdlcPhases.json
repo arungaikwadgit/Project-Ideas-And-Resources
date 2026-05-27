@@ -1,0 +1,352 @@
+[
+  {
+    "id": "phase-1",
+    "name": "Initiation & Governance",
+    "purpose": "Establish the foundation of the engagement or product initiative by defining scope, securing sponsorship, aligning stakeholders on objectives, and setting up governance structures. This phase ensures everyone starts with a shared understanding of goals, constraints, and accountability.",
+    "typicalInputs": [
+      "Business case or opportunity statement",
+      "Executive sponsor mandate or brief",
+      "Initial stakeholder list",
+      "High-level budget and resource assumptions",
+      "Strategic objectives and OKRs",
+      "Existing contracts or SOWs (if applicable)"
+    ],
+    "typicalOutputs": [
+      "Project or product charter",
+      "Governance model and RACI matrix",
+      "Stakeholder register and engagement plan",
+      "Initial risk register",
+      "Kickoff meeting agenda and materials",
+      "Team onboarding plan"
+    ],
+    "applicableRoles": ["pm", "projm", "dm", "pgm", "cp", "tl"],
+    "commonRisks": [
+      "Unclear or misaligned stakeholder expectations from the start",
+      "Insufficient executive sponsorship or authority",
+      "Scope not properly bounded leading to early creep",
+      "Key stakeholders not engaged or identified",
+      "Governance model not agreed before delivery begins"
+    ],
+    "recommendedPlaybooks": [
+      "Stakeholder Alignment Playbook",
+      "Project Charter Development",
+      "Kickoff Meeting Facilitation",
+      "Governance Setup Playbook"
+    ]
+  },
+  {
+    "id": "phase-2",
+    "name": "Discovery / Analysis",
+    "purpose": "Deeply understand user needs, business problems, technical constraints, and market context before committing to solutions. This phase transforms assumptions into validated insights that inform the solution direction and reduce downstream rework.",
+    "typicalInputs": [
+      "Project charter or initiative brief",
+      "Stakeholder interview schedule",
+      "Existing system documentation or architecture diagrams",
+      "Customer feedback or research data",
+      "Business process documentation",
+      "Competitive landscape information"
+    ],
+    "typicalOutputs": [
+      "Discovery report with key findings and insights",
+      "User personas and journey maps",
+      "Current-state process maps",
+      "Problem statement and opportunity definition",
+      "Requirements baseline or initial backlog",
+      "Architecture assessment or constraints document"
+    ],
+    "applicableRoles": ["pm", "po", "ba", "cp", "tl", "sm"],
+    "commonRisks": [
+      "Discovery is rushed or compressed, leading to poor requirement quality",
+      "Key user groups or edge cases not represented in research",
+      "Assumptions treated as facts without validation",
+      "Technical constraints discovered too late in process",
+      "Stakeholder buy-in not secured before moving to planning"
+    ],
+    "recommendedPlaybooks": [
+      "Discovery Workshop Playbook",
+      "Stakeholder Interview Guide",
+      "Requirements Discovery Playbook",
+      "User Journey Mapping Facilitation"
+    ]
+  },
+  {
+    "id": "phase-3",
+    "name": "Planning / Backlog",
+    "purpose": "Translate discovery insights and requirements into a prioritized, sequenced delivery plan and backlog that the team can execute against. This phase establishes the delivery rhythm, resource assignments, and baseline expectations for scope and timeline.",
+    "typicalInputs": [
+      "Discovery report and requirements baseline",
+      "Approved scope and budget",
+      "Team capacity and availability",
+      "Technology and architecture decisions",
+      "Stakeholder priorities and constraints",
+      "Dependency map from other teams or systems"
+    ],
+    "typicalOutputs": [
+      "Prioritized product or project backlog",
+      "Release plan and milestone schedule",
+      "Sprint 0 or inception output",
+      "Resource and capacity plan",
+      "Definition of Ready and Definition of Done",
+      "Team working agreement"
+    ],
+    "applicableRoles": ["pm", "po", "projm", "dm", "sm", "ba", "pgm"],
+    "commonRisks": [
+      "Backlog items lack sufficient detail for development to begin",
+      "Estimates are too optimistic given team velocity and constraints",
+      "Dependencies on other teams not factored into the plan",
+      "Stakeholders not aligned on scope trade-offs",
+      "Technical risks not included as backlog items"
+    ],
+    "recommendedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Release Planning Workshop",
+      "Backlog Refinement Facilitation",
+      "Dependency Mapping Session"
+    ]
+  },
+  {
+    "id": "phase-4",
+    "name": "Design / Architecture",
+    "purpose": "Define the technical architecture, system design, and user experience patterns that will guide development. This phase ensures the team has shared, documented decisions about how the solution will be structured before significant development investment begins.",
+    "typicalInputs": [
+      "Requirements baseline and prioritized backlog",
+      "Technology standards and constraints",
+      "Non-functional requirements (performance, security, scalability)",
+      "Existing system architecture and integration points",
+      "User research and journey maps",
+      "Security and compliance requirements"
+    ],
+    "typicalOutputs": [
+      "Solution architecture diagram and documentation",
+      "Architecture Decision Records (ADRs)",
+      "UI/UX wireframes and prototypes",
+      "Data model and API design specifications",
+      "Non-functional requirements test plan",
+      "Technology spike results"
+    ],
+    "applicableRoles": ["tl", "em", "pm", "ba", "po"],
+    "commonRisks": [
+      "Architecture decisions made without validating key technical assumptions",
+      "Design phase skipped or compressed, leading to costly rework",
+      "Non-functional requirements not addressed in design",
+      "Security and compliance considerations missed",
+      "Design not reviewed by or communicated to the delivery team"
+    ],
+    "recommendedPlaybooks": [
+      "Architecture Review Board (ARB) Playbook",
+      "Architecture Decision Record (ADR) Template",
+      "Design Sprint Facilitation",
+      "Technical Spike Planning"
+    ]
+  },
+  {
+    "id": "phase-5",
+    "name": "Development",
+    "purpose": "Build the product or solution features according to designs, architecture, and acceptance criteria through iterative sprints. This phase is where the team converts backlog items into working, tested software through disciplined engineering practices.",
+    "typicalInputs": [
+      "Prioritized sprint backlog with ready stories",
+      "Architecture and design documentation",
+      "Definition of Done",
+      "Development environment and toolchain setup",
+      "Coding standards and engineering guidelines",
+      "Dependency-free backlog queue"
+    ],
+    "typicalOutputs": [
+      "Shippable product increments each sprint",
+      "Unit and integration tests",
+      "Code review records",
+      "Sprint review demos",
+      "Updated technical documentation",
+      "Defect log and resolution records"
+    ],
+    "applicableRoles": ["em", "sm", "po", "dm", "pm"],
+    "commonRisks": [
+      "Story definitions unclear or incomplete, blocking development",
+      "Technical debt accumulating faster than it is paid down",
+      "Integration issues not discovered until late in development",
+      "Scope creep from mid-sprint changes eroding velocity",
+      "Team blocked by external dependencies or environments"
+    ],
+    "recommendedPlaybooks": [
+      "Sprint Planning Playbook",
+      "Engineering Code Review Guidelines",
+      "Technical Debt Management Playbook",
+      "Impediment Escalation Process"
+    ]
+  },
+  {
+    "id": "phase-6",
+    "name": "Testing",
+    "purpose": "Validate that built features meet acceptance criteria, perform as required, and are free of critical defects before release. This phase encompasses unit testing, integration testing, performance testing, security testing, and user acceptance testing (UAT).",
+    "typicalInputs": [
+      "Completed development increments",
+      "Acceptance criteria and definition of done",
+      "Test plan and test cases",
+      "Non-functional requirements for performance and security",
+      "UAT user groups and scenarios",
+      "Test environment with representative data"
+    ],
+    "typicalOutputs": [
+      "Test results and defect reports",
+      "UAT sign-off documentation",
+      "Regression test suite",
+      "Performance test results",
+      "Security scan reports",
+      "Release readiness assessment"
+    ],
+    "applicableRoles": ["sm", "po", "dm", "ba", "em", "projm"],
+    "commonRisks": [
+      "Testing starts too late or is compressed at the end of the project",
+      "Test environments not representative of production",
+      "UAT participants unavailable or not engaged",
+      "Critical defects discovered too close to release date",
+      "Regression coverage insufficient for safe refactoring"
+    ],
+    "recommendedPlaybooks": [
+      "Test Strategy Development Playbook",
+      "UAT Planning and Execution Playbook",
+      "Defect Management Process",
+      "Release Readiness Review Checklist"
+    ]
+  },
+  {
+    "id": "phase-7",
+    "name": "CI/CD & Deployment",
+    "purpose": "Automate and govern the build, test, and deployment pipeline to enable safe, repeatable, and fast delivery of software to production and pre-production environments. This phase ensures deployment processes are reliable, auditable, and reduce the risk of release failures.",
+    "typicalInputs": [
+      "Tested and approved software increments",
+      "Deployment configuration and environment specifications",
+      "CI/CD pipeline configuration",
+      "Change management and release approval process",
+      "Infrastructure as code and environment scripts",
+      "Rollback and recovery procedures"
+    ],
+    "typicalOutputs": [
+      "Automated CI/CD pipeline",
+      "Deployment runbook and release checklist",
+      "Environment configuration documentation",
+      "Deployment success/failure metrics (DORA)",
+      "Rollback procedure documentation",
+      "Infrastructure audit logs"
+    ],
+    "applicableRoles": ["em", "tl", "dm", "projm"],
+    "commonRisks": [
+      "Manual deployment steps introduce human error",
+      "Pipeline failures not caught early in the development cycle",
+      "Environment configuration drift between dev, staging, and production",
+      "Insufficient rollback capability for failed deployments",
+      "Change advisory board (CAB) approval delays release"
+    ],
+    "recommendedPlaybooks": [
+      "CI/CD Pipeline Setup Playbook",
+      "Release Deployment Runbook",
+      "Environment Management Guidelines",
+      "Rollback and Recovery Procedure"
+    ]
+  },
+  {
+    "id": "phase-8",
+    "name": "Release & Customer Engagement",
+    "purpose": "Deliver the product or feature to end users through a coordinated release process, including communication, training, and feedback collection. This phase ensures customers are informed, enabled, and supported through the transition to the new solution.",
+    "typicalInputs": [
+      "Release-ready software build",
+      "Go-to-market plan and communication strategy",
+      "User documentation and training materials",
+      "Customer and stakeholder communication templates",
+      "Support team enablement plan",
+      "Feedback collection mechanism"
+    ],
+    "typicalOutputs": [
+      "Release notes and change log",
+      "Customer communication and announcements",
+      "User documentation and help guides",
+      "Training delivery records",
+      "Initial customer feedback and NPS data",
+      "Post-release support plan"
+    ],
+    "applicableRoles": ["pm", "dm", "cp", "projm", "pgm"],
+    "commonRisks": [
+      "Customer communication not coordinated with release timing",
+      "Support team not adequately prepared for increased volume",
+      "Training materials outdated or insufficient for new functionality",
+      "Feature adoption lower than expected due to poor change management",
+      "Negative customer feedback not captured or actioned quickly"
+    ],
+    "recommendedPlaybooks": [
+      "Go-to-Market Release Playbook",
+      "Customer Communication Plan",
+      "Release Notes Generator Playbook",
+      "Post-Release Monitoring and Feedback Playbook"
+    ]
+  },
+  {
+    "id": "phase-9",
+    "name": "Operations",
+    "purpose": "Monitor, maintain, and optimize the product or system in production to ensure reliability, performance, and security goals are met. This phase involves ongoing observability, incident management, and continuous improvement of system health and user experience.",
+    "typicalInputs": [
+      "Deployed production system",
+      "Monitoring and alerting configuration",
+      "SLA and SLO definitions",
+      "On-call schedule and runbooks",
+      "Customer support ticket data",
+      "System performance baselines"
+    ],
+    "typicalOutputs": [
+      "System health dashboards and metrics",
+      "Incident reports and postmortem documents",
+      "SLA compliance reports",
+      "Operational runbooks and procedures",
+      "Capacity planning reports",
+      "Security and compliance audit evidence"
+    ],
+    "applicableRoles": ["em", "tl", "dm", "projm"],
+    "commonRisks": [
+      "Insufficient monitoring leading to slow incident detection",
+      "No documented runbooks for common failure scenarios",
+      "On-call rotation burnout from excessive alert noise",
+      "Technical debt causing increasing operational instability",
+      "Security vulnerabilities not patched in a timely manner"
+    ],
+    "recommendedPlaybooks": [
+      "Incident Management Playbook",
+      "SLA and SLO Review Process",
+      "On-Call Runbook Template",
+      "Security Patch Management Process"
+    ]
+  },
+  {
+    "id": "phase-10",
+    "name": "Closure & Continuous Improvement",
+    "purpose": "Formally close the project or iteration cycle by capturing lessons learned, celebrating outcomes, archiving project artifacts, and identifying improvements for the next cycle. This phase institutionalizes organizational learning and ensures teams benefit from past experiences.",
+    "typicalInputs": [
+      "Project or sprint delivery records",
+      "Stakeholder feedback and satisfaction scores",
+      "Retrospective outputs from all phases",
+      "Defect and issue logs",
+      "Team performance data and velocity history",
+      "Benefits realization data"
+    ],
+    "typicalOutputs": [
+      "Project closure report",
+      "Lessons learned register and recommendations",
+      "Retrospective summary and improvement backlog",
+      "Archived project documentation",
+      "Team recognition and celebration plan",
+      "Next-cycle improvement commitments"
+    ],
+    "applicableRoles": ["pm", "projm", "dm", "sm", "pgm", "cp"],
+    "commonRisks": [
+      "Lessons learned captured but never actioned or institutionalized",
+      "Closure rushed, leaving important artifacts unarchived",
+      "Team recognition overlooked, harming morale and retention",
+      "Retrospective dominated by negatives without celebrating wins",
+      "Knowledge not transferred before team disbandment"
+    ],
+    "recommendedPlaybooks": [
+      "Project Retrospective Playbook",
+      "Lessons Learned Capture and Action Playbook",
+      "Project Closure Checklist",
+      "Benefits Realization Review"
+    ]
+  }
+]

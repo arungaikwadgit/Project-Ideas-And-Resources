@@ -1,0 +1,210 @@
+import React from 'react'
+import { AlertCircle, ExternalLink, Search } from 'lucide-react'
+import { useConfig } from '../../hooks/useConfig'
+import type { SearchProviderConfig } from '../../types'
+
+interface SearchProviderSelectorProps {
+  /** Currently selected search provider ID */
+  selectedProviderId: string | null
+  /** Called when the user changes the provider */
+  onChange: (provider: SearchProviderConfig) => void
+  /** Optional: disable the selector */
+  disabled?: boolean
+  /** Show provider description and metadata beneath the dropdown */
+  showDescription?: boolean
+}
+
+/**
+ * Dropdown that loads the list of search providers from `searchProviders.json`
+ * and lets the user select one. Shows provider metadata (API key requirement,
+ * docs link, max results) below the dropdown.
+ */
+export default function SearchProviderSelector({
+  selectedProviderId,
+  onChange,
+  disabled = false,
+  showDescription = true,
+}: SearchProviderSelectorProps) {
+  const { data: providers, loading, error } = useConfig<SearchProviderConfig[]>('searchProviders.json')
+
+  const selectedProvider =
+    providers?.find((p) => p.id === selectedProviderId) ?? null
+
+  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const provider = providers?.find((p) => p.id === e.target.value)
+    if (provider) onChange(provider)
+  }
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          color: 'var(--muted)',
+          fontSize: '0.875rem',
+        }}
+      >
+        <div className="loading-spinner loading-spinner-sm" />
+        Loading search providers…
+      </div>
+    )
+  }
+
+  if (error || !providers) {
+    return (
+      <div className="alert alert-error" style={{ fontSize: '0.875rem' }}>
+        <AlertCircle size={14} />
+        Failed to load search providers: {error ?? 'Unknown error'}
+      </div>
+    )
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+      {/* Dropdown */}
+      <select
+        className="select"
+        value={selectedProviderId ?? ''}
+        onChange={handleChange}
+        disabled={disabled || providers.length === 0}
+        aria-label="Select search provider"
+      >
+        <option value="" disabled>
+          — Select a search provider —
+        </option>
+        {providers.map((provider) => (
+          <option key={provider.id} value={provider.id}>
+            {provider.displayName}
+          </option>
+        ))}
+      </select>
+
+      {/* Selected provider metadata */}
+      {showDescription && selectedProvider && (
+        <div
+          style={{
+            padding: '0.625rem 0.75rem',
+            background: 'rgba(255,255,255,0.03)',
+            borderRadius: 'var(--radius-sm)',
+            border: '1px solid var(--border)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.375rem',
+          }}
+        >
+          <p
+            style={{
+              fontSize: '0.8125rem',
+              color: 'var(--muted)',
+              margin: 0,
+              lineHeight: 1.5,
+            }}
+          >
+            {selectedProvider.description}
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '0.75rem',
+              marginTop: '0.25rem',
+            }}
+          >
+            {/* API key requirement */}
+            {selectedProvider.requiresApiKey ? (
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--warning)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem',
+                }}
+              >
+                <AlertCircle size={11} />
+                Requires API key
+                {selectedProvider.keyEnvHint && (
+                  <code
+                    style={{
+                      fontSize: '0.7rem',
+                      background: 'rgba(255,204,102,0.1)',
+                      color: 'var(--warning)',
+                      border: '1px solid rgba(255,204,102,0.25)',
+                      borderRadius: 'var(--radius-sm)',
+                      padding: '0.05rem 0.3rem',
+                    }}
+                  >
+                    {selectedProvider.keyEnvHint}
+                  </code>
+                )}
+              </span>
+            ) : (
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--success)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem',
+                }}
+              >
+                No API key required
+              </span>
+            )}
+
+            {/* Max results */}
+            {selectedProvider.maxResults > 0 && (
+              <span
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem',
+                  fontSize: '0.75rem',
+                  color: 'var(--muted)',
+                }}
+              >
+                <Search size={10} />
+                Max {selectedProvider.maxResults} results
+              </span>
+            )}
+
+            {/* Docs link */}
+            {selectedProvider.docsUrl && (
+              <a
+                href={selectedProvider.docsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--accent)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.2rem',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  ;(e.currentTarget as HTMLAnchorElement).style.textDecoration = 'underline'
+                }}
+                onMouseLeave={(e) => {
+                  ;(e.currentTarget as HTMLAnchorElement).style.textDecoration = 'none'
+                }}
+              >
+                <ExternalLink size={10} />
+                Docs
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* No provider selected nudge */}
+      {!selectedProvider && providers.length > 0 && (
+        <p className="form-hint">Choose a search provider to enable domain discovery.</p>
+      )}
+    </div>
+  )
+}

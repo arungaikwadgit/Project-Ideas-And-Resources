@@ -1,0 +1,467 @@
+[
+  {
+    "id": "product-strategy",
+    "name": "Product Strategy",
+    "category": "Strategy",
+    "description": "The ability to define a compelling product vision, identify market opportunities, and create a coherent strategy that connects customer needs, business goals, and technical capabilities into a winning product direction.",
+    "maturityLevels": [
+      "Beginner: Understands what a product strategy is and can describe the components of a strategy document with guidance.",
+      "Developing: Can contribute to strategy discussions and draft sections of a strategy document under supervision.",
+      "Proficient: Independently creates product strategy documents, articulates trade-offs, and aligns stakeholders on direction.",
+      "Advanced: Shapes multi-year product strategy, integrates market signals, competitive intelligence, and business model thinking into strategy.",
+      "Expert: Sets organization-wide product vision and strategy that influences investment decisions, shapes the portfolio, and creates durable competitive advantage."
+    ],
+    "relatedRoleIds": ["pm", "tl", "cp", "pgm"],
+    "relatedDomains": ["Product Management", "Strategy", "Market Analysis"]
+  },
+  {
+    "id": "roadmap-planning",
+    "name": "Roadmap Planning",
+    "category": "Strategy",
+    "description": "The ability to translate strategy and priorities into a structured, time-bound roadmap that communicates what will be built, in what sequence, and why, while remaining adaptable to change.",
+    "maturityLevels": [
+      "Beginner: Understands the purpose of a product roadmap and can read and interpret an existing one.",
+      "Developing: Maintains a roadmap under guidance, updating it with new priorities and communicating changes to the team.",
+      "Proficient: Creates and owns a multi-quarter roadmap, uses Now/Next/Later or other frameworks, and facilitates roadmap review sessions with stakeholders.",
+      "Advanced: Manages roadmaps across multiple product lines or teams, balances technical debt, new features, and strategic bets with confidence.",
+      "Expert: Designs roadmap governance processes, aligns cross-portfolio roadmaps to company strategy, and coaches others on roadmap best practices."
+    ],
+    "relatedRoleIds": ["pm", "po", "pgm", "tl"],
+    "relatedDomains": ["Product Management", "Planning", "Stakeholder Management"]
+  },
+  {
+    "id": "customer-discovery",
+    "name": "Customer Discovery",
+    "category": "Strategy",
+    "description": "The ability to conduct structured research to understand customer needs, behaviors, pain points, and jobs-to-be-done through interviews, surveys, and observation, then synthesize findings into actionable insights.",
+    "maturityLevels": [
+      "Beginner: Can conduct a customer interview with a prepared script and basic questions without leading the participant.",
+      "Developing: Plans and runs discovery interviews, synthesizes key themes, and presents findings in a structured format.",
+      "Proficient: Designs discovery programs, selects appropriate research methods, and connects customer insights directly to product decisions.",
+      "Advanced: Builds continuous discovery habits across the team, integrates qualitative and quantitative research, and mentors others in research techniques.",
+      "Expert: Establishes organization-wide customer intelligence systems, defines research operations, and ensures customer insights inform strategy at the executive level."
+    ],
+    "relatedRoleIds": ["pm", "ba", "cp"],
+    "relatedDomains": ["User Research", "Product Management", "Customer Experience"]
+  },
+  {
+    "id": "prioritization",
+    "name": "Prioritization Frameworks",
+    "category": "Strategy",
+    "description": "The ability to apply structured methods such as RICE, WSJF, MoSCoW, and Kano to evaluate and sequence work based on business value, user impact, effort, and strategic alignment.",
+    "maturityLevels": [
+      "Beginner: Aware of common prioritization frameworks and can explain their basic logic.",
+      "Developing: Applies a single framework (e.g., MoSCoW or RICE) to prioritize a backlog under supervision.",
+      "Proficient: Selects the appropriate framework for the context, facilitates prioritization sessions with stakeholders, and defends decisions with data.",
+      "Advanced: Combines multiple frameworks, handles complex trade-offs across teams or product lines, and adapts prioritization to shifting business context.",
+      "Expert: Designs custom prioritization models for the organization, trains others, and ensures prioritization is aligned with portfolio-level strategy."
+    ],
+    "relatedRoleIds": ["pm", "po", "pgm"],
+    "relatedDomains": ["Product Management", "Delivery", "Strategy"]
+  },
+  {
+    "id": "outcome-definition",
+    "name": "Outcome Definition & OKRs",
+    "category": "Strategy",
+    "description": "The ability to define measurable business and product outcomes using frameworks like OKRs, and to connect team work to those outcomes to ensure effort creates real value rather than just output.",
+    "maturityLevels": [
+      "Beginner: Understands the difference between outputs and outcomes and can describe OKR format.",
+      "Developing: Writes OKRs for their team with guidance, tracks key results, and updates stakeholders on progress.",
+      "Proficient: Independently defines OKRs that are ambitious yet measurable, aligns them to business strategy, and reviews them in quarterly cycles.",
+      "Advanced: Designs OKR processes across multiple teams, coaches others on outcome thinking, and links portfolio initiatives to measurable outcomes.",
+      "Expert: Establishes organizational OKR cadences, builds outcome-based culture, and ensures strategy is expressed in terms of measurable impact."
+    ],
+    "relatedRoleIds": ["pm", "pgm", "tl", "em"],
+    "relatedDomains": ["Product Management", "Strategy", "Governance"]
+  },
+  {
+    "id": "business-metrics",
+    "name": "Business Metrics & Analytics",
+    "category": "Strategy",
+    "description": "The ability to identify the right business metrics, analyze data to derive insights, and use evidence to inform decisions about product direction, feature prioritization, and performance improvement.",
+    "maturityLevels": [
+      "Beginner: Can read dashboards and interpret basic charts; understands terms like conversion rate, churn, and DAU.",
+      "Developing: Identifies relevant metrics for a product area, tracks trends, and flags anomalies to the team.",
+      "Proficient: Designs measurement frameworks, builds or configures dashboards, and conducts analysis that leads to product decisions.",
+      "Advanced: Runs A/B tests, conducts cohort analysis, models business scenarios, and translates complex data into executive-ready insights.",
+      "Expert: Builds data strategy for the product organization, establishes analytics infrastructure, and trains teams on data-driven decision making."
+    ],
+    "relatedRoleIds": ["pm", "ba", "tl"],
+    "relatedDomains": ["Analytics", "Product Management", "Data"]
+  },
+  {
+    "id": "stakeholder-management",
+    "name": "Stakeholder Management",
+    "category": "Communication",
+    "description": "The ability to identify, map, engage, and align stakeholders across different levels and functions, building trust and ensuring their needs and concerns are incorporated into delivery decisions.",
+    "maturityLevels": [
+      "Beginner: Identifies stakeholders and understands the importance of keeping them informed and aligned.",
+      "Developing: Maintains a stakeholder list, communicates status updates regularly, and escalates concerns appropriately.",
+      "Proficient: Manages complex stakeholder relationships, facilitates alignment sessions, navigates conflicts, and builds stakeholder confidence in delivery.",
+      "Advanced: Influences senior executives and external stakeholders, manages political dynamics, and drives alignment on difficult trade-off decisions.",
+      "Expert: Shapes organizational stakeholder engagement models, coaches others on political navigation, and builds lasting cross-organizational relationships."
+    ],
+    "relatedRoleIds": ["pm", "projm", "dm", "pgm", "cp", "po"],
+    "relatedDomains": ["Communication", "Governance", "Delivery"]
+  },
+  {
+    "id": "risk-management",
+    "name": "Risk Management",
+    "category": "Delivery",
+    "description": "The ability to systematically identify, assess, prioritize, and mitigate risks that could threaten delivery, quality, or business outcomes, using tools like RAID logs, risk matrices, and mitigation planning.",
+    "maturityLevels": [
+      "Beginner: Can identify obvious risks when prompted and understands what a risk register is.",
+      "Developing: Maintains a RAID log, updates risks regularly, and flags high-priority risks to the team lead.",
+      "Proficient: Proactively identifies risks across multiple dimensions, builds mitigation plans, and reviews the risk register with stakeholders on a regular cadence.",
+      "Advanced: Identifies systemic and strategic risks, quantifies risk impact, and manages risk escalation across programs.",
+      "Expert: Designs risk governance frameworks, establishes risk culture, and advises executives on portfolio risk posture."
+    ],
+    "relatedRoleIds": ["projm", "dm", "pgm", "pm", "tl", "cp"],
+    "relatedDomains": ["Governance", "Delivery", "Project Management"]
+  },
+  {
+    "id": "agile-facilitation",
+    "name": "Agile Facilitation",
+    "category": "Delivery",
+    "description": "The ability to facilitate Agile ceremonies and collaborative sessions—including sprint planning, retrospectives, refinement, and standup—with energy and structure that maximizes team participation and produces clear outcomes.",
+    "maturityLevels": [
+      "Beginner: Can run a daily standup with a prepared agenda and basic facilitation techniques.",
+      "Developing: Facilitates standard Scrum ceremonies with preparation, handles common dysfunctions, and ensures meetings end with clear actions.",
+      "Proficient: Designs and runs effective ceremonies for teams of varying maturity, adapts facilitation style, and coaches teams on improving their own ceremonies.",
+      "Advanced: Facilitates complex multi-team events (PI Planning, program retrospectives), designs custom workshops, and trains others in facilitation techniques.",
+      "Expert: Establishes facilitation standards across the organization, designs agile at scale ceremonies, and coaches facilitators to elevate their practice."
+    ],
+    "relatedRoleIds": ["sm", "dm", "po", "ba"],
+    "relatedDomains": ["Agile", "Delivery", "Team Collaboration"]
+  },
+  {
+    "id": "requirements-discovery",
+    "name": "Requirements Discovery",
+    "category": "Delivery",
+    "description": "The ability to elicit, analyze, and document functional and non-functional requirements through structured techniques like interviews, workshops, prototyping, and observation, ensuring requirements are complete, unambiguous, and testable.",
+    "maturityLevels": [
+      "Beginner: Can participate in a requirements workshop and document notes; understands the difference between functional and non-functional requirements.",
+      "Developing: Conducts structured interviews and workshops with a prepared guide, produces draft requirements documents under supervision.",
+      "Proficient: Leads discovery engagements, selects appropriate elicitation techniques, produces well-structured requirements documents, and validates them with stakeholders.",
+      "Advanced: Manages complex discovery across large stakeholder groups, identifies hidden requirements and edge cases, and builds requirements traceability.",
+      "Expert: Designs requirements engineering processes for organizations, trains teams, and ensures requirements quality across large programs."
+    ],
+    "relatedRoleIds": ["ba", "pm", "po", "cp"],
+    "relatedDomains": ["Business Analysis", "Product Management", "Delivery"]
+  },
+  {
+    "id": "architecture-awareness",
+    "name": "Architecture Awareness",
+    "category": "Technical",
+    "description": "The ability to understand and communicate software architecture concepts—including system design, patterns, trade-offs, and constraints—at a level sufficient to make informed product and delivery decisions even without deep implementation expertise.",
+    "maturityLevels": [
+      "Beginner: Understands high-level concepts like client-server, APIs, and databases; can read a basic architecture diagram.",
+      "Developing: Participates in architecture discussions, asks informed questions, and understands the impact of design choices on delivery.",
+      "Proficient: Reviews architecture documents, identifies architecture risks relevant to product delivery, and translates technical constraints into product trade-offs.",
+      "Advanced: Contributes to architecture decision-making, evaluates architectural options from a product and delivery perspective, and facilitates ADR reviews.",
+      "Expert: Sets technical vision, governs architecture at the portfolio level, and aligns architecture decisions with long-term business strategy."
+    ],
+    "relatedRoleIds": ["tl", "em", "pm", "ba"],
+    "relatedDomains": ["Technical", "Engineering", "System Design"]
+  },
+  {
+    "id": "delivery-governance",
+    "name": "Delivery Governance",
+    "category": "Delivery",
+    "description": "The ability to establish and operate governance structures—steering committees, stage gates, review cadences, and escalation paths—that provide transparency and control over delivery without creating bureaucratic overhead.",
+    "maturityLevels": [
+      "Beginner: Understands what governance means and can prepare materials for a governance meeting.",
+      "Developing: Operates within an existing governance structure, produces required reports, and follows escalation paths.",
+      "Proficient: Designs governance for a single program, establishes the right cadences and reporting, and facilitates governance meetings effectively.",
+      "Advanced: Builds governance frameworks across multiple programs, balances oversight with team autonomy, and coaches leaders on governance.",
+      "Expert: Designs enterprise delivery governance models, advises executives on governance strategy, and creates scalable frameworks for large organizations."
+    ],
+    "relatedRoleIds": ["projm", "dm", "pgm", "tl", "cp"],
+    "relatedDomains": ["Governance", "Delivery", "Project Management"]
+  },
+  {
+    "id": "sprint-planning",
+    "name": "Sprint Planning",
+    "category": "Delivery",
+    "description": "The ability to facilitate effective sprint planning sessions that result in a realistic sprint backlog with a clear sprint goal, committed team, and well-understood acceptance criteria for all selected items.",
+    "maturityLevels": [
+      "Beginner: Attends sprint planning and understands the purpose and structure of the ceremony.",
+      "Developing: Prepares the backlog for sprint planning, ensures stories are refined, and tracks capacity.",
+      "Proficient: Facilitates sprint planning end-to-end, negotiates scope with the team and Product Owner, and ensures the sprint goal is compelling and achievable.",
+      "Advanced: Designs sprint planning practices tailored to team maturity, coaches less experienced POs and SMs on effective sprint planning.",
+      "Expert: Establishes sprint planning standards across teams, trains facilitators, and identifies systemic issues in planning practices across the program."
+    ],
+    "relatedRoleIds": ["sm", "po", "dm"],
+    "relatedDomains": ["Agile", "Delivery", "Planning"]
+  },
+  {
+    "id": "ai-assisted-thinking",
+    "name": "AI-Assisted Thinking & Prompting",
+    "category": "AI & Data",
+    "description": "The ability to leverage AI language models effectively as a thinking partner, research assistant, and content generator—crafting precise prompts, evaluating AI outputs critically, and integrating AI assistance into daily work without sacrificing quality or judgment.",
+    "maturityLevels": [
+      "Beginner: Can use an AI chatbot for simple tasks like summarizing text or drafting emails with basic prompts.",
+      "Developing: Writes multi-step prompts, uses context effectively, and validates AI outputs before using them.",
+      "Proficient: Designs prompt workflows for complex tasks, combines AI with own expertise, and identifies when AI outputs need correction or refinement.",
+      "Advanced: Builds reusable prompt templates and prompt packs, trains others on effective AI usage, and integrates AI into team workflows systematically.",
+      "Expert: Designs AI usage frameworks and governance for organizations, advises on responsible AI adoption, and stays current with frontier model capabilities."
+    ],
+    "relatedRoleIds": ["pm", "ba", "cp", "tl", "sm", "po", "projm", "dm", "pgm", "em"],
+    "relatedDomains": ["AI", "Productivity", "Knowledge Management"]
+  },
+  {
+    "id": "executive-communication",
+    "name": "Executive Communication",
+    "category": "Communication",
+    "description": "The ability to communicate clearly and persuasively with senior leaders and C-suite stakeholders, adapting tone and format to the executive audience, leading with the 'so what', and enabling confident decision-making.",
+    "maturityLevels": [
+      "Beginner: Can prepare a meeting summary or status update; understands that executives need concise, high-level information.",
+      "Developing: Produces structured executive updates with key messages, status indicators, and clear asks.",
+      "Proficient: Creates executive presentations and briefing documents that are decision-focused, visually clear, and narrative-driven.",
+      "Advanced: Facilitates steering committee meetings, handles difficult executive conversations, and influences senior leadership decisions.",
+      "Expert: Advises executives on communications strategy, presents to boards and investors, and coaches others on executive presence and communication."
+    ],
+    "relatedRoleIds": ["pgm", "cp", "tl", "projm", "dm", "pm"],
+    "relatedDomains": ["Communication", "Stakeholder Management", "Governance"]
+  },
+  {
+    "id": "backlog-ownership",
+    "name": "Backlog Ownership & Management",
+    "category": "Delivery",
+    "description": "The ability to maintain a healthy, prioritized, and well-refined product backlog that ensures the development team always has clear, valuable, and ready work to pull from.",
+    "maturityLevels": [
+      "Beginner: Understands what a product backlog is and can add items to an existing backlog.",
+      "Developing: Maintains the backlog regularly, adds new items, and removes stale ones under guidance.",
+      "Proficient: Owns the full backlog lifecycle, ensures items are prioritized and refined ahead of sprint, and communicates backlog health to the team.",
+      "Advanced: Manages a complex backlog across multiple epics and themes, balances technical debt, bugs, and new features, and maintains a backlog that reflects current strategic priorities.",
+      "Expert: Designs backlog management processes for programs, trains Product Owners, and establishes standards for backlog quality and health."
+    ],
+    "relatedRoleIds": ["po", "pm"],
+    "relatedDomains": ["Agile", "Product Management", "Delivery"]
+  },
+  {
+    "id": "acceptance-criteria",
+    "name": "Acceptance Criteria Definition",
+    "category": "Delivery",
+    "description": "The ability to write clear, testable acceptance criteria that unambiguously define when a user story or feature is complete, enabling developers, testers, and the Product Owner to align on the expected outcome.",
+    "maturityLevels": [
+      "Beginner: Understands what acceptance criteria are and can identify obvious pass/fail conditions for a simple story.",
+      "Developing: Writes basic acceptance criteria for straightforward stories; misses edge cases occasionally.",
+      "Proficient: Writes comprehensive acceptance criteria in Given/When/Then or checklist format, covering happy paths, edge cases, and error states.",
+      "Advanced: Defines acceptance criteria for complex features with multiple scenarios, integrates NFR considerations, and reviews criteria quality across the team.",
+      "Expert: Establishes acceptance criteria standards for programs, trains teams on BDD practices, and ensures criteria quality drives test automation."
+    ],
+    "relatedRoleIds": ["po", "ba", "sm"],
+    "relatedDomains": ["Agile", "Testing", "Product Management"]
+  },
+  {
+    "id": "user-story-writing",
+    "name": "User Story Writing",
+    "category": "Delivery",
+    "description": "The ability to write well-structured user stories that capture the user's perspective, intended behavior, and value, formatted in a way that gives the development team enough context to design and build the right solution.",
+    "maturityLevels": [
+      "Beginner: Can write a basic user story in 'As a / I want / So that' format with coaching.",
+      "Developing: Writes user stories independently, breaks epics into stories, and ensures stories meet the Definition of Ready.",
+      "Proficient: Writes high-quality stories that are appropriately sized, linked to epics, include clear acceptance criteria, and tell a coherent user narrative.",
+      "Advanced: Coaches others on story writing, applies story mapping to organize stories into releases, and maintains story quality across teams.",
+      "Expert: Designs story writing standards and training for organizations, integrates story quality into team health metrics."
+    ],
+    "relatedRoleIds": ["po", "ba", "pm"],
+    "relatedDomains": ["Agile", "Product Management", "Business Analysis"]
+  },
+  {
+    "id": "dependency-tracking",
+    "name": "Dependency Tracking & Management",
+    "category": "Delivery",
+    "description": "The ability to identify, map, track, and proactively resolve dependencies between teams, systems, and workstreams that could block delivery or create sequencing risks in a program.",
+    "maturityLevels": [
+      "Beginner: Understands what a dependency is and can document known dependencies when told about them.",
+      "Developing: Maintains a dependency log, tracks resolution status, and flags blockers to the team lead.",
+      "Proficient: Proactively identifies dependencies during planning, creates dependency maps, and works across teams to resolve or mitigate them.",
+      "Advanced: Manages complex cross-team dependency networks, builds escalation paths, and maintains a dependency map across a multi-team program.",
+      "Expert: Designs dependency management processes for large programs, integrates dependency tracking into planning tools, and coaches Program Managers on dependency governance."
+    ],
+    "relatedRoleIds": ["projm", "dm", "pgm", "sm"],
+    "relatedDomains": ["Delivery", "Governance", "Program Management"]
+  },
+  {
+    "id": "status-reporting",
+    "name": "Status Reporting & Communication",
+    "category": "Communication",
+    "description": "The ability to produce clear, consistent, and actionable status reports that give stakeholders confidence in delivery, surface risks and issues proactively, and enable informed decision-making.",
+    "maturityLevels": [
+      "Beginner: Can complete a status report template with guidance and provide basic project updates.",
+      "Developing: Produces regular status updates using RAG indicators, summarizes progress against milestones, and flags issues.",
+      "Proficient: Creates tailored status reports for different audiences, leads status meetings, and uses data to support status assessment.",
+      "Advanced: Designs status reporting frameworks for programs, ensures consistent reporting standards across teams, and escalates effectively.",
+      "Expert: Builds reporting infrastructure for enterprise programs, advises on governance reporting strategy, and coaches project managers on reporting best practices."
+    ],
+    "relatedRoleIds": ["projm", "dm", "pgm", "sm"],
+    "relatedDomains": ["Communication", "Governance", "Project Management"]
+  },
+  {
+    "id": "retrospectives",
+    "name": "Retrospective Facilitation",
+    "category": "Delivery",
+    "description": "The ability to design and facilitate engaging, psychologically safe retrospective sessions that produce genuine insights, actionable improvements, and a culture of continuous learning within the team.",
+    "maturityLevels": [
+      "Beginner: Can participate in a retrospective and contribute improvement ideas; understands the purpose and format.",
+      "Developing: Runs a basic retrospective using a standard format (e.g., Start/Stop/Continue), captures actions, and follows up.",
+      "Proficient: Designs retrospectives using varied formats (sailboat, 4Ls, timeline), adapts to team dynamics, and tracks improvement action completion.",
+      "Advanced: Facilitates high-stakes retrospectives for troubled teams, uses advanced facilitation techniques, and coaches SMs and DMs on retro design.",
+      "Expert: Designs retrospective programs for large organizations, runs retrospectives at the program and portfolio level, and trains facilitators."
+    ],
+    "relatedRoleIds": ["sm", "dm", "projm"],
+    "relatedDomains": ["Agile", "Team Development", "Continuous Improvement"]
+  },
+  {
+    "id": "coaching",
+    "name": "Coaching & Mentoring",
+    "category": "Leadership",
+    "description": "The ability to help individuals and teams develop their skills, confidence, and performance through structured coaching conversations, goal-setting, feedback, and ongoing developmental support.",
+    "maturityLevels": [
+      "Beginner: Can provide basic feedback to peers; understands the difference between coaching and directing.",
+      "Developing: Conducts structured 1:1 conversations, asks coaching questions, and helps team members identify their own solutions.",
+      "Proficient: Designs development plans, gives balanced feedback, and coaches individuals through specific skill gaps with measurable outcomes.",
+      "Advanced: Coaches leaders and senior individual contributors, uses advanced coaching frameworks (GROW, CLEAR), and creates team development programs.",
+      "Expert: Designs coaching culture and capability programs for organizations, certifies internal coaches, and advises leadership on talent development strategy."
+    ],
+    "relatedRoleIds": ["em", "sm", "dm", "tl"],
+    "relatedDomains": ["Leadership", "People Development", "Team Performance"]
+  },
+  {
+    "id": "technology-strategy",
+    "name": "Technology Strategy",
+    "category": "Technical",
+    "description": "The ability to define and articulate a multi-year technology strategy that aligns engineering investment with business goals, addresses technical debt and modernization needs, and positions the organization to leverage emerging technologies.",
+    "maturityLevels": [
+      "Beginner: Understands that technology choices have long-term implications; can articulate a technology radar concept.",
+      "Developing: Contributes to technology strategy discussions, researches options, and documents technology recommendations.",
+      "Proficient: Creates technology strategy documents, builds technology radars, and facilitates strategy review sessions with engineering leaders.",
+      "Advanced: Owns the technology strategy for a product or business unit, aligns engineering roadmap to business strategy, and makes build/buy/partner recommendations.",
+      "Expert: Sets enterprise-wide technology strategy, advises boards on technology investment, and positions the organization as a technology leader in the market."
+    ],
+    "relatedRoleIds": ["tl", "em", "pgm"],
+    "relatedDomains": ["Technical", "Strategy", "Engineering Leadership"]
+  },
+  {
+    "id": "delivery-planning",
+    "name": "Delivery Planning",
+    "category": "Delivery",
+    "description": "The ability to create realistic, detailed delivery plans that account for team capacity, dependencies, technical complexity, and risk, producing schedules that stakeholders trust and teams can execute against.",
+    "maturityLevels": [
+      "Beginner: Can read a delivery plan and understand the key milestones and dependencies.",
+      "Developing: Updates delivery plans under supervision, tracks milestone completion, and flags delays.",
+      "Proficient: Creates comprehensive delivery plans for a single team or workstream, manages change, and communicates adjustments to stakeholders.",
+      "Advanced: Plans across multiple teams, uses critical path analysis, manages resource constraints, and re-plans effectively when circumstances change.",
+      "Expert: Designs delivery planning frameworks for large programs, trains project managers, and ensures planning processes are fit for organizational scale."
+    ],
+    "relatedRoleIds": ["projm", "dm", "pgm", "sm"],
+    "relatedDomains": ["Project Management", "Delivery", "Governance"]
+  },
+  {
+    "id": "client-advisory",
+    "name": "Client Advisory & Trusted Advisor",
+    "category": "Domain",
+    "description": "The ability to operate as a trusted advisor to senior client stakeholders—offering candid counsel, anticipating client needs, building lasting relationships, and positioning oneself as the go-to expert on complex challenges.",
+    "maturityLevels": [
+      "Beginner: Responsive to client requests and maintains professional relationship; follows up on actions reliably.",
+      "Developing: Proactively shares relevant information with clients, identifies opportunities to add value, and builds rapport with day-to-day contacts.",
+      "Proficient: Manages senior client relationships, provides strategic advice, and is consulted by clients on important decisions.",
+      "Advanced: Operates at executive level, shapes client strategy, and is seen as an extension of the client's senior leadership team.",
+      "Expert: Defines client engagement models for the firm, is recognized as an industry thought leader, and builds lasting client partnerships that span years."
+    ],
+    "relatedRoleIds": ["cp", "pgm", "tl"],
+    "relatedDomains": ["Client Management", "Advisory", "Consulting"]
+  },
+  {
+    "id": "value-framing",
+    "name": "Value Framing & Business Case",
+    "category": "Communication",
+    "description": "The ability to articulate the value and return on investment of a product, feature, or initiative in business terms that resonate with executives and decision-makers, connecting delivery effort to measurable business outcomes.",
+    "maturityLevels": [
+      "Beginner: Can describe the intended benefit of a feature; understands the concept of ROI.",
+      "Developing: Writes benefit statements and contributes to business case documents under supervision.",
+      "Proficient: Creates compelling business cases, quantifies expected value, and presents value narratives to senior stakeholders.",
+      "Advanced: Develops multi-scenario business cases, tracks value realization, and adjusts investment strategies based on outcome data.",
+      "Expert: Designs value realization frameworks for portfolios, advises executives on investment prioritization, and builds value measurement culture."
+    ],
+    "relatedRoleIds": ["cp", "pm", "pgm", "projm"],
+    "relatedDomains": ["Strategy", "Communication", "Consulting"]
+  },
+  {
+    "id": "data-analysis",
+    "name": "Data Analysis & Insight Generation",
+    "category": "AI & Data",
+    "description": "The ability to collect, clean, analyze, and interpret data to generate actionable insights that inform product, delivery, and business decisions, using tools such as SQL, spreadsheets, BI dashboards, and analytics platforms.",
+    "maturityLevels": [
+      "Beginner: Can read and interpret standard charts and metrics; understands average, trend, and correlation.",
+      "Developing: Uses spreadsheets and basic BI tools to analyze datasets and summarize findings.",
+      "Proficient: Runs SQL queries, builds dashboards, conducts trend analysis, and presents data-backed recommendations to stakeholders.",
+      "Advanced: Conducts cohort analysis, funnel analysis, and A/B test analysis; builds reusable analytics models.",
+      "Expert: Designs data strategy, builds analytical infrastructure, and ensures data literacy and insight culture across the organization."
+    ],
+    "relatedRoleIds": ["pm", "ba", "tl"],
+    "relatedDomains": ["Data", "Analytics", "Product Management"]
+  },
+  {
+    "id": "discovery-facilitation",
+    "name": "Discovery & Workshop Facilitation",
+    "category": "Delivery",
+    "description": "The ability to design and facilitate structured discovery workshops and working sessions that engage diverse stakeholder groups, surface insights quickly, and produce clear outputs that drive alignment and decision-making.",
+    "maturityLevels": [
+      "Beginner: Can participate in a workshop and contribute structured ideas; understands workshop goals and rules.",
+      "Developing: Facilitates simple workshops with a prepared agenda and tools (e.g., sticky notes, Miro, Mural).",
+      "Proficient: Designs multi-segment workshops for diverse groups, adapts the agenda in real-time, and synthesizes outputs into clear findings.",
+      "Advanced: Runs complex multi-day discovery programs, facilitates difficult conversations between stakeholders with conflicting views.",
+      "Expert: Designs facilitation frameworks for the organization, trains facilitators, and leads organization-wide strategic workshops."
+    ],
+    "relatedRoleIds": ["ba", "cp", "sm", "pm"],
+    "relatedDomains": ["Discovery", "Facilitation", "Business Analysis"]
+  },
+  {
+    "id": "release-coordination",
+    "name": "Release Coordination & Management",
+    "category": "Delivery",
+    "description": "The ability to plan, coordinate, and execute software releases across teams and environments, ensuring deployment is safe, communication is timely, rollback plans are ready, and all stakeholders are informed.",
+    "maturityLevels": [
+      "Beginner: Understands what a release involves and can follow a release checklist.",
+      "Developing: Coordinates release tasks across a single team, tracks deployment steps, and communicates status.",
+      "Proficient: Manages releases across multiple teams, maintains the release calendar, leads release readiness reviews, and owns go/no-go decisions.",
+      "Advanced: Designs release governance for programs, builds release automation strategies, and manages complex multi-system coordinated releases.",
+      "Expert: Establishes enterprise release management processes, advises on deployment pipeline strategy, and designs release governance at scale."
+    ],
+    "relatedRoleIds": ["dm", "projm", "pgm", "em"],
+    "relatedDomains": ["Delivery", "DevOps", "Program Management"]
+  },
+  {
+    "id": "platform-thinking",
+    "name": "Platform Thinking",
+    "category": "Technical",
+    "description": "The ability to conceptualize and design products and systems as platforms that enable multiple use cases, reduce duplication, create network effects, and provide shared capabilities for multiple teams or customer segments.",
+    "maturityLevels": [
+      "Beginner: Understands the concept of a platform vs. a point solution; can articulate the difference.",
+      "Developing: Identifies opportunities for shared services or platform components within a product; contributes to platform design discussions.",
+      "Proficient: Designs platform capabilities for a product area, balances platform investments against feature delivery, and builds a platform roadmap.",
+      "Advanced: Architects multi-team platform strategies, governs platform evolution, and defines platform APIs and extensibility models.",
+      "Expert: Designs enterprise platform strategies, advises on ecosystem and marketplace models, and builds platform thinking culture across engineering."
+    ],
+    "relatedRoleIds": ["tl", "em", "pm"],
+    "relatedDomains": ["Technical", "Architecture", "Product Strategy"]
+  },
+  {
+    "id": "engineering-execution",
+    "name": "Engineering Execution & Delivery",
+    "category": "Delivery",
+    "description": "The ability to lead an engineering team to deliver high-quality software reliably, maintaining engineering velocity, code quality, testing discipline, and deployment frequency while managing technical debt and team health.",
+    "maturityLevels": [
+      "Beginner: Understands engineering delivery practices and can track sprint progress and team metrics.",
+      "Developing: Supports an engineering team in delivery, tracks metrics, and identifies bottlenecks.",
+      "Proficient: Leads an engineering team to consistent, high-quality delivery; manages sprint health, quality, and team productivity.",
+      "Advanced: Scales engineering execution across multiple teams, improves DORA metrics, and resolves systemic delivery issues.",
+      "Expert: Designs engineering operating models, advises technology leaders on delivery transformation, and achieves engineering excellence at organizational scale."
+    ],
+    "relatedRoleIds": ["em", "dm", "tl"],
+    "relatedDomains": ["Engineering", "Delivery", "Technical Leadership"]
+  }
+]

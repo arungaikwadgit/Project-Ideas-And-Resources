@@ -1,0 +1,8 @@
+[
+  {"id": "proposed", "label": "Proposed", "color": "#ffcc66", "description": "Decision has been proposed but not yet reviewed"},
+  {"id": "under-review", "label": "Under Review", "color": "#4aa3ff", "description": "Decision is currently being evaluated"},
+  {"id": "approved", "label": "Approved", "color": "#7ee787", "description": "Decision has been approved and is in effect"},
+  {"id": "rejected", "label": "Rejected", "color": "#ff6b6b", "description": "Decision was reviewed and rejected"},
+  {"id": "superseded", "label": "Superseded", "color": "#a9b4c9", "description": "Decision has been replaced by a newer decision"},
+  {"id": "deferred", "label": "Deferred", "color": "#cc99ff", "description": "Decision has been deferred for later review"}
+]

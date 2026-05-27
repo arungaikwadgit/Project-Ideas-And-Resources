@@ -1,0 +1,602 @@
+[
+  {
+    "id": "playbook-sprint-planning",
+    "title": "Sprint Planning",
+    "description": "A structured guide for running effective sprint planning sessions that result in a clear sprint goal, a committed sprint backlog, and a team that understands what they are building and why. This playbook ensures planning is efficient, collaborative, and results in a realistic commitment.",
+    "category": "Planning",
+    "phases": ["phase-3", "phase-5"],
+    "roles": ["sm", "po", "dm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Prepare the backlog",
+        "description": "Before the ceremony, the Product Owner ensures the top of the backlog is refined, estimated, and meets the Definition of Ready. Stories should have clear acceptance criteria and no outstanding questions."
+      },
+      {
+        "id": "step-2",
+        "title": "Review team capacity",
+        "description": "The Scrum Master confirms team availability for the sprint, accounting for holidays, planned leave, and part-time contributors. Calculate available story points or hours based on historical velocity."
+      },
+      {
+        "id": "step-3",
+        "title": "Set the sprint goal",
+        "description": "The Product Owner proposes a sprint goal that describes the business outcome the team will achieve this sprint. The team collaborates to refine it into a goal that is specific, meaningful, and achievable."
+      },
+      {
+        "id": "step-4",
+        "title": "Select backlog items",
+        "description": "The development team pulls items from the top of the backlog that contribute to the sprint goal, up to their capacity. The team has final authority on how much work they commit to."
+      },
+      {
+        "id": "step-5",
+        "title": "Decompose into tasks",
+        "description": "The team breaks each selected story into technical tasks, identifying any dependencies, unknowns, or risks. This is done collaboratively to build shared understanding."
+      },
+      {
+        "id": "step-6",
+        "title": "Confirm commitment and close",
+        "description": "The team confirms they are committed to the sprint goal and backlog. The Scrum Master records the sprint goal, captures the starting velocity baseline, and closes the ceremony."
+      }
+    ],
+    "tags": ["sprint", "agile", "planning", "scrum", "ceremony"]
+  },
+  {
+    "id": "playbook-stakeholder-alignment",
+    "title": "Stakeholder Alignment Workshop",
+    "description": "A structured workshop format for aligning diverse stakeholders on goals, priorities, and constraints at the start of a project or initiative. This playbook guides facilitators through pre-work, workshop design, facilitation techniques, and post-workshop follow-up to ensure durable alignment.",
+    "category": "Stakeholder",
+    "phases": ["phase-1", "phase-2"],
+    "roles": ["pm", "projm", "dm", "cp", "pgm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Identify stakeholders and map interests",
+        "description": "Before the workshop, create a stakeholder map identifying all key parties, their roles, level of influence, and primary interests or concerns. Use a power/interest grid to prioritize engagement."
+      },
+      {
+        "id": "step-2",
+        "title": "Design the workshop agenda",
+        "description": "Design an agenda that includes an opening alignment exercise, goal clarification, priority ranking, constraint identification, and decision-making on key questions. Allocate adequate time for discussion."
+      },
+      {
+        "id": "step-3",
+        "title": "Prepare materials and pre-reads",
+        "description": "Develop pre-read materials including the initiative brief, problem statement, proposed objectives, and any open questions. Distribute these 48 hours before the workshop."
+      },
+      {
+        "id": "step-4",
+        "title": "Facilitate the opening alignment exercise",
+        "description": "Open the workshop with an exercise that surfaces assumptions and expectations from all participants. Use silent brainstorming, dot voting, or a structured round-robin to hear from everyone."
+      },
+      {
+        "id": "step-5",
+        "title": "Facilitate goal and priority agreement",
+        "description": "Guide the group through prioritizing objectives using a structured method (e.g., forced ranking, MoSCoW). Document agreements and explicitly call out any areas of disagreement for follow-up."
+      },
+      {
+        "id": "step-6",
+        "title": "Capture decisions and open items",
+        "description": "Record all decisions made during the workshop, along with open items, owners, and due dates. Review this list with the group before closing to ensure shared understanding."
+      },
+      {
+        "id": "step-7",
+        "title": "Distribute workshop summary",
+        "description": "Within 24 hours, send a workshop summary to all participants including decisions made, open items, next steps, and owners. Request explicit confirmation of any critical decisions."
+      }
+    ],
+    "tags": ["stakeholder", "workshop", "alignment", "facilitation", "kickoff"]
+  },
+  {
+    "id": "playbook-risk-review",
+    "title": "Risk Review & RAID Log Management",
+    "description": "A repeatable process for identifying, assessing, and managing risks, assumptions, issues, and dependencies throughout the project lifecycle. This playbook ensures the RAID log is a living tool that drives proactive risk management rather than a compliance artifact.",
+    "category": "Risk",
+    "phases": ["phase-1", "phase-3", "phase-5", "phase-6"],
+    "roles": ["projm", "dm", "pgm", "pm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Establish the RAID log structure",
+        "description": "Set up the RAID log with columns for Risk/Assumption/Issue/Dependency, description, probability, impact, severity score, owner, mitigation action, and status. Choose a tool that is accessible to all team members."
+      },
+      {
+        "id": "step-2",
+        "title": "Run an initial risk identification session",
+        "description": "Facilitate a brainstorming session with the core team to identify risks across all categories: technical, resource, stakeholder, schedule, budget, and external. Use categories as prompts to ensure breadth of coverage."
+      },
+      {
+        "id": "step-3",
+        "title": "Assess and score each risk",
+        "description": "For each risk, assess probability (Low/Medium/High) and impact (Low/Medium/High) and calculate a severity score. Agree as a team on which risks are in the top tier requiring active mitigation."
+      },
+      {
+        "id": "step-4",
+        "title": "Assign owners and mitigation actions",
+        "description": "Every red and amber risk must have a named owner and a documented mitigation action with a due date. Owners are accountable for executing the mitigation and updating status."
+      },
+      {
+        "id": "step-5",
+        "title": "Schedule regular RAID reviews",
+        "description": "Establish a weekly or fortnightly RAID review as part of the project governance calendar. Assign a standing agenda item for the PM or DM to review the top risks and update status."
+      },
+      {
+        "id": "step-6",
+        "title": "Escalate appropriately",
+        "description": "Define the escalation threshold—any risk that becomes an issue or exceeds a severity threshold must be escalated to the steering committee or executive sponsor within 24 hours."
+      }
+    ],
+    "tags": ["risk", "RAID", "governance", "issues", "dependencies", "mitigation"]
+  },
+  {
+    "id": "playbook-discovery-workshop",
+    "title": "Discovery Workshop",
+    "description": "A structured guide for planning and running a discovery workshop that brings together stakeholders and users to deeply understand the problem space, surface insights, and align on problem definition before jumping to solutions. This playbook is applicable at the start of new products, features, or transformation engagements.",
+    "category": "Discovery",
+    "phases": ["phase-2"],
+    "roles": ["pm", "ba", "cp", "sm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Define the discovery objective",
+        "description": "Clearly articulate what the workshop needs to achieve. Are you defining the problem space, mapping the customer journey, or identifying the most painful points to address? Write the objective as a single clear question."
+      },
+      {
+        "id": "step-2",
+        "title": "Invite the right participants",
+        "description": "Identify participants who represent diverse perspectives: users, business stakeholders, technical leads, and customer-facing staff. Aim for 8-12 participants for a manageable workshop dynamic."
+      },
+      {
+        "id": "step-3",
+        "title": "Design the workshop activities",
+        "description": "Select activities appropriate to the objective: journey mapping, empathy mapping, '5 Whys', problem framing, or impact/effort mapping. Plan timing for each activity with buffer for discussion."
+      },
+      {
+        "id": "step-4",
+        "title": "Prepare materials and set up the space",
+        "description": "Prepare physical or digital templates (Miro/Mural boards), sticky notes, markers, and any reference materials. For virtual workshops, send joining instructions and tool guides in advance."
+      },
+      {
+        "id": "step-5",
+        "title": "Facilitate the workshop",
+        "description": "Open with a clear problem statement and objectives. Run each activity with clear instructions, time-box discussions, and synthesize outputs as you go. Ensure all voices are heard and no single person dominates."
+      },
+      {
+        "id": "step-6",
+        "title": "Synthesize and share findings",
+        "description": "Within 48 hours, produce a discovery summary that includes key insights, validated assumptions, identified unknowns, and proposed next steps. Share with all participants for review and confirmation."
+      }
+    ],
+    "tags": ["discovery", "workshop", "research", "facilitation", "problem-framing"]
+  },
+  {
+    "id": "playbook-release-planning",
+    "title": "Release Planning",
+    "description": "A structured approach to planning software releases that ensures teams have a shared understanding of what will be delivered, when, and how, with appropriate rollback plans and stakeholder communications prepared in advance.",
+    "category": "Release",
+    "phases": ["phase-3", "phase-7", "phase-8"],
+    "roles": ["dm", "projm", "po", "em", "sm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Define the release scope",
+        "description": "Confirm which features, bug fixes, and technical items are included in the release. Document the release scope statement and get sign-off from the Product Owner and stakeholders."
+      },
+      {
+        "id": "step-2",
+        "title": "Identify release dependencies and risks",
+        "description": "List all dependencies—infrastructure, third-party systems, regulatory approvals, and other teams. Identify release risks including data migration issues, performance concerns, and integration failures."
+      },
+      {
+        "id": "step-3",
+        "title": "Complete the release readiness checklist",
+        "description": "Verify all readiness criteria: automated tests passing, UAT sign-off complete, documentation updated, support team briefed, monitoring configured, and rollback plan documented."
+      },
+      {
+        "id": "step-4",
+        "title": "Plan the deployment sequence",
+        "description": "Document the step-by-step deployment runbook, including environment promotion order, smoke tests at each stage, and who is responsible for each step. Assign a release manager."
+      },
+      {
+        "id": "step-5",
+        "title": "Prepare stakeholder communications",
+        "description": "Draft release communications for internal teams, customers, and support staff. Include release notes, change log, known issues, and support contact information."
+      },
+      {
+        "id": "step-6",
+        "title": "Execute the release and confirm success",
+        "description": "Execute the deployment runbook, monitor key metrics in the first hours post-release, and send confirmation communications. Document any issues encountered for the release retrospective."
+      }
+    ],
+    "tags": ["release", "deployment", "planning", "go-live", "runbook"]
+  },
+  {
+    "id": "playbook-retrospective",
+    "title": "Team Retrospective",
+    "description": "A comprehensive guide to designing and facilitating effective team retrospectives that generate genuine improvement insights, build team cohesion, and result in concrete actions that the team follows through on. This playbook includes multiple format options for different team contexts.",
+    "category": "Retrospective",
+    "phases": ["phase-5", "phase-10"],
+    "roles": ["sm", "dm", "projm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Choose the retrospective format",
+        "description": "Select a retrospective format appropriate for the team's context: Start/Stop/Continue for routine retrospectives, 4Ls (Liked/Learned/Lacked/Longed For) for deeper reflection, or Sailboat/Speedboat for teams needing an energizing visual metaphor."
+      },
+      {
+        "id": "step-2",
+        "title": "Create psychological safety",
+        "description": "Open with a prime directive reading and a brief check-in activity that allows everyone to share one word about how they are feeling. Establish ground rules: no blame, focus on systems, and assume positive intent."
+      },
+      {
+        "id": "step-3",
+        "title": "Run the main retrospective activity",
+        "description": "Facilitate the chosen activity using silent writing, then sharing, to ensure all voices are captured. Group similar items together and allow brief clarifying questions."
+      },
+      {
+        "id": "step-4",
+        "title": "Prioritize and select improvement actions",
+        "description": "Dot vote on the most impactful items to address. Limit improvement actions to 2-3 to ensure they are achievable within the next sprint. Larger systemic issues should be added to an improvement backlog."
+      },
+      {
+        "id": "step-5",
+        "title": "Assign owners and define success criteria",
+        "description": "Every action item must have a named owner, a specific action, and a due date or measurable outcome. Review progress on previous retrospective actions before closing."
+      },
+      {
+        "id": "step-6",
+        "title": "Close and celebrate",
+        "description": "Close the retrospective by celebrating one win from the sprint and thanking the team for their honesty and participation. Keep the energy positive and forward-looking."
+      }
+    ],
+    "tags": ["retrospective", "agile", "continuous-improvement", "team", "facilitation"]
+  },
+  {
+    "id": "playbook-architecture-review",
+    "title": "Architecture Review Board (ARB)",
+    "description": "A governance playbook for running effective Architecture Review Board sessions that evaluate significant technical decisions, ensure alignment with enterprise standards, and produce clear decisions captured as Architecture Decision Records (ADRs). This playbook ensures architecture governance is rigorous but not bureaucratic.",
+    "category": "Governance",
+    "phases": ["phase-4", "phase-5"],
+    "roles": ["tl", "em", "pm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Define ARB scope and membership",
+        "description": "Establish what types of decisions require ARB review (e.g., new services, technology adoption, external integrations, security changes) and who sits on the ARB. Document the scope in the governance framework."
+      },
+      {
+        "id": "step-2",
+        "title": "Prepare the Architecture Decision Record (ADR)",
+        "description": "The proposing team prepares an ADR covering: context, problem statement, decision drivers, options considered, proposed decision, trade-offs, and consequences. ADRs must be submitted 48 hours before the ARB."
+      },
+      {
+        "id": "step-3",
+        "title": "Pre-review by ARB chair",
+        "description": "The ARB chair reviews submitted ADRs and ensures they are complete and ready for review. Incomplete ADRs are returned to the submitter with specific feedback."
+      },
+      {
+        "id": "step-4",
+        "title": "Facilitate the ARB session",
+        "description": "The proposing team presents the ADR in 10-15 minutes. ARB members ask clarifying questions and evaluate the proposal against architecture principles, security standards, and technical debt implications."
+      },
+      {
+        "id": "step-5",
+        "title": "Record the decision",
+        "description": "The ARB chair documents the decision: Approved, Approved with Conditions, Needs More Information, or Rejected. Conditions and rationale are documented in the ADR and communicated to the team."
+      },
+      {
+        "id": "step-6",
+        "title": "Publish and archive",
+        "description": "Approved ADRs are published to the architecture repository, tagged, and linked to relevant epics or project documentation. The decision history is maintained for organizational learning."
+      }
+    ],
+    "tags": ["architecture", "governance", "ADR", "technical-decisions", "review"]
+  },
+  {
+    "id": "playbook-go-live-checklist",
+    "title": "Go-Live Readiness Checklist",
+    "description": "A comprehensive pre-launch checklist that ensures all technical, operational, communication, and business readiness criteria are met before going live with a new product, major feature, or system cutover. This playbook prevents go-live failures caused by missed readiness criteria.",
+    "category": "Release",
+    "phases": ["phase-7", "phase-8"],
+    "roles": ["dm", "projm", "em", "pm", "pgm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Technical readiness verification",
+        "description": "Confirm all automated test suites pass, performance benchmarks are met, security scan results are reviewed, infrastructure is provisioned and configured, and monitoring and alerting are operational."
+      },
+      {
+        "id": "step-2",
+        "title": "UAT and business acceptance",
+        "description": "Confirm formal UAT sign-off from all required business stakeholders, all critical and high defects are resolved, and the product owner has formally accepted the release scope."
+      },
+      {
+        "id": "step-3",
+        "title": "Data and migration readiness",
+        "description": "Confirm data migration scripts have been tested in a staging environment, data integrity checks pass, rollback scripts for data changes are ready, and backup of current production data is complete."
+      },
+      {
+        "id": "step-4",
+        "title": "Operational readiness",
+        "description": "Confirm the support team has been briefed and trained, runbooks for common issues are published, on-call schedule is in place for the go-live window, and rollback procedures are documented and rehearsed."
+      },
+      {
+        "id": "step-5",
+        "title": "Communication readiness",
+        "description": "Confirm release notes, customer communications, and internal announcements are drafted and approved. Identify the communication owner and confirm the send schedule aligned with deployment timing."
+      },
+      {
+        "id": "step-6",
+        "title": "Go/No-Go decision meeting",
+        "description": "Conduct a formal Go/No-Go meeting with technical, product, and business leads. Review the checklist status, discuss any outstanding items, make a documented go/no-go decision, and confirm the deployment team is in place."
+      }
+    ],
+    "tags": ["go-live", "release", "readiness", "checklist", "deployment"]
+  },
+  {
+    "id": "playbook-lessons-learned",
+    "title": "Lessons Learned Capture & Action",
+    "description": "A structured process for capturing, organizing, and actioning lessons learned at key project milestones and at project closure, ensuring organizational knowledge is preserved and improvements are institutionalized rather than forgotten.",
+    "category": "Retrospective",
+    "phases": ["phase-10"],
+    "roles": ["projm", "dm", "pm", "pgm", "cp"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Schedule and prepare the lessons learned session",
+        "description": "Schedule the session within 2 weeks of project closure or major milestone. Send participants a pre-work prompt asking them to reflect on what went well, what could be improved, and what they would do differently."
+      },
+      {
+        "id": "step-2",
+        "title": "Facilitate the lessons learned discussion",
+        "description": "Use a structured format to capture lessons across delivery dimensions: process, people, technology, stakeholder management, and risk management. Ensure both successes and challenges are documented."
+      },
+      {
+        "id": "step-3",
+        "title": "Categorize and prioritize lessons",
+        "description": "Group lessons by category and prioritize those most likely to have organization-wide impact. Distinguish between project-specific lessons and systemic improvements."
+      },
+      {
+        "id": "step-4",
+        "title": "Identify actionable improvements",
+        "description": "For each high-priority lesson, define a specific improvement action, assign an owner, and set a target date. Ensure improvements are tracked in a central improvement register."
+      },
+      {
+        "id": "step-5",
+        "title": "Document and publish the lessons learned report",
+        "description": "Produce a lessons learned report summarizing the session, top lessons, and improvement commitments. Publish it to the project repository and knowledge management system."
+      },
+      {
+        "id": "step-6",
+        "title": "Follow up on improvement actions",
+        "description": "Schedule a follow-up review 60-90 days after the session to confirm improvement actions have been implemented. Track completion and measure impact where possible."
+      }
+    ],
+    "tags": ["lessons-learned", "retrospective", "knowledge-management", "improvement", "closure"]
+  },
+  {
+    "id": "playbook-incident-management",
+    "title": "Incident Management & Postmortem",
+    "description": "A structured process for detecting, responding to, communicating, and learning from production incidents. This playbook ensures teams respond to incidents with calm, coordinated action and extract meaningful improvements from every significant event.",
+    "category": "Governance",
+    "phases": ["phase-9"],
+    "roles": ["em", "dm", "tl"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Detect and declare the incident",
+        "description": "Confirm an incident has occurred using monitoring alerts, user reports, or automated detection. Declare the incident formally, assign an Incident Commander, and open a dedicated communication channel."
+      },
+      {
+        "id": "step-2",
+        "title": "Assemble the response team",
+        "description": "The Incident Commander assembles the right technical responders and notifies stakeholders. Role clarity is established immediately: Incident Commander, Technical Lead, Communications Lead."
+      },
+      {
+        "id": "step-3",
+        "title": "Diagnose and mitigate",
+        "description": "The technical team works to identify the root cause and implement an immediate mitigation or fix. Regular 15-minute updates are shared in the incident channel. The Incident Commander manages the timeline."
+      },
+      {
+        "id": "step-4",
+        "title": "Communicate with stakeholders",
+        "description": "The Communications Lead sends timely, factual updates to affected users and internal stakeholders. Updates are sent at regular intervals and include current status, impact, and estimated resolution time."
+      },
+      {
+        "id": "step-5",
+        "title": "Confirm resolution and close the incident",
+        "description": "Once the incident is resolved and key metrics confirm stability, the Incident Commander declares the incident closed and sends an all-clear communication. Incident timeline and key events are documented."
+      },
+      {
+        "id": "step-6",
+        "title": "Conduct a blameless postmortem",
+        "description": "Within 5 business days, run a blameless postmortem with the response team. Document the timeline, root cause, contributing factors, impact, and corrective actions. Publish the postmortem report."
+      }
+    ],
+    "tags": ["incident", "operations", "postmortem", "SRE", "reliability"]
+  },
+  {
+    "id": "playbook-backlog-refinement",
+    "title": "Backlog Refinement",
+    "description": "A guide for running effective backlog refinement sessions that result in a 'ready' backlog where the top items are well-defined, estimated, and understood by the team, enabling smooth sprint planning and consistent velocity.",
+    "category": "Planning",
+    "phases": ["phase-3", "phase-5"],
+    "roles": ["sm", "po", "ba"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Prepare the refinement agenda",
+        "description": "Before refinement, the Product Owner identifies the items to be refined this session (typically the next 1-2 sprints' worth of stories). Stories that are not ready for refinement are flagged and removed from the session."
+      },
+      {
+        "id": "step-2",
+        "title": "Review and clarify acceptance criteria",
+        "description": "For each story, the team reviews and clarifies acceptance criteria until every team member can describe what 'done' looks like. Open questions are captured and assigned to owners with due dates."
+      },
+      {
+        "id": "step-3",
+        "title": "Identify and resolve dependencies",
+        "description": "The team identifies any technical or cross-team dependencies for each story. Dependencies that could block delivery are flagged for the Delivery Manager or Scrum Master to resolve."
+      },
+      {
+        "id": "step-4",
+        "title": "Estimate story size",
+        "description": "The team estimates each story using relative sizing (story points, t-shirt sizes). Use planning poker or other consensus techniques. Large items are split into smaller stories that meet the Definition of Ready."
+      },
+      {
+        "id": "step-5",
+        "title": "Mark stories as ready",
+        "description": "Items that meet the Definition of Ready are marked as ready for sprint planning. Items that still have outstanding questions or are too large remain in refinement."
+      }
+    ],
+    "tags": ["backlog", "refinement", "grooming", "agile", "planning"]
+  },
+  {
+    "id": "playbook-capacity-planning",
+    "title": "Team Capacity Planning",
+    "description": "A repeatable process for calculating team capacity at the start of each sprint or planning cycle, accounting for leave, meetings, ceremonies, and part-time contributors, to produce a realistic commitment baseline that teams can rely on.",
+    "category": "Planning",
+    "phases": ["phase-3", "phase-5"],
+    "roles": ["sm", "dm", "projm"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Gather team availability data",
+        "description": "Collect the availability of each team member for the upcoming sprint, including public holidays, approved leave, and part-time days. Record availability in hours or as a percentage of full capacity."
+      },
+      {
+        "id": "step-2",
+        "title": "Calculate ceremony and overhead time",
+        "description": "Subtract time allocated to standard ceremonies (standups, planning, review, retro) and non-delivery overhead (meetings, support, email) from raw availability to get net productive hours."
+      },
+      {
+        "id": "step-3",
+        "title": "Convert to capacity in story points",
+        "description": "Using the team's historical velocity-per-hour or velocity-per-person, convert net hours to a story point capacity for the sprint. Apply a buffer factor (typically 80%) for unexpected overhead."
+      },
+      {
+        "id": "step-4",
+        "title": "Share and confirm with the team",
+        "description": "Present the capacity calculation to the team at sprint planning and confirm that it reflects reality. Team members should raise any additional constraints not captured in the plan."
+      },
+      {
+        "id": "step-5",
+        "title": "Track and refine over time",
+        "description": "Track actual completed points against planned capacity each sprint. Use trends to refine the capacity model and improve commitment accuracy over time."
+      }
+    ],
+    "tags": ["capacity", "planning", "velocity", "sprint", "team"]
+  },
+  {
+    "id": "playbook-executive-steering",
+    "title": "Executive Steering Committee",
+    "description": "A governance playbook for running effective executive steering committee meetings that enable timely decisions, provide meaningful visibility into program health, and maintain executive confidence in delivery without consuming excessive executive time.",
+    "category": "Governance",
+    "phases": ["phase-1", "phase-3", "phase-5"],
+    "roles": ["pgm", "projm", "dm", "cp"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Design the steering committee charter",
+        "description": "Define the steering committee's purpose, membership, decision authority, escalation criteria, meeting cadence, and quorum requirements. Document these in a steering committee charter."
+      },
+      {
+        "id": "step-2",
+        "title": "Prepare the dashboard and status report",
+        "description": "Prepare a concise executive dashboard (typically 1-2 slides or a single page) with RAG status across key dimensions: scope, schedule, budget, risk, and resources. Lead with the 'so what'."
+      },
+      {
+        "id": "step-3",
+        "title": "Identify decisions and escalations required",
+        "description": "Determine what decisions or approvals are needed from the steering committee this session. Pre-circulate decision papers with options and recommendations at least 24 hours in advance."
+      },
+      {
+        "id": "step-4",
+        "title": "Facilitate the meeting with discipline",
+        "description": "Open with status review (5-10 minutes), move quickly to decisions and escalations, and leave time for executive questions. Time-box each agenda item and park off-agenda discussions for follow-up."
+      },
+      {
+        "id": "step-5",
+        "title": "Document and distribute minutes",
+        "description": "Distribute meeting minutes within 24 hours, including decisions made, action items with owners, and escalations resolved. Confirm no disagreements on minutes within 48 hours."
+      }
+    ],
+    "tags": ["governance", "steering committee", "executive", "reporting", "escalation"]
+  },
+  {
+    "id": "playbook-okr-review",
+    "title": "OKR Review & Check-In",
+    "description": "A structured process for running regular OKR check-in sessions that track progress against key results, identify blockers, realign priorities, and keep teams focused on outcomes rather than activities throughout the quarter.",
+    "category": "Governance",
+    "phases": ["phase-3", "phase-5", "phase-10"],
+    "roles": ["pm", "pgm", "em", "tl"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Prepare current OKR status",
+        "description": "Update each key result with the latest data and a confidence score (0-1.0). Flag key results that are at risk or off-track with a brief explanation of what is driving the gap."
+      },
+      {
+        "id": "step-2",
+        "title": "Review progress and confidence scores",
+        "description": "Walk through each objective and its key results. Discuss confidence scores, evidence for current progress, and any leading indicators that suggest the key result will be met or missed."
+      },
+      {
+        "id": "step-3",
+        "title": "Identify blockers and dependencies",
+        "description": "For each key result with a confidence score below 0.7, identify the primary blocker and who is responsible for resolving it. Ensure blockers have owners and due dates."
+      },
+      {
+        "id": "step-4",
+        "title": "Realign priorities if needed",
+        "description": "Discuss whether current team priorities are well-aligned to OKRs. If significant effort is being spent on work that does not move OKRs, make explicit decisions about priority shifts."
+      },
+      {
+        "id": "step-5",
+        "title": "Document and share the check-in summary",
+        "description": "Summarize the check-in output: overall status, key risks, priority changes, and team commitments for the next check-in period. Share with all relevant stakeholders."
+      }
+    ],
+    "tags": ["OKR", "goals", "outcomes", "review", "governance", "quarterly"]
+  },
+  {
+    "id": "playbook-ai-prompt-workshop",
+    "title": "AI Prompt Engineering Workshop",
+    "description": "A hands-on workshop for PM, BA, and delivery teams to develop practical AI prompting skills and build reusable prompt templates for common work tasks. This playbook enables teams to build AI-assisted work habits systematically rather than ad-hoc.",
+    "category": "AI",
+    "phases": ["phase-1", "phase-2", "phase-3"],
+    "roles": ["pm", "ba", "sm", "dm", "cp"],
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Define the prompt engineering objectives",
+        "description": "Agree on 3-5 specific work tasks where AI prompting could save significant time or improve quality. Common starting points: requirements refinement, status report drafting, risk identification, and stakeholder communication."
+      },
+      {
+        "id": "step-2",
+        "title": "Introduce prompt anatomy",
+        "description": "Teach participants the key components of an effective prompt: role/persona, context, task instruction, output format, and quality constraints. Demonstrate with a live example relevant to their role."
+      },
+      {
+        "id": "step-3",
+        "title": "Practice and refine prompts",
+        "description": "Participants draft prompts for one of their priority tasks, run them against an AI model, and evaluate the output quality. Practice iterating on prompts to improve specificity and output relevance."
+      },
+      {
+        "id": "step-4",
+        "title": "Build a shared prompt library",
+        "description": "Collect the best prompts from the session into a shared team prompt library. Standardize format with fields for: prompt title, use case, prompt text, example output, and quality notes."
+      },
+      {
+        "id": "step-5",
+        "title": "Define AI usage principles",
+        "description": "As a team, agree on principles for responsible AI usage: what to validate before sharing, what not to put into AI tools, and how to disclose AI assistance in work products."
+      },
+      {
+        "id": "step-6",
+        "title": "Schedule follow-up and continuous improvement",
+        "description": "Schedule a follow-up session in 4-6 weeks to share learnings, update the prompt library, and introduce advanced techniques. Assign a prompt library owner to maintain and curate the shared resource."
+      }
+    ],
+    "tags": ["AI", "prompting", "workshop", "productivity", "skills", "LLM"]
+  }
+]
