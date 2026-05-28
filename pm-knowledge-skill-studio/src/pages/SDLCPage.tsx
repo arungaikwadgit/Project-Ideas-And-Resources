@@ -37,21 +37,24 @@ export default function SDLCPage() {
   const [hasAIProvider, setHasAIProvider] = useState(false)
 
   useEffect(() => {
+    const fetchJson = (path: string) =>
+      fetch(path).then((r) => { if (!r.ok) return []; return r.json() }).catch(() => [])
+
     Promise.all([
-      fetch('/pm-knowledge-skill-studio/config/sdlcPhases.json').then((r) => r.json()).catch(() => []),
-      fetch('/pm-knowledge-skill-studio/config/sdlcTasks.json').then((r) => r.json()).catch(() => []),
-      fetch('/pm-knowledge-skill-studio/config/preloadedPrompts.json').then((r) => r.json()).catch(() => []),
-      fetch('/pm-knowledge-skill-studio/config/roles.json').then((r) => r.json()).catch(() => []),
-      dbList('aiProviderSettings'),
-      settingsStore.get<string>('primaryRole'),
+      fetchJson('/pm-knowledge-skill-studio/config/sdlcPhases.json'),
+      fetchJson('/pm-knowledge-skill-studio/config/sdlcTasks.json'),
+      fetchJson('/pm-knowledge-skill-studio/config/preloadedPrompts.json'),
+      fetchJson('/pm-knowledge-skill-studio/config/roles.json'),
+      dbList('aiProviderSettings').catch(() => [] as unknown[]),
+      settingsStore.get<string>('primaryRole').catch(() => undefined),
     ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName]) => {
-      const phaseList = phasesData as SDLCPhase[]
-      const roleList = rolesData as Role[]
+      const phaseList = Array.isArray(phasesData) ? phasesData as SDLCPhase[] : []
+      const roleList = Array.isArray(rolesData) ? rolesData as Role[] : []
       setPhases(phaseList)
-      setTasks(tasksData as SDLCTask[])
-      setPreloadedPrompts(promptsData as PreloadedPrompt[])
+      setTasks(Array.isArray(tasksData) ? tasksData as SDLCTask[] : [])
+      setPreloadedPrompts(Array.isArray(promptsData) ? promptsData as PreloadedPrompt[] : [])
       setRoles(roleList)
-      setHasAIProvider((aiSettings as unknown[]).length > 0)
+      setHasAIProvider(Array.isArray(aiSettings) && aiSettings.length > 0)
       if (phaseList.length > 0) setSelectedPhase(phaseList[0])
 
       // Pre-select the user's primary role from Settings
@@ -59,11 +62,12 @@ export default function SDLCPage() {
         const match = roleList.find((r) => r.name === primaryRoleName)
         if (match) setSelectedRoleId(match.id)
       }
-    }).catch(() => {
+    }).catch((err) => {
+      console.error('SDLC load error:', err)
       setError('Failed to load SDLC workspace data. Please refresh the page.')
     }).finally(() => setLoading(false))
 
-    dbList<CustomPrompt>('customPrompts').then(setCustomPrompts)
+    dbList<CustomPrompt>('customPrompts').catch(() => [] as CustomPrompt[]).then((list) => setCustomPrompts(list ?? []))
   }, [])
 
   const phaseTasks = tasks.filter((t) => {
