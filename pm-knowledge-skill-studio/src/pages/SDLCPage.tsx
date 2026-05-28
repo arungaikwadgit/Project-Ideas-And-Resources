@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ChevronRight, FileText, Zap, Save, RotateCcw, User } from 'lucide-react'
+import { ChevronRight, FileText, Zap, Save, RotateCcw, User, CheckCircle, AlertTriangle, XCircle } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
 import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent } from '../types'
 import type { Role } from '../types/role'
+import type { StoredAIProviderSettings, AIProviderSettings } from '../types/provider'
 import { dbCreate, dbList } from '../stores/db'
 import { customPromptStore } from '../stores/customPromptStore'
 import { settingsStore } from '../stores/settingsStore'
+import { providerSettingsStore } from '../stores/providerSettingsStore'
+import { aiRunStore } from '../stores/aiRunStore'
+import { executePrompt } from '../lib/ai/aiRuntime'
+import { runGovernanceCheck } from '../lib/governance/governanceEngine'
+import { canExecute } from '../lib/governance/executionPolicy'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import MarkdownPreview from '../components/editor/MarkdownPreview'
 import EmptyState from '../components/ui/EmptyState'
@@ -29,12 +35,20 @@ export default function SDLCPage() {
   const [loadedPrompt, setLoadedPrompt] = useState<PreloadedPrompt | null>(null)
   const [promptMarkdown, setPromptMarkdown] = useState('')
   const [customPrompts, setCustomPrompts] = useState<CustomPrompt[]>([])
+  const [aiProviderList, setAiProviderList] = useState<StoredAIProviderSettings[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [promptLoading, setPromptLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [savedMsg, setSavedMsg] = useState('')
-  const [hasAIProvider, setHasAIProvider] = useState(false)
+  // Run Prompt state
+  const [running, setRunning] = useState(false)
+  const [runResult, setRunResult] = useState('')
+  const [runError, setRunError] = useState('')
+  const [runProviderId, setRunProviderId] = useState('')
+  const [runModel, setRunModel] = useState('')
+  const [runTokens, setRunTokens] = useState<{ input?: number; output?: number } | null>(null)
+  const [governanceWarnings, setGovernanceWarnings] = useState<string[]>([])
 
   useEffect(() => {
     const fetchJson = (path: string) =>
@@ -45,19 +59,19 @@ export default function SDLCPage() {
       fetchJson('/pm-knowledge-skill-studio/config/sdlcTasks.json'),
       fetchJson('/pm-knowledge-skill-studio/config/preloadedPrompts.json'),
       fetchJson('/pm-knowledge-skill-studio/config/roles.json'),
-      dbList('aiProviderSettings').catch(() => [] as unknown[]),
+      dbList<StoredAIProviderSettings>('aiProviderSettings').catch(() => [] as StoredAIProviderSettings[]),
       settingsStore.get<string>('primaryRole').catch(() => undefined),
     ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName]) => {
       const phaseList = Array.isArray(phasesData) ? phasesData as SDLCPhase[] : []
       const roleList = Array.isArray(rolesData) ? rolesData as Role[] : []
+      const providerList = Array.isArray(aiSettings) ? aiSettings as StoredAIProviderSettings[] : []
       setPhases(phaseList)
       setTasks(Array.isArray(tasksData) ? tasksData as SDLCTask[] : [])
       setPreloadedPrompts(Array.isArray(promptsData) ? promptsData as PreloadedPrompt[] : [])
       setRoles(roleList)
-      setHasAIProvider(Array.isArray(aiSettings) && aiSettings.length > 0)
+      setAiProviderList(providerList)
       if (phaseList.length > 0) setSelectedPhase(phaseList[0])
 
-      // Pre-select the user's primary role from Settings
       if (primaryRoleName && roleList.length > 0) {
         const match = roleList.find((r) => r.name === primaryRoleName)
         if (match) setSelectedRoleId(match.id)
@@ -70,6 +84,11 @@ export default function SDLCPage() {
     dbList<CustomPrompt>('customPrompts').catch(() => [] as CustomPrompt[]).then((list) => setCustomPrompts(list ?? []))
   }, [])
 
+  // Check real-time: a provider has a key in sessionStorage or was saved with one
+  const hasAIProvider = aiProviderList.some(p =>
+    providerSettingsStore.hasAIKey(p.providerId) || p.hasApiKey
+  )
+
   const phaseTasks = tasks.filter((t) => {
     if (t.phaseId !== selectedPhase?.id) return false
     if (selectedRoleId === 'all') return true
@@ -81,6 +100,8 @@ export default function SDLCPage() {
     setSelectedTask(null)
     setLoadedPrompt(null)
     setPromptMarkdown('')
+    setRunResult('')
+    setRunError('')
     recordActivity('sdlc_phase_selected', { phaseId: phase.id, phaseName: phase.name })
   }
 
@@ -88,6 +109,8 @@ export default function SDLCPage() {
     setSelectedTask(task)
     setLoadedPrompt(null)
     setPromptMarkdown('')
+    setRunResult('')
+    setRunError('')
     recordActivity('sdlc_task_selected', { taskId: task.id, phaseId: task.phaseId })
   }
 
@@ -96,11 +119,15 @@ export default function SDLCPage() {
     setSelectedTask(null)
     setLoadedPrompt(null)
     setPromptMarkdown('')
+    setRunResult('')
+    setRunError('')
   }
 
   const handleLoadPrompt = useCallback(async () => {
     if (!selectedTask) return
     setPromptLoading(true)
+    setRunResult('')
+    setRunError('')
     try {
       const existingCustom = customPrompts.find((cp) => cp.taskId === selectedTask.id && cp.phaseId === selectedTask.phaseId)
       if (existingCustom) {
@@ -126,6 +153,86 @@ export default function SDLCPage() {
       setPromptLoading(false)
     }
   }, [selectedTask, preloadedPrompts, customPrompts])
+
+  const handleRunPrompt = useCallback(async () => {
+    if (!selectedTask || !promptMarkdown || running) return
+    setRunning(true)
+    setRunResult('')
+    setRunError('')
+    setRunTokens(null)
+    setGovernanceWarnings([])
+
+    try {
+      // Governance check — block on PII / injections
+      const gov = runGovernanceCheck(promptMarkdown, 'sdlc-workspace')
+      if (!canExecute(gov)) {
+        setRunError(`Execution blocked by governance: ${gov.blockedReasons.join('; ')}`)
+        await aiRunStore.create({
+          providerId: 'blocked', model: '', promptSnapshotMarkdown: promptMarkdown,
+          inputContextSnapshot: '', resultMarkdown: '', status: 'blocked',
+          errorSummary: gov.blockedReasons.join('; '),
+          linkedSkillIds: [], linkedDomainIds: [], linkedPlaybookIds: [],
+        })
+        recordActivity('governance_block', { taskId: selectedTask.id, reasons: gov.blockedReasons })
+        return
+      }
+      if (gov.warningReasons.length > 0) setGovernanceWarnings(gov.warningReasons)
+
+      // Find active provider with a key
+      const freshList = await dbList<StoredAIProviderSettings>('aiProviderSettings').catch(() => [] as StoredAIProviderSettings[])
+      setAiProviderList(freshList)
+
+      const activeStored = freshList.find(p => providerSettingsStore.hasAIKey(p.providerId))
+        ?? freshList.find(p => p.hasApiKey)
+
+      if (!activeStored) {
+        setRunError('No AI provider configured. Go to Provider Settings and save your API key.')
+        return
+      }
+
+      const { settings, apiKey } = await providerSettingsStore.getAIProviderSettings(activeStored.providerId)
+      if (!apiKey) {
+        setRunError('API key not found in this session. Please re-enter it in Provider Settings (keys clear when you close the tab).')
+        return
+      }
+
+      const fullSettings: AIProviderSettings = {
+        ...(settings as Omit<AIProviderSettings, 'apiKey'>),
+        apiKey,
+      }
+
+      const response = await executePrompt(promptMarkdown, fullSettings)
+
+      setRunResult(response.text)
+      setRunProviderId(activeStored.providerId)
+      setRunModel(response.model)
+      setRunTokens({ input: response.usage?.inputTokens, output: response.usage?.outputTokens })
+
+      await aiRunStore.create({
+        providerId: activeStored.providerId,
+        model: response.model,
+        promptSnapshotMarkdown: promptMarkdown,
+        inputContextSnapshot: '',
+        resultMarkdown: response.text,
+        status: 'success',
+        preloadedPromptId: loadedPrompt?.id,
+        usageEstimate: response.usage
+          ? { inputTokens: response.usage.inputTokens, outputTokens: response.usage.outputTokens,
+              totalTokens: (response.usage.inputTokens ?? 0) + (response.usage.outputTokens ?? 0) }
+          : undefined,
+        linkedSkillIds: [], linkedDomainIds: [], linkedPlaybookIds: [],
+      })
+
+      recordActivity('prompt_executed', { taskId: selectedTask.id, providerId: activeStored.providerId, model: response.model })
+
+    } catch (err) {
+      const msg = (err as { message?: string })?.message ?? String(err)
+      setRunError(msg)
+      recordActivity('ai_run_failed', { taskId: selectedTask?.id, error: msg })
+    } finally {
+      setRunning(false)
+    }
+  }, [selectedTask, promptMarkdown, loadedPrompt, running])
 
   const handleSaveCustomPrompt = async () => {
     if (!selectedTask || !promptMarkdown) return
@@ -234,7 +341,7 @@ export default function SDLCPage() {
               </div>
               {phaseTasks.length === 0 ? (
                 <p className="text-sm text-muted">
-                  {selectedRoleId === 'all' ? 'No tasks defined for this phase.' : `No tasks for this role in this phase. Try "All Roles" to see all tasks.`}
+                  {selectedRoleId === 'all' ? 'No tasks defined for this phase.' : `No tasks for this role in this phase. Try "All Roles".`}
                 </p>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
@@ -318,17 +425,35 @@ export default function SDLCPage() {
                     </div>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {savedMsg && <span style={{ color: 'var(--success)', fontSize: '0.8125rem', alignSelf: 'center' }}>{savedMsg}</span>}
-                      <button className="btn btn-ghost btn-sm" onClick={() => { setPromptMarkdown(''); setLoadedPrompt(null) }}><RotateCcw size={13} /> Reset</button>
-                      <button className="btn btn-secondary btn-sm" onClick={handleSaveCustomPrompt} disabled={saving}><Save size={13} /> {saving ? 'Saving...' : 'Save Custom Prompt'}</button>
-                      <button className="btn btn-primary btn-sm" disabled={!hasAIProvider} title={hasAIProvider ? undefined : 'Configure an AI provider first'}>
-                        <Zap size={13} /> Run Prompt
+                      <button className="btn btn-ghost btn-sm" onClick={() => { setPromptMarkdown(''); setLoadedPrompt(null); setRunResult(''); setRunError('') }}>
+                        <RotateCcw size={13} /> Reset
+                      </button>
+                      <button className="btn btn-secondary btn-sm" onClick={handleSaveCustomPrompt} disabled={saving}>
+                        <Save size={13} /> {saving ? 'Saving...' : 'Save Custom Prompt'}
+                      </button>
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={handleRunPrompt}
+                        disabled={running}
+                        title={!hasAIProvider ? 'Configure an AI provider in Provider Settings first' : undefined}
+                      >
+                        {running
+                          ? <><div className="loading-spinner loading-spinner-sm" /> Running…</>
+                          : <><Zap size={13} /> Run Prompt</>}
                       </button>
                     </div>
                   </div>
 
                   {!hasAIProvider && (
                     <div className="alert alert-warning" style={{ marginBottom: '1rem' }}>
-                      No AI provider configured. <a href="/pm-knowledge-skill-studio/provider-settings">Configure one in Provider Settings</a> to run prompts.
+                      No AI provider configured. <a href="/pm-knowledge-skill-studio/provider-settings" style={{ color: 'inherit', fontWeight: 600 }}>Configure one in Provider Settings</a> to run prompts.
+                    </div>
+                  )}
+
+                  {governanceWarnings.length > 0 && (
+                    <div style={{ background: 'rgba(255,204,102,0.1)', border: '1px solid rgba(255,204,102,0.3)', borderRadius: 6, padding: '0.625rem 0.875rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--warning)', display: 'flex', gap: '0.5rem' }}>
+                      <AlertTriangle size={14} style={{ flexShrink: 0, marginTop: 1 }} />
+                      <span>Governance warning: {governanceWarnings.join('; ')}</span>
                     </div>
                   )}
 
@@ -344,6 +469,42 @@ export default function SDLCPage() {
                     <div className="form-label" style={{ marginBottom: '0.5rem' }}>Preview</div>
                     <MarkdownPreview content={promptMarkdown} />
                   </div>
+                </div>
+              )}
+
+              {/* AI Run Result */}
+              {(runResult || runError) && (
+                <div className="panel" style={{ padding: '1.25rem', borderColor: runError ? 'rgba(255,107,107,0.3)' : 'rgba(74,163,255,0.25)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1rem' }}>
+                    {runError
+                      ? <XCircle size={16} style={{ color: 'var(--error)', flexShrink: 0 }} />
+                      : <CheckCircle size={16} style={{ color: 'var(--success)', flexShrink: 0 }} />}
+                    <h4 style={{ margin: 0 }}>{runError ? 'Run Failed' : 'AI Response'}</h4>
+                    {runModel && (
+                      <span className="badge badge-default" style={{ marginLeft: 'auto', fontSize: '0.75rem' }}>
+                        {runProviderId} · {runModel}
+                      </span>
+                    )}
+                  </div>
+
+                  {runError && (
+                    <div className="alert alert-error" style={{ marginBottom: 0, fontSize: '0.875rem' }}>{runError}</div>
+                  )}
+
+                  {runResult && (
+                    <>
+                      <div style={{ border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '1rem', background: 'rgba(0,0,0,0.15)' }}>
+                        <MarkdownPreview content={runResult} />
+                      </div>
+                      {runTokens && (
+                        <div style={{ marginTop: '0.75rem', fontSize: '0.75rem', color: 'var(--muted)', display: 'flex', gap: '1rem' }}>
+                          {runTokens.input != null && <span>Input tokens: {runTokens.input.toLocaleString()}</span>}
+                          {runTokens.output != null && <span>Output tokens: {runTokens.output.toLocaleString()}</span>}
+                          <span style={{ marginLeft: 'auto' }}>Saved to AI Runs</span>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               )}
             </div>
