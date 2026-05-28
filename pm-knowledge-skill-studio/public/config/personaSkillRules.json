@@ -1,0 +1,46 @@
+{
+  "pm": {
+    "defaultSkillIds": ["product-strategy", "roadmap-planning", "customer-discovery", "prioritization", "outcome-definition", "business-metrics", "ai-assisted-thinking"],
+    "domainSkillMapping": {
+      "ecommerce": ["marketplace-dynamics", "conversion-optimization"],
+      "fintech": ["regulatory-compliance", "financial-metrics"],
+      "healthcare": ["hipaa-compliance", "clinical-workflows"]
+    }
+  },
+  "po": {
+    "defaultSkillIds": ["backlog-ownership", "user-story-writing", "acceptance-criteria", "stakeholder-management", "sprint-planning"],
+    "domainSkillMapping": {}
+  },
+  "projm": {
+    "defaultSkillIds": ["delivery-planning", "risk-management", "stakeholder-management", "status-reporting", "dependency-tracking", "delivery-governance"],
+    "domainSkillMapping": {}
+  },
+  "dm": {
+    "defaultSkillIds": ["delivery-governance", "delivery-planning", "release-coordination", "risk-management", "stakeholder-management", "agile-facilitation"],
+    "domainSkillMapping": {}
+  },
+  "sm": {
+    "defaultSkillIds": ["agile-facilitation", "sprint-planning", "backlog-ownership", "retrospectives", "coaching"],
+    "domainSkillMapping": {}
+  },
+  "em": {
+    "defaultSkillIds": ["engineering-execution", "coaching", "architecture-awareness", "delivery-planning", "risk-management"],
+    "domainSkillMapping": {}
+  },
+  "pgm": {
+    "defaultSkillIds": ["delivery-governance", "dependency-tracking", "executive-communication", "risk-management", "status-reporting"],
+    "domainSkillMapping": {}
+  },
+  "ba": {
+    "defaultSkillIds": ["requirements-discovery", "user-story-writing", "acceptance-criteria", "discovery-facilitation", "data-analysis"],
+    "domainSkillMapping": {}
+  },
+  "tl": {
+    "defaultSkillIds": ["technology-strategy", "architecture-awareness", "platform-thinking", "risk-management", "ai-assisted-thinking", "executive-communication"],
+    "domainSkillMapping": {}
+  },
+  "cp": {
+    "defaultSkillIds": ["client-advisory", "discovery-facilitation", "value-framing", "executive-communication", "stakeholder-management", "risk-management"],
+    "domainSkillMapping": {}
+  }
+}

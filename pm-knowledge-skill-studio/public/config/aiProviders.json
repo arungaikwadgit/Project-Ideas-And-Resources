@@ -1,0 +1,46 @@
+[
+  {
+    "id": "anthropic",
+    "displayName": "Anthropic Claude",
+    "providerType": "claude",
+    "baseUrl": "https://api.anthropic.com/v1",
+    "defaultModel": "claude-opus-4-7",
+    "supportedModels": [
+      {"id": "claude-opus-4-7", "displayName": "Claude Opus 4.7", "maxTokens": 8192, "contextWindow": 200000},
+      {"id": "claude-sonnet-4-6", "displayName": "Claude Sonnet 4.6", "maxTokens": 8192, "contextWindow": 200000},
+      {"id": "claude-haiku-4-5-20251001", "displayName": "Claude Haiku 4.5", "maxTokens": 4096, "contextWindow": 200000}
+    ],
+    "requiresApiKey": true,
+    "keyEnvHint": "ANTHROPIC_API_KEY",
+    "docsUrl": "https://docs.anthropic.com",
+    "description": "Anthropic's Claude models. Excellent for nuanced reasoning and long-context tasks."
+  },
+  {
+    "id": "openai",
+    "displayName": "OpenAI",
+    "providerType": "openai",
+    "baseUrl": "https://api.openai.com/v1",
+    "defaultModel": "gpt-4o",
+    "supportedModels": [
+      {"id": "gpt-4o", "displayName": "GPT-4o", "maxTokens": 4096, "contextWindow": 128000},
+      {"id": "gpt-4o-mini", "displayName": "GPT-4o Mini", "maxTokens": 4096, "contextWindow": 128000},
+      {"id": "o1-mini", "displayName": "o1 Mini", "maxTokens": 4096, "contextWindow": 128000}
+    ],
+    "requiresApiKey": true,
+    "keyEnvHint": "OPENAI_API_KEY",
+    "docsUrl": "https://platform.openai.com/docs",
+    "description": "OpenAI's GPT models. Strong general-purpose AI for a wide variety of tasks."
+  },
+  {
+    "id": "generic",
+    "displayName": "Generic AI Provider",
+    "providerType": "generic",
+    "baseUrl": "",
+    "defaultModel": "default",
+    "supportedModels": [],
+    "requiresApiKey": false,
+    "keyEnvHint": "",
+    "docsUrl": "",
+    "description": "Configure a custom OpenAI-compatible API endpoint."
+  }
+]

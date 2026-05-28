@@ -1,0 +1,35 @@
+[
+  {
+    "id": "tavily",
+    "displayName": "Tavily Search API",
+    "providerType": "tavily",
+    "baseUrl": "https://api.tavily.com/search",
+    "requiresApiKey": true,
+    "keyEnvHint": "TAVILY_API_KEY",
+    "docsUrl": "https://docs.tavily.com",
+    "description": "Tavily is an AI-first search API optimized for LLM and agent use cases.",
+    "maxResults": 10
+  },
+  {
+    "id": "brave",
+    "displayName": "Brave Search API",
+    "providerType": "brave",
+    "baseUrl": "https://api.search.brave.com/res/v1/web/search",
+    "requiresApiKey": true,
+    "keyEnvHint": "BRAVE_SEARCH_API_KEY",
+    "docsUrl": "https://api.search.brave.com/app/documentation",
+    "description": "Brave Search API provides independent web search results.",
+    "maxResults": 10
+  },
+  {
+    "id": "generic-search",
+    "displayName": "Generic Search Provider",
+    "providerType": "generic",
+    "baseUrl": "",
+    "requiresApiKey": false,
+    "keyEnvHint": "",
+    "docsUrl": "",
+    "description": "Configure a custom search API endpoint.",
+    "maxResults": 10
+  }
+]

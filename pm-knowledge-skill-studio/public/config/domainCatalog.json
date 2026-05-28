@@ -1,0 +1,1982 @@
+[
+  {
+    "id": "ecommerce",
+    "name": "E-commerce / Marketplace",
+    "category": "Commerce",
+    "description": "E-commerce and marketplace platforms enable businesses and individuals to buy and sell goods or services digitally, connecting buyers with sellers at scale. These platforms manage the full transaction lifecycle from product discovery and cart to payment, fulfillment, and post-purchase support. Modern e-commerce solutions blend storefront personalization, logistics orchestration, and seller tooling into unified digital commerce ecosystems.",
+    "commonUsers": [
+      "Shoppers / Buyers",
+      "Sellers / Merchants",
+      "Marketplace Administrators",
+      "Fulfillment & Warehouse Staff",
+      "Customer Support Agents",
+      "Category / Merchandising Managers"
+    ],
+    "commonWorkflows": [
+      "Product listing and catalog management",
+      "Shopping cart and checkout flow",
+      "Payment processing and fraud detection",
+      "Order fulfillment and shipment tracking",
+      "Return and refund management",
+      "Seller onboarding and KYC verification",
+      "Promotions and discount engine management",
+      "Customer review and rating moderation"
+    ],
+    "commonMetrics": [
+      "Gross Merchandise Value (GMV)",
+      "Conversion rate",
+      "Cart abandonment rate",
+      "Average Order Value (AOV)",
+      "Customer Acquisition Cost (CAC)",
+      "Net Promoter Score (NPS)",
+      "Return rate"
+    ],
+    "commonRisks": [
+      "Payment fraud and chargebacks",
+      "Inventory stockouts or overselling",
+      "Seller trust and counterfeit goods",
+      "Platform downtime during peak traffic",
+      "Data privacy breaches",
+      "Regulatory non-compliance (sales tax, cross-border)"
+    ],
+    "commonIntegrations": [
+      "Payment gateways (Stripe, PayPal, Adyen)",
+      "Shipping carriers (FedEx, UPS, DHL)",
+      "ERP and inventory systems (NetSuite, SAP)",
+      "CRM and marketing automation (Salesforce, Klaviyo)",
+      "Tax compliance platforms (Avalara, TaxJar)"
+    ],
+    "complianceConsiderations": [
+      "PCI DSS compliance for payment data",
+      "GDPR / CCPA for customer data privacy",
+      "Sales tax nexus and remittance laws",
+      "Consumer protection and return policy regulations",
+      "AML/KYC for marketplace seller onboarding"
+    ],
+    "suggestedRoles": ["pm", "po", "projm", "ba", "sm", "em"],
+    "relatedSkills": [
+      "Product roadmap planning",
+      "User story writing",
+      "Conversion funnel analysis",
+      "A/B testing and experimentation",
+      "Stakeholder alignment",
+      "Agile sprint planning"
+    ],
+    "starterPromptContext": "You are working on an e-commerce or marketplace platform. The team focuses on improving buyer conversion, seller growth, and operational efficiency across listing, checkout, fulfillment, and post-purchase workflows. Stakeholders include merchants, buyers, and internal operations teams, and success is measured by GMV, conversion rate, and seller satisfaction.",
+    "source": "curated"
+  },
+  {
+    "id": "fintech",
+    "name": "Finance / FinTech",
+    "category": "Financial Services",
+    "description": "FinTech covers a broad range of technology-driven financial services including digital banking, lending, investing, payments, and personal finance management. Products in this space must balance regulatory compliance, security, and user trust while delivering frictionless digital experiences. Innovation cycles are often governed by licensing requirements, partner bank relationships, and evolving regulatory frameworks.",
+    "commonUsers": [
+      "Retail Consumers",
+      "Small Business Owners",
+      "Financial Advisors",
+      "Compliance Officers",
+      "Risk Analysts",
+      "Internal Operations Staff"
+    ],
+    "commonWorkflows": [
+      "Account opening and KYC/AML onboarding",
+      "Fund transfer and ACH/wire processing",
+      "Loan origination and underwriting",
+      "Transaction monitoring and fraud alerting",
+      "Regulatory reporting and audit trails",
+      "Statement generation and reconciliation",
+      "Customer dispute and chargeback resolution",
+      "Product rate and fee configuration"
+    ],
+    "commonMetrics": [
+      "Monthly Active Users (MAU)",
+      "Transaction success rate",
+      "Loan approval rate",
+      "Default rate",
+      "Cost per acquisition",
+      "Customer Lifetime Value (CLV)",
+      "Regulatory audit pass rate"
+    ],
+    "commonRisks": [
+      "Regulatory non-compliance (BSA, AML, CFPB)",
+      "Fraud and identity theft",
+      "Third-party vendor concentration risk",
+      "Data breach and PII exposure",
+      "Model risk in credit decisioning",
+      "Operational failures in payment rails"
+    ],
+    "commonIntegrations": [
+      "Core banking systems (Temenos, FIS, Finastra)",
+      "Credit bureaus (Equifax, Experian, TransUnion)",
+      "Payment networks (ACH, Visa, Mastercard)",
+      "KYC/AML providers (Jumio, Socure, Alloy)",
+      "Regulatory reporting tools (Wolters Kluwer)"
+    ],
+    "complianceConsiderations": [
+      "Bank Secrecy Act (BSA) and AML program requirements",
+      "CFPB regulations for consumer lending and UDAAP",
+      "SEC/FINRA rules for investment products",
+      "GDPR / CCPA for financial data privacy",
+      "SOX compliance for internal financial controls"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "cp"],
+    "relatedSkills": [
+      "Regulatory compliance knowledge",
+      "Risk and fraud analysis",
+      "Requirements documentation",
+      "Stakeholder communication",
+      "Data analysis and metrics",
+      "Process mapping"
+    ],
+    "starterPromptContext": "You are working in the FinTech or financial services domain where regulatory compliance, security, and trust are non-negotiable. Products must balance user experience innovation with strict requirements from banking regulators, risk management teams, and compliance officers. Success is measured by transaction volume, customer growth, default rates, and audit readiness.",
+    "source": "curated"
+  },
+  {
+    "id": "healthcare",
+    "name": "Healthcare",
+    "category": "Healthcare",
+    "description": "Healthcare technology spans electronic health records, patient portals, clinical decision support, telehealth, and administrative systems that support care delivery. These products must navigate complex clinical workflows, strict regulatory requirements, and interoperability standards while improving patient outcomes and operational efficiency. The domain involves multiple stakeholders including clinicians, administrators, payers, and patients, each with distinct needs and data access requirements.",
+    "commonUsers": [
+      "Patients and Caregivers",
+      "Physicians and Clinicians",
+      "Nurses and Care Coordinators",
+      "Hospital Administrators",
+      "Health Insurance / Payer Staff",
+      "Billing and Coding Specialists"
+    ],
+    "commonWorkflows": [
+      "Patient registration and intake",
+      "Appointment scheduling and reminders",
+      "Clinical documentation and EHR charting",
+      "Medication prescribing and e-prescribing",
+      "Lab orders and results management",
+      "Insurance authorization and claims submission",
+      "Care plan creation and care coordination",
+      "Discharge planning and transitions of care"
+    ],
+    "commonMetrics": [
+      "Patient satisfaction scores (HCAHPS)",
+      "Time to appointment",
+      "Clinical documentation accuracy rate",
+      "Claims denial rate",
+      "Readmission rate",
+      "Prior authorization approval time",
+      "Telehealth utilization rate"
+    ],
+    "commonRisks": [
+      "HIPAA violation and PHI data breach",
+      "Clinical data errors causing patient safety issues",
+      "Interoperability failures between EHR systems",
+      "Regulatory non-compliance with CMS rules",
+      "Vendor lock-in for EHR platforms",
+      "Clinician burnout from poor UX and documentation burden"
+    ],
+    "commonIntegrations": [
+      "EHR systems (Epic, Cerner, Meditech)",
+      "Health Information Exchanges (HIEs)",
+      "Medical device and IoT integration",
+      "Insurance eligibility verification (Availity)",
+      "Pharmacy systems and e-prescribing (Surescripts)"
+    ],
+    "complianceConsiderations": [
+      "HIPAA Privacy and Security Rules for PHI",
+      "21st Century Cures Act and information blocking rules",
+      "HL7 FHIR interoperability standards",
+      "CMS quality reporting and value-based care requirements",
+      "FDA regulations for clinical decision support tools"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "tl"],
+    "relatedSkills": [
+      "Healthcare regulatory knowledge",
+      "Workflow analysis and process mapping",
+      "Stakeholder management",
+      "Requirements documentation",
+      "Data privacy and security",
+      "User research with clinical users"
+    ],
+    "starterPromptContext": "You are working in the healthcare domain where patient safety, data privacy, and regulatory compliance are the highest priorities. Products must integrate with clinical workflows, EHR systems, and payer processes while improving care quality and reducing administrative burden. Key stakeholders include clinicians, hospital administrators, payers, and patients.",
+    "source": "curated"
+  },
+  {
+    "id": "insurance",
+    "name": "Insurance",
+    "category": "Financial Services",
+    "description": "The insurance domain encompasses technology platforms supporting policy underwriting, claims management, customer servicing, and actuarial analysis across life, health, property, and casualty lines. Insurers must manage complex product configurations, regulatory filings, and claims workflows while modernizing legacy core systems. Digital transformation in insurance focuses on improving customer experience, accelerating claims settlement, and enabling data-driven underwriting.",
+    "commonUsers": [
+      "Policyholders",
+      "Insurance Agents and Brokers",
+      "Underwriters",
+      "Claims Adjusters",
+      "Actuaries",
+      "Compliance and Regulatory Staff"
+    ],
+    "commonWorkflows": [
+      "Policy quoting and binding",
+      "Underwriting review and risk assessment",
+      "Policy issuance and endorsement management",
+      "First Notice of Loss (FNOL) and claims intake",
+      "Claims investigation and adjustment",
+      "Claims payment and settlement",
+      "Renewal and premium billing management",
+      "Regulatory filing and rate approval"
+    ],
+    "commonMetrics": [
+      "Combined ratio (loss ratio + expense ratio)",
+      "Claims settlement cycle time",
+      "Policy retention rate",
+      "Customer satisfaction (CSAT) on claims",
+      "Straight-through processing rate",
+      "Loss adjustment expense (LAE)",
+      "Agent adoption rate"
+    ],
+    "commonRisks": [
+      "Fraudulent claims and organized fraud rings",
+      "Regulatory non-compliance with state insurance commissioners",
+      "Catastrophic loss events (CAT) overwhelming claims capacity",
+      "Legacy core system limitations slowing modernization",
+      "Data quality issues affecting actuarial models",
+      "Cybersecurity threats to sensitive policyholder data"
+    ],
+    "commonIntegrations": [
+      "Policy Administration Systems (Guidewire, Duck Creek)",
+      "Claims management systems",
+      "Reinsurance platforms",
+      "Third-party data providers (ISO, LexisNexis)",
+      "Payment and banking rails"
+    ],
+    "complianceConsiderations": [
+      "State insurance department regulations and rate filings",
+      "NAIC model laws and interstate compact requirements",
+      "GDPR / state privacy laws for policyholder data",
+      "SOX controls for public insurers",
+      "Anti-fraud program requirements"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "cp"],
+    "relatedSkills": [
+      "Insurance domain knowledge",
+      "Process analysis and mapping",
+      "Requirements elicitation",
+      "Regulatory compliance",
+      "Data analysis",
+      "Stakeholder management"
+    ],
+    "starterPromptContext": "You are working in the insurance domain on platforms supporting underwriting, claims, and policy management. The business prioritizes fast claims settlement, fraud prevention, and regulatory compliance while modernizing outdated core systems. Key stakeholders include underwriters, claims adjusters, agents, and regulators.",
+    "source": "curated"
+  },
+  {
+    "id": "manufacturing",
+    "name": "Manufacturing",
+    "category": "Industrial",
+    "description": "Manufacturing technology encompasses MES (Manufacturing Execution Systems), ERP integration, quality management, and shop floor digitization to optimize production operations. Smart manufacturing initiatives combine IoT sensor data, predictive maintenance, and digital twins to reduce downtime and improve throughput. Products in this space must connect plant-floor operational technology (OT) with enterprise IT systems while supporting lean and continuous improvement methodologies.",
+    "commonUsers": [
+      "Plant Managers and Operations Directors",
+      "Production Line Supervisors",
+      "Quality Engineers",
+      "Maintenance Technicians",
+      "Supply Chain Planners",
+      "ERP / IT Administrators"
+    ],
+    "commonWorkflows": [
+      "Production order creation and scheduling",
+      "Work-in-progress (WIP) tracking",
+      "Quality inspection and non-conformance management",
+      "Preventive and corrective maintenance scheduling",
+      "Bill of materials (BOM) management",
+      "Inventory and raw material replenishment",
+      "Shift handover and operator reporting",
+      "OEE (Overall Equipment Effectiveness) monitoring"
+    ],
+    "commonMetrics": [
+      "Overall Equipment Effectiveness (OEE)",
+      "First-pass yield rate",
+      "Mean time between failures (MTBF)",
+      "Production cycle time",
+      "Scrap and rework rate",
+      "On-time delivery rate",
+      "Inventory turnover"
+    ],
+    "commonRisks": [
+      "Unplanned equipment downtime",
+      "Quality escapes reaching customers",
+      "Supply chain disruptions affecting raw materials",
+      "Cybersecurity vulnerabilities in OT networks",
+      "Worker safety incidents",
+      "Regulatory non-compliance (ISO, OSHA)"
+    ],
+    "commonIntegrations": [
+      "ERP systems (SAP, Oracle, Microsoft Dynamics)",
+      "SCADA and industrial control systems",
+      "IoT sensor platforms",
+      "Quality management systems (QMS)",
+      "Supply chain planning tools"
+    ],
+    "complianceConsiderations": [
+      "ISO 9001 quality management standards",
+      "OSHA workplace safety regulations",
+      "Environmental regulations (EPA, ISO 14001)",
+      "Industry-specific standards (IATF 16949 for automotive, FDA for medical devices)",
+      "Export control and trade compliance (ITAR, EAR)"
+    ],
+    "suggestedRoles": ["pm", "projm", "ba", "em", "tl", "dm"],
+    "relatedSkills": [
+      "Process analysis and lean methodology",
+      "Requirements documentation",
+      "Systems integration knowledge",
+      "Data analysis and reporting",
+      "Stakeholder management",
+      "Project planning"
+    ],
+    "starterPromptContext": "You are working in manufacturing technology, focused on digitizing shop floor operations, improving OEE, and connecting plant systems to enterprise IT. Key stakeholders include plant operations, quality, maintenance, and supply chain teams. Success is measured by production throughput, quality yield, and equipment uptime.",
+    "source": "curated"
+  },
+  {
+    "id": "retail",
+    "name": "Retail",
+    "category": "Commerce",
+    "description": "Retail technology powers physical store operations, omnichannel commerce, and customer engagement for brands selling through brick-and-mortar, online, and hybrid channels. Modern retail platforms integrate point-of-sale systems, inventory management, loyalty programs, and store associate tooling to deliver consistent shopping experiences. The domain is shaped by consumer expectations for seamless online-to-offline experiences, real-time inventory visibility, and personalized offers.",
+    "commonUsers": [
+      "Shoppers and Loyalty Members",
+      "Store Associates",
+      "Store Managers",
+      "Merchandising and Category Managers",
+      "Loss Prevention Officers",
+      "E-commerce Operations Staff"
+    ],
+    "commonWorkflows": [
+      "Point-of-sale transaction processing",
+      "Inventory receiving and stock management",
+      "Omnichannel order management (BOPIS, ship-from-store)",
+      "Loyalty points accrual and redemption",
+      "Promotions and markdown management",
+      "Store replenishment and allocation",
+      "Loss prevention and shrinkage monitoring",
+      "Customer returns and exchanges"
+    ],
+    "commonMetrics": [
+      "Sales per square foot",
+      "Inventory shrinkage rate",
+      "Basket size and items per transaction",
+      "Customer loyalty program enrollment rate",
+      "Stock availability / out-of-stock rate",
+      "Conversion rate (in-store and online)",
+      "Net Promoter Score (NPS)"
+    ],
+    "commonRisks": [
+      "Inventory out-of-stock or overstock situations",
+      "POS system downtime during peak sales",
+      "Shoplifting and organized retail crime",
+      "Omnichannel fulfillment failures",
+      "Data privacy breaches of loyalty program data",
+      "Supply chain disruptions impacting store replenishment"
+    ],
+    "commonIntegrations": [
+      "POS systems (NCR, Verifone, Square)",
+      "Inventory management and WMS",
+      "Loyalty platform (Salesforce Loyalty, Epsilon)",
+      "ERP and merchandising systems",
+      "E-commerce platform (Shopify, Salesforce Commerce Cloud)"
+    ],
+    "complianceConsiderations": [
+      "PCI DSS for payment data at POS",
+      "ADA accessibility requirements for digital touchpoints",
+      "Consumer data privacy laws (CCPA, GDPR)",
+      "FTC promotional pricing and advertising rules",
+      "Employment laws for shift scheduling and labor management"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "sm", "em"],
+    "relatedSkills": [
+      "Omnichannel experience design",
+      "User story writing",
+      "Retail process knowledge",
+      "Data analysis",
+      "Stakeholder alignment",
+      "Roadmap planning"
+    ],
+    "starterPromptContext": "You are working in retail technology where the goal is delivering seamless omnichannel shopping experiences across stores and digital channels. Key stakeholders include merchandising, store operations, loss prevention, and e-commerce teams. Success is measured by sales conversion, inventory accuracy, customer loyalty, and operational efficiency.",
+    "source": "curated"
+  },
+  {
+    "id": "logistics",
+    "name": "Logistics",
+    "category": "Supply Chain & Operations",
+    "description": "Logistics technology platforms manage the movement, tracking, and optimization of goods from origin to destination across transportation, warehousing, and last-mile delivery networks. Modern logistics systems leverage route optimization, real-time visibility, and carrier management to reduce costs and improve delivery reliability. The domain is highly data-intensive, requiring integration across carriers, customs systems, WMS, and customer order management.",
+    "commonUsers": [
+      "Logistics Operations Planners",
+      "Warehouse Managers",
+      "Dispatch and Fleet Managers",
+      "Drivers and Field Agents",
+      "Customs and Trade Compliance Staff",
+      "Retail or Enterprise Shipper Customers"
+    ],
+    "commonWorkflows": [
+      "Shipment creation and carrier booking",
+      "Route planning and optimization",
+      "Real-time shipment tracking and event management",
+      "Warehouse receiving and put-away",
+      "Pick, pack, and ship fulfillment",
+      "Customs clearance and trade documentation",
+      "Last-mile delivery scheduling and proof of delivery",
+      "Carrier invoice audit and freight payment"
+    ],
+    "commonMetrics": [
+      "On-time delivery rate",
+      "Cost per shipment",
+      "Warehouse throughput",
+      "Order fulfillment cycle time",
+      "Damage and loss rate",
+      "First-attempt delivery success rate",
+      "Carrier compliance rate"
+    ],
+    "commonRisks": [
+      "Carrier capacity shortages and rate volatility",
+      "Shipment delays due to weather or disruptions",
+      "Customs holds and trade compliance violations",
+      "Warehouse labor shortages",
+      "Cargo theft and loss",
+      "System integration failures between WMS and TMS"
+    ],
+    "commonIntegrations": [
+      "Transportation Management Systems (TMS)",
+      "Warehouse Management Systems (WMS)",
+      "Carrier APIs (FedEx, UPS, DHL, USPS)",
+      "Customs and trade compliance platforms",
+      "Customer OMS and ERP systems"
+    ],
+    "complianceConsiderations": [
+      "DOT and FMCSA regulations for trucking",
+      "Customs and CBP import/export regulations",
+      "Hazardous materials (HAZMAT) shipping requirements",
+      "GDPR/CCPA for customer shipment data",
+      "CTPAT and trade compliance program requirements"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "em", "tl"],
+    "relatedSkills": [
+      "Supply chain process knowledge",
+      "Systems integration",
+      "Data analysis and reporting",
+      "Requirements elicitation",
+      "Stakeholder management",
+      "Agile planning"
+    ],
+    "starterPromptContext": "You are working in logistics technology focused on shipment visibility, carrier management, warehouse operations, and last-mile delivery. Key stakeholders include logistics planners, warehouse managers, carriers, and customer-facing operations teams. Success metrics include on-time delivery, cost per shipment, and fulfillment cycle time.",
+    "source": "curated"
+  },
+  {
+    "id": "automotive",
+    "name": "Automotive",
+    "category": "Industrial",
+    "description": "Automotive technology spans connected vehicle platforms, dealer management systems, electric vehicle infrastructure, and manufacturing operations for the global auto industry. The sector is undergoing rapid transformation driven by electrification, autonomous driving, over-the-air software updates, and digital retail of vehicles. Products must serve OEMs, dealers, fleet operators, and consumers while meeting stringent safety and regulatory standards.",
+    "commonUsers": [
+      "Vehicle Owners and Drivers",
+      "Dealership Sales and Service Staff",
+      "Fleet Managers",
+      "OEM Product and Engineering Teams",
+      "Regulatory and Homologation Teams",
+      "Charging Network Operators (EV)"
+    ],
+    "commonWorkflows": [
+      "Vehicle configuration and order management",
+      "Dealer inventory and stocking optimization",
+      "Service appointment scheduling and repair order management",
+      "Connected vehicle telematics data processing",
+      "Over-the-air (OTA) software update management",
+      "EV charging session management",
+      "Recall and safety campaign management",
+      "Warranty claims processing"
+    ],
+    "commonMetrics": [
+      "Vehicle throughput and production rate",
+      "Dealer customer satisfaction index (CSI)",
+      "Connected vehicle activation rate",
+      "OTA update success rate",
+      "EV charging uptime",
+      "Service appointment completion rate",
+      "Recall completion rate"
+    ],
+    "commonRisks": [
+      "Vehicle safety recalls and NHTSA investigations",
+      "Software OTA update failures causing vehicle issues",
+      "Cybersecurity vulnerabilities in connected vehicles",
+      "Supply chain disruptions (semiconductor shortages)",
+      "Dealer channel conflict in direct-to-consumer shift",
+      "EV infrastructure immaturity affecting customer experience"
+    ],
+    "commonIntegrations": [
+      "Dealer Management Systems (CDK, Reynolds & Reynolds)",
+      "Telematics and connected vehicle platforms",
+      "OEM manufacturing and ERP systems",
+      "EV charging network APIs (ChargePoint, OCPP)",
+      "Regulatory submission and homologation systems"
+    ],
+    "complianceConsiderations": [
+      "NHTSA Federal Motor Vehicle Safety Standards (FMVSS)",
+      "UNECE vehicle type approval regulations",
+      "ISO 26262 functional safety for automotive software",
+      "UNECE WP.29 cybersecurity regulations for connected vehicles",
+      "EPA emissions and CAFE fuel economy standards"
+    ],
+    "suggestedRoles": ["pm", "po", "projm", "em", "tl", "ba"],
+    "relatedSkills": [
+      "Connected product management",
+      "Safety and regulatory knowledge",
+      "Agile and iterative planning",
+      "Cross-functional coordination",
+      "Data analysis",
+      "Stakeholder management"
+    ],
+    "starterPromptContext": "You are working in the automotive technology sector on connected vehicles, dealer platforms, or EV infrastructure. The domain requires balancing rapid software innovation with strict vehicle safety and regulatory requirements. Key stakeholders include OEM engineering teams, dealerships, fleet operators, and regulatory bodies.",
+    "source": "curated"
+  },
+  {
+    "id": "saas",
+    "name": "SaaS",
+    "category": "Technology",
+    "description": "Software-as-a-Service products are cloud-delivered applications serving business or consumer customers through subscription models, requiring continuous delivery of value through product iterations. SaaS companies must balance feature velocity with platform reliability, security, and scalability while managing complex multi-tenant architectures. Success depends on driving adoption, reducing churn, expanding accounts, and maintaining high availability SLAs.",
+    "commonUsers": [
+      "End Users (employees at subscriber companies)",
+      "Admins and IT Managers",
+      "Customer Success Managers",
+      "Sales and Account Executives",
+      "Product and Engineering Teams",
+      "Finance and Billing Administrators"
+    ],
+    "commonWorkflows": [
+      "Customer onboarding and provisioning",
+      "Feature discovery and activation",
+      "Subscription management and billing",
+      "Customer health scoring and churn prediction",
+      "In-app support and help desk",
+      "API and integration configuration",
+      "Renewal and upsell management",
+      "Platform incident management and communication"
+    ],
+    "commonMetrics": [
+      "Monthly Recurring Revenue (MRR) and ARR",
+      "Customer churn rate",
+      "Net Revenue Retention (NRR)",
+      "Daily / Monthly Active Users (DAU/MAU)",
+      "Time to value (TTV) for new customers",
+      "Feature adoption rate",
+      "Support ticket volume and CSAT"
+    ],
+    "commonRisks": [
+      "High customer churn due to poor adoption",
+      "Platform outages affecting SLA commitments",
+      "Security breaches in multi-tenant environments",
+      "Feature bloat reducing product usability",
+      "Pricing pressure from competitors",
+      "Integration failures with enterprise customer systems"
+    ],
+    "commonIntegrations": [
+      "CRM (Salesforce, HubSpot)",
+      "Billing and subscription platforms (Stripe, Chargebee, Zuora)",
+      "Identity and SSO providers (Okta, Auth0)",
+      "Analytics and telemetry platforms (Mixpanel, Amplitude)",
+      "Customer support tools (Zendesk, Intercom)"
+    ],
+    "complianceConsiderations": [
+      "SOC 2 Type II certification for enterprise customers",
+      "GDPR / CCPA data privacy compliance",
+      "ISO 27001 information security standard",
+      "HIPAA if serving healthcare customers",
+      "Accessibility standards (WCAG 2.1) for enterprise customers"
+    ],
+    "suggestedRoles": ["pm", "po", "sm", "em", "tl", "pgm"],
+    "relatedSkills": [
+      "Product-led growth strategies",
+      "Roadmap planning and prioritization",
+      "Agile and scrum practices",
+      "Customer discovery and research",
+      "Metrics and OKR management",
+      "Stakeholder communication"
+    ],
+    "starterPromptContext": "You are working on a SaaS product where the core challenge is driving user adoption, reducing churn, and growing net revenue retention. The team must balance new feature development with platform reliability and enterprise customer requirements. Success is measured by ARR growth, churn rate, feature adoption, and time to value.",
+    "source": "curated"
+  },
+  {
+    "id": "ai-data-platforms",
+    "name": "AI / Data Platforms",
+    "category": "Technology",
+    "description": "AI and data platform products provide infrastructure, tooling, and services that enable organizations to build, train, deploy, and monitor machine learning models and data pipelines at scale. This domain includes MLOps platforms, data warehouses, business intelligence tools, and AI application development frameworks. Products must serve both technical data scientists and engineers as well as business users seeking AI-powered insights.",
+    "commonUsers": [
+      "Data Scientists and ML Engineers",
+      "Data Engineers",
+      "Business Analysts and BI Users",
+      "Platform Engineers",
+      "AI/ML Product Managers",
+      "Executive Decision Makers"
+    ],
+    "commonWorkflows": [
+      "Data ingestion and pipeline orchestration",
+      "Feature engineering and feature store management",
+      "Model training, tuning, and experiment tracking",
+      "Model deployment and serving",
+      "Model monitoring and drift detection",
+      "Business intelligence and dashboard creation",
+      "Data governance and lineage tracking",
+      "AI model governance and bias assessment"
+    ],
+    "commonMetrics": [
+      "Model accuracy and precision/recall",
+      "Data pipeline latency and SLA",
+      "Feature store freshness",
+      "Model deployment frequency",
+      "AI inference cost per request",
+      "Data quality score",
+      "Platform uptime and reliability"
+    ],
+    "commonRisks": [
+      "Model bias and fairness issues in production",
+      "Data quality issues corrupting model outputs",
+      "AI hallucinations in generative AI features",
+      "Regulatory risk from AI decisions (ECOA, GDPR AI Act)",
+      "Cost overruns in compute infrastructure",
+      "Data governance failures and lineage gaps"
+    ],
+    "commonIntegrations": [
+      "Cloud platforms (AWS SageMaker, Azure ML, GCP Vertex AI)",
+      "Data warehouses (Snowflake, BigQuery, Databricks)",
+      "MLflow and experiment tracking tools",
+      "Data orchestration (Airflow, Prefect, Dagster)",
+      "Vector databases (Pinecone, Weaviate) for LLM applications"
+    ],
+    "complianceConsiderations": [
+      "EU AI Act requirements for high-risk AI systems",
+      "GDPR right to explanation for automated decisions",
+      "ECOA and fair lending requirements for credit AI models",
+      "SOC 2 for platform data security",
+      "Model governance and internal AI ethics policies"
+    ],
+    "suggestedRoles": ["pm", "dm", "em", "tl", "ba", "pgm"],
+    "relatedSkills": [
+      "AI/ML product strategy",
+      "Data analysis and statistical thinking",
+      "Technical requirements documentation",
+      "Ethics and responsible AI",
+      "Roadmap planning",
+      "Cross-functional team leadership"
+    ],
+    "starterPromptContext": "You are working on an AI or data platform product serving data scientists, ML engineers, and business analytics users. The platform must deliver reliable, scalable, and trustworthy AI/ML capabilities with strong data governance. Key success metrics include model deployment velocity, data pipeline reliability, and adoption by data teams.",
+    "source": "curated"
+  },
+  {
+    "id": "edtech",
+    "name": "Education / EdTech",
+    "category": "Education",
+    "description": "Education technology platforms support learning delivery, student management, and educational content for K-12 schools, higher education institutions, and corporate learning environments. Modern EdTech combines adaptive learning algorithms, learning analytics, and digital content management to personalize educational experiences. Products must serve learners, educators, administrators, and parents while meeting accessibility and student data privacy requirements.",
+    "commonUsers": [
+      "Students and Learners",
+      "Teachers and Instructors",
+      "School / Program Administrators",
+      "Parents and Guardians",
+      "Corporate Learning and Development (L&D) Teams",
+      "Curriculum Designers"
+    ],
+    "commonWorkflows": [
+      "Course creation and content publishing",
+      "Student enrollment and rostering",
+      "Assignment submission and grading",
+      "Learning path personalization",
+      "Assessment and quiz delivery",
+      "Progress tracking and reporting",
+      "Video lecture and live session management",
+      "Certification and credential issuance"
+    ],
+    "commonMetrics": [
+      "Course completion rate",
+      "Learner engagement (time on platform, logins)",
+      "Assessment pass rate",
+      "Net Promoter Score (NPS) from learners",
+      "Time to certification",
+      "Instructor satisfaction score",
+      "Content utilization rate"
+    ],
+    "commonRisks": [
+      "Student data privacy violations (FERPA, COPPA)",
+      "Accessibility gaps for learners with disabilities",
+      "Low course completion and learner dropout",
+      "Academic integrity issues (cheating, plagiarism)",
+      "Digital divide and device/internet access inequity",
+      "Content licensing and copyright compliance"
+    ],
+    "commonIntegrations": [
+      "Student Information Systems (Ellucian, PowerSchool)",
+      "LTI-compliant LMS integrations",
+      "Video conferencing (Zoom, Microsoft Teams)",
+      "Single Sign-On (Google, Microsoft, Clever)",
+      "Assessment platforms (Respondus, Turnitin)"
+    ],
+    "complianceConsiderations": [
+      "FERPA for student education record privacy",
+      "COPPA for children under 13",
+      "WCAG 2.1 accessibility standards",
+      "State-specific student data privacy laws",
+      "Section 508 for federal or government-funded institutions"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "sm", "em", "dm"],
+    "relatedSkills": [
+      "Learning experience design",
+      "User research with diverse learners",
+      "Accessibility and inclusive design",
+      "Roadmap planning",
+      "Data analysis",
+      "Stakeholder management"
+    ],
+    "starterPromptContext": "You are working on an EdTech platform serving students, educators, and administrators in K-12, higher education, or corporate learning contexts. The core challenge is improving learner engagement, course completion, and measurable learning outcomes while meeting strict data privacy and accessibility requirements.",
+    "source": "curated"
+  },
+  {
+    "id": "proptech",
+    "name": "Real Estate / PropTech",
+    "category": "Real Estate",
+    "description": "PropTech encompasses digital platforms for property search, transaction management, property management, and real estate investment analytics. The sector is transforming traditional brokerage, leasing, and property operations through digital workflows, data-driven valuations, and IoT-connected building management. Products serve buyers, sellers, landlords, tenants, investors, and brokerages navigating complex real estate transactions and property portfolios.",
+    "commonUsers": [
+      "Home Buyers and Sellers",
+      "Tenants and Renters",
+      "Property Managers and Landlords",
+      "Real Estate Agents and Brokers",
+      "Real Estate Investors and Funds",
+      "Building Facilities Managers"
+    ],
+    "commonWorkflows": [
+      "Property search and listing management",
+      "Online tour scheduling and virtual tours",
+      "Offer management and transaction coordination",
+      "Lease creation, signing, and management",
+      "Rent collection and payment processing",
+      "Maintenance request management",
+      "Property valuation and comparable analysis",
+      "Investor portfolio reporting"
+    ],
+    "commonMetrics": [
+      "Days on market",
+      "Listing conversion rate",
+      "Lease renewal rate",
+      "Maintenance resolution time",
+      "Rent collection rate",
+      "Occupancy rate",
+      "Net Operating Income (NOI)"
+    ],
+    "commonRisks": [
+      "Fair housing law violations in listing algorithms",
+      "Data privacy risks for financial and personal tenant data",
+      "Real estate market volatility affecting platform usage",
+      "MLS data access and licensing compliance",
+      "Fraud in rental listings and transactions",
+      "Regulatory changes to short-term rental rules"
+    ],
+    "commonIntegrations": [
+      "MLS (Multiple Listing Service) data feeds",
+      "E-signature platforms (DocuSign, Authentisign)",
+      "Payment processing for rent (Stripe, Plaid)",
+      "Property management systems (Yardi, AppFolio, RealPage)",
+      "Smart building and IoT platforms"
+    ],
+    "complianceConsiderations": [
+      "Fair Housing Act and anti-discrimination requirements",
+      "State-specific real estate licensing laws",
+      "RESPA for real estate transactions",
+      "Tenant data privacy regulations",
+      "Short-term rental regulations and city zoning compliance"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "em", "dm"],
+    "relatedSkills": [
+      "Real estate domain knowledge",
+      "User research and persona development",
+      "Workflow analysis",
+      "Roadmap planning",
+      "Data analysis",
+      "Regulatory compliance awareness"
+    ],
+    "starterPromptContext": "You are working in PropTech where the goal is to digitize and streamline property search, transactions, leasing, and property management. Key stakeholders include agents, tenants, landlords, investors, and property managers. Success is measured by transaction volume, tenant retention, occupancy rates, and platform adoption.",
+    "source": "curated"
+  },
+  {
+    "id": "travel-hospitality",
+    "name": "Travel / Hospitality",
+    "category": "Travel & Hospitality",
+    "description": "Travel and hospitality technology powers booking, operations, and guest experience management for airlines, hotels, cruise lines, vacation rentals, and online travel agencies (OTAs). Platforms in this domain manage complex inventory, pricing, and distribution across global reservation systems while delivering personalized travel experiences. The sector demands real-time availability management, dynamic pricing engines, and seamless customer communication throughout the travel journey.",
+    "commonUsers": [
+      "Travelers and Guests",
+      "Hotel and Property Front Desk Staff",
+      "Revenue Managers",
+      "Airline Operations Staff",
+      "Travel Agents and Agencies",
+      "Corporate Travel Managers"
+    ],
+    "commonWorkflows": [
+      "Property or flight search and availability check",
+      "Reservation and booking management",
+      "Dynamic pricing and rate management",
+      "Check-in and check-out processing",
+      "Guest messaging and concierge requests",
+      "Loyalty points earning and redemption",
+      "Channel distribution management (OTA, GDS, direct)",
+      "Post-stay review and feedback management"
+    ],
+    "commonMetrics": [
+      "Revenue Per Available Room (RevPAR) for hotels",
+      "Seat load factor for airlines",
+      "Booking conversion rate",
+      "Average Length of Stay (ALOS)",
+      "Guest satisfaction (NPS, review score)",
+      "Cancellation rate",
+      "Direct booking percentage"
+    ],
+    "commonRisks": [
+      "Demand volatility due to economic or geopolitical events",
+      "Overbooking and inventory management failures",
+      "Data breaches of traveler PII and payment data",
+      "Regulatory compliance across international travel laws",
+      "OTA dependency and commission cost pressure",
+      "Operational disruptions (weather, labor strikes)"
+    ],
+    "commonIntegrations": [
+      "Global Distribution Systems (Amadeus, Sabre, Travelport)",
+      "Property Management Systems (Opera, Mews)",
+      "Channel management platforms",
+      "Payment processors and fraud tools",
+      "Loyalty program platforms"
+    ],
+    "complianceConsiderations": [
+      "GDPR for European traveler data",
+      "PCI DSS for payment processing",
+      "Accessibility requirements (ADA for US properties)",
+      "Aviation regulations (DOT, IATA)",
+      "Local tourism and accommodation licensing laws"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "sm", "em"],
+    "relatedSkills": [
+      "Revenue management fundamentals",
+      "User experience design",
+      "Data analysis",
+      "Roadmap planning",
+      "Stakeholder management",
+      "Agile delivery"
+    ],
+    "starterPromptContext": "You are working in travel and hospitality technology where delivering seamless guest experiences and maximizing revenue per available inventory unit are top priorities. Key stakeholders include revenue managers, operations staff, distribution teams, and guests. Success is measured by booking conversion, RevPAR, guest satisfaction, and direct booking growth.",
+    "source": "curated"
+  },
+  {
+    "id": "media-entertainment",
+    "name": "Media / Entertainment",
+    "category": "Media & Entertainment",
+    "description": "Media and entertainment technology supports content creation, distribution, streaming, and audience monetization for publishers, studios, broadcasters, and streaming services. The sector is driven by the shift to direct-to-consumer (DTC) streaming, creator economy platforms, and AI-powered content recommendation. Products must manage rights and licensing complexity, content moderation at scale, and personalization across massive global audiences.",
+    "commonUsers": [
+      "Consumers and Subscribers",
+      "Content Creators and Producers",
+      "Editorial and Curation Teams",
+      "Advertising Operations Staff",
+      "Rights and Licensing Managers",
+      "Streaming Platform Operations Staff"
+    ],
+    "commonWorkflows": [
+      "Content ingestion, transcoding, and publishing",
+      "Content rights and licensing management",
+      "Personalized content recommendation",
+      "Subscription sign-up and billing management",
+      "Ad inventory management and programmatic selling",
+      "Content moderation and trust and safety",
+      "Creator monetization and revenue share",
+      "Live event streaming and scheduling"
+    ],
+    "commonMetrics": [
+      "Daily Active Users (DAU) and Monthly Active Users (MAU)",
+      "Subscriber churn rate",
+      "Content completion rate",
+      "Ad fill rate and CPM",
+      "Time spent on platform",
+      "Content engagement score",
+      "Creator payout accuracy"
+    ],
+    "commonRisks": [
+      "Content piracy and unauthorized distribution",
+      "Rights licensing violations and copyright disputes",
+      "Harmful content and moderation failures",
+      "Subscriber churn due to content gaps",
+      "CDN costs and streaming infrastructure scaling",
+      "Ad fraud and invalid traffic"
+    ],
+    "commonIntegrations": [
+      "Content Delivery Networks (Akamai, Cloudflare, Fastly)",
+      "Video transcoding (AWS Elemental, Brightcove)",
+      "Ad tech platforms (Google Ad Manager, The Trade Desk)",
+      "Rights management systems",
+      "Analytics platforms (Chartbeat, Comscore, Nielsen)"
+    ],
+    "complianceConsiderations": [
+      "DMCA copyright compliance and takedown processes",
+      "GDPR / CCPA for audience data",
+      "FTC requirements for sponsored content disclosure",
+      "COPPA for children's content platforms",
+      "Accessibility requirements (closed captions, audio description)"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "dm", "sm", "em"],
+    "relatedSkills": [
+      "Content strategy and roadmap",
+      "Audience analytics",
+      "Recommendation algorithm understanding",
+      "Stakeholder alignment",
+      "Agile planning",
+      "User research"
+    ],
+    "starterPromptContext": "You are working in media and entertainment technology on content platforms, streaming services, or creator tools. Key challenges include reducing subscriber churn, improving content discovery through personalization, and scaling content operations. Success is measured by engagement time, subscriber growth, and content conversion.",
+    "source": "curated"
+  },
+  {
+    "id": "telecom",
+    "name": "Telecom",
+    "category": "Telecommunications",
+    "description": "Telecommunications technology covers network infrastructure management, subscriber lifecycle management, and digital service delivery for mobile operators, ISPs, and enterprise connectivity providers. Telecom companies are investing heavily in 5G, fiber, and cloud-native network functions while modernizing BSS/OSS stacks to improve customer self-service and reduce operational costs. Products must handle massive subscriber volumes, real-time network events, and complex pricing and plan management.",
+    "commonUsers": [
+      "Mobile and Broadband Subscribers",
+      "Customer Service Representatives",
+      "Network Operations Engineers",
+      "Retail Channel Staff",
+      "Enterprise Account Managers",
+      "Regulatory and Compliance Teams"
+    ],
+    "commonWorkflows": [
+      "Subscriber activation and SIM provisioning",
+      "Plan management and upgrade/downgrade",
+      "Usage monitoring and alerts",
+      "Network fault detection and resolution",
+      "Bill generation and payment processing",
+      "Customer service escalation and case management",
+      "Number porting management",
+      "Regulatory reporting and lawful intercept compliance"
+    ],
+    "commonMetrics": [
+      "Churn rate",
+      "Average Revenue Per User (ARPU)",
+      "Network uptime and availability",
+      "First call resolution rate",
+      "Plan upgrade conversion rate",
+      "Mean time to repair (MTTR)",
+      "Net Promoter Score (NPS)"
+    ],
+    "commonRisks": [
+      "Network outages affecting large subscriber bases",
+      "Regulatory fines from FCC / Ofcom non-compliance",
+      "SIM swap fraud and identity theft",
+      "Revenue leakage from billing errors",
+      "5G network security vulnerabilities",
+      "Market share loss from MVNOs and digital disruptors"
+    ],
+    "commonIntegrations": [
+      "BSS/OSS platforms (Amdocs, Ericsson, Oracle Comms)",
+      "Network management systems (NMS/EMS)",
+      "CRM platforms (Salesforce)",
+      "Payment gateways and billing systems",
+      "Regulatory reporting platforms"
+    ],
+    "complianceConsiderations": [
+      "FCC regulations for US carriers (CPNI, E911)",
+      "Lawful intercept and CALEA compliance",
+      "GDPR / privacy regulations for subscriber data",
+      "TCPA for outbound marketing and messaging",
+      "Net neutrality and open internet regulations"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "em"],
+    "relatedSkills": [
+      "Telecom domain knowledge",
+      "Product roadmap planning",
+      "Requirements analysis",
+      "Stakeholder management",
+      "Data analysis",
+      "Agile delivery"
+    ],
+    "starterPromptContext": "You are working in telecommunications technology covering subscriber management, network operations, and digital service delivery. The business priority is reducing churn, growing ARPU, and modernizing BSS/OSS systems. Key stakeholders include network operations, customer service, regulatory, and digital product teams.",
+    "source": "curated"
+  },
+  {
+    "id": "energy-utilities",
+    "name": "Energy / Utilities",
+    "category": "Energy & Environment",
+    "description": "Energy and utilities technology platforms support grid management, metering, customer information systems, and renewable energy integration for electric, gas, and water utilities. The energy transition is driving investment in smart grid technology, EV charging infrastructure, demand response programs, and distributed energy resource (DER) management. Products must balance grid reliability, regulatory compliance, and customer engagement across residential, commercial, and industrial segments.",
+    "commonUsers": [
+      "Residential and Commercial Customers",
+      "Grid Operations Engineers",
+      "Field Service Technicians",
+      "Energy Analysts and Forecasters",
+      "Regulatory Affairs Teams",
+      "Demand Response Program Managers"
+    ],
+    "commonWorkflows": [
+      "Smart meter reading and data collection",
+      "Usage analysis and bill calculation",
+      "Outage detection and restoration management",
+      "Demand response event management",
+      "Renewable energy certificate (REC) tracking",
+      "Field work order management",
+      "Rate case filing and regulatory reporting",
+      "Customer energy efficiency program management"
+    ],
+    "commonMetrics": [
+      "System Average Interruption Duration Index (SAIDI)",
+      "Customer satisfaction with outage handling",
+      "Smart meter adoption rate",
+      "Demand response event participation rate",
+      "Revenue recovery and collection rate",
+      "Renewable energy percentage of generation mix",
+      "Field crew productivity"
+    ],
+    "commonRisks": [
+      "Grid cyberattacks on critical infrastructure",
+      "Major weather events causing widespread outages",
+      "Regulatory non-compliance with NERC CIP standards",
+      "DER and solar integration instability on the grid",
+      "Revenue erosion from energy efficiency and prosumers",
+      "Legacy SCADA and operational technology vulnerabilities"
+    ],
+    "commonIntegrations": [
+      "SCADA and Energy Management Systems (EMS)",
+      "Advanced Metering Infrastructure (AMI) systems",
+      "Geographic Information Systems (GIS)",
+      "Customer Information Systems (CIS)",
+      "Weather and grid forecasting platforms"
+    ],
+    "complianceConsiderations": [
+      "NERC CIP cybersecurity standards for bulk electric system",
+      "FERC regulations for wholesale electricity markets",
+      "State Public Utility Commission (PUC) regulations",
+      "EPA Clean Air Act and environmental reporting",
+      "GDPR / state privacy laws for customer energy data"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "em", "tl"],
+    "relatedSkills": [
+      "Energy domain knowledge",
+      "Regulatory compliance awareness",
+      "Process analysis",
+      "Data analysis and forecasting",
+      "Stakeholder management",
+      "Project planning"
+    ],
+    "starterPromptContext": "You are working in the energy and utilities sector on smart grid, customer information, or field operations platforms. The key challenges include grid reliability, renewable energy integration, and regulatory compliance while modernizing aging infrastructure. Success is measured by outage frequency, customer satisfaction, and operational efficiency.",
+    "source": "curated"
+  },
+  {
+    "id": "government",
+    "name": "Government / Public Sector",
+    "category": "Government & Public Sector",
+    "description": "Government technology platforms deliver digital services to citizens, support public administration operations, and modernize legacy government systems across federal, state, and local agencies. The sector is driven by digital government initiatives aimed at improving service accessibility, reducing processing times, and increasing transparency. Products must meet rigorous security, accessibility, and procurement standards while serving diverse public users with varying digital literacy levels.",
+    "commonUsers": [
+      "Citizens and Residents",
+      "Government Employees and Case Workers",
+      "Agency Program Managers",
+      "Elected Officials and Policy Staff",
+      "Oversight and Audit Bodies",
+      "Contractors and Vendors"
+    ],
+    "commonWorkflows": [
+      "Online permit and license application",
+      "Benefits eligibility determination and enrollment",
+      "Case management and workflow processing",
+      "Public comment and engagement collection",
+      "Government data publishing and open data",
+      "Internal workflow automation and document management",
+      "Procurement and vendor management",
+      "Audit trail and compliance reporting"
+    ],
+    "commonMetrics": [
+      "Application processing time",
+      "Digital service adoption rate",
+      "Citizen satisfaction score",
+      "Error and rework rate on applications",
+      "Cost per transaction (digital vs. paper)",
+      "Accessibility compliance score",
+      "System uptime during peak filing periods"
+    ],
+    "commonRisks": [
+      "Data breaches of sensitive citizen PII",
+      "Accessibility failures excluding disabled users",
+      "Procurement delays and vendor lock-in",
+      "Legacy system integration failures",
+      "Low digital adoption among vulnerable populations",
+      "Political and policy changes affecting product direction"
+    ],
+    "commonIntegrations": [
+      "State and federal identity verification systems",
+      "Case management systems (Salesforce Government Cloud)",
+      "Payment processors (Pay.gov, Tyler Technologies)",
+      "Enterprise document management",
+      "Interagency data sharing platforms"
+    ],
+    "complianceConsiderations": [
+      "Section 508 and WCAG 2.1 accessibility requirements",
+      "FedRAMP authorization for federal cloud systems",
+      "FISMA information security requirements",
+      "Privacy Act for federal agencies handling citizen PII",
+      "State-specific open records and FOIA requirements"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "pgm", "cp", "dm"],
+    "relatedSkills": [
+      "Government technology and procurement knowledge",
+      "Accessibility-first design",
+      "Stakeholder management",
+      "Requirements documentation",
+      "Agile in government (18F, USDS practices)",
+      "Policy and compliance alignment"
+    ],
+    "starterPromptContext": "You are working on government technology products that deliver digital services to citizens and support public administration operations. The highest priorities are security, accessibility, and compliance with government procurement standards. Success is measured by service adoption, processing efficiency, and citizen satisfaction.",
+    "source": "curated"
+  },
+  {
+    "id": "legaltech",
+    "name": "Legal / LegalTech",
+    "category": "Professional Services",
+    "description": "LegalTech platforms support law firms, corporate legal departments, and legal service providers with contract management, e-discovery, matter management, and legal research tools. The sector is transforming through AI-powered contract analysis, automated document generation, and legal workflow automation. Products must handle highly confidential legal documents and communications while meeting strict privilege, chain-of-custody, and bar compliance requirements.",
+    "commonUsers": [
+      "Attorneys and Paralegals",
+      "Corporate Legal Department Teams",
+      "Legal Operations Managers",
+      "Judges and Court Administrators",
+      "Compliance Officers",
+      "Legal Clients"
+    ],
+    "commonWorkflows": [
+      "Contract drafting, review, and approval",
+      "Matter and case management",
+      "E-discovery and document review",
+      "Legal research and citation",
+      "Billing and time tracking",
+      "Compliance monitoring and regulatory tracking",
+      "IP portfolio management",
+      "Legal hold and litigation readiness"
+    ],
+    "commonMetrics": [
+      "Contract cycle time (draft to executed)",
+      "Matter cost vs. budget",
+      "Document review accuracy rate",
+      "Billing realization rate",
+      "Compliance action closure rate",
+      "eDiscovery cost per gigabyte",
+      "User adoption rate among attorneys"
+    ],
+    "commonRisks": [
+      "Confidentiality and attorney-client privilege breaches",
+      "AI hallucinations in legal research or contract analysis",
+      "Chain-of-custody failures in eDiscovery",
+      "Regulatory changes affecting legal practice",
+      "Bar association rules on attorney technology use",
+      "Data residency requirements for cross-border legal matters"
+    ],
+    "commonIntegrations": [
+      "Practice management systems (Clio, MyCase, iManage)",
+      "eDiscovery platforms (Relativity, Everlaw)",
+      "E-signature platforms (DocuSign, Adobe Sign)",
+      "Legal research tools (Westlaw, LexisNexis)",
+      "Billing and accounting systems (Aderant, Elite)"
+    ],
+    "complianceConsiderations": [
+      "ABA Model Rules of Professional Conduct for attorney technology",
+      "State bar association ethics opinions on AI tools",
+      "GDPR and client data privacy obligations",
+      "Federal Rules of Civil Procedure (FRCP) for eDiscovery",
+      "Data residency requirements for cross-border matters"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "cp", "tl"],
+    "relatedSkills": [
+      "Legal domain knowledge",
+      "Process analysis",
+      "Requirements documentation",
+      "AI/ML product management",
+      "Stakeholder management",
+      "Data privacy and compliance"
+    ],
+    "starterPromptContext": "You are working in LegalTech developing platforms for law firms or corporate legal departments. The domain demands strict confidentiality, AI accuracy, and compliance with legal ethics rules. Key challenges include reducing contract cycle time, managing eDiscovery costs, and driving attorney adoption of new tools.",
+    "source": "curated"
+  },
+  {
+    "id": "hr-workforce",
+    "name": "HR / Workforce Management",
+    "category": "Human Resources",
+    "description": "HR and workforce management technology supports the full employee lifecycle from talent acquisition and onboarding through performance management, learning, compensation, and offboarding. Modern HR platforms combine HRIS core systems with employee experience tools, people analytics, and AI-powered talent intelligence. Products must serve both HR administrators and employees as self-service users while integrating with payroll, benefits, and compliance systems.",
+    "commonUsers": [
+      "Employees (self-service)",
+      "HR Business Partners",
+      "Recruiters and Talent Acquisition Teams",
+      "Managers and Team Leaders",
+      "HR Administrators",
+      "Payroll and Benefits Administrators"
+    ],
+    "commonWorkflows": [
+      "Job requisition and posting",
+      "Candidate sourcing, screening, and interviewing",
+      "Offer management and onboarding",
+      "Goal setting and performance reviews",
+      "Learning and development enrollment",
+      "Time and attendance tracking",
+      "Leave and absence management",
+      "Employee offboarding and separation"
+    ],
+    "commonMetrics": [
+      "Time to fill open roles",
+      "Employee turnover rate",
+      "Engagement score",
+      "Training completion rate",
+      "Offer acceptance rate",
+      "Performance review completion rate",
+      "HR system self-service adoption rate"
+    ],
+    "commonRisks": [
+      "Bias in AI-powered recruitment and performance tools",
+      "Employee data privacy breaches",
+      "Non-compliance with labor laws (FLSA, FMLA, EEOC)",
+      "Poor adoption leading to shadow HR processes",
+      "Integration failures between HRIS and payroll",
+      "Inaccurate people data affecting business decisions"
+    ],
+    "commonIntegrations": [
+      "HRIS platforms (Workday, SAP SuccessFactors, BambooHR)",
+      "Applicant Tracking Systems (ATS)",
+      "Payroll systems (ADP, Paychex)",
+      "Benefits administration platforms",
+      "Background check providers"
+    ],
+    "complianceConsiderations": [
+      "EEOC and anti-discrimination requirements",
+      "FLSA and wage and hour compliance",
+      "FMLA and leave management requirements",
+      "GDPR / CCPA for employee personal data",
+      "OFCCP affirmative action requirements for federal contractors"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "sm"],
+    "relatedSkills": [
+      "HR domain knowledge",
+      "User research and persona development",
+      "Process analysis",
+      "Requirements documentation",
+      "Data privacy compliance",
+      "Stakeholder management"
+    ],
+    "starterPromptContext": "You are working on HR and workforce management technology covering the full employee lifecycle. Key challenges include improving recruiter efficiency, employee self-service adoption, and people analytics capabilities. Success is measured by time to fill, turnover reduction, system adoption, and compliance with labor regulations.",
+    "source": "curated"
+  },
+  {
+    "id": "cybersecurity",
+    "name": "Cybersecurity",
+    "category": "Technology",
+    "description": "Cybersecurity technology products protect organizations from digital threats through detection, prevention, response, and recovery capabilities across endpoints, networks, cloud, and application layers. This includes SIEM, SOAR, EDR, identity and access management, and vulnerability management platforms. Product development in this space requires deep understanding of the threat landscape, compliance requirements, and the workflows of security operations center (SOC) analysts.",
+    "commonUsers": [
+      "Security Operations Center (SOC) Analysts",
+      "Incident Responders and Forensic Investigators",
+      "CISOs and Security Leadership",
+      "IT Administrators and Help Desk",
+      "Compliance and Risk Officers",
+      "Developers and DevSecOps Engineers"
+    ],
+    "commonWorkflows": [
+      "Threat detection and alert triage",
+      "Security incident investigation and response",
+      "Vulnerability scanning and patch management",
+      "Identity and access provisioning and de-provisioning",
+      "Penetration testing and red team exercises",
+      "Security awareness training delivery",
+      "Compliance evidence collection and audit support",
+      "Threat intelligence ingestion and enrichment"
+    ],
+    "commonMetrics": [
+      "Mean time to detect (MTTD)",
+      "Mean time to respond (MTTR)",
+      "False positive rate in alerts",
+      "Vulnerability remediation SLA compliance",
+      "Phishing simulation click rate",
+      "Patch coverage rate",
+      "SOC analyst capacity and alert volume"
+    ],
+    "commonRisks": [
+      "Zero-day exploits targeting platform infrastructure",
+      "Alert fatigue reducing SOC analyst effectiveness",
+      "Incomplete asset visibility creating blind spots",
+      "Insider threats and privileged access abuse",
+      "Third-party supply chain compromise",
+      "Regulatory non-compliance (PCI DSS, HIPAA, NIST)"
+    ],
+    "commonIntegrations": [
+      "SIEM platforms (Splunk, Microsoft Sentinel, QRadar)",
+      "Endpoint protection (CrowdStrike, SentinelOne)",
+      "Identity platforms (Okta, Azure AD, CyberArk)",
+      "Threat intelligence feeds (MITRE ATT&CK, STIX/TAXII)",
+      "Ticketing and SOAR platforms (ServiceNow, Palo Alto XSOAR)"
+    ],
+    "complianceConsiderations": [
+      "NIST Cybersecurity Framework (CSF) alignment",
+      "PCI DSS for cardholder data security",
+      "HIPAA Security Rule for healthcare",
+      "SOC 2 Type II for service organizations",
+      "CMMC for US Department of Defense contractors"
+    ],
+    "suggestedRoles": ["pm", "po", "em", "tl", "ba", "dm"],
+    "relatedSkills": [
+      "Security domain knowledge",
+      "Threat modeling and risk analysis",
+      "Technical requirements documentation",
+      "SOC workflow understanding",
+      "Compliance and audit knowledge",
+      "Roadmap planning"
+    ],
+    "starterPromptContext": "You are working in cybersecurity product development building tools for SOC analysts, incident responders, or security administrators. The primary challenge is reducing MTTD and MTTR while managing alert fatigue and improving analyst productivity. Key stakeholders include CISOs, SOC leaders, IT administrators, and compliance teams.",
+    "source": "curated"
+  },
+  {
+    "id": "supply-chain",
+    "name": "Supply Chain",
+    "category": "Supply Chain & Operations",
+    "description": "Supply chain technology platforms enable end-to-end visibility, planning, and execution across procurement, manufacturing, inventory, and logistics networks spanning multiple tiers of suppliers. Modern supply chain systems incorporate real-time demand sensing, AI-powered planning, and supplier collaboration to improve resilience and reduce working capital. The domain requires integration across ERPs, supplier systems, and logistics platforms spanning global networks.",
+    "commonUsers": [
+      "Supply Chain Planners",
+      "Procurement and Sourcing Managers",
+      "Supplier Relationship Managers",
+      "Inventory and Demand Planners",
+      "Logistics Coordinators",
+      "Supply Chain Analytics Teams"
+    ],
+    "commonWorkflows": [
+      "Demand forecasting and consensus planning",
+      "Purchase order creation and supplier management",
+      "Supplier onboarding and qualification",
+      "Inventory replenishment and safety stock optimization",
+      "Inbound logistics and receiving management",
+      "Supply chain exception and disruption management",
+      "Supplier performance scorecarding",
+      "Trade compliance and customs documentation"
+    ],
+    "commonMetrics": [
+      "Forecast accuracy rate",
+      "Days of Inventory Outstanding (DIO)",
+      "Perfect order rate",
+      "Supplier on-time delivery rate",
+      "Supply chain cost as a percentage of revenue",
+      "Lead time variability",
+      "Inventory turnover ratio"
+    ],
+    "commonRisks": [
+      "Single-source supplier concentration risk",
+      "Geopolitical disruptions affecting supply routes",
+      "Demand volatility and forecast misalignment",
+      "Counterfeit components in the supply chain",
+      "Trade compliance and sanctions violations",
+      "Data quality gaps across multi-tier supplier networks"
+    ],
+    "commonIntegrations": [
+      "ERP systems (SAP, Oracle, Microsoft Dynamics)",
+      "Supplier portals and EDI networks",
+      "Advanced Planning and Scheduling (APS) tools",
+      "Customs and trade compliance platforms",
+      "Logistics management systems (TMS/WMS)"
+    ],
+    "complianceConsiderations": [
+      "Export control regulations (ITAR, EAR)",
+      "Conflict minerals reporting (Dodd-Frank Section 1502)",
+      "Modern slavery and supply chain transparency laws",
+      "ISO 28000 supply chain security management",
+      "CTPAT and AEO trusted trader programs"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "em", "tl"],
+    "relatedSkills": [
+      "Supply chain process knowledge",
+      "Data analysis and forecasting",
+      "Requirements documentation",
+      "Stakeholder management",
+      "Systems integration",
+      "Risk analysis"
+    ],
+    "starterPromptContext": "You are working in supply chain technology focused on demand planning, supplier management, and end-to-end supply chain visibility. Key challenges include improving forecast accuracy, reducing inventory, and building supply chain resilience. Success is measured by perfect order rate, inventory turnover, and supplier performance.",
+    "source": "curated"
+  },
+  {
+    "id": "construction",
+    "name": "Construction",
+    "category": "Industrial",
+    "description": "Construction technology platforms support project management, field operations, and financial management for general contractors, subcontractors, and project owners building commercial, residential, and infrastructure projects. The sector is undergoing digital transformation through BIM adoption, connected job sites, and integrated project management platforms replacing siloed spreadsheets and paper processes. Products must support distributed field teams with mobile-first tools while integrating with estimating, accounting, and design systems.",
+    "commonUsers": [
+      "Project Owners and Developers",
+      "General Contractors and Project Managers",
+      "Subcontractors and Specialty Trades",
+      "Field Supervisors and Foremen",
+      "Estimators and Cost Managers",
+      "Safety Officers"
+    ],
+    "commonWorkflows": [
+      "RFI (Request for Information) management",
+      "Submittal review and approval",
+      "Daily log and field reporting",
+      "Punch list and deficiency tracking",
+      "Change order management",
+      "Schedule management and look-ahead planning",
+      "Safety inspection and incident reporting",
+      "Contract and subcontract management"
+    ],
+    "commonMetrics": [
+      "Project schedule variance",
+      "Cost variance vs. budget",
+      "RFI resolution cycle time",
+      "Defect / punch list closure rate",
+      "Safety incident rate (TRIR)",
+      "Rework cost as a percentage of total cost",
+      "Subcontractor payment cycle time"
+    ],
+    "commonRisks": [
+      "Project schedule delays and cost overruns",
+      "Worker safety incidents on job sites",
+      "Subcontractor financial default or non-performance",
+      "Design errors and rework",
+      "Supply chain delays for materials",
+      "Regulatory non-compliance with local building codes"
+    ],
+    "commonIntegrations": [
+      "BIM platforms (Autodesk Revit, Navisworks)",
+      "Estimating and takeoff tools (Bluebeam, PlanSwift)",
+      "Accounting and ERP (Sage 300 CRE, Viewpoint Vista)",
+      "Field management platforms (Procore, Autodesk Construction Cloud)",
+      "Scheduling tools (Primavera P6, MS Project)"
+    ],
+    "complianceConsiderations": [
+      "OSHA construction safety regulations (29 CFR 1926)",
+      "Local building codes and permit requirements",
+      "Davis-Bacon prevailing wage requirements on public projects",
+      "LEED and sustainability certification requirements",
+      "AIA contract requirements for public-private projects"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "em", "tl", "sm"],
+    "relatedSkills": [
+      "Construction domain knowledge",
+      "Project scheduling and planning",
+      "Mobile-first product design",
+      "Requirements documentation",
+      "Stakeholder management",
+      "Risk assessment"
+    ],
+    "starterPromptContext": "You are working in construction technology supporting project management, field operations, and financial management for contractors and project owners. The primary challenge is giving distributed field teams real-time visibility into project status, RFIs, submittals, and safety. Success is measured by schedule adherence, cost control, and safety incident rates.",
+    "source": "curated"
+  },
+  {
+    "id": "food-restaurant-tech",
+    "name": "Food / Restaurant Tech",
+    "category": "Commerce",
+    "description": "Food and restaurant technology covers platforms for online ordering, point-of-sale systems, kitchen display management, delivery logistics, and restaurant operations management. The sector spans fast-casual, full-service dining, ghost kitchens, and food delivery marketplaces with distinct operational requirements for each model. Products must integrate ordering, kitchen operations, and delivery workflows while supporting loyalty programs and data-driven menu optimization.",
+    "commonUsers": [
+      "Diners and Delivery Customers",
+      "Restaurant Owners and Operators",
+      "Kitchen Staff and Cooks",
+      "Front-of-House Staff and Servers",
+      "Delivery Drivers",
+      "Restaurant Group Regional Managers"
+    ],
+    "commonWorkflows": [
+      "Online and in-app order placement",
+      "POS transaction and table management",
+      "Kitchen order routing and display management",
+      "Delivery dispatch and driver management",
+      "Menu management and pricing updates",
+      "Inventory and food cost tracking",
+      "Loyalty program management",
+      "Labor scheduling and tip distribution"
+    ],
+    "commonMetrics": [
+      "Average ticket size",
+      "Table turn time",
+      "Order accuracy rate",
+      "Delivery on-time rate",
+      "Food cost percentage",
+      "Guest satisfaction (CSAT / review rating)",
+      "Loyalty redemption rate"
+    ],
+    "commonRisks": [
+      "POS system outages during peak dining hours",
+      "Food safety incidents and FDA violations",
+      "Delivery driver availability shortages",
+      "Third-party delivery platform dependency",
+      "High staff turnover disrupting operations",
+      "Menu pricing errors on delivery platforms"
+    ],
+    "commonIntegrations": [
+      "POS systems (Toast, Square, Lightspeed)",
+      "Delivery platforms (DoorDash Drive, Uber Eats for Business)",
+      "Inventory and recipe management tools",
+      "Payroll and scheduling platforms (7shifts, HotSchedules)",
+      "Loyalty and CRM platforms"
+    ],
+    "complianceConsiderations": [
+      "FDA food safety and labeling regulations",
+      "Local health department permits and inspections",
+      "ADA accessibility for ordering kiosks and apps",
+      "Alcohol service compliance (age verification)",
+      "PCI DSS for card payments at POS and online"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "sm", "em", "projm"],
+    "relatedSkills": [
+      "Consumer product management",
+      "Operational workflow analysis",
+      "Mobile-first UX",
+      "Agile delivery",
+      "Stakeholder management",
+      "Data analysis"
+    ],
+    "starterPromptContext": "You are working in food and restaurant technology covering online ordering, POS, kitchen operations, and delivery logistics. The core challenge is delivering fast, accurate orders while improving operator profitability through data-driven menu and labor decisions. Key stakeholders are restaurant operators, kitchen staff, and delivery customers.",
+    "source": "curated"
+  },
+  {
+    "id": "nonprofit",
+    "name": "Nonprofit / Social Impact",
+    "category": "Social Sector",
+    "description": "Nonprofit and social impact technology platforms support fundraising, donor management, program delivery, and impact measurement for charitable organizations, NGOs, foundations, and social enterprises. These organizations operate with constrained budgets and must demonstrate measurable social impact to funders and boards. Products must serve mission-driven organizations with diverse technology maturity levels while meeting grant compliance and financial reporting requirements.",
+    "commonUsers": [
+      "Donors and Foundation Program Officers",
+      "Nonprofit Executive Directors",
+      "Program Staff and Case Managers",
+      "Fundraising and Development Teams",
+      "Volunteer Coordinators",
+      "Board Members and Trustees"
+    ],
+    "commonWorkflows": [
+      "Donor cultivation and solicitation",
+      "Online donation processing",
+      "Grant application and reporting",
+      "Volunteer recruitment and management",
+      "Program enrollment and case management",
+      "Impact data collection and reporting",
+      "Event management and fundraising campaigns",
+      "Board and governance reporting"
+    ],
+    "commonMetrics": [
+      "Donor retention rate",
+      "Average gift size",
+      "Fundraising ROI (cost to raise a dollar)",
+      "Grant win rate",
+      "Volunteer hours logged",
+      "Program beneficiaries served",
+      "Impact outcome achievement rate"
+    ],
+    "commonRisks": [
+      "Donor data privacy breaches",
+      "Grant compliance failures leading to fund clawbacks",
+      "Volunteer and staff burnout from limited resources",
+      "Overdependence on a few large donors",
+      "Technology adoption barriers with non-technical staff",
+      "Impact measurement gaps reducing funder credibility"
+    ],
+    "commonIntegrations": [
+      "CRM and donor management (Salesforce NPSP, Bloomerang)",
+      "Online fundraising platforms (Classy, Giving Fuel)",
+      "Accounting systems (QuickBooks Nonprofit, Sage Intacct)",
+      "Volunteer management platforms (VolunteerHub, Galaxy Digital)",
+      "Impact measurement tools (Apricot, ETO)"
+    ],
+    "complianceConsiderations": [
+      "IRS 501(c)(3) reporting and unrelated business income",
+      "Grant compliance with federal Uniform Guidance (2 CFR 200)",
+      "State charitable solicitation registration requirements",
+      "GDPR / CCPA for donor data",
+      "Donor privacy and gift anonymity requirements"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "pgm", "cp", "dm"],
+    "relatedSkills": [
+      "Nonprofit sector knowledge",
+      "Stakeholder engagement",
+      "Grant and impact reporting",
+      "Requirements documentation",
+      "Data analysis",
+      "Program management"
+    ],
+    "starterPromptContext": "You are working on nonprofit technology platforms supporting fundraising, donor management, and social impact measurement. Organizations operate with limited budgets and must demonstrate measurable outcomes to donors and funders. Key stakeholders include development teams, program staff, grant managers, and board members.",
+    "source": "curated"
+  },
+  {
+    "id": "consumer-mobile",
+    "name": "Consumer Mobile Apps",
+    "category": "Technology",
+    "description": "Consumer mobile app products span social, utility, fitness, entertainment, and personal productivity categories, serving mass-market audiences through iOS and Android platforms. Success in consumer mobile requires rapid iteration, viral growth mechanics, and deep engagement instrumentation to optimize retention and monetization. Products operate in a highly competitive attention economy where activation, retention, and lifetime value are the primary growth levers.",
+    "commonUsers": [
+      "Mass Consumer End Users",
+      "Power Users and Community Contributors",
+      "Content Creators (on social platforms)",
+      "App Store Reviewers",
+      "Advertiser and Brand Partners",
+      "Customer Support Teams"
+    ],
+    "commonWorkflows": [
+      "App download and onboarding flow",
+      "User registration and profile creation",
+      "Core product engagement loop",
+      "Push notification and re-engagement campaigns",
+      "In-app purchase and subscription billing",
+      "Social sharing and referral mechanics",
+      "App store review and rating management",
+      "Customer support and issue resolution"
+    ],
+    "commonMetrics": [
+      "Day 1, Day 7, Day 30 retention rates",
+      "Daily Active Users (DAU)",
+      "Monthly Active Users (MAU)",
+      "Average Session Length",
+      "In-app purchase conversion rate",
+      "K-factor (viral coefficient)",
+      "App store rating and review volume"
+    ],
+    "commonRisks": [
+      "App store policy violations causing removal",
+      "Low Day 1 retention killing growth",
+      "Negative viral moments damaging brand reputation",
+      "iOS and Android platform API changes breaking functionality",
+      "User data privacy violations (GDPR, COPPA, ATT)",
+      "Subscription churn from poor onboarding"
+    ],
+    "commonIntegrations": [
+      "Mobile analytics (Mixpanel, Amplitude, Firebase)",
+      "Push notification platforms (Braze, OneSignal)",
+      "App store APIs (Apple App Store Connect, Google Play Console)",
+      "Payment platforms (Apple Pay, Google Pay, RevenueCat)",
+      "A/B testing tools (Optimizely, Firebase Remote Config)"
+    ],
+    "complianceConsiderations": [
+      "Apple App Store Review Guidelines",
+      "Google Play Policy requirements",
+      "GDPR and ATT (App Tracking Transparency) compliance",
+      "COPPA for apps targeting children under 13",
+      "ADA accessibility guidelines for mobile apps"
+    ],
+    "suggestedRoles": ["pm", "po", "sm", "em", "ba", "dm"],
+    "relatedSkills": [
+      "Mobile product strategy",
+      "Growth and retention analysis",
+      "A/B testing and experimentation",
+      "User research and UX",
+      "Agile sprint delivery",
+      "Metrics and OKR management"
+    ],
+    "starterPromptContext": "You are working on a consumer mobile app in a competitive attention-driven market. Key challenges include improving Day 1 activation, 30-day retention, and monetization conversion. The team must run rapid experiments and use behavioral analytics to guide decisions. Success is measured by DAU, retention curves, and LTV.",
+    "source": "curated"
+  },
+  {
+    "id": "payroll-hr-ops",
+    "name": "Payroll / HR Operations",
+    "category": "Human Resources",
+    "description": "Payroll and HR operations platforms automate the calculation, processing, and compliance of employee compensation including wages, taxes, benefits, deductions, and reporting across multiple jurisdictions. These systems are mission-critical infrastructure requiring near-perfect accuracy, as errors directly impact employee livelihoods and create regulatory liability. Modern payroll platforms are modernizing toward continuous or on-demand pay, real-time tax calculation, and global payroll consolidation.",
+    "commonUsers": [
+      "Employees (pay stub and W-2 access)",
+      "Payroll Administrators",
+      "HR Business Partners",
+      "Finance and Accounting Teams",
+      "Auditors and Tax Professionals",
+      "State and Federal Tax Agencies"
+    ],
+    "commonWorkflows": [
+      "Payroll run calculation and review",
+      "Tax withholding calculation and remittance",
+      "Direct deposit and paycheck distribution",
+      "Benefits deduction management",
+      "Year-end W-2 and tax form generation",
+      "Multi-state and multi-jurisdiction payroll compliance",
+      "Garnishment processing",
+      "Payroll audit and reconciliation"
+    ],
+    "commonMetrics": [
+      "Payroll error rate",
+      "Payroll run processing time",
+      "Tax filing on-time rate",
+      "Employee self-service adoption rate",
+      "W-2 accuracy rate",
+      "Direct deposit enrollment rate",
+      "Compliance audit pass rate"
+    ],
+    "commonRisks": [
+      "Payroll calculation errors affecting employee pay",
+      "Late or incorrect tax remittances causing penalties",
+      "Non-compliance with state wage and hour laws",
+      "Data security breach of payroll PII",
+      "FLSA misclassification of exempt vs. non-exempt employees",
+      "Garnishment processing errors creating legal liability"
+    ],
+    "commonIntegrations": [
+      "HRIS systems (Workday, SAP SuccessFactors)",
+      "Time and attendance systems",
+      "Benefits administration platforms",
+      "General ledger and accounting systems",
+      "State and federal tax filing systems"
+    ],
+    "complianceConsiderations": [
+      "IRS payroll tax regulations (FICA, FUTA, federal withholding)",
+      "State income tax and unemployment insurance requirements",
+      "FLSA overtime and minimum wage requirements",
+      "ACA reporting for applicable large employers",
+      "Child support and garnishment laws"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "em", "tl"],
+    "relatedSkills": [
+      "Payroll and tax compliance knowledge",
+      "Requirements documentation",
+      "Data accuracy and validation",
+      "Stakeholder management",
+      "Process analysis",
+      "Risk and compliance thinking"
+    ],
+    "starterPromptContext": "You are working on a payroll or HR operations platform where accuracy, compliance, and timeliness are non-negotiable. Errors directly impact employees and create regulatory exposure. Key stakeholders include payroll administrators, finance teams, HR business partners, and compliance officers.",
+    "source": "curated"
+  },
+  {
+    "id": "banking-payments",
+    "name": "Banking / Payments",
+    "category": "Financial Services",
+    "description": "Banking and payments platforms support deposit account management, money movement, card processing, and digital banking experiences for retail and commercial customers. This domain encompasses core banking modernization, real-time payments (RTP, FedNow), and embedded finance capabilities built on modern APIs. Products in this space must meet the highest standards of reliability, security, and regulatory compliance while delivering the seamless digital experiences customers now expect.",
+    "commonUsers": [
+      "Retail and Business Banking Customers",
+      "Bank Tellers and Relationship Managers",
+      "Treasury and Cash Management Teams",
+      "Fraud Operations Analysts",
+      "Compliance and BSA Officers",
+      "Fintech Partners using bank APIs"
+    ],
+    "commonWorkflows": [
+      "Account opening and onboarding",
+      "Deposit, withdrawal, and transfer processing",
+      "ACH, wire, and real-time payment initiation",
+      "Card issuance and transaction authorization",
+      "Fraud detection and case management",
+      "Overdraft and credit limit management",
+      "Bank reconciliation and general ledger posting",
+      "Regulatory reporting (CTR, SAR)"
+    ],
+    "commonMetrics": [
+      "Transaction processing success rate",
+      "Payment settlement time",
+      "Fraud loss rate",
+      "Account opening completion rate",
+      "Customer digital adoption rate",
+      "Net Promoter Score (NPS)",
+      "Regulatory exam findings"
+    ],
+    "commonRisks": [
+      "Payment system outages affecting customer access to funds",
+      "Fraud and money laundering through payment channels",
+      "Regulatory enforcement actions from banking regulators",
+      "Core banking system modernization risk",
+      "API security vulnerabilities in open banking",
+      "Operational errors in high-value wire processing"
+    ],
+    "commonIntegrations": [
+      "Core banking systems (FIS, Fiserv, Jack Henry)",
+      "Payment networks (Visa, Mastercard, ACH, RTP, FedNow)",
+      "KYC/AML platforms (NICE Actimize, FiServ AML)",
+      "Card management and processing platforms",
+      "Open banking APIs and fintech partner integrations"
+    ],
+    "complianceConsiderations": [
+      "BSA/AML program requirements and FinCEN rules",
+      "Regulation E for consumer electronic fund transfers",
+      "OCC and FDIC safety and soundness examination standards",
+      "PCI DSS for card data",
+      "FFIEC cybersecurity assessment framework"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "cp"],
+    "relatedSkills": [
+      "Banking and payments domain knowledge",
+      "Regulatory compliance",
+      "Requirements documentation",
+      "Risk analysis",
+      "Stakeholder management",
+      "Data analysis"
+    ],
+    "starterPromptContext": "You are working in banking and payments technology where zero-downtime reliability and regulatory compliance are the highest priorities. Customers depend on these systems for access to their money. Key stakeholders include retail banking product teams, fraud operations, compliance officers, and technology leadership.",
+    "source": "curated"
+  },
+  {
+    "id": "wealth-management",
+    "name": "Wealth Management",
+    "category": "Financial Services",
+    "description": "Wealth management technology platforms support investment advisory, portfolio management, financial planning, and client relationship management for registered investment advisors (RIAs), broker-dealers, and private banks. The sector is evolving through digital advisory (robo-advisor) models, tax-optimized direct indexing, and unified wealth platforms that consolidate portfolio, planning, and client communication tools. Products must meet strict SEC/FINRA fiduciary and suitability requirements while delivering personalized client experiences.",
+    "commonUsers": [
+      "High Net Worth Clients and Investors",
+      "Financial Advisors and Wealth Managers",
+      "Portfolio Managers",
+      "Compliance and Risk Officers",
+      "Home Office Operations Teams",
+      "Client Service Associates"
+    ],
+    "commonWorkflows": [
+      "Client onboarding and suitability assessment",
+      "Financial planning and goal-based analysis",
+      "Portfolio construction and model management",
+      "Trade order management and rebalancing",
+      "Performance reporting and attribution",
+      "Client communication and portal access",
+      "Billing and fee management",
+      "Regulatory filing (Form ADV, Form CRS)"
+    ],
+    "commonMetrics": [
+      "Assets under management (AUM) growth",
+      "Client retention rate",
+      "Revenue per advisor",
+      "Portfolio rebalancing accuracy",
+      "Client portal adoption rate",
+      "Compliance exception rate",
+      "Advisor productivity (clients per advisor)"
+    ],
+    "commonRisks": [
+      "Fiduciary breaches and suitability violations",
+      "Cybersecurity breaches of high-value client data",
+      "Model portfolio errors affecting client accounts",
+      "Regulatory changes to fiduciary standards",
+      "Data feed failures causing stale portfolio data",
+      "Advisor attrition taking client relationships"
+    ],
+    "commonIntegrations": [
+      "Custodians (Schwab, Fidelity, Pershing)",
+      "Portfolio management systems (Orion, Tamarac, Black Diamond)",
+      "CRM platforms (Salesforce Financial Services Cloud, Redtail)",
+      "Financial planning tools (eMoney, MoneyGuidePro)",
+      "Market data providers (Bloomberg, FactSet, Refinitiv)"
+    ],
+    "complianceConsiderations": [
+      "SEC Investment Advisers Act fiduciary requirements",
+      "FINRA suitability rules for broker-dealers",
+      "SEC Regulation Best Interest (Reg BI)",
+      "Form ADV and Form CRS disclosure requirements",
+      "AML program requirements for investment accounts"
+    ],
+    "suggestedRoles": ["pm", "ba", "projm", "dm", "cp", "em"],
+    "relatedSkills": [
+      "Wealth management domain knowledge",
+      "Regulatory compliance",
+      "Data analysis and reporting",
+      "Requirements documentation",
+      "Stakeholder alignment",
+      "Product roadmap planning"
+    ],
+    "starterPromptContext": "You are working in wealth management technology supporting financial advisors, portfolio managers, and high-net-worth clients. The domain requires strict regulatory compliance with SEC and FINRA rules while delivering personalized portfolio and planning experiences. Key metrics include AUM growth, advisor productivity, and client retention.",
+    "source": "curated"
+  },
+  {
+    "id": "claims-processing",
+    "name": "Claims Processing",
+    "category": "Financial Services",
+    "description": "Claims processing technology automates and manages the intake, investigation, adjudication, and payment of insurance, warranty, or benefits claims across health, property, casualty, and life insurance lines. Modern claims platforms leverage AI for automated adjudication of low-complexity claims, fraud scoring, and document extraction to reduce cycle times and improve accuracy. The domain demands strict audit trails, regulatory compliance, and integration with policy and payment systems.",
+    "commonUsers": [
+      "Claimants and Policyholders",
+      "Claims Adjusters and Examiners",
+      "Medical Reviewers and Nurse Case Managers",
+      "SIU (Special Investigations Unit) Fraud Analysts",
+      "Vendor and Service Provider Networks",
+      "Compliance and Regulatory Teams"
+    ],
+    "commonWorkflows": [
+      "First Notice of Loss (FNOL) intake",
+      "Claim assignment and triage",
+      "Coverage verification and eligibility check",
+      "Document and evidence collection",
+      "Medical or property damage review",
+      "Fraud scoring and SIU referral",
+      "Claim adjudication and payment authorization",
+      "Claimant communication and settlement"
+    ],
+    "commonMetrics": [
+      "Claim cycle time (FNOL to payment)",
+      "Straight-through processing rate",
+      "Claims reopening rate",
+      "Fraud detection rate",
+      "Customer satisfaction on claims",
+      "Loss adjustment expense (LAE) ratio",
+      "Compliance audit pass rate"
+    ],
+    "commonRisks": [
+      "Fraudulent claims inflating loss ratios",
+      "Regulatory non-compliance with state prompt payment laws",
+      "AI adjudication errors on complex claims",
+      "Data privacy breaches of sensitive medical or financial data",
+      "Litigation risk from improper claim denials",
+      "Integration failures between claims and policy systems"
+    ],
+    "commonIntegrations": [
+      "Policy administration systems (Guidewire PolicyCenter)",
+      "Claims management systems (Guidewire ClaimCenter)",
+      "Medical billing and coding platforms",
+      "Fraud detection platforms (ISO ClaimSearch, Verisk)",
+      "Payment systems and EFT networks"
+    ],
+    "complianceConsiderations": [
+      "State prompt payment laws and claim settlement timeframes",
+      "HIPAA for medical claims and PHI",
+      "State unfair claims settlement practices acts",
+      "NAIC claims handling guidelines",
+      "GDPR for European claimant data"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "dm", "cp"],
+    "relatedSkills": [
+      "Insurance claims domain knowledge",
+      "Process analysis and automation",
+      "Requirements documentation",
+      "Data analysis",
+      "Compliance and regulatory knowledge",
+      "Stakeholder management"
+    ],
+    "starterPromptContext": "You are working on claims processing technology where speed, accuracy, and fraud prevention are the core priorities. The business measures success by claim cycle time, straight-through processing rates, and LAE reduction. Key stakeholders include claims adjusters, fraud analysts, compliance teams, and claimants.",
+    "source": "curated"
+  },
+  {
+    "id": "field-service",
+    "name": "Field Service Management",
+    "category": "Operations",
+    "description": "Field service management platforms coordinate the scheduling, dispatch, and execution of on-site service work performed by technicians at customer locations across industries including HVAC, telecom, utilities, medical equipment, and IT services. Modern FSM systems use AI-powered scheduling optimization, mobile technician apps, and IoT-connected asset management to improve first-time fix rates and technician utilization. Products must serve dispatchers, field technicians, and customers with real-time work order management and customer communication.",
+    "commonUsers": [
+      "Field Technicians and Service Engineers",
+      "Dispatchers and Scheduling Coordinators",
+      "Service Managers",
+      "Customers Awaiting On-site Service",
+      "Parts and Inventory Managers",
+      "Service Operations Analysts"
+    ],
+    "commonWorkflows": [
+      "Work order creation and job scheduling",
+      "Technician dispatch and route optimization",
+      "Parts and inventory management",
+      "Mobile work order execution and documentation",
+      "Customer appointment communication and tracking",
+      "Asset and equipment service history management",
+      "Service level agreement (SLA) monitoring",
+      "Invoice generation and time/materials capture"
+    ],
+    "commonMetrics": [
+      "First-time fix rate",
+      "Mean time to repair (MTTR)",
+      "SLA compliance rate",
+      "Technician utilization rate",
+      "Customer satisfaction (CSAT)",
+      "Job completion rate",
+      "Parts availability rate"
+    ],
+    "commonRisks": [
+      "Missed SLAs due to technician scheduling failures",
+      "Parts unavailability causing repeat visits",
+      "Technician safety incidents on customer sites",
+      "Poor mobile app reliability in low-connectivity areas",
+      "Customer data privacy in on-site access management",
+      "Inaccurate asset records leading to wrong parts dispatched"
+    ],
+    "commonIntegrations": [
+      "ERP and service management systems (SAP FSM, ServiceMax)",
+      "CRM platforms (Salesforce Field Service)",
+      "IoT and asset monitoring platforms",
+      "Parts and inventory management systems",
+      "Mapping and route optimization (Google Maps, HERE)"
+    ],
+    "complianceConsiderations": [
+      "OSHA safety requirements for field work",
+      "Customer site access and security protocols",
+      "Industry-specific regulations (HIPAA for medical device service)",
+      "Vehicle fleet safety and DOT compliance",
+      "Data privacy for customer site access records"
+    ],
+    "suggestedRoles": ["pm", "po", "ba", "projm", "sm", "em"],
+    "relatedSkills": [
+      "Field operations domain knowledge",
+      "Mobile product management",
+      "Scheduling and optimization concepts",
+      "Requirements documentation",
+      "Stakeholder management",
+      "Data analysis"
+    ],
+    "starterPromptContext": "You are working in field service management technology where the goal is improving technician utilization, first-time fix rates, and customer satisfaction for on-site service operations. Key stakeholders include dispatchers, field technicians, service managers, and customers. Success is measured by SLA compliance, first-time fix rate, and CSAT.",
+    "source": "curated"
+  }
+]
