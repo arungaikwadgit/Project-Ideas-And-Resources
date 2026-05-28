@@ -24,7 +24,11 @@ async function recordActivity(eventType: ActivityEvent['eventType'], metadata?: 
     metadata,
     createdAt: new Date().toISOString(),
   }
-  await dbCreate('activityEvents', event)
+  try {
+    await dbCreate('activityEvents', event)
+  } catch {
+    // Activity logging is best-effort; never propagate to callers
+  }
 }
 
 function catalogToCandidates(items: DomainCatalogItem[]): CandidateDomain[] {
@@ -136,7 +140,6 @@ export default function DomainBuilderPage() {
     }
     setGeneratedMarkdowns(markdowns)
     recordActivity('domain_markdown_created', { domainCount: selectedDomains.length })
-    setStep(4)
   }, [selectedDomains, catalog])
 
   const handleGenerateSkills = useCallback(() => {
@@ -157,7 +160,6 @@ export default function DomainBuilderPage() {
     const deduped = allSkills.filter((s, i, arr) => arr.findIndex((x) => x.name === s.name) === i)
     setSuggestedSkills(deduped)
     recordActivity('skill_suggested', { count: deduped.length })
-    setStep(4)
   }, [selectedDomains])
 
   const handleSave = useCallback(async () => {
