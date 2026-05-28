@@ -40,6 +40,22 @@ A browser-based knowledge, skill, playbook, prompt-pack, and AI execution worksp
 - Node.js 18+
 - npm 9+
 
+### Pull Latest Code in VS Code
+
+Every time you want to get the newest changes before working locally:
+
+1. Open **VS Code**
+2. Press **Ctrl+Shift+G** (or click the **Source Control** icon in the left sidebar — it looks like a branching path)
+3. Click the **three-dot menu (⋯)** at the top right of the Source Control panel
+4. Select **Pull** (or **Pull from… → origin/main**)
+5. VS Code will download all new commits — you'll see a notification in the bottom status bar when done
+
+> **Shortcut:** You can also open the VS Code **terminal** (Ctrl+`) and run:
+> ```bash
+> git pull origin main
+> ```
+> then press **Enter**.
+
 ### Install and Run
 
 ```bash

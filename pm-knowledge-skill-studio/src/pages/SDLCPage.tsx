@@ -1,27 +1,36 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ChevronRight, FileText, Zap, Save, Edit, RotateCcw } from 'lucide-react'
+import { ChevronRight, FileText, Zap, Save, RotateCcw, User } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
 import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent } from '../types'
+import type { Role } from '../types/role'
 import { dbCreate, dbList } from '../stores/db'
 import { customPromptStore } from '../stores/customPromptStore'
+import { settingsStore } from '../stores/settingsStore'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import MarkdownPreview from '../components/editor/MarkdownPreview'
 import EmptyState from '../components/ui/EmptyState'
 
 async function recordActivity(eventType: ActivityEvent['eventType'], metadata?: Record<string, unknown>) {
-  await dbCreate('activityEvents', { id: uuid(), eventType, status: 'success', metadata, createdAt: new Date().toISOString() } as ActivityEvent)
+  try {
+    await dbCreate('activityEvents', { id: uuid(), eventType, status: 'success', metadata, createdAt: new Date().toISOString() } as ActivityEvent)
+  } catch {
+    // Best-effort; never propagate to callers
+  }
 }
 
 export default function SDLCPage() {
   const [phases, setPhases] = useState<SDLCPhase[]>([])
   const [tasks, setTasks] = useState<SDLCTask[]>([])
+  const [roles, setRoles] = useState<Role[]>([])
   const [preloadedPrompts, setPreloadedPrompts] = useState<PreloadedPrompt[]>([])
   const [selectedPhase, setSelectedPhase] = useState<SDLCPhase | null>(null)
   const [selectedTask, setSelectedTask] = useState<SDLCTask | null>(null)
+  const [selectedRoleId, setSelectedRoleId] = useState<string>('all')
   const [loadedPrompt, setLoadedPrompt] = useState<PreloadedPrompt | null>(null)
   const [promptMarkdown, setPromptMarkdown] = useState('')
   const [customPrompts, setCustomPrompts] = useState<CustomPrompt[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
   const [promptLoading, setPromptLoading] = useState(false)
   const [saving, setSaving] = useState(false)
   const [savedMsg, setSavedMsg] = useState('')
@@ -29,22 +38,39 @@ export default function SDLCPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch('/pm-knowledge-skill-studio/config/sdlcPhases.json').then((r) => r.json()),
+      fetch('/pm-knowledge-skill-studio/config/sdlcPhases.json').then((r) => r.json()).catch(() => []),
       fetch('/pm-knowledge-skill-studio/config/sdlcTasks.json').then((r) => r.json()).catch(() => []),
       fetch('/pm-knowledge-skill-studio/config/preloadedPrompts.json').then((r) => r.json()).catch(() => []),
+      fetch('/pm-knowledge-skill-studio/config/roles.json').then((r) => r.json()).catch(() => []),
       dbList('aiProviderSettings'),
-    ]).then(([phasesData, tasksData, promptsData, aiSettings]) => {
-      setPhases(phasesData as SDLCPhase[])
+      settingsStore.get<string>('primaryRole'),
+    ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName]) => {
+      const phaseList = phasesData as SDLCPhase[]
+      const roleList = rolesData as Role[]
+      setPhases(phaseList)
       setTasks(tasksData as SDLCTask[])
       setPreloadedPrompts(promptsData as PreloadedPrompt[])
+      setRoles(roleList)
       setHasAIProvider((aiSettings as unknown[]).length > 0)
-      if ((phasesData as SDLCPhase[]).length > 0) setSelectedPhase((phasesData as SDLCPhase[])[0])
+      if (phaseList.length > 0) setSelectedPhase(phaseList[0])
+
+      // Pre-select the user's primary role from Settings
+      if (primaryRoleName && roleList.length > 0) {
+        const match = roleList.find((r) => r.name === primaryRoleName)
+        if (match) setSelectedRoleId(match.id)
+      }
+    }).catch(() => {
+      setError('Failed to load SDLC workspace data. Please refresh the page.')
     }).finally(() => setLoading(false))
 
     dbList<CustomPrompt>('customPrompts').then(setCustomPrompts)
   }, [])
 
-  const phaseTasks = tasks.filter((t) => t.phaseId === selectedPhase?.id)
+  const phaseTasks = tasks.filter((t) => {
+    if (t.phaseId !== selectedPhase?.id) return false
+    if (selectedRoleId === 'all') return true
+    return t.roleIds.includes(selectedRoleId)
+  })
 
   const handlePhaseSelect = (phase: SDLCPhase) => {
     setSelectedPhase(phase)
@@ -61,11 +87,17 @@ export default function SDLCPage() {
     recordActivity('sdlc_task_selected', { taskId: task.id, phaseId: task.phaseId })
   }
 
+  const handleRoleChange = (roleId: string) => {
+    setSelectedRoleId(roleId)
+    setSelectedTask(null)
+    setLoadedPrompt(null)
+    setPromptMarkdown('')
+  }
+
   const handleLoadPrompt = useCallback(async () => {
     if (!selectedTask) return
     setPromptLoading(true)
     try {
-      // Check for custom prompt first
       const existingCustom = customPrompts.find((cp) => cp.taskId === selectedTask.id && cp.phaseId === selectedTask.phaseId)
       if (existingCustom) {
         const combined = `# ${existingCustom.title}\n\n## System Prompt\n${existingCustom.systemPromptMarkdown}\n\n## User Prompt\n${existingCustom.userPromptMarkdown}\n\n## Input Guidance\n${existingCustom.inputGuidanceMarkdown}\n\n## Expected Output\n${existingCustom.expectedOutputMarkdown}`
@@ -74,7 +106,6 @@ export default function SDLCPage() {
         return
       }
 
-      // Find matching preloaded prompt
       const found = preloadedPrompts.find((p) => p.taskId === selectedTask.id && p.phaseId === selectedTask.phaseId) ??
         preloadedPrompts.find((p) => p.phaseId === selectedTask.phaseId)
       if (found) {
@@ -83,7 +114,6 @@ export default function SDLCPage() {
         setPromptMarkdown(combined)
         recordActivity('prompt_loaded', { taskId: selectedTask.id, promptId: found.id })
       } else {
-        // Generate a starter prompt
         const starter = `# ${selectedTask.title}\n\n## Goal\n${selectedTask.description}\n\n## Inputs Needed\n${selectedTask.inputsNeeded.map((i) => `- ${i}`).join('\n')}\n\n## Expected Outputs\n${selectedTask.expectedOutputs.map((o) => `- ${o}`).join('\n')}\n\n## Your Prompt\n_Write your prompt here..._`
         setPromptMarkdown(starter)
         recordActivity('prompt_loaded', { taskId: selectedTask.id, source: 'generated' })
@@ -131,11 +161,45 @@ export default function SDLCPage() {
     return <div className="page-container"><div className="loading-overlay"><div className="loading-spinner" /> Loading SDLC workspace...</div></div>
   }
 
+  if (error) {
+    return (
+      <div className="page-container">
+        <div className="alert alert-error">{error}</div>
+      </div>
+    )
+  }
+
+  const selectedRole = roles.find((r) => r.id === selectedRoleId)
+
   return (
     <div className="page-container-wide" style={{ padding: '1.5rem' }}>
-      <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ marginBottom: '1.25rem' }}>
         <h1 style={{ marginBottom: '0.25rem' }}>SDLC Workspace</h1>
-        <p className="text-muted text-sm">Navigate phases and tasks, load prompts, and run AI-assisted delivery activities.</p>
+        <p className="text-muted text-sm">Select your role, pick a phase and task, then load an AI-ready prompt.</p>
+      </div>
+
+      {/* Role selector */}
+      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
+          <User size={15} style={{ color: 'var(--accent)' }} />
+          <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Your Role:</span>
+        </div>
+        <select
+          className="input"
+          value={selectedRoleId}
+          onChange={(e) => handleRoleChange(e.target.value)}
+          style={{ width: 'auto', minWidth: 220, fontSize: '0.875rem', padding: '0.375rem 0.75rem' }}
+        >
+          <option value="all">All Roles</option>
+          {roles.map((r) => (
+            <option key={r.id} value={r.id}>{r.name}</option>
+          ))}
+        </select>
+        {selectedRole && (
+          <p className="text-muted" style={{ fontSize: '0.8rem', margin: 0, flex: 1, minWidth: 0 }}>
+            {selectedRole.defaultPromptPerspective.slice(0, 120)}…
+          </p>
+        )}
       </div>
 
       {/* Breadcrumb */}
@@ -155,7 +219,7 @@ export default function SDLCPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: selectedTask ? '260px 1fr' : '260px 1fr', gap: '1.25rem', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: '1.25rem', alignItems: 'start' }}>
         {/* Task list */}
         <div className="panel" style={{ padding: '1rem' }}>
           {selectedPhase && (
@@ -165,7 +229,9 @@ export default function SDLCPage() {
                 <p style={{ fontSize: '0.8125rem', color: 'var(--muted)', margin: 0, lineHeight: 1.5 }}>{selectedPhase.purpose}</p>
               </div>
               {phaseTasks.length === 0 ? (
-                <p className="text-sm text-muted">No tasks defined for this phase.</p>
+                <p className="text-sm text-muted">
+                  {selectedRoleId === 'all' ? 'No tasks defined for this phase.' : `No tasks for this role in this phase. Try "All Roles" to see all tasks.`}
+                </p>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
                   {phaseTasks.map((task) => (
@@ -199,7 +265,7 @@ export default function SDLCPage() {
         {/* Task detail & prompt */}
         <div>
           {!selectedTask ? (
-            <EmptyState icon={<FileText size={40} />} title="Select a task" description="Choose a task from the left to view details and load a prompt." />
+            <EmptyState icon={<FileText size={40} />} title="Select a task" description="Choose a task from the left panel to view details and load an AI prompt." />
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {/* Task detail */}
