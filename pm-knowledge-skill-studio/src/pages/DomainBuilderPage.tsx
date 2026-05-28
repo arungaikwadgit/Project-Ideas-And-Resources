@@ -165,51 +165,60 @@ export default function DomainBuilderPage() {
   const handleSave = useCallback(async () => {
     if (selectedDomains.length === 0) return
     setSaving(true)
+    setError('')
     try {
+      // Save domain knowledge records
       for (const domain of selectedDomains) {
         const md = generatedMarkdowns[domain.id] ?? ''
+        const sourceVal: 'curated' | 'web_discovered' | 'manual' =
+          domain.source === 'curated' ? 'curated'
+          : domain.source === 'web_discovered' ? 'web_discovered'
+          : 'manual'
         await domainKnowledgeStore.create({
           domainKey: domain.id,
           domainName: domain.name,
           contentMarkdown: md,
-          selectedRoleIds: domain.suggestedRoles,
+          selectedRoleIds: Array.isArray(domain.suggestedRoles) ? domain.suggestedRoles : [],
           generatedSkillIds: [],
           linkedPromptPackIds: [],
           linkedPlaybookIds: [],
-          tags: [domain.category],
-          source: domain.source === 'curated' ? 'curated' : domain.source === 'web_discovered' ? 'web_discovered' : 'manual',
-          sourceLinks: domain.sourceLinks ?? [],
+          tags: domain.category ? [domain.category] : [],
+          source: sourceVal,
+          sourceLinks: Array.isArray(domain.sourceLinks) ? domain.sourceLinks : [],
         })
-        await recordActivity('domain_selected', { domainId: domain.id, domainName: domain.name })
+        recordActivity('domain_selected', { domainId: domain.id, domainName: domain.name })
       }
 
-      // Save accepted skills
+      // Save accepted skills (best-effort — skill failures don't block domain save)
       for (const skillId of acceptedSkillIds) {
         const skill = suggestedSkills.find((s) => s.id === skillId)
-        if (skill) {
+        if (!skill) continue
+        try {
           await skillStore.create({
             name: skill.name,
-            roleId: skill.roleId,
-            category: skill.category,
-            description: skill.description,
-            maturityLevel: skill.maturityLevel,
+            roleId: skill.roleId ?? '',
+            category: skill.category ?? '',
+            description: skill.description ?? '',
+            maturityLevel: skill.maturityLevel ?? 'Developing',
             evidenceNotes: '',
             practiceNotes: '',
             reflectionNotes: '',
-            linkedDomainIds: [skill.linkedDomainId],
-            linkedArtifacts: skill.linkedArtifacts,
-            isCrossDomainSkill: skill.isCrossDomainSkill,
+            linkedDomainIds: skill.linkedDomainId ? [skill.linkedDomainId] : [],
+            linkedArtifacts: Array.isArray(skill.linkedArtifacts) ? skill.linkedArtifacts : [],
+            isCrossDomainSkill: skill.isCrossDomainSkill ?? false,
             tags: [],
           })
-          await recordActivity('skill_accepted', { skillName: skill.name })
+          recordActivity('skill_accepted', { skillName: skill.name })
+        } catch (skillErr) {
+          console.warn('Skill save failed (non-fatal):', skill.name, skillErr)
         }
       }
 
       setSaved(true)
-      setStep(5)
     } catch (err) {
-      console.error(err)
-      setError('Failed to save domain knowledge.')
+      console.error('Domain save error:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      setError(`Save failed: ${msg}. Check browser console for details.`)
     } finally {
       setSaving(false)
     }
