@@ -25,6 +25,7 @@ const ProviderSettingsPage = lazy(() => import('./pages/ProviderSettingsPage'))
 const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 const HelpPage = lazy(() => import('./pages/HelpPage'))
 const AdminHealthPage = lazy(() => import('./pages/AdminHealthPage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 
 function PageLoader() {
   return (
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/playbooks" element={<PlaybooksPage />} />
             <Route path="/prompt-packs" element={<PromptPacksPage />} />
             <Route path="/ai-runs" element={<AIRunsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/project-notes" element={<ProjectNotesPage />} />
             <Route path="/decisions" element={<DecisionsPage />} />
             <Route path="/lessons" element={<LessonsPage />} />

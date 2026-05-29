@@ -11,3 +11,17 @@ export interface ProjectNote {
   createdAt: string
   updatedAt: string
 }
+
+export interface Project {
+  id: string
+  name: string
+  description: string
+  goals: string
+  techStack: string
+  team: string
+  status: 'active' | 'archived'
+  linkedDomainIds: string[]
+  tags: string[]
+  createdAt: string
+  updatedAt: string
+}
