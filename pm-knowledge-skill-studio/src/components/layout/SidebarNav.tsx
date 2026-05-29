@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard,
@@ -61,6 +61,17 @@ export default function SidebarNav() {
   const closeMobile = useCallback(() => setMobileOpen(false), [])
   const toggleMobile = useCallback(() => setMobileOpen((v) => !v), [])
 
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    closeMobile()
+  }, [location.pathname, closeMobile])
+
+  // Lock body scroll when sidebar is open on mobile
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/'
     return location.pathname.startsWith(path)
@@ -68,44 +79,51 @@ export default function SidebarNav() {
 
   return (
     <>
-      {/* Mobile hamburger button */}
-      <button
-        className="btn btn-ghost btn-icon"
-        onClick={toggleMobile}
-        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-        style={{
-          position: 'fixed',
-          top: '0.875rem',
-          left: '0.875rem',
-          zIndex: 300,
-          display: 'none',
-        }}
-        data-mobile-toggle
-      >
-        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+      {/* Mobile top bar — shown only on small screens via CSS */}
+      <div className="mobile-header">
+        <button
+          className="btn btn-ghost btn-icon"
+          onClick={toggleMobile}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        >
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div
+            style={{
+              width: 26,
+              height: 26,
+              borderRadius: 6,
+              background: 'linear-gradient(135deg, var(--accent), #7b61ff)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <Activity size={13} color="#fff" />
+          </div>
+          <span style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--text)' }}>
+            PM Knowledge &amp; Skill Studio
+          </span>
+        </div>
+      </div>
 
       {/* Backdrop for mobile */}
       {mobileOpen && (
         <div
           className="sidebar-overlay"
           onClick={closeMobile}
-          style={{ display: 'block' }}
           aria-hidden="true"
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar — class-based open state (no !important inline style conflicts) */}
       <nav
-        className="sidebar"
+        className={mobileOpen ? 'sidebar sidebar-mobile-open' : 'sidebar'}
         aria-label="Main navigation"
-        style={
-          mobileOpen
-            ? { transform: 'translateX(0)' }
-            : undefined
-        }
       >
-        {/* Logo / App name */}
+        {/* Logo / App name — desktop only (hidden on mobile where mobile-header shows) */}
         <div
           style={{
             padding: '1.125rem 1rem 0.875rem',
@@ -260,22 +278,6 @@ export default function SidebarNav() {
           </span>
         </div>
       </nav>
-
-      {/* Inline responsive style */}
-      <style>{`
-        @media (max-width: 768px) {
-          [data-mobile-toggle] { display: flex !important; }
-          nav.sidebar {
-            position: fixed !important;
-            left: 0 !important;
-            top: 0 !important;
-            bottom: 0 !important;
-            z-index: 200 !important;
-            transform: translateX(-100%) !important;
-            transition: transform 250ms ease !important;
-          }
-        }
-      `}</style>
     </>
   )
 }

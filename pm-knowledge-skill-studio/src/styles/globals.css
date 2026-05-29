@@ -962,36 +962,60 @@ th {
   border-bottom-color: var(--accent);
 }
 
+/* ---- Mobile top bar (hidden on desktop) ---- */
+.mobile-header {
+  display: none;
+}
+
+/* ---- Sidebar overlay (rendered conditionally by React) ---- */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 199;
+  backdrop-filter: blur(2px);
+}
+
 /* ---- Responsive — sidebar collapse at 768px ---- */
 @media (max-width: 768px) {
+  /* Show a fixed top bar on mobile */
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    background: var(--sidebar);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1rem;
+    z-index: 250;
+    flex-shrink: 0;
+  }
+
+  /* Shift main content below the mobile header */
+  .main-content {
+    padding-top: 52px;
+    width: 100%;
+  }
+
+  /* Sidebar: hidden off-screen by default, slides in via class */
   .sidebar {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 52px;  /* below the mobile header */
     bottom: 0;
     z-index: 200;
     transform: translateX(-100%);
     transition: transform var(--transition-slow);
+    height: auto;  /* override the 100vh sticky height */
   }
 
-  .sidebar-open .sidebar {
+  /* Open state — added via React className */
+  .sidebar.sidebar-mobile-open {
     transform: translateX(0);
-  }
-
-  .sidebar-open .sidebar-overlay {
-    display: block;
-  }
-
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 199;
-  }
-
-  .main-content {
-    width: 100%;
   }
 
   .page-container {
