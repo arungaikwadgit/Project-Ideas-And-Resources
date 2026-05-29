@@ -7,13 +7,14 @@ import type {
 } from '../types'
 
 // ---------------------------------------------------------------------------
-// Storage key prefixes — session-only by default
+// Storage key prefixes
 // ---------------------------------------------------------------------------
 
+// sessionStorage — used only when the user opts into session-only mode
 const SESSION_AI_KEY_PREFIX = 'pmks_ai_key_'
 const SESSION_SEARCH_KEY_PREFIX = 'pmks_search_key_'
 
-// localStorage keys for the (not-recommended) persistent mode
+// localStorage — default persistent storage
 const LOCAL_AI_KEY_PREFIX = 'pmks_persist_ai_key_'
 const LOCAL_SEARCH_KEY_PREFIX = 'pmks_persist_search_key_'
 
@@ -23,16 +24,16 @@ const LOCAL_SEARCH_KEY_PREFIX = 'pmks_persist_search_key_'
 
 function resolveAiKey(providerId: string): string | undefined {
   return (
-    sessionStorage.getItem(SESSION_AI_KEY_PREFIX + providerId) ||
     localStorage.getItem(LOCAL_AI_KEY_PREFIX + providerId) ||
+    sessionStorage.getItem(SESSION_AI_KEY_PREFIX + providerId) ||
     undefined
   )
 }
 
 function resolveSearchKey(providerId: string): string | undefined {
   return (
-    sessionStorage.getItem(SESSION_SEARCH_KEY_PREFIX + providerId) ||
     localStorage.getItem(LOCAL_SEARCH_KEY_PREFIX + providerId) ||
+    sessionStorage.getItem(SESSION_SEARCH_KEY_PREFIX + providerId) ||
     undefined
   )
 }
@@ -46,15 +47,15 @@ export const providerSettingsStore = {
 
   /**
    * Persist non-key AI provider settings to IndexedDB.
-   * The API key is stored in sessionStorage by default, or optionally in
-   * localStorage (persistKey = true — not recommended; shown with a warning).
+   * The API key is stored in localStorage by default (persists across sessions).
+   * Set persistKey = false to use sessionStorage instead (cleared on tab close).
    * API keys are NEVER written to IndexedDB.
    */
   async saveAIProviderSettings(
     providerId: string,
     settings: Omit<AIProviderSettings, 'apiKey'>,
     apiKey?: string,
-    persistKey = false,
+    persistKey = true,
   ): Promise<void> {
     const db = await getDb()
 
@@ -71,16 +72,12 @@ export const providerSettingsStore = {
 
     if (apiKey) {
       if (persistKey) {
-        // Warn in console — persistent key storage is not recommended
-        console.warn(
-          '[PMKS] persistKey=true: API key stored in localStorage for provider',
-          providerId,
-          '— this is not recommended.',
-        )
         localStorage.setItem(LOCAL_AI_KEY_PREFIX + providerId, apiKey)
+        // Remove from sessionStorage if switching from session-only to persistent
+        sessionStorage.removeItem(SESSION_AI_KEY_PREFIX + providerId)
       } else {
         sessionStorage.setItem(SESSION_AI_KEY_PREFIX + providerId, apiKey)
-        // Remove from localStorage if the user is switching back to session-only
+        // Remove from localStorage if switching to session-only
         localStorage.removeItem(LOCAL_AI_KEY_PREFIX + providerId)
       }
     }
@@ -108,8 +105,7 @@ export const providerSettingsStore = {
   },
 
   /**
-   * Remove a specific AI provider's stored settings and its key from all
-   * storages.
+   * Remove a specific AI provider's stored settings and its key from all storages.
    */
   async deleteAIProviderSettings(providerId: string): Promise<void> {
     const db = await getDb()
@@ -122,13 +118,13 @@ export const providerSettingsStore = {
 
   /**
    * Persist non-key search provider settings to IndexedDB.
-   * API key follows the same session/local split as AI providers.
+   * API key follows the same localStorage-default pattern as AI providers.
    */
   async saveSearchProviderSettings(
     providerId: string,
     settings: Omit<SearchProviderSettings, 'apiKey'>,
     apiKey?: string,
-    persistKey = false,
+    persistKey = true,
   ): Promise<void> {
     const db = await getDb()
 
@@ -144,12 +140,8 @@ export const providerSettingsStore = {
 
     if (apiKey) {
       if (persistKey) {
-        console.warn(
-          '[PMKS] persistKey=true: Search API key stored in localStorage for provider',
-          providerId,
-          '— this is not recommended.',
-        )
         localStorage.setItem(LOCAL_SEARCH_KEY_PREFIX + providerId, apiKey)
+        sessionStorage.removeItem(SESSION_SEARCH_KEY_PREFIX + providerId)
       } else {
         sessionStorage.setItem(SESSION_SEARCH_KEY_PREFIX + providerId, apiKey)
         localStorage.removeItem(LOCAL_SEARCH_KEY_PREFIX + providerId)
@@ -178,8 +170,7 @@ export const providerSettingsStore = {
   },
 
   /**
-   * Remove a specific search provider's stored settings and its key from all
-   * storages.
+   * Remove a specific search provider's stored settings and its key from all storages.
    */
   async deleteSearchProviderSettings(providerId: string): Promise<void> {
     const db = await getDb()
@@ -195,7 +186,6 @@ export const providerSettingsStore = {
    * Does NOT touch IndexedDB (non-sensitive settings remain).
    */
   clearAllKeys(): void {
-    // Collect session storage keys to remove (avoid mutating during iteration)
     const sessionKeysToRemove: string[] = []
     for (let i = 0; i < sessionStorage.length; i++) {
       const key = sessionStorage.key(i)
@@ -209,7 +199,6 @@ export const providerSettingsStore = {
     }
     sessionKeysToRemove.forEach((k) => sessionStorage.removeItem(k))
 
-    // Collect local storage keys to remove
     const localKeysToRemove: string[] = []
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i)
@@ -225,16 +214,14 @@ export const providerSettingsStore = {
   },
 
   /**
-   * Returns true if an AI key is currently available in memory for the given
-   * provider (session or local storage).
+   * Returns true if an AI key is currently available for the given provider.
    */
   hasAIKey(providerId: string): boolean {
     return !!resolveAiKey(providerId)
   },
 
   /**
-   * Returns true if a search key is currently available in memory for the
-   * given provider.
+   * Returns true if a search key is currently available for the given provider.
    */
   hasSearchKey(providerId: string): boolean {
     return !!resolveSearchKey(providerId)
