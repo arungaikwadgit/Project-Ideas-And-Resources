@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ChevronRight, FileText, Zap, Save, RotateCcw, User, CheckCircle, AlertTriangle, XCircle } from 'lucide-react'
+import { ChevronRight, FileText, Zap, Save, RotateCcw, User, CheckCircle, AlertTriangle, XCircle, FolderOpen } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
-import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent } from '../types'
+import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent, Project, DomainKnowledge } from '../types'
 import type { Role } from '../types/role'
 import type { StoredAIProviderSettings, AIProviderSettings } from '../types/provider'
 import { dbCreate, dbList } from '../stores/db'
@@ -9,6 +9,8 @@ import { customPromptStore } from '../stores/customPromptStore'
 import { settingsStore } from '../stores/settingsStore'
 import { providerSettingsStore } from '../stores/providerSettingsStore'
 import { aiRunStore } from '../stores/aiRunStore'
+import { projectStore } from '../stores/projectStore'
+import { domainKnowledgeStore } from '../stores/domainKnowledgeStore'
 import { executePrompt } from '../lib/ai/aiRuntime'
 import { runGovernanceCheck } from '../lib/governance/governanceEngine'
 import { canExecute } from '../lib/governance/executionPolicy'
@@ -24,6 +26,47 @@ async function recordActivity(eventType: ActivityEvent['eventType'], metadata?: 
   }
 }
 
+function buildContextPreamble(project: Project | undefined, selectedDomains: DomainKnowledge[]): string {
+  const sections: string[] = []
+
+  if (project) {
+    const lines = ['## Project Context', `**Project:** ${project.name}`]
+    if (project.description) lines.push(`**Description:** ${project.description}`)
+    if (project.goals) lines.push(`**Goals:** ${project.goals}`)
+    if (project.techStack) lines.push(`**Tech Stack:** ${project.techStack}`)
+    if (project.team) lines.push(`**Team:** ${project.team}`)
+    sections.push(lines.join('\n'))
+  }
+
+  if (selectedDomains.length > 0) {
+    const domainContent = selectedDomains
+      .map(d => `### ${d.domainName}\n${d.contentMarkdown}`)
+      .join('\n\n')
+    sections.push(`## Domain Knowledge\n${domainContent}`)
+  }
+
+  return sections.join('\n\n')
+}
+
+function injectContext(basePrompt: string, project: Project | undefined, selectedDomains: DomainKnowledge[]): string {
+  let enriched = basePrompt
+
+  if (project) {
+    enriched = enriched
+      .replace(/\[PROJECT_NAME\]/g, project.name)
+      .replace(/\[INITIATIVE_NAME\]/g, project.name)
+      .replace(/\[PRODUCT_OR_FEATURE_NAME\]/g, project.name)
+      .replace(/\[BRIEF_CONTEXT\]/g, project.description || project.name)
+  }
+
+  const preamble = buildContextPreamble(project, selectedDomains)
+  if (preamble) {
+    return `${preamble}\n\n---\n\n${enriched}`
+  }
+
+  return enriched
+}
+
 export default function SDLCPage() {
   const [phases, setPhases] = useState<SDLCPhase[]>([])
   const [tasks, setTasks] = useState<SDLCTask[]>([])
@@ -36,6 +79,12 @@ export default function SDLCPage() {
   const [promptMarkdown, setPromptMarkdown] = useState('')
   const [customPrompts, setCustomPrompts] = useState<CustomPrompt[]>([])
   const [aiProviderList, setAiProviderList] = useState<StoredAIProviderSettings[]>([])
+  // Project & domain context
+  const [projects, setProjects] = useState<Project[]>([])
+  const [domainKnowledge, setDomainKnowledge] = useState<DomainKnowledge[]>([])
+  const [selectedProjectId, setSelectedProjectId] = useState<string>('')
+  const [selectedDomainIds, setSelectedDomainIds] = useState<string[]>([])
+  // Page state
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [promptLoading, setPromptLoading] = useState(false)
@@ -61,7 +110,9 @@ export default function SDLCPage() {
       fetchJson('/pm-knowledge-skill-studio/config/roles.json'),
       dbList<StoredAIProviderSettings>('aiProviderSettings').catch(() => [] as StoredAIProviderSettings[]),
       settingsStore.get<string>('primaryRole').catch(() => undefined),
-    ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName]) => {
+      projectStore.list().catch(() => [] as Project[]),
+      domainKnowledgeStore.list().catch(() => [] as DomainKnowledge[]),
+    ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName, projectList, domainList]) => {
       const phaseList = Array.isArray(phasesData) ? phasesData as SDLCPhase[] : []
       const roleList = Array.isArray(rolesData) ? rolesData as Role[] : []
       const providerList = Array.isArray(aiSettings) ? aiSettings as StoredAIProviderSettings[] : []
@@ -70,6 +121,8 @@ export default function SDLCPage() {
       setPreloadedPrompts(Array.isArray(promptsData) ? promptsData as PreloadedPrompt[] : [])
       setRoles(roleList)
       setAiProviderList(providerList)
+      setProjects(Array.isArray(projectList) ? (projectList as Project[]).filter(p => p.status === 'active') : [])
+      setDomainKnowledge(Array.isArray(domainList) ? domainList as DomainKnowledge[] : [])
       if (phaseList.length > 0) setSelectedPhase(phaseList[0])
 
       if (primaryRoleName && roleList.length > 0) {
@@ -88,6 +141,26 @@ export default function SDLCPage() {
   const hasAIProvider = aiProviderList.some(p =>
     providerSettingsStore.hasAIKey(p.providerId) || p.hasApiKey
   )
+
+  const selectedProject = projects.find(p => p.id === selectedProjectId)
+  const activeDomains = domainKnowledge.filter(d => selectedDomainIds.includes(d.id))
+  const contextActive = !!selectedProjectId || selectedDomainIds.length > 0
+
+  const handleProjectChange = (projectId: string) => {
+    setSelectedProjectId(projectId)
+    if (projectId) {
+      const proj = projects.find(p => p.id === projectId)
+      setSelectedDomainIds(proj?.linkedDomainIds ?? [])
+    } else {
+      setSelectedDomainIds([])
+    }
+  }
+
+  const toggleDomain = (id: string) => {
+    setSelectedDomainIds(prev =>
+      prev.includes(id) ? prev.filter(d => d !== id) : [...prev, id]
+    )
+  }
 
   const phaseTasks = tasks.filter((t) => {
     if (t.phaseId !== selectedPhase?.id) return false
@@ -163,15 +236,20 @@ export default function SDLCPage() {
     setGovernanceWarnings([])
 
     try {
+      // Build enriched prompt with project + domain context injected
+      const enrichedPrompt = injectContext(promptMarkdown, selectedProject, activeDomains)
+      const contextSnapshot = buildContextPreamble(selectedProject, activeDomains)
+
       // Governance check — block on PII / injections
-      const gov = runGovernanceCheck(promptMarkdown, 'sdlc-workspace')
+      const gov = runGovernanceCheck(enrichedPrompt, 'sdlc-workspace')
       if (!canExecute(gov)) {
         setRunError(`Execution blocked by governance: ${gov.blockedReasons.join('; ')}`)
         await aiRunStore.create({
-          providerId: 'blocked', model: '', promptSnapshotMarkdown: promptMarkdown,
-          inputContextSnapshot: '', resultMarkdown: '', status: 'blocked',
+          providerId: 'blocked', model: '', promptSnapshotMarkdown: enrichedPrompt,
+          inputContextSnapshot: contextSnapshot, resultMarkdown: '', status: 'blocked',
           errorSummary: gov.blockedReasons.join('; '),
-          linkedSkillIds: [], linkedDomainIds: [], linkedPlaybookIds: [],
+          linkedSkillIds: [], linkedDomainIds: selectedDomainIds, linkedPlaybookIds: [],
+          linkedProjectId: selectedProjectId || undefined,
         })
         recordActivity('governance_block', { taskId: selectedTask.id, reasons: gov.blockedReasons })
         return
@@ -201,7 +279,7 @@ export default function SDLCPage() {
         apiKey,
       }
 
-      const response = await executePrompt(promptMarkdown, fullSettings)
+      const response = await executePrompt(enrichedPrompt, fullSettings)
 
       setRunResult(response.text)
       setRunProviderId(activeStored.providerId)
@@ -211,8 +289,8 @@ export default function SDLCPage() {
       await aiRunStore.create({
         providerId: activeStored.providerId,
         model: response.model,
-        promptSnapshotMarkdown: promptMarkdown,
-        inputContextSnapshot: '',
+        promptSnapshotMarkdown: enrichedPrompt,
+        inputContextSnapshot: contextSnapshot,
         resultMarkdown: response.text,
         status: 'success',
         preloadedPromptId: loadedPrompt?.id,
@@ -220,7 +298,10 @@ export default function SDLCPage() {
           ? { inputTokens: response.usage.inputTokens, outputTokens: response.usage.outputTokens,
               totalTokens: (response.usage.inputTokens ?? 0) + (response.usage.outputTokens ?? 0) }
           : undefined,
-        linkedSkillIds: [], linkedDomainIds: [], linkedPlaybookIds: [],
+        linkedSkillIds: [],
+        linkedDomainIds: selectedDomainIds,
+        linkedPlaybookIds: [],
+        linkedProjectId: selectedProjectId || undefined,
       })
 
       recordActivity('prompt_executed', { taskId: selectedTask.id, providerId: activeStored.providerId, model: response.model })
@@ -232,7 +313,7 @@ export default function SDLCPage() {
     } finally {
       setRunning(false)
     }
-  }, [selectedTask, promptMarkdown, loadedPrompt, running])
+  }, [selectedTask, promptMarkdown, loadedPrompt, running, selectedProject, activeDomains, selectedDomainIds, selectedProjectId])
 
   const handleSaveCustomPrompt = async () => {
     if (!selectedTask || !promptMarkdown) return
@@ -286,11 +367,11 @@ export default function SDLCPage() {
     <div className="page-container-wide" style={{ padding: '1.5rem' }}>
       <div style={{ marginBottom: '1.25rem' }}>
         <h1 style={{ marginBottom: '0.25rem' }}>SDLC Workspace</h1>
-        <p className="text-muted text-sm">Select your role, pick a phase and task, then load an AI-ready prompt.</p>
+        <p className="text-muted text-sm">Select your role and project, pick a phase and task, then load and run an AI-ready prompt.</p>
       </div>
 
       {/* Role selector */}
-      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.875rem', flexWrap: 'wrap' }}>
+      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.875rem', flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
           <User size={15} style={{ color: 'var(--accent)' }} />
           <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Your Role:</span>
@@ -310,6 +391,86 @@ export default function SDLCPage() {
           <p className="text-muted" style={{ fontSize: '0.8rem', margin: 0, flex: 1, minWidth: 0 }}>
             {selectedRole.defaultPromptPerspective.slice(0, 120)}…
           </p>
+        )}
+      </div>
+
+      {/* Project & Domain context panel */}
+      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+          <FolderOpen size={15} style={{ color: 'var(--accent)' }} />
+          <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Project & Domain Context</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--muted)', marginLeft: 'auto' }}>
+            Automatically injected into prompts when you run them
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '1.25rem', alignItems: 'start' }}>
+          {/* Project selector */}
+          <div>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Project</label>
+            {projects.length === 0 ? (
+              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: 0 }}>
+                No active projects. <a href="/pm-knowledge-skill-studio/projects" style={{ color: 'var(--accent)' }}>Create one</a> to inject context.
+              </p>
+            ) : (
+              <select
+                className="input"
+                value={selectedProjectId}
+                onChange={(e) => handleProjectChange(e.target.value)}
+                style={{ width: '100%', fontSize: '0.875rem' }}
+              >
+                <option value="">— No project context —</option>
+                {projects.map(p => (
+                  <option key={p.id} value={p.id}>{p.name}</option>
+                ))}
+              </select>
+            )}
+          </div>
+
+          {/* Domain checkboxes */}
+          <div>
+            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
+              Domain Knowledge {selectedDomainIds.length > 0 && `(${selectedDomainIds.length} selected)`}
+            </label>
+            {domainKnowledge.length === 0 ? (
+              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: 0 }}>
+                No domain knowledge saved. Use Domain Builder first.
+              </p>
+            ) : (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+                {domainKnowledge.map(d => (
+                  <label
+                    key={d.id}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '0.3rem',
+                      cursor: 'pointer', fontSize: '0.8rem',
+                      background: selectedDomainIds.includes(d.id) ? 'rgba(74,163,255,0.1)' : 'rgba(255,255,255,0.04)',
+                      border: `1px solid ${selectedDomainIds.includes(d.id) ? 'rgba(74,163,255,0.35)' : 'var(--border)'}`,
+                      borderRadius: 4, padding: '0.2rem 0.5rem',
+                      transition: 'all var(--transition)',
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedDomainIds.includes(d.id)}
+                      onChange={() => toggleDomain(d.id)}
+                      style={{ margin: 0 }}
+                    />
+                    {d.domainName}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {contextActive && (
+          <div style={{ marginTop: '0.625rem', fontSize: '0.8rem', color: 'var(--success)', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
+            <CheckCircle size={13} />
+            Context active:{' '}
+            {[selectedProject?.name, selectedDomainIds.length > 0 && `${selectedDomainIds.length} domain${selectedDomainIds.length !== 1 ? 's' : ''}`]
+              .filter(Boolean).join(' + ')}
+          </div>
         )}
       </div>
 
@@ -439,7 +600,7 @@ export default function SDLCPage() {
                       >
                         {running
                           ? <><div className="loading-spinner loading-spinner-sm" /> Running…</>
-                          : <><Zap size={13} /> Run Prompt</>}
+                          : <><Zap size={13} /> Run Prompt{contextActive ? ' with Context' : ''}</>}
                       </button>
                     </div>
                   </div>
@@ -447,6 +608,18 @@ export default function SDLCPage() {
                   {!hasAIProvider && (
                     <div className="alert alert-warning" style={{ marginBottom: '1rem' }}>
                       No AI provider configured. <a href="/pm-knowledge-skill-studio/provider-settings" style={{ color: 'inherit', fontWeight: 600 }}>Configure one in Provider Settings</a> to run prompts.
+                    </div>
+                  )}
+
+                  {contextActive && (
+                    <div style={{ background: 'rgba(74,163,255,0.06)', border: '1px solid rgba(74,163,255,0.2)', borderRadius: 6, padding: '0.5rem 0.875rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <FolderOpen size={13} style={{ flexShrink: 0 }} />
+                      <span>
+                        Context will be injected:{' '}
+                        {[selectedProject?.name, selectedDomainIds.length > 0 && `${selectedDomainIds.length} domain${selectedDomainIds.length !== 1 ? 's' : ''}`]
+                          .filter(Boolean).join(' + ')}
+                        . Placeholders like <code>[PROJECT_NAME]</code> will be replaced automatically.
+                      </span>
                     </div>
                   )}
 
