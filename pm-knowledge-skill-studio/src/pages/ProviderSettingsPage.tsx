@@ -14,7 +14,7 @@ function PersistentStorageBanner() {
     <div style={{ background: 'rgba(74,255,163,0.06)', border: '1px solid rgba(74,255,163,0.2)', borderRadius: 6, padding: '0.75rem 1rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--success)', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
       <Shield size={14} style={{ flexShrink: 0, marginTop: '0.1rem' }} />
       <span>
-        <strong>Keys are saved to your browser's localStorage.</strong> They persist across sessions so you don't need to re-enter them. Tick "Session-only" below to clear the key automatically when you close this tab.
+        <strong>Keys are stored securely in your browser's local storage (IndexedDB + localStorage).</strong> They persist across sessions and page navigation — you only need to enter them once. Tick "Session-only" below to clear the key automatically when you close this tab.
       </span>
     </div>
   )
@@ -85,7 +85,7 @@ export default function ProviderSettingsPage() {
     setSearchSaved(true); setTimeout(() => setSearchSaved(false), 2000)
   }
 
-  const handleClearKeys = () => { providerSettingsStore.clearAllKeys(); setAiKey(''); setSearchKey('') }
+  const handleClearKeys = async () => { await providerSettingsStore.clearAllKeys(); setAiKey(''); setSearchKey('') }
 
   const currentAIProvider = aiProviders.find(p => p.id === selectedAI)
   const models = selectedAI === 'anthropic' ? ANTHROPIC_MODELS : selectedAI === 'openai' ? OPENAI_MODELS : []

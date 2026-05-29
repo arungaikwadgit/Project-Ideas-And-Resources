@@ -108,8 +108,9 @@ Deploy to GitHub Pages by pushing to `main` — the GitHub Actions workflow in `
 Go to **Provider Settings** to configure your AI and search provider keys.
 
 **Security model:**
-- API keys are stored in `localStorage` by default — they persist across sessions so you don't need to re-enter them each time
-- Tick **Session-only storage** in Provider Settings to opt into session-scoped keys (cleared when the tab closes)
+- API keys are stored in **IndexedDB** (primary) and **localStorage** (sync cache) — both are local to your browser and origin-isolated; keys survive page navigation, tab close, and browser restarts
+- Tick **Session-only storage** in Provider Settings to store a key in `sessionStorage` instead (cleared when the tab closes)
+- Keys saved in prior versions are automatically migrated to the new storage on first load
 - API keys are **never** exported (the export bundle redacts them)
 - API keys are **never** logged or included in diagnostic outputs
 - All AI executions pass through a governance engine that scans for sensitive data and prompt injection before sending to any provider
