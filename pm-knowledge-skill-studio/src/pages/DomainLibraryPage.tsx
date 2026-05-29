@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Plus, Trash2, Download, BookOpen, ExternalLink } from 'lucide-react'
+import { Plus, Trash2, Download, Upload, BookOpen, ExternalLink } from 'lucide-react'
 import type { DomainKnowledge } from '../types'
 import { domainKnowledgeStore } from '../stores/domainKnowledgeStore'
+import {
+  domainKnowledgeToMd,
+  mdToDomainKnowledge,
+  domainKnowledgeMdFilename,
+  downloadFile,
+  readMdFile,
+} from '../lib/mdFileStorage'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import MarkdownPreview from '../components/editor/MarkdownPreview'
 import ConfirmationDialog from '../components/ui/ConfirmationDialog'
@@ -27,16 +34,8 @@ function SourceBadge({ source }: { source: DomainKnowledge['source'] }) {
   )
 }
 
-function downloadMd(domain: DomainKnowledge) {
-  const blob = new Blob([domain.contentMarkdown], { type: 'text/markdown' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = `${domain.domainKey || domain.domainName.toLowerCase().replace(/\s+/g, '-')}.md`
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  URL.revokeObjectURL(url)
+function exportDomainMd(domain: DomainKnowledge) {
+  downloadFile(domainKnowledgeMdFilename(domain), domainKnowledgeToMd(domain))
 }
 
 export default function DomainLibraryPage() {
@@ -48,6 +47,7 @@ export default function DomainLibraryPage() {
   const [splitView, setSplitView] = useState<'editor' | 'preview' | 'split'>('split')
   const [deleteTarget, setDeleteTarget] = useState<DomainKnowledge | null>(null)
   const [saving, setSaving] = useState(false)
+  const [importError, setImportError] = useState<string | null>(null)
 
   const loadDomains = useCallback(async () => {
     const all = await domainKnowledgeStore.list()
@@ -80,6 +80,29 @@ export default function DomainLibraryPage() {
     }
   }
 
+  const handleImportMd = async () => {
+    setImportError(null)
+    try {
+      const raw = await readMdFile()
+      const parsed = mdToDomainKnowledge(raw)
+      if (!parsed) { setImportError('File does not appear to be a PMKS domain knowledge MD file.'); return }
+      // If an entry with this id already exists, update it; otherwise create with a fresh id
+      const existing = parsed.id ? await domainKnowledgeStore.getById(parsed.id) : undefined
+      if (existing) {
+        await domainKnowledgeStore.update({ ...parsed, updatedAt: new Date().toISOString() })
+      } else {
+        // Strip the id from the parsed object so the store generates a fresh one
+        const { id: _id, ...rest } = parsed
+        await domainKnowledgeStore.create(rest)
+      }
+      await loadDomains()
+    } catch (e) {
+      if ((e as Error).message !== 'No file selected') {
+        setImportError('Failed to import file. Make sure it is a valid PMKS domain MD file.')
+      }
+    }
+  }
+
   const handleDelete = async () => {
     if (!deleteTarget) return
     await domainKnowledgeStore.delete(deleteTarget.id)
@@ -90,15 +113,27 @@ export default function DomainLibraryPage() {
 
   return (
     <div className="page-container">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', gap: '1rem', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', gap: '1rem', flexWrap: 'wrap' }}>
         <div>
           <h1 style={{ marginBottom: '0.25rem' }}>Domain Library</h1>
           <p className="text-muted text-sm">{domains.length} domain{domains.length !== 1 ? 's' : ''} saved</p>
         </div>
-        <a href="/pm-knowledge-skill-studio/domain-builder" className="btn btn-primary">
-          <Plus size={15} /> Build New Domain
-        </a>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button className="btn btn-secondary" onClick={handleImportMd} title="Import a .domain.md file">
+            <Upload size={15} /> Import MD
+          </button>
+          <a href="/pm-knowledge-skill-studio/domain-builder" className="btn btn-primary">
+            <Plus size={15} /> Build New Domain
+          </a>
+        </div>
       </div>
+
+      {importError && (
+        <div style={{ background: 'rgba(255,80,80,0.1)', border: '1px solid rgba(255,80,80,0.3)', borderRadius: 6, padding: '0.625rem 1rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--error)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {importError}
+          <button onClick={() => setImportError(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', fontSize: '1rem', lineHeight: 1 }}>×</button>
+        </div>
+      )}
 
       <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: 200 }}>
@@ -141,7 +176,7 @@ export default function DomainLibraryPage() {
                     {d.tags.slice(0, 3).map((t) => <span key={t} className="tag">{t}</span>)}
                   </div>
                   <div style={{ display: 'flex', gap: '0.375rem', marginTop: '0.625rem' }} onClick={(e) => e.stopPropagation()}>
-                    <button className="btn btn-secondary btn-sm" onClick={() => downloadMd(d)}><Download size={12} /> Export</button>
+                    <button className="btn btn-secondary btn-sm" onClick={() => exportDomainMd(d)}><Download size={12} /> Export</button>
                     <button className="btn btn-danger btn-sm" onClick={() => setDeleteTarget(d)}><Trash2 size={12} /></button>
                   </div>
                 </div>
@@ -169,7 +204,7 @@ export default function DomainLibraryPage() {
                     </button>
                   ))}
                 </div>
-                <button className="btn btn-secondary btn-sm" onClick={() => downloadMd({ ...selectedDomain, contentMarkdown: editMarkdown })}><Download size={13} /> Export</button>
+                <button className="btn btn-secondary btn-sm" onClick={() => exportDomainMd({ ...selectedDomain, contentMarkdown: editMarkdown })}><Download size={13} /> Export</button>
                 <button className="btn btn-primary btn-sm" onClick={handleSave} disabled={saving}>{saving ? 'Saving...' : 'Save'}</button>
                 <button className="btn btn-ghost btn-sm" onClick={() => setSelectedDomain(null)}>Close</button>
               </div>

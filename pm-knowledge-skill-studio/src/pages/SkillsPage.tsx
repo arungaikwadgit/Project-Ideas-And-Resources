@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Plus, Trash2, Save, X, Layers } from 'lucide-react'
+import { Plus, Trash2, Save, X, Layers, Download, Upload } from 'lucide-react'
 import type { Skill, SkillMaturityLevel } from '../types'
 import { skillStore } from '../stores/skillStore'
+import { skillToMd, mdToSkill, skillMdFilename, downloadFile, readMdFile } from '../lib/mdFileStorage'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import MaturityBadge from '../components/ui/MaturityBadge'
 import ConfirmationDialog from '../components/ui/ConfirmationDialog'
@@ -37,6 +38,7 @@ export default function SkillsPage() {
   const [isNew, setIsNew] = useState(false)
   const [deleteTarget, setDeleteTarget] = useState<Skill | null>(null)
   const [saving, setSaving] = useState(false)
+  const [importError, setImportError] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<'basic' | 'evidence' | 'practice' | 'reflection'>('basic')
 
   const loadSkills = useCallback(async () => {
@@ -113,15 +115,52 @@ export default function SkillsPage() {
 
   const update = (patch: Partial<Skill>) => setEditingSkill((prev) => prev ? { ...prev, ...patch } : prev)
 
+  const handleExportSkillMd = (skill: Skill) => {
+    downloadFile(skillMdFilename(skill), skillToMd(skill))
+  }
+
+  const handleImportMd = async () => {
+    setImportError(null)
+    try {
+      const raw = await readMdFile()
+      const parsed = mdToSkill(raw)
+      if (!parsed) { setImportError('File does not appear to be a PMKS skill MD file.'); return }
+      const existing = parsed.id ? await skillStore.getById(parsed.id) : undefined
+      if (existing) {
+        await skillStore.update({ ...parsed, updatedAt: new Date().toISOString() })
+      } else {
+        const { id: _id, ...rest } = parsed
+        await skillStore.create(rest)
+      }
+      await loadSkills()
+    } catch (e) {
+      if ((e as Error).message !== 'No file selected') {
+        setImportError('Failed to import file. Make sure it is a valid PMKS skill MD file.')
+      }
+    }
+  }
+
   return (
     <div className="page-container">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', gap: '1rem', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', gap: '1rem', flexWrap: 'wrap' }}>
         <div>
           <h1 style={{ marginBottom: '0.25rem' }}>Skills Studio</h1>
           <p className="text-muted text-sm">{skills.length} skill{skills.length !== 1 ? 's' : ''} tracked</p>
         </div>
-        <button className="btn btn-primary" onClick={openCreate}><Plus size={15} /> New Skill</button>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button className="btn btn-secondary" onClick={handleImportMd} title="Import a .skill.md file">
+            <Upload size={15} /> Import MD
+          </button>
+          <button className="btn btn-primary" onClick={openCreate}><Plus size={15} /> New Skill</button>
+        </div>
       </div>
+
+      {importError && (
+        <div style={{ background: 'rgba(255,80,80,0.1)', border: '1px solid rgba(255,80,80,0.3)', borderRadius: 6, padding: '0.625rem 1rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--error)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {importError}
+          <button onClick={() => setImportError(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', fontSize: '1rem', lineHeight: 1 }}>×</button>
+        </div>
+      )}
 
       <div style={{ display: 'grid', gridTemplateColumns: editingSkill ? '300px 1fr' : '1fr', gap: '1.25rem', alignItems: 'start' }}>
         {/* List */}
@@ -166,6 +205,7 @@ export default function SkillsPage() {
                           </div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.375rem', flexShrink: 0 }}>
                             <MaturityBadge level={skill.maturityLevel} size="sm" />
+                            <button className="btn btn-ghost btn-sm btn-icon" title="Export as MD" onClick={(e) => { e.stopPropagation(); handleExportSkillMd(skill) }}><Download size={12} /></button>
                             <button className="btn btn-ghost btn-sm btn-icon" style={{ color: 'var(--error)' }} onClick={(e) => { e.stopPropagation(); setDeleteTarget(skill) }}><Trash2 size={12} /></button>
                           </div>
                         </div>
@@ -184,6 +224,11 @@ export default function SkillsPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', gap: '0.75rem', flexWrap: 'wrap' }}>
               <h3 style={{ margin: 0 }}>{isNew ? 'New Skill' : 'Edit Skill'}</h3>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
+                {!isNew && selectedSkill && (
+                  <button className="btn btn-secondary btn-sm" onClick={() => handleExportSkillMd({ ...selectedSkill, ...editingSkill } as Skill)} title="Download as .skill.md">
+                    <Download size={13} /> Export MD
+                  </button>
+                )}
                 <button className="btn btn-primary btn-sm" onClick={handleSave} disabled={saving}>{saving ? 'Saving...' : <><Save size={13} /> Save</>}</button>
                 {!isNew && <button className="btn btn-danger btn-sm" onClick={() => setDeleteTarget(selectedSkill!)}><Trash2 size={13} /></button>}
                 <button className="btn btn-ghost btn-sm" onClick={() => { setEditingSkill(null); setSelectedSkill(null); setIsNew(false) }}><X size={14} /></button>
