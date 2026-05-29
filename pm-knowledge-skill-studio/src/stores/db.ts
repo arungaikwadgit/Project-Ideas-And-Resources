@@ -18,7 +18,7 @@ import type {
 } from '../types'
 
 const DB_NAME = 'pm-knowledge-skill-studio'
-const DB_VERSION = 2
+const DB_VERSION = 3
 
 interface PMKSSchema extends DBSchema {
   domainKnowledge: { key: string; value: DomainKnowledge; indexes: { 'by-domainKey': string; 'by-updatedAt': string } }
@@ -37,6 +37,9 @@ interface PMKSSchema extends DBSchema {
   customPrompts: { key: string; value: CustomPrompt; indexes: { 'by-basePromptId': string } }
   settings: { key: string; value: { id: string; value: unknown } }
   projects: { key: string; value: Project; indexes: { 'by-name': string; 'by-updatedAt': string } }
+  // API keys stored in IndexedDB as the primary persistent store.
+  // id = 'ai_<providerId>' or 'search_<providerId>'
+  apiKeys: { key: string; value: { id: string; apiKey: string; sessionOnly: boolean; updatedAt: string } }
 }
 
 let dbInstance: IDBPDatabase<PMKSSchema> | null = null
@@ -98,6 +101,9 @@ export async function getDb(): Promise<IDBPDatabase<PMKSSchema>> {
         projStore.createIndex('by-name', 'name')
         projStore.createIndex('by-updatedAt', 'updatedAt')
       }
+      if (oldVersion < 3) {
+        db.createObjectStore('apiKeys', { keyPath: 'id' })
+      }
     },
   })
 
@@ -108,7 +114,7 @@ export type PMKSStoreName =
   | 'domainKnowledge' | 'knowledge' | 'workStyle' | 'skills' | 'playbooks'
   | 'promptPacks' | 'aiRuns' | 'projectNotes' | 'decisions' | 'lessons'
   | 'activityEvents' | 'aiProviderSettings' | 'searchProviderSettings'
-  | 'customPrompts' | 'settings' | 'projects'
+  | 'customPrompts' | 'settings' | 'projects' | 'apiKeys'
 
 // We cast to `unknown` then to the typed parameter to bridge IDBPDatabase generic constraints.
 function asDb(db: IDBPDatabase<PMKSSchema>) {
