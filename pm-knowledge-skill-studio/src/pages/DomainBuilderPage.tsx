@@ -1,20 +1,34 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Search, Globe, ChevronRight, ChevronLeft, Check, Layers, Sparkles, Save, BookOpen } from 'lucide-react'
+import { Search, Globe, ChevronRight, ChevronLeft, Check, Layers, Sparkles, Save, BookOpen, Loader } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
-import type { CandidateDomain, DomainCatalogItem, SuggestedSkill, ActivityEvent } from '../types'
+import type { CandidateDomain, DomainCatalogItem, SuggestedSkill, ActivityEvent, DomainKnowledge } from '../types'
 import { domainKnowledgeStore } from '../stores/domainKnowledgeStore'
 import { skillStore } from '../stores/skillStore'
+import { providerSettingsStore } from '../stores/providerSettingsStore'
 import { dbList, dbCreate } from '../stores/db'
 import { buildDomainMarkdown } from '../lib/domain/domainMarkdownBuilder'
 import { suggestSkillsForDomain } from '../lib/domainSkillRules'
+import { buildDomainSearchQueries, discoverDomainsFromSearch } from '../lib/search/domainDiscovery'
+import { tavilySearchProvider } from '../lib/search/providers/tavilySearchProvider'
+import { braveSearchProvider } from '../lib/search/providers/braveSearchProvider'
+import { genericSearchProvider } from '../lib/search/providers/genericSearchProvider'
+import { domainKnowledgeToMd, domainKnowledgeMdFilename, downloadFile } from '../lib/mdFileStorage'
 import DomainCandidateCard from '../components/domain/DomainCandidateCard'
 import MultiDomainSelector from '../components/domain/MultiDomainSelector'
 import SkillSuggestionPanel from '../components/skills/SkillSuggestionPanel'
 import MarkdownPreview from '../components/editor/MarkdownPreview'
 import SearchBar from '../components/ui/SearchBar'
 import EmptyState from '../components/ui/EmptyState'
+import type { StoredSearchProviderSettings } from '../types'
+import type { SearchProvider } from '../lib/search/providers/searchProvider'
 
 const STEPS = ['Search & Browse', 'Select Domains', 'Generate Markdown', 'Review Skills', 'Save & Complete']
+
+const SEARCH_PROVIDERS: Record<string, SearchProvider> = {
+  tavily: tavilySearchProvider,
+  brave: braveSearchProvider,
+  generic: genericSearchProvider,
+}
 
 async function recordActivity(eventType: ActivityEvent['eventType'], metadata?: Record<string, unknown>) {
   const event: ActivityEvent = {
@@ -100,6 +114,14 @@ export default function DomainBuilderPage() {
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState('')
+  // Web search state
+  const [showWebSearch, setShowWebSearch] = useState(false)
+  const [webSearching, setWebSearching] = useState(false)
+  const [webSearchError, setWebSearchError] = useState('')
+  const [wsBusinessArea, setWsBusinessArea] = useState('')
+  const [wsProductIdea, setWsProductIdea] = useState('')
+  const [wsTargetUsers, setWsTargetUsers] = useState('')
+  const [wsKeywords, setWsKeywords] = useState('')
 
   useEffect(() => {
     fetch('/pm-knowledge-skill-studio/config/domainCatalog.json')
@@ -111,8 +133,8 @@ export default function DomainBuilderPage() {
       .catch(() => setError('Failed to load domain catalog.'))
       .finally(() => setLoading(false))
 
-    dbList('searchProviderSettings').then((settings) => {
-      setHasSearchProvider((settings as unknown[]).length > 0)
+    dbList<StoredSearchProviderSettings>('searchProviderSettings').then((settings) => {
+      setHasSearchProvider(settings.length > 0)
     })
   }, [])
 
@@ -130,6 +152,67 @@ export default function DomainBuilderPage() {
       prev.some((d) => d.id === domain.id) ? prev.filter((d) => d.id !== domain.id) : [...prev, domain],
     )
   }, [])
+
+  const handleWebSearch = useCallback(async () => {
+    if (!wsBusinessArea && !wsProductIdea && !wsKeywords) {
+      setWebSearchError('Enter at least a business area, product idea, or keywords to search.')
+      return
+    }
+    setWebSearching(true)
+    setWebSearchError('')
+    try {
+      // Load search provider settings
+      const stored = await dbList<StoredSearchProviderSettings>('searchProviderSettings')
+      const storedSettings = stored[0]
+      if (!storedSettings) {
+        setWebSearchError('No search provider configured. Go to Provider Settings to add one.')
+        return
+      }
+
+      const { settings, apiKey } = await providerSettingsStore.getSearchProviderSettings(storedSettings.providerId)
+      if (!apiKey) {
+        setWebSearchError('Search API key not found. Re-enter it in Provider Settings.')
+        return
+      }
+
+      const provider = SEARCH_PROVIDERS[storedSettings.providerId] ?? genericSearchProvider
+      const fullSettings = { ...(settings ?? { timeoutMs: 15000 }), apiKey, providerType: storedSettings.providerId as 'tavily' | 'brave' | 'generic' }
+
+      const queries = buildDomainSearchQueries({
+        businessArea: wsBusinessArea.trim() || undefined,
+        productIdea: wsProductIdea.trim() || undefined,
+        targetUsers: wsTargetUsers.trim() || undefined,
+        keywords: wsKeywords ? wsKeywords.split(',').map(k => k.trim()).filter(Boolean) : undefined,
+      })
+
+      if (queries.length === 0) {
+        setWebSearchError('Could not build search queries from the provided input.')
+        return
+      }
+
+      const allDiscovered: CandidateDomain[] = []
+      for (const query of queries.slice(0, 3)) {
+        const results = await discoverDomainsFromSearch(query, provider, fullSettings)
+        allDiscovered.push(...results)
+      }
+
+      // Deduplicate by name (case-insensitive) and merge into candidates
+      const existingNames = new Set(candidates.map(c => c.name.toLowerCase()))
+      const newCandidates = allDiscovered.filter(d => !existingNames.has(d.name.toLowerCase()))
+      if (newCandidates.length === 0) {
+        setWebSearchError('No new domains discovered. Try different keywords.')
+        return
+      }
+
+      setCandidates(prev => [...newCandidates, ...prev])
+      setShowWebSearch(false)
+      recordActivity('domain_discovered', { queries, foundCount: newCandidates.length })
+    } catch (e) {
+      setWebSearchError(`Search failed: ${(e as Error).message}`)
+    } finally {
+      setWebSearching(false)
+    }
+  }, [wsBusinessArea, wsProductIdea, wsTargetUsers, wsKeywords, candidates])
 
   const handleGenerateMarkdown = useCallback(() => {
     const markdowns: Record<string, string> = {}
@@ -167,14 +250,14 @@ export default function DomainBuilderPage() {
     setSaving(true)
     setError('')
     try {
-      // Save domain knowledge records
+      // Save domain knowledge records and auto-export as MD files
       for (const domain of selectedDomains) {
         const md = generatedMarkdowns[domain.id] ?? ''
         const sourceVal: 'curated' | 'web_discovered' | 'manual' =
           domain.source === 'curated' ? 'curated'
           : domain.source === 'web_discovered' ? 'web_discovered'
           : 'manual'
-        await domainKnowledgeStore.create({
+        const saved: DomainKnowledge = await domainKnowledgeStore.create({
           domainKey: domain.id,
           domainName: domain.name,
           contentMarkdown: md,
@@ -186,6 +269,8 @@ export default function DomainBuilderPage() {
           source: sourceVal,
           sourceLinks: Array.isArray(domain.sourceLinks) ? domain.sourceLinks : [],
         })
+        // Auto-export as MD file to the user's machine
+        downloadFile(domainKnowledgeMdFilename(saved), domainKnowledgeToMd(saved))
         recordActivity('domain_selected', { domainId: domain.id, domainName: domain.name })
       }
 
@@ -251,12 +336,50 @@ export default function DomainBuilderPage() {
               <button
                 className="btn btn-secondary"
                 disabled={!hasSearchProvider}
-                title={hasSearchProvider ? 'Search the web for domain knowledge' : 'Configure a search provider in Settings first'}
+                onClick={() => { setShowWebSearch(v => !v); setWebSearchError('') }}
+                title={hasSearchProvider ? 'Research the web for domain knowledge' : 'Configure a search provider in Provider Settings first'}
               >
                 <Globe size={15} />
-                Use Web Search
+                {showWebSearch ? 'Hide Web Search' : 'Use Web Search'}
               </button>
             </div>
+
+            {/* Web search form */}
+            {showWebSearch && hasSearchProvider && (
+              <div style={{ marginTop: '1rem', background: 'rgba(74,163,255,0.04)', border: '1px solid rgba(74,163,255,0.2)', borderRadius: 8, padding: '1.25rem' }}>
+                <div style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.875rem', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Globe size={14} /> Web Research — discover domain knowledge from the internet
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Business Area *</label>
+                    <input className="input" value={wsBusinessArea} onChange={e => setWsBusinessArea(e.target.value)} placeholder="e.g. Healthcare IT, FinTech, E-commerce" style={{ width: '100%' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Product / Idea</label>
+                    <input className="input" value={wsProductIdea} onChange={e => setWsProductIdea(e.target.value)} placeholder="e.g. patient scheduling platform" style={{ width: '100%' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Target Users</label>
+                    <input className="input" value={wsTargetUsers} onChange={e => setWsTargetUsers(e.target.value)} placeholder="e.g. clinicians, nurses, hospital admins" style={{ width: '100%' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Keywords (comma-separated)</label>
+                    <input className="input" value={wsKeywords} onChange={e => setWsKeywords(e.target.value)} placeholder="e.g. HIPAA, EHR, interoperability" style={{ width: '100%' }} />
+                  </div>
+                </div>
+                {webSearchError && (
+                  <div style={{ fontSize: '0.8rem', color: 'var(--error)', marginBottom: '0.75rem' }}>{webSearchError}</div>
+                )}
+                <button className="btn btn-primary btn-sm" onClick={handleWebSearch} disabled={webSearching}>
+                  {webSearching ? <><Loader size={13} style={{ animation: 'spin 1s linear infinite' }} /> Searching the web…</> : <><Search size={13} /> Research Domains</>}
+                </button>
+                <span style={{ fontSize: '0.75rem', color: 'var(--muted)', marginLeft: '0.75rem' }}>
+                  Results are added to the candidate list below
+                </span>
+              </div>
+            )}
+
             {!hasSearchProvider && (
               <p className="text-xs text-muted" style={{ marginTop: '0.5rem' }}>
                 Web search is disabled — configure a search provider in Provider Settings to enable it.
@@ -406,7 +529,9 @@ export default function DomainBuilderPage() {
         <div>
           <div className="panel" style={{ padding: '1.5rem', marginBottom: '1.25rem' }}>
             <h2 style={{ marginBottom: '0.5rem', fontSize: '1.0625rem' }}>Save & Complete</h2>
-            <p className="text-sm text-muted">Review your selections and save them to your knowledge library.</p>
+            <p className="text-sm text-muted">
+              Domains will be saved to your library and <strong>automatically downloaded as .md files</strong> to your machine for reuse.
+            </p>
           </div>
 
           {saved ? (
@@ -416,7 +541,8 @@ export default function DomainBuilderPage() {
               </div>
               <h3 style={{ marginBottom: '0.5rem' }}>Domains Saved!</h3>
               <p className="text-muted text-sm" style={{ marginBottom: '1.5rem' }}>
-                {selectedDomains.length} domain{selectedDomains.length !== 1 ? 's' : ''} and {acceptedSkillIds.length} skill{acceptedSkillIds.length !== 1 ? 's' : ''} have been saved to your library.
+                {selectedDomains.length} domain{selectedDomains.length !== 1 ? 's' : ''} and {acceptedSkillIds.length} skill{acceptedSkillIds.length !== 1 ? 's' : ''} saved.
+                MD files were downloaded to your machine.
               </p>
               <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
                 <a href="/pm-knowledge-skill-studio/domain-library" className="btn btn-primary">
@@ -461,7 +587,7 @@ export default function DomainBuilderPage() {
                   <ChevronLeft size={15} /> Back
                 </button>
                 <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
-                  {saving ? <><div className="loading-spinner loading-spinner-sm" /> Saving...</> : <><Save size={15} /> Save All</>}
+                  {saving ? <><div className="loading-spinner loading-spinner-sm" /> Saving...</> : <><Save size={15} /> Save All & Export MD</>}
                 </button>
               </div>
             </>

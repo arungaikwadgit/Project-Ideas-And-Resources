@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { ChevronRight, FileText, Zap, Save, RotateCcw, User, CheckCircle, AlertTriangle, XCircle, FolderOpen } from 'lucide-react'
+import { ChevronRight, FileText, Zap, Save, RotateCcw, User, CheckCircle, AlertTriangle, XCircle, FolderOpen, BookOpen, Star } from 'lucide-react'
 import { v4 as uuid } from 'uuid'
-import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent, Project, DomainKnowledge } from '../types'
+import type { SDLCPhase, SDLCTask, PreloadedPrompt, CustomPrompt, ActivityEvent, Project, DomainKnowledge, Skill } from '../types'
 import type { Role } from '../types/role'
 import type { StoredAIProviderSettings, AIProviderSettings } from '../types/provider'
 import { dbCreate, dbList } from '../stores/db'
@@ -11,6 +11,7 @@ import { providerSettingsStore } from '../stores/providerSettingsStore'
 import { aiRunStore } from '../stores/aiRunStore'
 import { projectStore } from '../stores/projectStore'
 import { domainKnowledgeStore } from '../stores/domainKnowledgeStore'
+import { skillStore } from '../stores/skillStore'
 import { executePrompt } from '../lib/ai/aiRuntime'
 import { runGovernanceCheck } from '../lib/governance/governanceEngine'
 import { canExecute } from '../lib/governance/executionPolicy'
@@ -26,7 +27,7 @@ async function recordActivity(eventType: ActivityEvent['eventType'], metadata?: 
   }
 }
 
-function buildContextPreamble(project: Project | undefined, selectedDomains: DomainKnowledge[]): string {
+function buildContextPreamble(project: Project | undefined, selectedDomains: DomainKnowledge[], selectedSkills: Skill[]): string {
   const sections: string[] = []
 
   if (project) {
@@ -45,10 +46,20 @@ function buildContextPreamble(project: Project | undefined, selectedDomains: Dom
     sections.push(`## Domain Knowledge\n${domainContent}`)
   }
 
+  if (selectedSkills.length > 0) {
+    const skillLines = selectedSkills.map(s => {
+      const parts = [`### ${s.name} (${s.maturityLevel})`]
+      if (s.description) parts.push(s.description)
+      if (s.evidenceNotes) parts.push(`**Evidence:** ${s.evidenceNotes}`)
+      return parts.join('\n')
+    })
+    sections.push(`## Skills & Competencies\n${skillLines.join('\n\n')}`)
+  }
+
   return sections.join('\n\n')
 }
 
-function injectContext(basePrompt: string, project: Project | undefined, selectedDomains: DomainKnowledge[]): string {
+function injectContext(basePrompt: string, project: Project | undefined, selectedDomains: DomainKnowledge[], selectedSkills: Skill[]): string {
   let enriched = basePrompt
 
   if (project) {
@@ -59,7 +70,7 @@ function injectContext(basePrompt: string, project: Project | undefined, selecte
       .replace(/\[BRIEF_CONTEXT\]/g, project.description || project.name)
   }
 
-  const preamble = buildContextPreamble(project, selectedDomains)
+  const preamble = buildContextPreamble(project, selectedDomains, selectedSkills)
   if (preamble) {
     return `${preamble}\n\n---\n\n${enriched}`
   }
@@ -79,11 +90,13 @@ export default function SDLCPage() {
   const [promptMarkdown, setPromptMarkdown] = useState('')
   const [customPrompts, setCustomPrompts] = useState<CustomPrompt[]>([])
   const [aiProviderList, setAiProviderList] = useState<StoredAIProviderSettings[]>([])
-  // Project & domain context
+  // Project, domain & skills context
   const [projects, setProjects] = useState<Project[]>([])
   const [domainKnowledge, setDomainKnowledge] = useState<DomainKnowledge[]>([])
+  const [skills, setSkills] = useState<Skill[]>([])
   const [selectedProjectId, setSelectedProjectId] = useState<string>('')
   const [selectedDomainIds, setSelectedDomainIds] = useState<string[]>([])
+  const [selectedSkillIds, setSelectedSkillIds] = useState<string[]>([])
   // Page state
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -112,7 +125,8 @@ export default function SDLCPage() {
       settingsStore.get<string>('primaryRole').catch(() => undefined),
       projectStore.list().catch(() => [] as Project[]),
       domainKnowledgeStore.list().catch(() => [] as DomainKnowledge[]),
-    ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName, projectList, domainList]) => {
+      skillStore.list().catch(() => [] as Skill[]),
+    ]).then(([phasesData, tasksData, promptsData, rolesData, aiSettings, primaryRoleName, projectList, domainList, skillList]) => {
       const phaseList = Array.isArray(phasesData) ? phasesData as SDLCPhase[] : []
       const roleList = Array.isArray(rolesData) ? rolesData as Role[] : []
       const providerList = Array.isArray(aiSettings) ? aiSettings as StoredAIProviderSettings[] : []
@@ -123,6 +137,7 @@ export default function SDLCPage() {
       setAiProviderList(providerList)
       setProjects(Array.isArray(projectList) ? (projectList as Project[]).filter(p => p.status === 'active') : [])
       setDomainKnowledge(Array.isArray(domainList) ? domainList as DomainKnowledge[] : [])
+      setSkills(Array.isArray(skillList) ? skillList as Skill[] : [])
       if (phaseList.length > 0) setSelectedPhase(phaseList[0])
 
       if (primaryRoleName && roleList.length > 0) {
@@ -144,7 +159,14 @@ export default function SDLCPage() {
 
   const selectedProject = projects.find(p => p.id === selectedProjectId)
   const activeDomains = domainKnowledge.filter(d => selectedDomainIds.includes(d.id))
-  const contextActive = !!selectedProjectId || selectedDomainIds.length > 0
+  const activeSkills = skills.filter(s => selectedSkillIds.includes(s.id))
+  const contextActive = !!selectedProjectId || selectedDomainIds.length > 0 || selectedSkillIds.length > 0
+  // Mandatory context check — all three must be present before running
+  const missingContext: string[] = []
+  if (!selectedProjectId) missingContext.push('project')
+  if (selectedDomainIds.length === 0) missingContext.push('domain knowledge')
+  if (selectedSkillIds.length === 0) missingContext.push('skills')
+  const contextComplete = missingContext.length === 0
 
   const handleProjectChange = (projectId: string) => {
     setSelectedProjectId(projectId)
@@ -159,6 +181,12 @@ export default function SDLCPage() {
   const toggleDomain = (id: string) => {
     setSelectedDomainIds(prev =>
       prev.includes(id) ? prev.filter(d => d !== id) : [...prev, id]
+    )
+  }
+
+  const toggleSkill = (id: string) => {
+    setSelectedSkillIds(prev =>
+      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
     )
   }
 
@@ -236,9 +264,9 @@ export default function SDLCPage() {
     setGovernanceWarnings([])
 
     try {
-      // Build enriched prompt with project + domain context injected
-      const enrichedPrompt = injectContext(promptMarkdown, selectedProject, activeDomains)
-      const contextSnapshot = buildContextPreamble(selectedProject, activeDomains)
+      // Build enriched prompt with project + domain + skills context injected
+      const enrichedPrompt = injectContext(promptMarkdown, selectedProject, activeDomains, activeSkills)
+      const contextSnapshot = buildContextPreamble(selectedProject, activeDomains, activeSkills)
 
       // Governance check — block on PII / injections
       const gov = runGovernanceCheck(enrichedPrompt, 'sdlc-workspace')
@@ -298,7 +326,7 @@ export default function SDLCPage() {
           ? { inputTokens: response.usage.inputTokens, outputTokens: response.usage.outputTokens,
               totalTokens: (response.usage.inputTokens ?? 0) + (response.usage.outputTokens ?? 0) }
           : undefined,
-        linkedSkillIds: [],
+        linkedSkillIds: selectedSkillIds,
         linkedDomainIds: selectedDomainIds,
         linkedPlaybookIds: [],
         linkedProjectId: selectedProjectId || undefined,
@@ -313,7 +341,7 @@ export default function SDLCPage() {
     } finally {
       setRunning(false)
     }
-  }, [selectedTask, promptMarkdown, loadedPrompt, running, selectedProject, activeDomains, selectedDomainIds, selectedProjectId])
+  }, [selectedTask, promptMarkdown, loadedPrompt, running, selectedProject, activeDomains, activeSkills, selectedDomainIds, selectedProjectId, selectedSkillIds])
 
   const handleSaveCustomPrompt = async () => {
     if (!selectedTask || !promptMarkdown) return
@@ -394,32 +422,34 @@ export default function SDLCPage() {
         )}
       </div>
 
-      {/* Project & Domain context panel */}
-      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '1.25rem' }}>
+      {/* Project, Domain & Skills context panel — all three mandatory */}
+      <div className="panel" style={{ padding: '0.875rem 1.25rem', marginBottom: '1.25rem', borderColor: contextComplete ? undefined : 'rgba(255,204,102,0.35)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
           <FolderOpen size={15} style={{ color: 'var(--accent)' }} />
-          <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Project & Domain Context</span>
+          <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>Prompt Context</span>
           <span style={{ fontSize: '0.75rem', color: 'var(--muted)', marginLeft: 'auto' }}>
-            Automatically injected into prompts when you run them
+            Project + Domain + Skills are <strong>required</strong> before running a prompt
           </span>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '1.25rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr 1fr', gap: '1rem', alignItems: 'start' }}>
           {/* Project selector */}
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>Project</label>
+            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: !selectedProjectId ? 'var(--warning)' : 'var(--muted)', marginBottom: '0.25rem' }}>
+              <FolderOpen size={11} style={{ marginRight: 3 }} />Project {!selectedProjectId && '⚠ required'}
+            </label>
             {projects.length === 0 ? (
               <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: 0 }}>
-                No active projects. <a href="/pm-knowledge-skill-studio/projects" style={{ color: 'var(--accent)' }}>Create one</a> to inject context.
+                <a href="/pm-knowledge-skill-studio/projects" style={{ color: 'var(--accent)' }}>Create a project</a> first.
               </p>
             ) : (
               <select
                 className="input"
                 value={selectedProjectId}
                 onChange={(e) => handleProjectChange(e.target.value)}
-                style={{ width: '100%', fontSize: '0.875rem' }}
+                style={{ width: '100%', fontSize: '0.8rem', borderColor: !selectedProjectId ? 'rgba(255,204,102,0.5)' : undefined }}
               >
-                <option value="">— No project context —</option>
+                <option value="">— Select project —</option>
                 {projects.map(p => (
                   <option key={p.id} value={p.id}>{p.name}</option>
                 ))}
@@ -429,34 +459,58 @@ export default function SDLCPage() {
 
           {/* Domain checkboxes */}
           <div>
-            <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '0.25rem' }}>
-              Domain Knowledge {selectedDomainIds.length > 0 && `(${selectedDomainIds.length} selected)`}
+            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: selectedDomainIds.length === 0 ? 'var(--warning)' : 'var(--muted)', marginBottom: '0.25rem' }}>
+              <BookOpen size={11} style={{ marginRight: 3 }} />Domain Knowledge {selectedDomainIds.length > 0 ? `(${selectedDomainIds.length})` : '⚠ required'}
             </label>
             {domainKnowledge.length === 0 ? (
               <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: 0 }}>
-                No domain knowledge saved. Use Domain Builder first.
+                <a href="/pm-knowledge-skill-studio/domain-builder" style={{ color: 'var(--accent)' }}>Build domain knowledge</a> first.
               </p>
             ) : (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
                 {domainKnowledge.map(d => (
                   <label
                     key={d.id}
                     style={{
                       display: 'flex', alignItems: 'center', gap: '0.3rem',
-                      cursor: 'pointer', fontSize: '0.8rem',
+                      cursor: 'pointer', fontSize: '0.75rem',
                       background: selectedDomainIds.includes(d.id) ? 'rgba(74,163,255,0.1)' : 'rgba(255,255,255,0.04)',
                       border: `1px solid ${selectedDomainIds.includes(d.id) ? 'rgba(74,163,255,0.35)' : 'var(--border)'}`,
-                      borderRadius: 4, padding: '0.2rem 0.5rem',
-                      transition: 'all var(--transition)',
+                      borderRadius: 4, padding: '0.175rem 0.45rem',
                     }}
                   >
-                    <input
-                      type="checkbox"
-                      checked={selectedDomainIds.includes(d.id)}
-                      onChange={() => toggleDomain(d.id)}
-                      style={{ margin: 0 }}
-                    />
+                    <input type="checkbox" checked={selectedDomainIds.includes(d.id)} onChange={() => toggleDomain(d.id)} style={{ margin: 0 }} />
                     {d.domainName}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Skills checkboxes */}
+          <div>
+            <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 600, color: selectedSkillIds.length === 0 ? 'var(--warning)' : 'var(--muted)', marginBottom: '0.25rem' }}>
+              <Star size={11} style={{ marginRight: 3 }} />Skills {selectedSkillIds.length > 0 ? `(${selectedSkillIds.length})` : '⚠ required'}
+            </label>
+            {skills.length === 0 ? (
+              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', margin: 0 }}>
+                <a href="/pm-knowledge-skill-studio/skills" style={{ color: 'var(--accent)' }}>Add skills</a> first.
+              </p>
+            ) : (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                {skills.map(s => (
+                  <label
+                    key={s.id}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: '0.3rem',
+                      cursor: 'pointer', fontSize: '0.75rem',
+                      background: selectedSkillIds.includes(s.id) ? 'rgba(126,231,135,0.1)' : 'rgba(255,255,255,0.04)',
+                      border: `1px solid ${selectedSkillIds.includes(s.id) ? 'rgba(126,231,135,0.35)' : 'var(--border)'}`,
+                      borderRadius: 4, padding: '0.175rem 0.45rem',
+                    }}
+                  >
+                    <input type="checkbox" checked={selectedSkillIds.includes(s.id)} onChange={() => toggleSkill(s.id)} style={{ margin: 0 }} />
+                    {s.name}
                   </label>
                 ))}
               </div>
@@ -464,14 +518,11 @@ export default function SDLCPage() {
           </div>
         </div>
 
-        {contextActive && (
-          <div style={{ marginTop: '0.625rem', fontSize: '0.8rem', color: 'var(--success)', display: 'flex', alignItems: 'center', gap: '0.375rem' }}>
-            <CheckCircle size={13} />
-            Context active:{' '}
-            {[selectedProject?.name, selectedDomainIds.length > 0 && `${selectedDomainIds.length} domain${selectedDomainIds.length !== 1 ? 's' : ''}`]
-              .filter(Boolean).join(' + ')}
-          </div>
-        )}
+        <div style={{ marginTop: '0.625rem', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.375rem', color: contextComplete ? 'var(--success)' : 'var(--warning)' }}>
+          {contextComplete
+            ? <><CheckCircle size={13} /> Context ready: {selectedProject?.name} + {selectedDomainIds.length} domain{selectedDomainIds.length !== 1 ? 's' : ''} + {selectedSkillIds.length} skill{selectedSkillIds.length !== 1 ? 's' : ''}</>
+            : <><AlertTriangle size={13} /> Missing: {missingContext.join(', ')} — required before running prompts</>}
+        </div>
       </div>
 
       {/* Breadcrumb */}
@@ -595,12 +646,16 @@ export default function SDLCPage() {
                       <button
                         className="btn btn-primary btn-sm"
                         onClick={handleRunPrompt}
-                        disabled={running}
-                        title={!hasAIProvider ? 'Configure an AI provider in Provider Settings first' : undefined}
+                        disabled={running || !contextComplete}
+                        title={
+                          !hasAIProvider ? 'Configure an AI provider in Provider Settings first'
+                          : !contextComplete ? `Select ${missingContext.join(', ')} before running`
+                          : undefined
+                        }
                       >
                         {running
                           ? <><div className="loading-spinner loading-spinner-sm" /> Running…</>
-                          : <><Zap size={13} /> Run Prompt{contextActive ? ' with Context' : ''}</>}
+                          : <><Zap size={13} /> Run Prompt with Context</>}
                       </button>
                     </div>
                   </div>
@@ -611,14 +666,19 @@ export default function SDLCPage() {
                     </div>
                   )}
 
-                  {contextActive && (
+                  {!contextComplete && (
+                    <div style={{ background: 'rgba(255,204,102,0.08)', border: '1px solid rgba(255,204,102,0.3)', borderRadius: 6, padding: '0.5rem 0.875rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--warning)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <AlertTriangle size={13} style={{ flexShrink: 0 }} />
+                      Select <strong>{missingContext.join(', ')}</strong> in the context panel above before running this prompt.
+                    </div>
+                  )}
+
+                  {contextComplete && (
                     <div style={{ background: 'rgba(74,163,255,0.06)', border: '1px solid rgba(74,163,255,0.2)', borderRadius: 6, padding: '0.5rem 0.875rem', marginBottom: '1rem', fontSize: '0.8rem', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <FolderOpen size={13} style={{ flexShrink: 0 }} />
+                      <CheckCircle size={13} style={{ flexShrink: 0 }} />
                       <span>
-                        Context will be injected:{' '}
-                        {[selectedProject?.name, selectedDomainIds.length > 0 && `${selectedDomainIds.length} domain${selectedDomainIds.length !== 1 ? 's' : ''}`]
-                          .filter(Boolean).join(' + ')}
-                        . Placeholders like <code>[PROJECT_NAME]</code> will be replaced automatically.
+                        Injecting: <strong>{selectedProject?.name}</strong> + <strong>{selectedDomainIds.length} domain{selectedDomainIds.length !== 1 ? 's' : ''}</strong> + <strong>{selectedSkillIds.length} skill{selectedSkillIds.length !== 1 ? 's' : ''}</strong>.
+                        Placeholders like <code>[PROJECT_NAME]</code> are replaced automatically.
                       </span>
                     </div>
                   )}
